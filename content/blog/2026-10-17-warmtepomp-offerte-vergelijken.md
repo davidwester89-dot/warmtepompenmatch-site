@@ -6,7 +6,7 @@ date: 2026-10-17
 updated: 2026-10-17
 checked: 2026-10-17
 image: warmtepomp-offerte-vergelijken
-image_alt: Buitenunit van een lucht-waterwarmtepomp op een betonnen voet naast de achterdeur van een rijtjeshuis
+image_alt: Buitenunit van een warmtepomp zonder merkopdruk op het balkon van een woning, naast de achterdeur
 howto: Zo vergelijk je warmtepomp-offertes in 6 stappen
 tools: /warmtepomp-keuzehulp/, /terugverdientijd-berekenen/, /vergelijken/
 sources:

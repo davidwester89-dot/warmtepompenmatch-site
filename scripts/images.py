@@ -52,7 +52,7 @@ for k,(t,sub) in cards.items():
     if k in photo:
         img='file://'+os.path.abspath('src/assets/img/blog/'+photo[k])
         html=f'''<html><body style="margin:0;width:1200px;height:630px;background:{BG};font-family:'DejaVu Sans',sans-serif;overflow:hidden">
-<div style="position:absolute;right:0;top:0;width:530px;height:630px;background:url('{img}') center/cover"></div>
+<div style="position:absolute;right:0;top:0;width:530px;height:630px;background:url('{img}') 28% center/cover"></div>
 <div style="position:absolute;left:0;top:0;width:670px;height:630px;background:{BG}"></div>
 <div style="position:absolute;left:0;top:0;width:1200px;height:18px;background:{B}"></div>
 <div style="position:absolute;left:64px;top:70px;display:flex;align-items:center;gap:16px;font-size:32px;font-weight:700;color:{D}"><div style="width:54px;height:54px">{LOGO}</div><span>Warmtepompen<span style="color:{B}">Match</span>.nl</span></div>

@@ -1,6 +1,5 @@
 # Bouwt WarmtepompenMatch en publiceert via GitHub Pages.
-# TESTVERSIE: BASE=/warmtepompenmatch-site → https://davidwester89-dot.github.io/warmtepompenmatch-site/ (noindex, robots Disallow, geen CNAME).
-# LIVEGANG (pas na akkoord Dave): BASE leeg en GO_LIVE=1 (schrijft CNAME warmtepompenmatch.nl), custom domain in Pages-instellingen, DNS bij Strato.
+# LIVE sinds 17-10-2026 (akkoord Dave): BASE leeg, GO_LIVE=1 (CNAME warmtepompenmatch.nl, indexeerbaar). Testversie was BASE=/warmtepompenmatch-site.
 name: Deploy WarmtepompenMatch
 on:
   push:
@@ -14,8 +13,8 @@ concurrency:
   group: pages
   cancel-in-progress: true
 env:
-  BASE: '/warmtepompenmatch-site'
-  GO_LIVE: ''
+  BASE: ''
+  GO_LIVE: '1'
 jobs:
   build:
     runs-on: ubuntu-latest

@@ -1,13 +1,15 @@
 # Bronnen van de blogfoto's
 
 Alle foto's hier zijn vrij gelicenseerd. De bron staat hier en niet als link in de tekst. Dit bestand wordt niet meegekopieerd naar `dist/`.
+Regel: geen foto's met een zichtbaar merk of logo (een vergelijkingssite mag geen merk voortrekken) en geen herkenbare personen.
 
 ## warmtepomp-offerte-vergelijken-{600,900,1200}.webp
 
 - Gebruikt in: /blog/warmtepomp-offerte-vergelijken/ (kopfoto) en og-kaart `src/assets/og/blog-warmtepomp-offerte-vergelijken.png`
-- Origineel: "Air Source Heat Pump - Vailliant aroTherm Plus on a terraced house" (1600 × 1201, 27-11-2024)
-- Maker: Southend-on-Sea Borough Council (VK), via Flickr: https://www.flickr.com/photos/southendbc/53359886464
-- Bron: Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Air_Source_Heat_Pump_-_Vailliant_aroTherm_Plus_on_a_terraced_house.jpg
+- Origineel: "Heat pump on balcony" (2995 × 2995, 12-09-2023)
+- Maker: Wikideas1 (eigen werk), https://commons.wikimedia.org/wiki/User:Wikideas1
+- Bron: Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Heat_pump_on_balcony.jpg
 - Licentie: CC0 1.0 Universal (Public Domain Dedication), https://creativecommons.org/publicdomain/zero/1.0/deed.nl
-- Aanpassingen: bijgesneden naar 1200 × 630 (vanaf y = 105), verkleind naar 900 en 600 breed, omgezet naar WebP.
-- Let op: op de foto staat een Vaillant-buitenunit. De foto is gekozen als voorbeeld van een buitenunit en is geen merkvoorkeur.
+- Aanpassingen: bijgesneden tot 2400 × 1260 (x = 60, y = 560), verkleind naar 1200, 900 en 600 breed, omgezet naar WebP (kwaliteit 72).
+- Merkcontrole 17-10-2026: op de buitenunit staat geen merknaam of logo, alleen een klein waarschuwingslabel.
+- Vervangt (17-10-2026) de eerdere foto van een Vaillant aroTHERM plus (Southend-on-Sea Borough Council, CC0) omdat daarop het merklogo zichtbaar was.
