@@ -13,7 +13,7 @@ const NEP = [/★/, /aggregateRating/, /reviewCount/, /ratingValue/, /sterren/i,
 test('build (productie): pagina’s, sitemap, robots, IndexNow, CNAME, huisregels', () => {
   buildLive();
   const html = htmlFiles();
-  assert.equal(html.length, 26);
+  assert.equal(html.length, 28); // 26 + blogindex + 1 blogpost
   const sm = read('dist/sitemap.xml');
   assert.equal((sm.match(/<loc>/g) || []).length, html.length - 1);
   assert.match(read('dist/robots.txt'), /Sitemap: https:\/\/warmtepompenmatch.nl\/sitemap.xml/);
@@ -71,8 +71,27 @@ test('build: componenten, vergelijking in vaste volgorde, keuzehulp en rekenhulp
   const isde = read('dist/isde-subsidie-warmtepomp-2026/index.html');
   for (const t of ['€ 1.025', '€ 225', '€ 200', '€ 2.125', '24 maanden', '1 januari 2019', '€ 120 per kW', '31 december 2026']) assert.ok(isde.includes(t), `ISDE-pagina mist ${t}`);
   assert.match(read('dist/merken/quatt/index.html'), /€ 4\.449/);
-  assert.ok(!existsSync('dist/blog/index.html'), 'geen blog zonder posts');
-  assert.ok(!/href="\/blog\/"/.test(h), 'geen bloglink in het menu zonder posts');
+  // blog: index, RSS, menu, homepage en de eerste post met kopfoto en schema
+  assert.ok(existsSync('dist/blog/index.html') && existsSync('dist/blog/feed.xml'), 'blogindex en RSS');
+  assert.ok(/href="\/blog\/"/.test(h), 'bloglink in menu');
+  assert.match(h, /Nieuw op de blog/);
+  assert.match(read('dist/sitemap.xml'), /\/blog\/warmtepomp-offerte-vergelijken\//);
+  assert.match(read('dist/blog/feed.xml'), /<item>[\s\S]*warmtepomp-offerte-vergelijken/);
+  const post = read('dist/blog/warmtepomp-offerte-vergelijken/index.html');
+  assert.match(post, /Door de Redactie WarmtepompenMatch/);
+  assert.match(post, /<figure class="post-hero"><img src="\/img\/blog\/warmtepomp-offerte-vergelijken-1200\.webp" srcset="[^"]+600w[^"]+1200w" [^>]*width="1200" height="630" alt="[^"]{20,}"/);
+  for (const w of [600, 900, 1200]) assert.ok(existsSync(`dist/img/blog/warmtepomp-offerte-vergelijken-${w}.webp`), `webp ${w}`);
+  assert.ok(!existsSync('dist/img/blog/BRONNEN.md'), 'fotobronnen niet in dist');
+  const types = [...post.matchAll(/"@type":"(\w+)"/g)].map((m) => m[1]);
+  for (const t of ['BlogPosting', 'HowTo', 'HowToStep', 'FAQPage', 'BreadcrumbList', 'ImageObject']) assert.ok(types.includes(t), `schema ${t}`);
+  assert.equal(types.filter((t) => t === 'HowToStep').length, 6);
+  // interne links naar de blog vanuit gidsen en merkpagina's
+  assert.match(read('dist/warmtepomp-kosten/index.html'), /<h2>Lees ook<\/h2>[\s\S]*href="\/blog\/warmtepomp-offerte-vergelijken\/"/);
+  assert.match(read('dist/merken/remeha/index.html'), /<h2>Voor je tekent<\/h2>/);
+  // indicatieve prijzen met bron
+  assert.match(read('dist/merken/remeha/index.html'), /Prijzen \(indicatief\)[\s\S]*€ 3\.154/);
+  assert.ok(existsSync('dist/site.webmanifest') && existsSync('dist/icon-512.png'), 'manifest');
+  assert.match(h, /<link rel="manifest" href="\/site\.webmanifest">/);
   assert.equal(Object.keys(PARTNERLINKS).length, 0);
 });
 

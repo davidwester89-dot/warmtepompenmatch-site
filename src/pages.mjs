@@ -107,7 +107,7 @@ export const merkPages = IDS.map((id) => {
   const d = [`${p.naam} warmtepomp: ${aanbodTekst(id).toLowerCase()}. De checklist van 10 punten met bron, sterke punten, aandachtspunten en voor wie het past.`, `${p.naam} warmtepomp: aanbod, checklist van 10 punten met bron en voor wie het past.`].find((x) => x.length <= 155);
   const prijsBlok = p.prijzen
     ? `<h2>Prijzen</h2><p class="sub">Zoals ${esc(p.naam)} ze op de eigen site toont.</p><div class="table-wrap"><table class="data stack"><thead><tr><th scope="col">Model</th><th scope="col">Prijs</th><th scope="col">Toelichting</th></tr></thead><tbody>${p.prijzen.map(([n, pr, w]) => `<tr><th scope="row">${esc(n)}</th><td data-l="Prijs"><strong>${esc(pr)}</strong></td><td data-l="Toelichting">${esc(w)}</td></tr>`).join('')}</tbody></table></div>`
-    : `<h2>Prijzen</h2><p>${esc(p.naam)} noemt geen consumentenprijzen op de eigen site; je koopt via een installateur. Ter vergelijking: een hybride warmtepomp kost gemiddeld ${eur(TYPES.hybride.kosten)} en een all-electric ${eur(TYPES.allelectric.kosten)} inclusief installatie, vóór subsidie (Milieu Centraal). Zie <a href="/warmtepomp-kosten/">wat een warmtepomp kost</a>.</p>`;
+    : `<h2>Prijzen (indicatief)</h2><p>${esc(p.naam)} noemt geen consumentenprijzen op de eigen site; je koopt via een installateur en de prijs staat in je offerte.</p>${p.indicatief ? `<p class="sub">${esc(p.indicatief.intro)}</p><div class="table-wrap"><table class="data stack"><caption class="sr-only">Indicatieve prijzen ${esc(p.naam)}</caption><thead><tr><th scope="col">Model</th><th scope="col">Indicatieve prijs</th></tr></thead><tbody>${p.indicatief.rijen.map(([n, pr]) => `<tr><th scope="row">${esc(n)}</th><td data-l="Indicatieve prijs"><strong>${esc(pr)}</strong></td></tr>`).join('')}</tbody></table></div><p class="src">Indicatief. Bron: <a href="${p.indicatief.bron[1]}" rel="noopener">${esc(p.indicatief.bron[0])}</a></p>` : ''}<p>Indicatief voor alle merken: een hybride warmtepomp kost gemiddeld ${eur(TYPES.hybride.kosten)} en een all-electric ${eur(TYPES.allelectric.kosten)}, inclusief installatie en btw, vóór subsidie (Milieu Centraal). De ISDE-subsidie van 2026 is daarvan nog niet afgetrokken. Zie <a href="/warmtepomp-kosten/">wat een warmtepomp kost</a> en <a href="/isde-subsidie-warmtepomp-2026/">de ISDE-subsidie</a>.</p>`;
   return {
     ...article({ path, title: t, h1, description: d, og: `merk-${id}`, parents: [['/merken/', 'Merken']] }),
     navPath: '/merken/',
@@ -124,6 +124,7 @@ ${prijsBlok}
 ${leadCta(typeVan(id), 'merk')}
 <div class="out">${knop(id, 'merk_bottom')}</div>
 <h2>Alternatieven</h2><ul class="gidslijst">${alt.map((x) => `<li class="withlogo">${logo(x, 'sm')}<a href="/merken/${M[x].slug}/">${esc(M[x].naam)}</a> · ${esc(STERK_IN[x])} · score ${fmtScore(score(x).totaal)}/10</li>`).join('')}${(RELATED[id] || []).map(([h, tt]) => `<li><a href="${h}">${esc(tt)}</a></li>`).join('')}<li><a href="/vergelijken/">Alle merken naast elkaar</a></li></ul>
+<h2>Voor je tekent</h2><ul class="gidslijst"><li><a href="/blog/warmtepomp-offerte-vergelijken/">Warmtepomp-offertes vergelijken in 6 stappen</a></li><li><a href="/isde-subsidie-warmtepomp-2026/">ISDE-subsidie 2026: bedragen en voorwaarden</a></li><li><a href="/warmtepomp-kosten/">Wat kost een warmtepomp in 2026?</a></li></ul>
 ${matchCta(`Past ${esc(p.naam)} bij jouw huis?`)}${bron(p.bronnen, featureBronnen(id))}</article>`,
   };
 });
@@ -182,7 +183,7 @@ export const vsPages = [
     title: 'Quatt vs Remeha 2026: hybride warmtepomp',
     description: 'Quatt Hybrid met vaste prijs vanaf € 4.449 na subsidie, of Remeha Elga Ace en Confida via de installateur. De verschillen in aanbod, garantie en koelen.',
     intro: 'Allebei leveren ze een hybride warmtepomp met propaan en een all-electric model. Quatt verkoopt en installeert zelf, met vaste prijzen op de site. Remeha verkoopt via installateurs en noemt geen prijzen.',
-    rows: [['Hybride', 'Hybrid Single (7 kW) en Duo (14 kW)', 'Elga Ace en Confida'], ['All-electric', 'Quatt All-Electric', 'Mercuria Ace en Confida'], ['Prijs op de site', 'Ja: Hybrid Single € 4.449, Duo € 5.399 (na ISDE 2026, incl. basisinstallatie)', 'Niet vermeld'], ['Koelen', 'Met de add-on Chill, via de radiatoren', 'Verwarmen en koelen (all-electric)'], ['Garantie', '2 jaar product, 1 jaar installatie', 'Niet vermeld'], ['Kopen', 'Direct bij Quatt, eigen monteurs', 'Via een installateur']],
+    rows: [['Hybride', 'Hybrid Single (7 kW) en Duo (14 kW)', 'Elga Ace en Confida'], ['All-electric', 'Quatt All-Electric', 'Mercuria Ace en Confida'], ['Prijs op de site', 'Ja: Hybrid Single € 4.449, Duo € 5.399 (na ISDE 2026, incl. basisinstallatie)', 'Niet vermeld'], ['Koelen', 'Met de add-on Chill, via de radiatoren', 'Verwarmen en koelen (all-electric)'], ['Garantie', '2 jaar product, 1 jaar installatie', '2 jaar fabrieksgarantie; tot 10 jaar met een betaald garantieplan via de installateur'], ['Kopen', 'Direct bij Quatt, eigen monteurs', 'Via een installateur']],
     kiesA: ['je vooraf een vaste prijs wilt, inclusief installatie', 'je de subsidieaanvraag uit handen wilt geven', 'je later van hybride naar all-electric wilt (Duo is All-Electric ready)'],
     kiesB: ['je al een Remeha-ketel hebt en met je eigen installateur werkt', 'je ook wilt koelen met een all-electric model'],
     faq: [['Is Quatt goedkoper dan Remeha?', 'Quatt noemt vaste prijzen: Hybrid Single € 4.449 en Duo € 5.399, inclusief basisinstallatie en na ISDE 2026. Remeha noemt geen prijzen; de prijs hoor je van je installateur. Gemiddeld kost een hybride warmtepomp € 6.200 vóór subsidie (Milieu Centraal).'], ['Werken beide met propaan?', 'Ja. Quatt Hybrid werkt met propaan, en Remeha heeft de Confida-monoblock met propaan.']],
@@ -192,18 +193,18 @@ export const vsPages = [
     title: 'Daikin vs Mitsubishi Electric warmtepomp 2026',
     description: 'Daikin Altherma of Mitsubishi Ecodan? Twee Japanse merken met lucht-water en lucht-lucht. Verschillen in bodem, koelen, app en garantie op een rij.',
     intro: 'Twee Japanse merken die je via een installateur koopt. Beide hebben lucht-waterwarmtepompen met propaan en airconditioners. Daikin heeft ook een bodemwarmtepomp.',
-    rows: [['Lucht-water met propaan', 'Altherma 4 H (R-290)', 'Ecodan monoblock (R290)'], ['Hybride', 'Ja', 'Ja, All-Electric Ready'], ['Bodem', 'Altherma 3 GEO', 'Niet vermeld'], ['App', 'Onecta', 'MELCloud Home'], ['Garantie', 'Tot 5 jaar na registratie (Stand By Me)', 'Niet vermeld'], ['Installateur vinden', 'Dealer locator', 'Comfort Coach']],
-    kiesA: ['je ook een bodemwarmtepomp wilt overwegen', 'je garantie tot 5 jaar wilt via registratie'],
+    rows: [['Lucht-water met propaan', 'Altherma 4 H (R-290)', 'Ecodan monoblock (R290)'], ['Hybride', 'Ja', 'Ja, All-Electric Ready'], ['Bodem', 'Altherma 3 GEO', 'Niet vermeld'], ['App', 'Onecta', 'MELCloud Home'], ['Koelen met lucht-water', 'Ja', 'Ja'], ['Garantie', 'Tot 5 jaar na registratie (Stand By Me)', '3 jaar op onderdelen, via de installateur'], ['Installateur vinden', 'Dealer locator', 'Comfort Coach']],
+    kiesA: ['je ook een bodemwarmtepomp wilt overwegen', 'je garantie tot 5 jaar wilt (na registratie)'],
     kiesB: ['je een hybride wilt die later all-electric kan', 'je hulp wilt bij het vinden van een installateur (Comfort Coach)'],
-    faq: [['Wat kost een Daikin of Mitsubishi warmtepomp?', 'Beide merken noemen geen consumentenprijzen; je koopt via een installateur. Gemiddeld kost een all-electric lucht-waterwarmtepomp € 12.000 vóór subsidie (Milieu Centraal).'], ['Kunnen beide koelen?', 'Daikin noemt verwarmen en koelen. Bij Mitsubishi Electric staat koelen met een lucht-waterwarmtepomp niet op de consumentensite; de airconditioners koelen wel.']],
+    faq: [['Wat kost een Daikin of Mitsubishi warmtepomp?', 'Beide merken noemen geen consumentenprijzen; je koopt via een installateur. Gemiddeld kost een all-electric lucht-waterwarmtepomp € 12.000 vóór subsidie (Milieu Centraal).'], ['Kunnen beide koelen?', 'Ja. Daikin noemt verwarmen en koelen, en Mitsubishi Electric schrijft dat de Ecodan-warmtepompen ook kunnen koelen. Volgens Mitsubishi Electric is dat geen airco: je krijgt geen koude luchtstroom zoals in een auto.']],
   }),
   cmp({
     slug: 'vaillant-vs-nefit-bosch', a: 'vaillant', b: 'nefitbosch', h1: 'Vaillant of Nefit Bosch: welke warmtepomp kies je?',
     title: 'Vaillant vs Nefit Bosch warmtepomp 2026',
     description: 'Vaillant aroTHERM plus of Nefit Bosch Compress 5800i? Allebei met propaan en stil. Verschillen in geluid, bodem, koelen en garantie naast elkaar.',
     intro: 'Twee grote ketelmerken met lucht-waterwarmtepompen op propaan (R290). Vaillant noemt 27,5 dB(A) op 3 meter voor de aroTHERM plus, Nefit Bosch 26,5 dB(A) op 3 meter voor de Compress 5800i AW.',
-    rows: [['Lucht-water', 'aroTHERM plus, 3 tot 12 kW', 'Compress 5800i AW, hybride en all-electric'], ['Geluid op 3 meter', '27,5 dB(A)', '26,5 dB(A)'], ['Bodem', 'geoCOMPACT exclusive (R290)', 'Compress 7801i LW(M) (R290), eind 2026'], ['Koelen met lucht-water', 'Ja', 'Niet vermeld'], ['App', 'myVAILLANT', 'HomeCom Easy'], ['Garantie', '2 jaar, plus 3 jaar als de installateur die aanvraagt', '7 jaar op onderdelen bij inbedrijfname door Nefit Bosch']],
-    kiesA: ['je wilt koelen met de lucht-waterwarmtepomp', 'je nu al een bodemwarmtepomp met propaan wilt'],
+    rows: [['Lucht-water', 'aroTHERM plus, 3 tot 12 kW', 'Compress 5800i AW, hybride en all-electric'], ['Geluid op 3 meter', '27,5 dB(A)', '26,5 dB(A)'], ['Bodem', 'geoCOMPACT exclusive (R290)', 'Compress 7801i LW(M) (R290), eind 2026'], ['Koelen met lucht-water', 'Ja', 'Ja, alle all-electric modellen'], ['App', 'myVAILLANT', 'HomeCom Easy'], ['Garantie', '2 jaar, plus 3 jaar als de installateur die aanvraagt', '7 jaar op onderdelen bij inbedrijfname door Nefit Bosch']],
+    kiesA: ['je een lucht-waterwarmtepomp zoekt in vermogens van 3 tot 12 kW', 'je nu al een bodemwarmtepomp met propaan wilt'],
     kiesB: ['je als hybride wilt beginnen en later all-electric wilt', 'je de langste garantie op onderdelen wilt (7 jaar, met inbedrijfname door Nefit Bosch)'],
     faq: [['Welke is stiller, Vaillant of Nefit Bosch?', 'Volgens de merken zelf: Nefit Bosch Compress 5800i AW 26,5 dB(A) op 3 meter, Vaillant aroTHERM plus 27,5 dB(A) op 3 meter. Het verschil is klein; de plek van de buitenunit telt meer. Zie <a href="/warmtepomp-geluid/">warmtepomp en geluid</a>.'], ['Hebben beide een bodemwarmtepomp?', 'Ja. Vaillant heeft de geoCOMPACT exclusive, Nefit Bosch de Compress 7801i LW(M), die eind 2026 komt.']],
   }),
@@ -337,7 +338,21 @@ export const geschikt = {
 <h2>Andere opties</h2><ul><li><strong>Ventilatiewarmtepomp:</strong> haalt warmte uit ventilatielucht, gemiddeld € 6.500 met € 1.675 subsidie.</li><li><strong>Lucht-luchtwarmtepomp:</strong> een airco die ook verwarmt, vanaf ongeveer € 2.500 voor een single-split. Geen ISDE en minder comfort als enige verwarming.</li><li><strong>Hogetemperatuurwarmtepomp:</strong> alleen voor uitzonderingen, zoals monumenten.</li></ul>
 ${faqHtml(geschiktFaq)}${matchCta('Check je huis in 1 minuut')}${bron(B('mcVolledig', 'mcHybride', 'mcTypes', 'rvoWp'), [['Omgevingsdienst Twente: warmtepomp, airco en geluid', 'https://www.odtwente.nl/kennisbank/warmtepomp-airco-en-geluid/'], ['NPLW: omgaan met geluid van warmtepompen', 'https://www.nplw.nl/warmte-en-ruimte/omgaan-met-geluid-warmtepompen']])}</article>`,
 };
-export const guides = [kosten, terugverdientijd, isde, hybrideAe, geluid, geschikt];
+// Lees ook: per gids drie verwante pagina's (incl. de blog), net boven de bronnen.
+const OFFERTEBLOG = ['/blog/warmtepomp-offerte-vergelijken/', 'Warmtepomp-offertes vergelijken in 6 stappen'];
+const LEESOOK = {
+  '/warmtepomp-kosten/': [OFFERTEBLOG, ['/isde-subsidie-warmtepomp-2026/', 'ISDE-subsidie 2026 en wat er in 2027 verandert'], ['/warmtepomp-terugverdientijd/', 'Terugverdientijd van een warmtepomp']],
+  '/warmtepomp-terugverdientijd/': [['/warmtepomp-kosten/', 'Wat kost een warmtepomp in 2026?'], ['/isde-subsidie-warmtepomp-2026/', 'ISDE-subsidie 2026'], OFFERTEBLOG],
+  '/isde-subsidie-warmtepomp-2026/': [OFFERTEBLOG, ['/warmtepomp-kosten/', 'Wat kost een warmtepomp in 2026?'], ['/vergelijken/', 'Alle 8 merken naast elkaar']],
+  '/hybride-of-all-electric/': [['/is-mijn-huis-geschikt-voor-een-warmtepomp/', 'Is mijn huis geschikt?'], ['/warmtepomp-kosten/', 'Wat kost een warmtepomp in 2026?'], OFFERTEBLOG],
+  '/warmtepomp-geluid/': [['/is-mijn-huis-geschikt-voor-een-warmtepomp/', 'Is mijn huis geschikt?'], OFFERTEBLOG, ['/vergelijken/', 'Alle 8 merken naast elkaar']],
+  '/is-mijn-huis-geschikt-voor-een-warmtepomp/': [['/hybride-of-all-electric/', 'Hybride of all-electric?'], ['/warmtepomp-geluid/', 'Warmtepomp en geluid'], OFFERTEBLOG],
+};
+const leesOok = (path) => (LEESOOK[path] ? `<h2>Lees ook</h2><ul class="gidslijst">${LEESOOK[path].map(([h, t]) => `<li><a href="${h}">${esc(t)}</a></li>`).join('')}</ul>` : '');
+export const guides = [kosten, terugverdientijd, isde, hybrideAe, geluid, geschikt].map((g) => {
+  const i = g.body.lastIndexOf('<p class="src">Bronnen:');
+  return i < 0 ? g : { ...g, body: g.body.slice(0, i) + leesOok(g.path) + g.body.slice(i) };
+});
 
 // ---- Rekenhulp ----
 const num = (id, label, val, unit, hint, attrs = '') => `<div class="field"><label for="${id}">${label}</label><div class="inline"><input type="text" inputmode="decimal" id="${id}" name="${id}" value="${val}" ${attrs}><span class="unit">${unit}</span></div>${hint ? `<span class="hint">${hint}</span>` : ''}</div>`;
@@ -365,7 +380,7 @@ ${num('kw', 'Vermogen', TYPES.hybride.kw, 'kW', 'Voor de ISDE: € 1.025 + € 2
 };
 
 export const gidsHub = {
-  path: '/gidsen/', title: 'Gidsen over warmtepompen | WarmtepompenMatch', h1: 'Warmtepomp kiezen: alle gidsen', crumb: 'Gidsen', og: 'home',
+  path: '/gidsen/', title: 'Gidsen over warmtepompen | WarmtepompenMatch', h1: 'Warmtepomp kiezen: alle gidsen', crumb: 'Gidsen', og: 'gidsen',
   description: 'Gidsen over de kosten van een warmtepomp, de terugverdientijd, de ISDE-subsidie van 2026, hybride of all-electric, geluid en of je huis geschikt is.',
   body: `<h1>Warmtepomp kiezen: alle gidsen</h1><div class="grid cards two">${guides.map((g) => `<a class="card" href="${g.path}"><h2 class="h3">${esc(g.h1)}</h2><p>${esc(g.description)}</p><span class="more">Lees de gids →</span></a>`).join('')}<a class="card" href="/terugverdientijd-berekenen/"><h2 class="h3">Rekenhulp: terugverdientijd berekenen</h2><p>${esc(calc.description)}</p><span class="more">Naar de rekenhulp →</span></a></div>${matchCta()}`,
 };

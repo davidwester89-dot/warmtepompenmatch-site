@@ -20,6 +20,7 @@ cpSync('src/lib', join(OUT, 'js/lib'), { recursive: true });
 const pub = Object.fromEntries(Object.entries(LEADS).map(([id, x]) => [id, { naam: x.naam, type: x.type, url: x.url, origin: x.origin, privacy: x.privacy, max: x.max, prefill: x.prefill, subidParam: x.subidParam, klaar: x.klaar }]));
 write(join(OUT, 'js/lib/leads.config.js'), `// Gegenereerd door build.mjs${LEADS_PREVIEW ? ' (LEADS_PREVIEW)' : ''}. Niet bewerken.\nexport const LEADS = ${JSON.stringify(pub)};\nexport const ROUTING = ${JSON.stringify(ROUTING)};\n`);
 cpSync('src/assets/og', join(OUT, 'og'), { recursive: true });
+cpSync('src/assets/img', join(OUT, 'img'), { recursive: true, filter: (f) => !f.endsWith('.md') });
 cpSync('src/assets/logos', join(OUT, 'logos'), { recursive: true, filter: (f) => !f.endsWith('.md') });
 cpSync('src/assets/icons', OUT, { recursive: true });
 cpSync('src/assets/fonts', join(OUT, 'fonts'), { recursive: true });

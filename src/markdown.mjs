@@ -93,6 +93,6 @@ export function parsePost(filename, src) {
     title: meta.title, seoTitle: meta.seo_title || meta.title, description: meta.description,
     date: meta.date, updated: meta.updated, checked: meta.checked || null, tools, sources,
     // Optionele afbeelding: src/assets/img/blog/<image>-1200.webp en -600.webp (1200×630 en 600×315).
-    image: meta.image ? { name: meta.image, alt: meta.image_alt || '', caption: meta.image_caption || '' } : null, md: body, html: markdown(body), words: wordCount(body),
+    image: meta.image ? { name: meta.image, alt: meta.image_alt || '', caption: meta.image_caption || '' } : null, howto: meta.howto || null, md: body, html: markdown(body), words: wordCount(body),
   };
 }

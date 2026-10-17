@@ -84,7 +84,7 @@ ${robots}${p.noindex ? '' : `<link rel="canonical" href="${url}">`}
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(p.ogTitle || p.title)}"><meta name="twitter:description" content="${esc(p.description)}"><meta name="twitter:image" content="${og}">
 ${p.article ? `<meta property="article:published_time" content="${p.article.date}"><meta property="article:modified_time" content="${p.article.updated}">` : ''}
 <meta name="theme-color" content="${SITE.theme}">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon-32.png" sizes="32x32"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon-32.png" sizes="32x32"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
 ${NAV_OPT.blog ? `<link rel="alternate" type="application/rss+xml" title="${SITE.name} blog" href="/blog/feed.xml">` : ''}
 <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/inter-800.woff2" as="font" type="font/woff2" crossorigin>
 <style>${CSS}</style>
@@ -107,7 +107,7 @@ ${foutGezien(url)}
 <div class="cols">
 <div><a class="logo" href="/">${LOGO}<span>${BRAND}</span></a><p>Onafhankelijke hulp bij het kiezen van een warmtepomp: hybride of all-electric, welk merk en wat het kost.</p></div>
 <div><p class="fh">Kiezen</p><ul><li><a href="/warmtepomp-keuzehulp/">Warmtepomp keuzehulp</a></li><li><a href="/vergelijken/">Alle merken vergelijken</a></li><li><a href="/merken/">Merken</a></li><li><a href="/terugverdientijd-berekenen/">Terugverdientijd berekenen</a></li></ul></div>
-<div><p class="fh">Gidsen</p><ul><li><a href="/warmtepomp-kosten/">Wat kost een warmtepomp?</a></li><li><a href="/isde-subsidie-warmtepomp-2026/">ISDE-subsidie 2026</a></li><li><a href="/hybride-of-all-electric/">Hybride of all-electric</a></li><li><a href="/is-mijn-huis-geschikt-voor-een-warmtepomp/">Is mijn huis geschikt?</a></li><li><a href="/gidsen/">Alle gidsen</a></li></ul></div>
+<div><p class="fh">Gidsen</p><ul><li><a href="/warmtepomp-kosten/">Wat kost een warmtepomp?</a></li><li><a href="/isde-subsidie-warmtepomp-2026/">ISDE-subsidie 2026</a></li><li><a href="/hybride-of-all-electric/">Hybride of all-electric</a></li><li><a href="/is-mijn-huis-geschikt-voor-een-warmtepomp/">Is mijn huis geschikt?</a></li><li><a href="/gidsen/">Alle gidsen</a></li>${NAV_OPT.blog ? '<li><a href="/blog/">Blog</a></li>' : ''}</ul></div>
 <div><p class="fh">Over ons</p><ul><li><a href="/over/">Over WarmtepompenMatch</a></li><li><a href="/over/#methode">Zo vergelijken we</a></li><li><a href="/privacy/">Privacy en cookies</a></li>${GA_ID ? '<li><a href="/privacy/#cookies" data-consent-open>Cookie-instellingen</a></li>' : ''}<li><a href="mailto:${SITE.email}">Contact</a></li></ul></div>
 </div>
 ${networkFooter()}

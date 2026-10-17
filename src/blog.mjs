@@ -17,6 +17,24 @@ export const TOOLNAMES = {
   '/terugverdientijd-berekenen/': 'Terugverdientijd berekenen',
 };
 const readMin = (w) => Math.max(1, Math.round(w / 200));
+const IMG = (name, w) => `/img/blog/${name}-${w}.webp`;
+/** Kopfoto: WebP in 600/900/1200 breed (1200×630), vaste maat tegen layoutverschuiving. */
+const heroHtml = (img) => `<figure class="post-hero"><img src="${IMG(img.name, 1200)}" srcset="${[600, 900, 1200].map((w) => `${IMG(img.name, w)} ${w}w`).join(', ')}" sizes="(max-width: 760px) calc(100vw - 40px), 700px" width="1200" height="630" alt="${esc(img.alt)}" fetchpriority="high" decoding="async">${img.caption ? `<figcaption class="src">${esc(img.caption)}</figcaption>` : ''}</figure>`;
+const thumbHtml = (img) => `<img class="post-thumb" src="${IMG(img.name, 600)}" width="600" height="315" alt="" loading="lazy" decoding="async">`;
+/** HowTo uit de markdown: de genummerde lijst direct onder de kop uit frontmatter 'howto'. Stap = **Naam.** uitleg */
+function howtoSteps(md, kop) {
+  const i = md.indexOf(`## ${kop}`);
+  if (i < 0) throw new Error(`HowTo-kop niet gevonden: ${kop}`);
+  const lines = md.slice(i).split('\n').slice(1);
+  const steps = [];
+  for (const l of lines) {
+    if (/^## /.test(l)) break;
+    const m = l.match(/^\d+\.\s+\*\*(.+?)\*\*\s*(.*)$/);
+    if (m) steps.push({ name: m[1].replace(/\.$/, ''), text: m[2].replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\*\*/g, '') });
+  }
+  if (steps.length < 2) throw new Error(`HowTo '${kop}': te weinig stappen`);
+  return steps;
+}
 
 function tokens(html, slug) {
   let n = 0;
@@ -54,6 +72,7 @@ export function postPage(post, all) {
   const body = `
 <article class="article">
 <h1>${esc(post.title)}</h1><p class="src">Door de ${SITE.owner} · <time datetime="${post.date}">${fmtDate(post.date)}</time> · ${readMin(post.words)} min lezen</p>
+${post.image ? heroHtml(post.image) : ''}
 ${post.html}
 ${faqBlock(post)}
 ${post.tools.length ? `<aside class="cta"><h2>Vergelijk het zelf</h2><ul>${post.tools.map((t) => `<li><a href="${t}">${esc(TOOLNAMES[t] || t)} →</a></li>`).join('')}</ul></aside>` : ''}
@@ -67,12 +86,12 @@ ${others.length ? `<h2>Meer op de blog</h2><div class="grid cards two">${others.
     stamp: { checked: post.checked, updated: post.updated }, article: { date: post.date, updated: post.updated },
     body,
     schema: [{
-      '@context': 'https://schema.org', '@type': 'Article', headline: post.title, description: post.description,
+      '@context': 'https://schema.org', '@type': 'BlogPosting', headline: post.title, description: post.description,
       datePublished: post.date, dateModified: post.updated, inLanguage: 'nl-NL', wordCount: post.words,
-      author: AUTHOR, publisher: ORG, image: `${SITE.domain}/og/${og}.png`,
+      author: AUTHOR, publisher: ORG, image: post.image ? [{ '@type': 'ImageObject', url: SITE.domain + IMG(post.image.name, 1200), width: 1200, height: 630, caption: post.image.alt }, `${SITE.domain}/og/${og}.png`] : `${SITE.domain}/og/${og}.png`,
       mainEntityOfPage: { '@type': 'WebPage', '@id': SITE.domain + post.path },
       citation: post.sources.map((s) => s.url),
-    }].concat(post.faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: post.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: tokens(a, post.slug).replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\*\*/g, '') } })) }] : []),
+    }].concat(post.howto ? [{ '@context': 'https://schema.org', '@type': 'HowTo', name: post.howto, inLanguage: 'nl-NL', ...(post.image ? { image: SITE.domain + IMG(post.image.name, 1200) } : {}), step: howtoSteps(post.md, post.howto).map((x, i) => ({ '@type': 'HowToStep', position: i + 1, name: x.name, text: x.text })) }] : []).concat(post.faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: post.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: tokens(a, post.slug).replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\*\*/g, '') } })) }] : []),
   };
 }
 
@@ -81,7 +100,7 @@ export function blogIndex(posts) {
 <h1>Blog: warmtepomp kiezen</h1>
 <p class="lead">Welke warmtepomp past bij jouw huis en wat kost het? Kort uitgelegd, met bronnen.</p>
 <div class="postlist">
-${posts.map((x) => `<a class="card" href="${x.path}"><time datetime="${x.date}">${fmtDate(x.date)}</time><h2 style="margin:.2em 0 .3em;font-size:1.3rem">${esc(x.title)}</h2><p>${esc(x.description)}</p><span class="more">Lees verder →</span></a>`).join('\n')}
+${posts.map((x) => `<a class="card${x.image ? ' has-img' : ''}" href="${x.path}">${x.image ? thumbHtml(x.image) + '<div>' : ''}<time datetime="${x.date}">${fmtDate(x.date)}</time><h2 style="margin:.2em 0 .3em;font-size:1.3rem">${esc(x.title)}</h2><p>${esc(x.description)}</p><span class="more">Lees verder →</span>${x.image ? '</div>' : ''}</a>`).join('\n')}
 </div>
 <p>Liever alles naast elkaar? <a href="/vergelijken/">Vergelijk alle merken</a>.</p>
 ${matchCta()}`;
