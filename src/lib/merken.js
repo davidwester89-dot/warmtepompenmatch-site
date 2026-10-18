@@ -71,7 +71,7 @@ export const MERKEN = {
     naam: 'Daikin', slug: 'daikin', url: 'https://www.daikin.nl/nl_nl/consument.html',
     kort: 'Japans merk met hybride, all-electric, bodem- en lucht-luchtwarmtepompen. Je koopt via een installateur.',
     lijnen: [['Daikin Altherma 4 H', 'Lucht-water, propaan (R-290)'], ['Daikin Altherma 3 GEO', 'Bodemwarmtepomp'], ['Daikin hybride', 'Warmtepomp naast je cv-ketel'], ['Daikin airconditioners', 'Lucht-lucht, verwarmen en koelen']],
-    plus: ['Hybride, all-electric, bodem en lucht-lucht van één merk', 'Altherma 4 H met propaan (R-290)', 'Installateur zoeken via de installateurzoeker op de site'],
+    plus: ['Hybride, all-electric, bodem en lucht-lucht van één merk', 'Altherma 4 H met propaan (R-290)', 'Installateur zoeken op de site van Daikin'],
     min: ['Geen consumentenprijzen op de site', 'Standaard 2 tot 3 jaar garantie; tot 5 jaar na registratie (Stand By Me), langer tegen betaling'],
     voor: 'Wie elk type warmtepomp wil kunnen vergelijken bij één merk en via een installateur koopt.',
     bronnen: [['Daikin warmtepompen', S.dkPompen], ['Daikin Altherma 4', S.dkAltherma4], ['Daikin garantie', S.dkGarantie]],
