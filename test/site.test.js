@@ -40,7 +40,7 @@ test('build (productie): pagina’s, sitemap, robots, IndexNow, CNAME, huisregel
     }
     assert.ok(!/class="partner"/.test(s), `${f}: partnerlabel zonder goedgekeurde partner`);
     assert.ok(!/rel="[^"]*sponsored/.test(s), `${f}: sponsored link zonder goedgekeurde partner`);
-    if (/<article/.test(s) && /class="src">Door/.test(s)) assert.match(s, /Door de Redactie WarmtepompenMatch/);
+    if (/<article/.test(s) && /class="src">Door/.test(s)) assert.match(s, /Door Redactie WarmtepompenMatch/);
     // Logo's: lokaal, vaste maat, alt = merknaam.
     for (const m of s.matchAll(/<img class="plogo plogo-(sm|md|lg)[^"]*" src="\/logos\/([a-z]+)\.svg" alt="([^"]+)" width="(\d+)" height="(\d+)"/g)) {
       assert.equal(m[3], MERKEN[m[2]].naam);
@@ -78,7 +78,7 @@ test('build: componenten, vergelijking in vaste volgorde, keuzehulp en rekenhulp
   assert.match(read('dist/sitemap.xml'), /\/blog\/warmtepomp-offerte-vergelijken\//);
   assert.match(read('dist/blog/feed.xml'), /<item>[\s\S]*warmtepomp-offerte-vergelijken/);
   const post = read('dist/blog/warmtepomp-offerte-vergelijken/index.html');
-  assert.match(post, /Door de Redactie WarmtepompenMatch/);
+  assert.match(post, /Door Redactie WarmtepompenMatch/);
   assert.match(post, /<figure class="post-hero"><img src="\/img\/blog\/warmtepomp-offerte-vergelijken-1200\.webp" srcset="[^"]+600w[^"]+1200w" [^>]*width="1200" height="630" alt="[^"]{20,}"/);
   for (const w of [600, 900, 1200]) assert.ok(existsSync(`dist/img/blog/warmtepomp-offerte-vergelijken-${w}.webp`), `webp ${w}`);
   assert.ok(!existsSync('dist/img/blog/BRONNEN.md'), 'fotobronnen niet in dist');

@@ -1,6 +1,6 @@
 // Blog: content/blog/JJJJ-MM-DD-slug.md → /blog/<slug>/. Zelfde opbouw als de BoekhoudMatch-blog.
 // Extra tokens in de markdown: {{knop:<merk-id>}} op een eigen regel = knop naar de aanbieder (partnerlink zodra goedgekeurd,
-// via partnerlinks.js; heeft nooit invloed op score of volgorde) en {{score:<merk-id>}} = checklist-score uit de data.
+// via partnerlinks.js; heeft nooit invloed op score of volgorde) en {{score:<merk-id>}} = checklistscore uit de data.
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { SITE, esc, fmtDate, ORG, AUTHOR } from './layout.mjs';
@@ -20,7 +20,7 @@ const readMin = (w) => Math.max(1, Math.round(w / 200));
 const IMG = (name, w) => `/img/blog/${name}-${w}.webp`;
 /** Kopfoto: WebP in 600/900/1200 breed (1200×630), vaste maat tegen layoutverschuiving. */
 const heroHtml = (img) => `<figure class="post-hero"><img src="${IMG(img.name, 1200)}" srcset="${[600, 900, 1200].map((w) => `${IMG(img.name, w)} ${w}w`).join(', ')}" sizes="(max-width: 760px) calc(100vw - 40px), 700px" width="1200" height="630" alt="${esc(img.alt)}" fetchpriority="high" decoding="async">${img.caption ? `<figcaption class="src">${esc(img.caption)}</figcaption>` : ''}</figure>`;
-const thumbHtml = (img) => `<img class="post-thumb" src="${IMG(img.name, 600)}" width="600" height="315" alt="" loading="lazy" decoding="async">`;
+const thumbHtml = (img) => `<img class="post-thumb" src="${IMG(img.name, 600)}" width="600" height="315" alt="${esc(img.alt)}" loading="lazy" decoding="async">`;
 /** HowTo uit de markdown: de genummerde lijst direct onder de kop uit frontmatter 'howto'. Stap = **Naam.** uitleg */
 function howtoSteps(md, kop) {
   const i = md.indexOf(`## ${kop}`);
@@ -71,7 +71,7 @@ export function postPage(post, all) {
   const og = `blog-${post.slug}`;
   const body = `
 <article class="article">
-<h1>${esc(post.title)}</h1><p class="src">Door de ${SITE.owner} · <time datetime="${post.date}">${fmtDate(post.date)}</time> · ${readMin(post.words)} min lezen</p>
+<h1>${esc(post.title)}</h1><p class="src">Door ${SITE.owner} · <time datetime="${post.date}">${fmtDate(post.date)}</time> · ${readMin(post.words)} min lezen</p>
 ${post.image ? heroHtml(post.image) : ''}
 ${post.html}
 ${faqBlock(post)}

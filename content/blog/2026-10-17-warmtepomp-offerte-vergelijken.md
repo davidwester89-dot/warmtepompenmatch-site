@@ -1,18 +1,18 @@
 ---
-title: Warmtepomp-offertes vergelijken: waar let je op in 2026?
-seo_title: Warmtepomp offertes vergelijken: checklist 2026
+title: Warmtepompoffertes vergelijken: waar let je op in 2026?
+seo_title: Warmtepompoffertes vergelijken: checklist 2026
 description: Twee offertes voor een warmtepomp? Vergelijk vermogen, meldcode, wat er in de prijs zit, garantie en certificaten. En teken op tijd voor de ISDE van 2026.
 date: 2026-10-17
 updated: 2026-10-17
 checked: 2026-10-17
 image: warmtepomp-offerte-vergelijken
 image_alt: Buitenunit van een warmtepomp zonder merkopdruk op het balkon van een woning, naast de achterdeur
-howto: Zo vergelijk je warmtepomp-offertes in 6 stappen
+howto: Zo vergelijk je warmtepompoffertes in 6 stappen
 tools: /warmtepomp-keuzehulp/, /terugverdientijd-berekenen/, /vergelijken/
 sources:
 - Milieu Centraal: Checklist warmtepomp kopen en installeren | https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/checklist-warmtepomp-kopen-en-installeren/
 - Milieu Centraal: Hybride warmtepomp | https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/hybride-warmtepomp/
-- Milieu Centraal: Volledige warmtepomp | https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/volledige-warmtepomp/
+- Milieu Centraal: Volledige warmtepomp | https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/volledig-elektrische-warmtepomp/
 - RVO: ISDE voor een warmtepomp (woningeigenaren) | https://www.rvo.nl/subsidies-financiering/isde/woningeigenaren/warmtepomp
 - RVO: ISDE, wat wijzigt er in 2026 | https://www.rvo.nl/subsidies-financiering/isde/isde-wat-wijzigt-er-2026
 - RVO: ISDE, wat wijzigt er in 2027 | https://www.rvo.nl/subsidies-financiering/isde/isde-wat-wijzigt-er-2027
@@ -39,7 +39,7 @@ Een offerte zegt pas iets als je weet wat normaal is. Milieu Centraal noemt deze
 
 Ligt een offerte er duidelijk onder? Vraag dan waarom. Milieu Centraal waarschuwt: laat goedkoop geen duurkoop zijn. Meer over de prijzen per type lees je in [wat een warmtepomp kost](/warmtepomp-kosten/).
 
-## Zo vergelijk je warmtepomp-offertes in 6 stappen
+## Zo vergelijk je warmtepompoffertes in 6 stappen
 
 1. **Vraag meerdere offertes aan.** Dat raadt Milieu Centraal aan, zodat je kunt vergelijken. Het energieloket van je gemeente kan je in contact brengen met bedrijven en helpen met vragen over een offerte.
 2. **Vergelijk hetzelfde type en een vergelijkbaar vermogen.** Een hybride en een all-electric warmtepomp kun je niet naast elkaar leggen. Volgens Milieu Centraal heeft een hybride meestal 2 tot 6 kW en een all-electric 6 tot 12 kW. Laat het bedrijf zien hoe het vermogen is geschat of berekend? Dan is dat een goed teken.

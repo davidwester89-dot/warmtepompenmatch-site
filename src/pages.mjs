@@ -20,22 +20,22 @@ const faqSchema = (faq) => ({ '@context': 'https://schema.org', '@type': 'FAQPag
 const homeFaq = [
   ['Hybride of all-electric: wat past bij mijn huis?', 'Is je huis matig of slecht geïsoleerd, dan past een hybride warmtepomp naast je cv-ketel. Een all-electric warmtepomp vraagt minstens redelijke isolatie: Rc 2,5 in dak en vloer, een geïsoleerde spouwmuur en hr++-glas. Zie <a href="/hybride-of-all-electric/">hybride of all-electric</a>.'],
   ['Hoeveel subsidie krijg ik in 2026?', 'Voor je eerste lucht-waterwarmtepomp € 1.025 plus € 225 per kW, en € 200 extra bij energielabel A+++. Een hybride van 4 kW met A+++ geeft € 2.125. Zie <a href="/isde-subsidie-warmtepomp-2026/">ISDE-subsidie 2026</a>.'],
-  ['Hoe komt de checklist-score tot stand?', 'We tellen 10 vaste punten, zoals het aanbod (hybride, all-electric, bodem, lucht-lucht), propaan, garantie en of de prijs openbaar is. Ja is 1 punt, deels een half punt, nee of niet vermeld 0. Zie <a href="/over/#methode">zo vergelijken we</a>.'],
+  ['Hoe komt de checklistscore tot stand?', 'We tellen 10 vaste punten, zoals het aanbod (hybride, all-electric, bodem, lucht-lucht), propaan, garantie en of de prijs openbaar is. Ja is 1 punt, deels een half punt, nee of niet vermeld 0. Zie <a href="/over/#methode">zo vergelijken we</a>.'],
   ['Verdient WarmtepompenMatch aan de merken?', 'Nu niet. Komt er later een partnerlink of offertepartner, dan heeft die altijd het label "partnerlink" en telt die nooit mee in de score, de volgorde of het advies.'],
 ];
 const miniRows = RANG.map((id) => `<tr><th scope="row"><span class="rowlogo">${logo(id, 'sm')}</span><a href="/merken/${M[id].slug}/">${esc(M[id].naam)}</a></th><td data-l="Score">${scoreBadge(id)}</td>${[['hybride', 'Hybride'], ['allelectric', 'All-electric'], ['bodem', 'Bodem'], ['propaan', 'Propaan'], ['prijs', 'Prijs openbaar']].map(([k, l]) => `<td data-l="${l}">${fv(FEATURES[id][k], false)}</td>`).join('')}</tr>`).join('');
 const typeCards = () => `<div class="grid cards">${[['hybride', '/hybride-of-all-electric/'], ['allelectric', '/hybride-of-all-electric/'], ['bodem', '/warmtepomp-kosten/']].map(([k, h]) => { const t = TYPES[k]; return `<a class="card" href="${h}"><h3>${esc(t.naam)}</h3><p>${esc(t.kort)}. Gemiddeld ${eur(t.kosten)}, subsidie ${eur(t.subsidie)}.</p><span class="more">Lees meer →</span></a>`; }).join('')}</div>`;
-const VS = [['/vergelijken/quatt-vs-remeha/', 'Quatt of Remeha', 'Twee hybrides met propaan: vaste prijs of via de installateur.'], ['/vergelijken/daikin-vs-mitsubishi-electric/', 'Daikin of Mitsubishi Electric', 'Twee Japanse merken met lucht-water en lucht-lucht.'], ['/vergelijken/vaillant-vs-nefit-bosch/', 'Vaillant of Nefit Bosch', 'Twee grote ketelmerken met propaan-warmtepompen.']];
+const VS = [['/vergelijken/quatt-vs-remeha/', 'Quatt of Remeha', 'Twee hybrides met propaan: vaste prijs of via de installateur.'], ['/vergelijken/daikin-vs-mitsubishi-electric/', 'Daikin of Mitsubishi Electric', 'Twee Japanse merken met lucht-water en lucht-lucht.'], ['/vergelijken/vaillant-vs-nefit-bosch/', 'Vaillant of Nefit Bosch', 'Twee grote ketelmerken met propaanwarmtepompen.']];
 const vsCards = () => `<div class="grid cards">${VS.map(([h, t, d]) => `<a class="card" href="${h}"><h3>${esc(t)}</h3><p>${esc(d)}</p><span class="more">Bekijk de vergelijking →</span></a>`).join('')}</div>`;
 const GIDSLINKS = [['/warmtepomp-kosten/', 'Wat kost een warmtepomp in 2026?'], ['/warmtepomp-terugverdientijd/', 'Terugverdientijd van een warmtepomp'], ['/isde-subsidie-warmtepomp-2026/', 'ISDE-subsidie voor een warmtepomp in 2026'], ['/hybride-of-all-electric/', 'Hybride of all-electric: wat past bij jouw huis?'], ['/warmtepomp-geluid/', 'Warmtepomp en geluid: regels en afstand'], ['/is-mijn-huis-geschikt-voor-een-warmtepomp/', 'Is mijn huis geschikt voor een warmtepomp?']];
 
 export const home = {
-  path: '/', title: 'Warmtepomp kiezen? Vergelijk eerst | WarmtepompenMatch', ogTitle: 'WarmtepompenMatch: welke warmtepomp past bij jouw huis?', h1: 'WarmtepompenMatch.nl', og: 'home',
+  path: '/', title: 'Warmtepomp kiezen? Vergelijk eerst | WarmtepompenMatch', ogTitle: 'WarmtepompenMatch: welke warmtepomp past bij jouw huis?', h1: 'Warmtepomp kiezen? Vergelijk eerst.', og: 'home',
   description: 'Hybride of all-electric? Doe de keuzehulp, vergelijk 8 merken op een vaste checklist en zie wat een warmtepomp kost met de ISDE-subsidie van 2026.',
   schema: [faqSchema(homeFaq)],
   body: `<section class="hero"><div>
-<h1 class="h1-brand">Warmtepompen<b>Match</b>.nl</h1>
-<p class="tagline">Warmtepomp kiezen? Vergelijk eerst.</p>
+<p class="h1-brand">Warmtepompen<b>Match</b>.nl</p>
+<h1 class="tagline">Warmtepomp kiezen? Vergelijk eerst.</h1>
 <p class="lead">Hybride of all-electric, welk merk en wat kost het? Zes vragen over je huis en je krijgt een advies met kosten, subsidie en terugverdientijd. Acht merken naast elkaar op 10 vaste punten.</p>
 <div class="actions"><a class="btn" href="/warmtepomp-keuzehulp/" data-cta="home_hero">Start de keuzehulp</a><a class="btn ghost" href="/vergelijken/">Vergelijk alle 8 merken</a></div>
 </div>
@@ -52,7 +52,7 @@ export const home = {
 <p class="sub">Gemiddelde kosten inclusief installatie en het subsidievoorbeeld van Milieu Centraal.</p>
 ${typeCards()}
 <h2>De merken op een rij</h2>
-<p class="sub">Gesorteerd op checklist-score, bij gelijke stand op naam. De score telt wat het merk zelf op de eigen site noemt.</p>
+<p class="sub">Gesorteerd op checklistscore, bij gelijke stand op naam. De score telt wat het merk zelf op de eigen site noemt.</p>
 <div class="table-wrap"><table class="data stack"><thead><tr><th scope="col">Merk</th><th scope="col">Score</th><th scope="col">Hybride</th><th scope="col">All-electric</th><th scope="col">Bodem</th><th scope="col">Propaan</th><th scope="col">Prijs openbaar</th></tr></thead><tbody>${miniRows}</tbody></table></div>
 <p><a href="/vergelijken/">Alle 10 checklistpunten, met filters →</a></p>
 <section class="band method-band">
@@ -62,7 +62,7 @@ ${typeCards()}
 <li><strong>Een vaste checklist.</strong> Tien punten, van aanbod en propaan tot garantie. De score telt wat het merk zelf noemt.</li>
 <li><strong>Partners veranderen niets.</strong> Partnerlinks en offertepartners tellen nooit mee in de score, de volgorde of het advies.</li>
 </ol>
-<p class="author">Door de <a href="/over/">${SITE.owner}</a> · <a href="/over/#methode">Hoe de score werkt</a></p>
+<p class="author">Door <a href="/over/">${SITE.owner}</a> · <a href="/over/#methode">Hoe de score werkt</a></p>
 </section>
 <h2>Populaire vergelijkingen</h2>${vsCards()}
 <h2>Gidsen</h2><ul class="gidslijst">${GIDSLINKS.map(([h, t]) => `<li><a href="${h}">${esc(t)}</a></li>`).join('')}<li><a href="/terugverdientijd-berekenen/">Rekenhulp: terugverdientijd berekenen</a></li></ul>
@@ -86,7 +86,7 @@ ${VRAGEN.map((v, i) => `<fieldset class="q"><legend>${i + 1}. ${esc(v.vraag)}</l
 <aside class="card mpanel" id="result" aria-live="polite"><h2>Jouw advies</h2><p class="mwait">Beantwoord de vragen. Je advies verschijnt hier, met kosten, subsidie en de merken die het leveren.</p><p class="sub">Of bekijk <a href="/vergelijken/">alle 8 merken naast elkaar</a>.</p></aside>
 </div>
 <noscript><p class="alert">De keuzehulp werkt met JavaScript. Zonder JavaScript lees je de regels in <a href="/hybride-of-all-electric/">hybride of all-electric</a>.</p></noscript>
-<section class="method" id="methode"><h2>Zo werkt de keuzehulp</h2><ol><li><strong>Eerst je isolatie.</strong> Milieu Centraal: all-electric vraagt minstens redelijke isolatie (Rc 2,5 in dak en vloer, geïsoleerde spouw, hr++-glas). Weet je het niet, dan schatten we het uit het bouwjaar: vanaf 1992 meestal redelijk, vanaf 2009 goed.</li><li><strong>Dan je voorkeur en budget.</strong> Bij redelijke of goede isolatie volgt het advies je voorkeur. Weet je het niet, dan all-electric vanaf een budget van € 20.000, anders een hybride die later volledig elektrisch kan.</li><li><strong>Dan de cijfers.</strong> Kosten en subsidie zijn de gemiddelden van Milieu Centraal; de besparing rekenen we met jouw gasverbruik, gas à € ${komma(GASPRIJS)} per m³ en stroom à € ${komma(STROOMPRIJS)} per kWh (afgeleid uit de rekenvoorbeelden van Milieu Centraal).</li><li><strong>Merken:</strong> alleen merken die het type aanbieden, op checklist-score. Partnerlinks tellen nooit mee.</li></ol><p class="src">Bronnen: <a href="https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/volledige-warmtepomp/" rel="noopener">Milieu Centraal: volledige warmtepomp</a> · <a href="https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/hybride-warmtepomp/" rel="noopener">Milieu Centraal: hybride warmtepomp</a> · <a href="https://www.rvo.nl/subsidies-financiering/isde/isde-wat-wijzigt-er-2026" rel="noopener">RVO: ISDE 2026</a></p></section>`,
+<section class="method" id="methode"><h2>Zo werkt de keuzehulp</h2><ol><li><strong>Eerst je isolatie.</strong> Milieu Centraal: all-electric vraagt minstens redelijke isolatie (Rc 2,5 in dak en vloer, geïsoleerde spouw, hr++-glas). Weet je het niet, dan schatten we het uit het bouwjaar: vanaf 1992 meestal redelijk, vanaf 2009 goed.</li><li><strong>Dan je voorkeur en budget.</strong> Bij redelijke of goede isolatie volgt het advies je voorkeur. Weet je het niet, dan all-electric vanaf een budget van € 20.000, anders een hybride die later volledig elektrisch kan.</li><li><strong>Dan de cijfers.</strong> Kosten en subsidie zijn de gemiddelden van Milieu Centraal; de besparing rekenen we met jouw gasverbruik, gas à € ${komma(GASPRIJS)} per m³ en stroom à € ${komma(STROOMPRIJS)} per kWh (afgeleid uit de rekenvoorbeelden van Milieu Centraal).</li><li><strong>Merken:</strong> alleen merken die het type aanbieden, op checklistscore. Partnerlinks tellen nooit mee.</li></ol><p class="src">Bronnen: <a href="https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/volledig-elektrische-warmtepomp/" rel="noopener">Milieu Centraal: volledige warmtepomp</a> · <a href="https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/hybride-warmtepomp/" rel="noopener">Milieu Centraal: hybride warmtepomp</a> · <a href="https://www.rvo.nl/subsidies-financiering/isde/isde-wat-wijzigt-er-2026" rel="noopener">RVO: ISDE 2026</a></p></section>`,
 };
 
 // ---- Merkpagina's ----
@@ -124,7 +124,9 @@ ${prijsBlok}
 ${leadCta(typeVan(id), 'merk')}
 <div class="out">${knop(id, 'merk_bottom')}</div>
 <h2>Alternatieven</h2><ul class="gidslijst">${alt.map((x) => `<li class="withlogo">${logo(x, 'sm')}<a href="/merken/${M[x].slug}/">${esc(M[x].naam)}</a> · ${esc(STERK_IN[x])} · score ${fmtScore(score(x).totaal)}/10</li>`).join('')}${(RELATED[id] || []).map(([h, tt]) => `<li><a href="${h}">${esc(tt)}</a></li>`).join('')}<li><a href="/vergelijken/">Alle merken naast elkaar</a></li></ul>
-<h2>Voor je tekent</h2><ul class="gidslijst"><li><a href="/blog/warmtepomp-offerte-vergelijken/">Warmtepomp-offertes vergelijken in 6 stappen</a></li><li><a href="/isde-subsidie-warmtepomp-2026/">ISDE-subsidie 2026: bedragen en voorwaarden</a></li><li><a href="/warmtepomp-kosten/">Wat kost een warmtepomp in 2026?</a></li></ul>
+<p class="sub">Alle merken: ${IDS.filter((x) => x !== id).map((x) => `<a href="/merken/${M[x].slug}/">${esc(M[x].naam)}</a>`).join(' · ')}</p>
+<p class="sub">Vergelijkingen: ${VS.map(([h, tt]) => `<a href="${h}">${esc(tt)}</a>`).join(' · ')}</p>
+<h2>Voor je tekent</h2><ul class="gidslijst"><li><a href="/blog/warmtepomp-offerte-vergelijken/">Warmtepompoffertes vergelijken in 6 stappen</a></li><li><a href="/isde-subsidie-warmtepomp-2026/">ISDE-subsidie 2026: bedragen en voorwaarden</a></li><li><a href="/warmtepomp-kosten/">Wat kost een warmtepomp in 2026?</a></li></ul>
 ${matchCta(`Past ${esc(p.naam)} bij jouw huis?`)}${bron(p.bronnen, featureBronnen(id))}</article>`,
   };
 });
@@ -133,7 +135,7 @@ export const merkHub = {
   path: '/merken/', title: 'Warmtepomp merken 2026: 8 merken op een rij', h1: 'Alle warmtepompmerken op een rij', crumb: 'Merken', og: 'merken', stamp: { checked: CHECKED, updated: CHECKED },
   description: 'Quatt, Daikin, Mitsubishi Electric, Vaillant, Nefit Bosch, Itho Daalderop, Remeha en Panasonic: per merk het aanbod, de score en voor wie het past.',
   schema: [{ '@context': 'https://schema.org', '@type': 'ItemList', itemListElement: RANG.map((id, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE.domain}/merken/${M[id].slug}/`, name: M[id].naam })) }],
-  body: `<h1>Alle warmtepompmerken op een rij</h1><p class="lead">Acht merken die in Nederland warmtepompen leveren. Gesorteerd op checklist-score, bij gelijke stand op naam.</p>
+  body: `<h1>Alle warmtepompmerken op een rij</h1><p class="lead">Acht merken die in Nederland warmtepompen leveren. Gesorteerd op checklistscore, bij gelijke stand op naam.</p>
 <div class="actions"><a class="btn" href="/warmtepomp-keuzehulp/">Liever advies op maat? Start de keuzehulp</a><a class="btn ghost" href="/vergelijken/">Filter en vergelijk</a></div>
 <ol class="plist">${RANG.map((id, i) => pcard(id, { rank: i + 1, pos: 'lijst' })).join('')}</ol>
 ${methodBox()}`,
@@ -153,7 +155,7 @@ export const vsHub = {
 <p class="sub">"Deels" telt mee. Niet vermeld telt niet mee.</p>
 <p class="count" id="f-count" aria-live="polite">${IDS.length} van ${IDS.length} merken</p>
 </form>
-<div class="sortbar"><h2 style="margin:0">Alle merken naast elkaar</h2>${sel('f-sort', 'Sorteer op', [['score', 'Checklist-score'], ['naam', 'Naam']])}</div>
+<div class="sortbar"><h2 style="margin:0">Alle merken naast elkaar</h2>${sel('f-sort', 'Sorteer op', [['score', 'Checklistscore'], ['naam', 'Naam']])}</div>
 ${matrix(RANG)}
 <p class="empty" id="f-empty" hidden>Geen merk voldoet aan alles. Zet een filter uit of <a href="/warmtepomp-keuzehulp/">start de keuzehulp</a>.</p>
 <p class="src">De bron van elk punt staat op de pagina van elk merk.</p>
@@ -163,7 +165,7 @@ ${methodBox()}
 
 const sideRow = (label, a, b) => `<tr><th scope="row">${label}</th><td>${a}</td><td>${b}</td></tr>`;
 const cmp = ({ slug, a, b, h1, title, description, intro, rows, kiesA, kiesB, faq }) => {
-  const side = (id, kies, posn) => `<div class="card"><span class="pc-logo">${logo(id)}</span><span class="tag best">${esc(STERK_IN[id])}</span><h2>${esc(M[id].naam)}</h2><p class="pc-price"><strong>${esc(aanbodTekst(id))}</strong></p><div class="pc-score" style="margin-top:12px"><span class="sc-lbl">Checklist-score</span>${scoreBadge(id)}${bars(id)}</div><p class="lbl" style="margin-top:14px">Kies ${esc(M[id].naam)} als</p><ul>${kies.map((x) => `<li>${x}</li>`).join('')}</ul><div class="out"><a href="/merken/${M[id].slug}/">Alles over ${esc(M[id].naam)} →</a></div></div>`;
+  const side = (id, kies, posn) => `<div class="card"><span class="pc-logo">${logo(id)}</span><span class="tag best">${esc(STERK_IN[id])}</span><h2>${esc(M[id].naam)}</h2><p class="pc-price"><strong>${esc(aanbodTekst(id))}</strong></p><div class="pc-score" style="margin-top:12px"><span class="sc-lbl">Checklistscore</span>${scoreBadge(id)}${bars(id)}</div><p class="lbl" style="margin-top:14px">Kies ${esc(M[id].naam)} als</p><ul>${kies.map((x) => `<li>${x}</li>`).join('')}</ul><div class="out"><a href="/merken/${M[id].slug}/">Alles over ${esc(M[id].naam)} →</a></div></div>`;
   return {
     ...article({ path: `/vergelijken/${slug}/`, title, h1, description, og: `vs-${slug}`, parents: [['/vergelijken/', 'Vergelijken']], faq }),
     navPath: '/vergelijken/',
@@ -171,7 +173,7 @@ const cmp = ({ slug, a, b, h1, title, description, intro, rows, kiesA, kiesB, fa
 <h2>Snel antwoord</h2><div class="verdict">${side(a, kiesA, 'vs_a')}${side(b, kiesB, 'vs_b')}</div>
 <h2>Verschillen</h2><div class="table-wrap"><table class="data side"><thead><tr><th scope="col"></th><th scope="col"><span class="thlogo">${logo(a, 'sm')}</span>${esc(M[a].naam)}</th><th scope="col"><span class="thlogo">${logo(b, 'sm')}</span>${esc(M[b].naam)}</th></tr></thead><tbody>${rows.map((r) => sideRow(...r)).join('')}</tbody></table></div>
 <h2>Checklist naast elkaar</h2><p class="sub">Tien vaste punten uit de sites van de merken. <a href="/over/#methode">Zo tellen we</a></p>
-<div class="table-wrap"><table class="data side"><thead><tr><th scope="col">Checklistpunt</th><th scope="col"><span class="thlogo">${logo(a, 'sm')}</span>${esc(M[a].naam)}</th><th scope="col"><span class="thlogo">${logo(b, 'sm')}</span>${esc(M[b].naam)}</th></tr></thead><tbody>${GROEPEN.map((g) => `<tr><th colspan="3" scope="colgroup" style="background:var(--sand)">${esc(g.naam)}</th></tr>${g.punten.map((k) => sideRow(esc(PUNTEN[k].lang), fv(FEATURES[a][k]), fv(FEATURES[b][k]))).join('')}`).join('')}<tr><th scope="row">Checklist-score</th><td>${scoreBadge(a)}</td><td>${scoreBadge(b)}</td></tr></tbody></table></div>
+<div class="table-wrap"><table class="data side"><thead><tr><th scope="col">Checklistpunt</th><th scope="col"><span class="thlogo">${logo(a, 'sm')}</span>${esc(M[a].naam)}</th><th scope="col"><span class="thlogo">${logo(b, 'sm')}</span>${esc(M[b].naam)}</th></tr></thead><tbody>${GROEPEN.map((g) => `<tr><th colspan="3" scope="colgroup" style="background:var(--sand)">${esc(g.naam)}</th></tr>${g.punten.map((k) => sideRow(esc(PUNTEN[k].lang), fv(FEATURES[a][k]), fv(FEATURES[b][k]))).join('')}`).join('')}<tr><th scope="row">Checklistscore</th><td>${scoreBadge(a)}</td><td>${scoreBadge(b)}</td></tr></tbody></table></div>
 <div class="out">${knop(a, 'vs_a', 'btn ghost')}${knop(b, 'vs_b', 'btn ghost')}</div>
 ${faqHtml(faq)}${matchCta()}<p>Meer weten? <a href="/merken/${M[a].slug}/">${esc(M[a].naam)}</a> · <a href="/merken/${M[b].slug}/">${esc(M[b].naam)}</a> · <a href="/vergelijken/">alle merken</a></p>${bron(M[a].bronnen, M[b].bronnen, featureBronnen(a, b))}</article>`,
   };
@@ -184,7 +186,7 @@ export const vsPages = [
     description: 'Quatt Hybrid met vaste prijs vanaf € 4.449 na subsidie, of Remeha Elga Ace en Confida via de installateur. De verschillen in aanbod, garantie en koelen.',
     intro: 'Allebei leveren ze een hybride warmtepomp met propaan en een all-electric model. Quatt verkoopt en installeert zelf, met vaste prijzen op de site. Remeha verkoopt via installateurs en noemt geen prijzen.',
     rows: [['Hybride', 'Hybrid Single (7 kW) en Duo (14 kW)', 'Elga Ace en Confida'], ['All-electric', 'Quatt All-Electric', 'Mercuria Ace en Confida'], ['Prijs op de site', 'Ja: Hybrid Single € 4.449, Duo € 5.399 (na ISDE 2026, incl. basisinstallatie)', 'Niet vermeld'], ['Koelen', 'Met de add-on Chill, via de radiatoren', 'Verwarmen en koelen (all-electric)'], ['Garantie', '2 jaar product, 1 jaar installatie', '2 jaar fabrieksgarantie; tot 10 jaar met een betaald garantieplan via de installateur'], ['Kopen', 'Direct bij Quatt, eigen monteurs', 'Via een installateur']],
-    kiesA: ['je vooraf een vaste prijs wilt, inclusief installatie', 'je de subsidieaanvraag uit handen wilt geven', 'je later van hybride naar all-electric wilt (Duo is All-Electric ready)'],
+    kiesA: ['je vooraf een vaste prijs wilt, inclusief installatie', 'je de subsidieaanvraag uit handen wilt geven', 'je later van hybride naar all-electric wilt (Duo is All-Electric Ready)'],
     kiesB: ['je al een Remeha-ketel hebt en met je eigen installateur werkt', 'je ook wilt koelen met een all-electric model'],
     faq: [['Is Quatt goedkoper dan Remeha?', 'Quatt noemt vaste prijzen: Hybrid Single € 4.449 en Duo € 5.399, inclusief basisinstallatie en na ISDE 2026. Remeha noemt geen prijzen; de prijs hoor je van je installateur. Gemiddeld kost een hybride warmtepomp € 6.200 vóór subsidie (Milieu Centraal).'], ['Werken beide met propaan?', 'Ja. Quatt Hybrid werkt met propaan, en Remeha heeft de Confida-monoblock met propaan.']],
   }),
@@ -193,7 +195,7 @@ export const vsPages = [
     title: 'Daikin vs Mitsubishi Electric warmtepomp 2026',
     description: 'Daikin Altherma of Mitsubishi Ecodan? Twee Japanse merken met lucht-water en lucht-lucht. Verschillen in bodem, koelen, app en garantie op een rij.',
     intro: 'Twee Japanse merken die je via een installateur koopt. Beide hebben lucht-waterwarmtepompen met propaan en airconditioners. Daikin heeft ook een bodemwarmtepomp.',
-    rows: [['Lucht-water met propaan', 'Altherma 4 H (R-290)', 'Ecodan monoblock (R290)'], ['Hybride', 'Ja', 'Ja, All-Electric Ready'], ['Bodem', 'Altherma 3 GEO', 'Niet vermeld'], ['App', 'Onecta', 'MELCloud Home'], ['Koelen met lucht-water', 'Ja', 'Ja'], ['Garantie', 'Tot 5 jaar na registratie (Stand By Me)', '3 jaar op onderdelen, via de installateur'], ['Installateur vinden', 'Dealer locator', 'Comfort Coach']],
+    rows: [['Lucht-water met propaan', 'Altherma 4 H (R-290)', 'Ecodan monoblock (R290)'], ['Hybride', 'Ja', 'Ja, All-Electric Ready'], ['Bodem', 'Altherma 3 GEO', 'Niet vermeld'], ['App', 'Onecta', 'MELCloud Home'], ['Koelen met lucht-water', 'Ja', 'Ja'], ['Garantie', 'Tot 5 jaar na registratie (Stand By Me)', '3 jaar op onderdelen, via de installateur'], ['Installateur vinden', 'Installateurzoeker', 'Comfort Coach']],
     kiesA: ['je ook een bodemwarmtepomp wilt overwegen', 'je garantie tot 5 jaar wilt (na registratie)'],
     kiesB: ['je een hybride wilt die later all-electric kan', 'je hulp wilt bij het vinden van een installateur (Comfort Coach)'],
     faq: [['Wat kost een Daikin of Mitsubishi warmtepomp?', 'Beide merken noemen geen consumentenprijzen; je koopt via een installateur. Gemiddeld kost een all-electric lucht-waterwarmtepomp € 12.000 vóór subsidie (Milieu Centraal).'], ['Kunnen beide koelen?', 'Ja. Daikin noemt verwarmen en koelen, en Mitsubishi Electric schrijft dat de Ecodan-warmtepompen ook kunnen koelen. Volgens Mitsubishi Electric is dat geen airco: je krijgt geen koude luchtstroom zoals in een auto.']],
@@ -281,7 +283,7 @@ ${leadCta('hybride', 'gids_isde')}${faqHtml(isdeFaq)}${matchCta()}${bron(B('rvo2
 
 const haeFaq = [
   ['Is all-electric beter dan hybride?', 'Niet altijd. All-electric bespaart meer en je gaat van het gas af, maar je huis moet minstens redelijk geïsoleerd zijn. Is dat niet zo, dan is een hybride de betere eerste stap.'],
-  ['Kan ik later van hybride naar all-electric?', 'Ja, als je een hybride kiest die "all-electric ready" is. Milieu Centraal raadt dat aan. Bij Quatt is de Hybrid Duo All-Electric ready, bij Mitsubishi Electric de Ecodan hybride.'],
+  ['Kan ik later van hybride naar all-electric?', 'Ja, als je een hybride kiest die "all-electric ready" is. Milieu Centraal raadt dat aan. Bij Quatt is de Hybrid Duo All-Electric Ready, bij Mitsubishi Electric de Ecodan hybride.'],
   ['Komt er een warmtenet in mijn wijk?', 'Vraag het je gemeente. Komt er binnen 5 jaar een warmtenet, dan is een hybride volgens Milieu Centraal niet logisch.'],
 ];
 export const hybrideAe = {
@@ -339,7 +341,7 @@ export const geschikt = {
 ${faqHtml(geschiktFaq)}${matchCta('Check je huis in 1 minuut')}${bron(B('mcVolledig', 'mcHybride', 'mcTypes', 'rvoWp'), [['Omgevingsdienst Twente: warmtepomp, airco en geluid', 'https://www.odtwente.nl/kennisbank/warmtepomp-airco-en-geluid/'], ['NPLW: omgaan met geluid van warmtepompen', 'https://www.nplw.nl/warmte-en-ruimte/omgaan-met-geluid-warmtepompen']])}</article>`,
 };
 // Lees ook: per gids drie verwante pagina's (incl. de blog), net boven de bronnen.
-const OFFERTEBLOG = ['/blog/warmtepomp-offerte-vergelijken/', 'Warmtepomp-offertes vergelijken in 6 stappen'];
+const OFFERTEBLOG = ['/blog/warmtepomp-offerte-vergelijken/', 'Warmtepompoffertes vergelijken in 6 stappen'];
 const LEESOOK = {
   '/warmtepomp-kosten/': [OFFERTEBLOG, ['/isde-subsidie-warmtepomp-2026/', 'ISDE-subsidie 2026 en wat er in 2027 verandert'], ['/warmtepomp-terugverdientijd/', 'Terugverdientijd van een warmtepomp']],
   '/warmtepomp-terugverdientijd/': [['/warmtepomp-kosten/', 'Wat kost een warmtepomp in 2026?'], ['/isde-subsidie-warmtepomp-2026/', 'ISDE-subsidie 2026'], OFFERTEBLOG],
@@ -375,7 +377,7 @@ ${num('kw', 'Vermogen', TYPES.hybride.kw, 'kW', 'Voor de ISDE: € 1.025 + € 2
 <table class="kv"><tbody><tr><td>Besparing per jaar</td><td id="r-besp">${eur(H.besparing)}</td></tr><tr><td>Minder gas</td><td id="r-m3">${H.m3.toLocaleString('nl-NL')} m³</td></tr><tr><td>Extra stroom</td><td id="r-kwh">${H.kwh.toLocaleString('nl-NL')} kWh</td></tr><tr><td>Investering</td><td id="r-kost">${eur(H.kosten)}</td></tr><tr><td>ISDE-subsidie 2026</td><td id="r-sub">${eur(H.subsidie)}</td></tr><tr class="total"><td>Netto</td><td id="r-net">${eur(H.netto)}</td></tr></tbody></table>
 <p class="src" id="r-noot">Hybride: de helft van je gas valt weg, per bespaarde m³ komt er 2,4 kWh stroom bij (rekenvoorbeeld Milieu Centraal).</p></aside>
 </div>
-<section class="method" id="methode"><h2>Zo rekenen we</h2><ul><li><strong>Hybride:</strong> de helft van je gasverbruik valt weg (Milieu Centraal: 1.360 naar 680 m³). Per bespaarde m³ komt er 2,375 kWh stroom bij.</li><li><strong>All-electric:</strong> al je gas valt weg. Per bespaarde m³ komt er 3,3 kWh stroom bij en het vastrecht voor gas (€ ${VASTRECHT_GAS} per jaar) vervalt.</li><li><strong>Prijzen:</strong> gas € ${komma(GASPRIJS)} per m³ en stroom € ${komma(STROOMPRIJS)} per kWh, afgeleid uit de rekenvoorbeelden van Milieu Centraal.</li><li><strong>ISDE 2026:</strong> € 1.025 + € 225 per kW + € 200 bij A+++, minimaal € 500. Voor een tweede lucht-waterwarmtepomp geldt alleen € 225 per kW.</li></ul><p class="src">Bronnen: <a href="https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/hybride-warmtepomp/" rel="noopener">Milieu Centraal: hybride warmtepomp</a> · <a href="https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/volledige-warmtepomp/" rel="noopener">Milieu Centraal: volledige warmtepomp</a> · <a href="https://www.rvo.nl/subsidies-financiering/isde/isde-wat-wijzigt-er-2026" rel="noopener">RVO: ISDE 2026</a></p></section>
+<section class="method" id="methode"><h2>Zo rekenen we</h2><ul><li><strong>Hybride:</strong> de helft van je gasverbruik valt weg (Milieu Centraal: 1.360 naar 680 m³). Per bespaarde m³ komt er 2,375 kWh stroom bij.</li><li><strong>All-electric:</strong> al je gas valt weg. Per bespaarde m³ komt er 3,3 kWh stroom bij en het vastrecht voor gas (€ ${VASTRECHT_GAS} per jaar) vervalt.</li><li><strong>Prijzen:</strong> gas € ${komma(GASPRIJS)} per m³ en stroom € ${komma(STROOMPRIJS)} per kWh, afgeleid uit de rekenvoorbeelden van Milieu Centraal.</li><li><strong>ISDE 2026:</strong> € 1.025 + € 225 per kW + € 200 bij A+++, minimaal € 500. Voor een tweede lucht-waterwarmtepomp geldt alleen € 225 per kW.</li></ul><p class="src">Bronnen: <a href="https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/hybride-warmtepomp/" rel="noopener">Milieu Centraal: hybride warmtepomp</a> · <a href="https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/volledig-elektrische-warmtepomp/" rel="noopener">Milieu Centraal: volledige warmtepomp</a> · <a href="https://www.rvo.nl/subsidies-financiering/isde/isde-wat-wijzigt-er-2026" rel="noopener">RVO: ISDE 2026</a></p></section>
 <p>Meer uitleg: <a href="/warmtepomp-terugverdientijd/">terugverdientijd van een warmtepomp</a> · <a href="/isde-subsidie-warmtepomp-2026/">ISDE-subsidie 2026</a> · <a href="/warmtepomp-keuzehulp/">welke warmtepomp past?</a></p>`,
 };
 

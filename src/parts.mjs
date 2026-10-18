@@ -7,7 +7,7 @@ import { logoImg } from './lib/logos.js';
 export { logoImg };
 export const M = MERKEN;
 export const DATE = '2026-10-17';
-export const by = (d = DATE) => `<p class="src">Door de ${SITE.owner} · ${fmtDate(d)}</p>`;
+export const by = (d = DATE) => `<p class="src">Door ${SITE.owner} · ${fmtDate(d)}</p>`;
 export const bron = (...lists) => {
   const all = lists.flat();
   const seen = new Set();
@@ -33,9 +33,9 @@ export const eur = (n) => '€ ' + Math.round(n).toLocaleString('nl-NL');
 // ---- Checklist-weergave ----
 const VCLS = { ja: 'ja', deels: 'deels', nee: 'nee' };
 export const fv = (f, note = true) => `<span class="fv ${VCLS[f?.v] || 'nv'}">${waardeTekst(f?.v)}</span>${note && f?.t ? `<span class="fnote">${esc(f.t)}</span>` : ''}`;
-export const scoreBadge = (id) => { const s = score(id); return `<span class="sc" aria-label="Checklist-score ${fmtScore(s.totaal)} van ${s.max}">${fmtScore(s.totaal)}<small>/${s.max}</small></span>`; };
+export const scoreBadge = (id) => { const s = score(id); return `<span class="sc" aria-label="Checklistscore ${fmtScore(s.totaal)} van ${s.max}">${fmtScore(s.totaal)}<small>/${s.max}</small></span>`; };
 export const bars = (id) => `<ul class="bars">${score(id).groepen.map((g) => `<li><span>${esc(g.naam)}</span><i><b style="width:${Math.round((g.score / g.max) * 100)}%"></b></i><span>${fmtScore(g.score)}/${g.max}</span></li>`).join('')}</ul>`;
-export const scoreBlock = (id) => `<div class="pc-score"><span class="sc-lbl">Checklist-score</span>${scoreBadge(id)}${bars(id)}<p class="src" style="margin:8px 0 0"><a href="/over/#methode">Zo tellen we</a></p></div>`;
+export const scoreBlock = (id) => `<div class="pc-score"><span class="sc-lbl">Checklistscore</span>${scoreBadge(id)}${bars(id)}<p class="src" style="margin:8px 0 0"><a href="/over/#methode">Zo tellen we</a></p></div>`;
 /** Tabel met alle 10 punten voor één merk. */
 export const checklistTable = (id) => `<div class="table-wrap"><table class="data side"><thead><tr><th scope="col">Checklistpunt</th><th scope="col"><span class="thlogo">${logoImg(id, { maat: 'sm' })}</span></th></tr></thead><tbody>${GROEPEN.map((g) => `<tr><th colspan="2" scope="colgroup" style="background:var(--sand)">${esc(g.naam)}</th></tr>${g.punten.map((k) => `<tr><th scope="row">${esc(PUNTEN[k].lang)}</th><td>${fv(FEATURES[id][k])}${FEATURES[id][k].s ? ` <a class="src" href="${FEATURES[id][k].s}" rel="noopener">bron<span class="sr-only"> ${esc(PUNTEN[k].kort)}</span></a>` : ''}</td></tr>`).join('')}`).join('')}</tbody></table></div>`;
 
@@ -59,9 +59,9 @@ export function matrix(ids) {
   const rows = ids.map((id) => {
     const f = FEATURES[id];
     const data = IDS_PUNTEN.map((k) => `data-${k}="${f[k].v || 'nv'}"`).join(' ');
-    return `<tr data-id="${id}" data-naam="${esc(M[id].naam)}" data-score="${score(id).totaal}" ${data}><th scope="row"><span class="rowlogo">${logoImg(id, { maat: 'sm' })}</span><a href="/merken/${M[id].slug}/">${esc(M[id].naam)}</a><span class="fnote">${esc(STERK_IN[id])}</span></th><td data-l="Checklist-score">${scoreBadge(id)}</td>${IDS_PUNTEN.map((k) => `<td data-l="${esc(PUNTEN[k].lang)}">${fv(f[k])}</td>`).join('')}</tr>`;
+    return `<tr data-id="${id}" data-naam="${esc(M[id].naam)}" data-score="${score(id).totaal}" ${data}><th scope="row"><span class="rowlogo">${logoImg(id, { maat: 'sm' })}</span><a href="/merken/${M[id].slug}/">${esc(M[id].naam)}</a><span class="fnote">${esc(STERK_IN[id])}</span></th><td data-l="Checklistscore">${scoreBadge(id)}</td>${IDS_PUNTEN.map((k) => `<td data-l="${esc(PUNTEN[k].lang)}">${fv(f[k])}</td>`).join('')}</tr>`;
   }).join('');
   return `<p class="scrollhint mx">Veeg opzij voor alle kolommen →</p><div class="table-wrap"><table class="data matrix stack" id="matrix"><caption class="sr-only">Alle merken naast elkaar: score en checklist</caption><thead>${head}</thead><tbody>${rows}</tbody></table></div>`;
 }
 
-export const methodBox = (h = 'h2') => `<section class="method" id="methode"><${h}>Zo vergelijken we</${h}><ol><li><strong>Alleen wat het merk zelf zegt.</strong> Elk checklistpunt komt van de eigen site van het merk, met link naar de bron. Kosten en subsidie komen van Milieu Centraal en RVO.</li><li><strong>Vaste checklist van 10 punten.</strong> Per punt: ja = 1, deels = 0,5, nee of niet vermeld = 0. De score is een telling van wat het merk zelf noemt, geen oordeel over kwaliteit en geen review.</li><li><strong>Partners veranderen niets.</strong> De volgorde is score, dan naam (A-Z). Partnerlinks en offertepartners tellen nooit mee in de score, de volgorde of het advies.</li></ol><p class="src">Door de ${SITE.owner} · Gegevens gecontroleerd op ${fmtDate(CHECKED)}</p></section>`;
+export const methodBox = (h = 'h2') => `<section class="method" id="methode"><${h}>Zo vergelijken we</${h}><ol><li><strong>Alleen wat het merk zelf zegt.</strong> Elk checklistpunt komt van de eigen site van het merk, met link naar de bron. Kosten en subsidie komen van Milieu Centraal en RVO.</li><li><strong>Vaste checklist van 10 punten.</strong> Per punt: ja = 1, deels = 0,5, nee of niet vermeld = 0. De score is een telling van wat het merk zelf noemt, geen oordeel over kwaliteit en geen review.</li><li><strong>Partners veranderen niets.</strong> De volgorde is score, dan naam (A-Z). Partnerlinks en offertepartners tellen nooit mee in de score, de volgorde of het advies.</li></ol><p class="src">Door ${SITE.owner} · Gegevens gecontroleerd op ${fmtDate(CHECKED)}</p></section>`;

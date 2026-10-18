@@ -2,7 +2,7 @@
 // Puur (ook in de browser gebruikt door de keuzehulp en de rekenhulp). Partnerlinks spelen hier geen rol.
 export const BRON = {
   mcHybride: { naam: 'Milieu Centraal: hybride warmtepomp', url: 'https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/hybride-warmtepomp/' },
-  mcVolledig: { naam: 'Milieu Centraal: volledige warmtepomp', url: 'https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/volledige-warmtepomp/' },
+  mcVolledig: { naam: 'Milieu Centraal: volledige warmtepomp', url: 'https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/volledig-elektrische-warmtepomp/' },
   mcTypes: { naam: 'Milieu Centraal: welke warmtepompen zijn er?', url: 'https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/welke-warmtepompen-zijn-er/' },
   rvo2026: { naam: 'RVO: ISDE, wat wijzigt er in 2026', url: 'https://www.rvo.nl/subsidies-financiering/isde/isde-wat-wijzigt-er-2026' },
   rvoWp: { naam: 'RVO: ISDE voor een warmtepomp', url: 'https://www.rvo.nl/subsidies-financiering/isde/woningeigenaren/warmtepomp' },
