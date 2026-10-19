@@ -26,9 +26,9 @@ test('build (productie): pagina’s, sitemap, robots, IndexNow, CNAME, huisregel
     for (const r of [...VERBODEN, ...NEP]) assert.ok(!r.test(s), `${f} bevat ${r}`);
     if (!f.endsWith('404.html')) { assert.match(s, /<link rel="canonical" href="https:\/\/warmtepompenmatch.nl\//); assert.ok(!s.includes('noindex'), f); }
     const title = s.match(/<title>(.*?)<\/title>/)[1]; assert.ok(title.length <= 60, `${f}: titel te lang (${title.length})`);
-    assert.match(s, /Ook van ons/);
+    assert.match(s, /Ook van ons/); assert.match(s, /https:\/\/thuisaccumatch.nl\//);
     const net = s.slice(s.indexOf('<div class="net">'), s.indexOf('<p class="fine">'));
-    assert.deepEqual([...net.matchAll(/href="([^"]+)"/g)].map((m) => m[1]), ['https://boekhoudmatch.nl/', 'https://verduurzaammatch.nl/', 'https://shopmatch.nl/'], `${f}: netwerkfooter`);
+    assert.deepEqual([...net.matchAll(/href="([^"]+)"/g)].map((m) => m[1]), ['https://boekhoudmatch.nl/', 'https://verduurzaammatch.nl/', 'https://shopmatch.nl/', 'https://thuisaccumatch.nl/'], `${f}: netwerkfooter`);
     for (const m of s.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)) JSON.parse(m[1]);
     for (const m of s.matchAll(/(?:href|src)="(\/[^"#?]*)/g)) {
       const p = m[1]; const t = p.endsWith('/') ? join('dist', p, 'index.html') : join('dist', p);
