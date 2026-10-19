@@ -6,9 +6,16 @@ import { score as checklist, fmtScore } from './lib/checklist.js';
 import { logoImg } from './lib/logos.js';
 import { LEADS, ROUTING } from './lib/leads.config.js';
 import { categorieVan } from './lib/leads.js';
+import { track } from './consent.js';
 
 const BASE = document.body.dataset.base || '';
 const form = document.getElementById('form');
+// Statistieken (alleen na toestemming, zie consent.js): start = eerste eigen antwoord,
+// afgerond = de uitslag verschijnt na een eigen antwoord. Elk één keer per paginaweergave, nooit de antwoorden zelf.
+let qStart = false, qDone = false;
+const quizStart = () => { if (!qStart) { qStart = true; track('quiz_start', {}); } };
+const quizKlaar = (params) => { if (qStart && !qDone) qDone = track('quiz_complete', params); };
+form.addEventListener('change', (e) => { if (e.isTrusted) quizStart(); });
 const out = document.getElementById('result');
 const prog = document.getElementById('q-prog');
 const bar = document.getElementById('q-bar');
@@ -51,6 +58,7 @@ function toon(a, scroll) {
   history.replaceState(null, '', `${location.pathname}?${new URLSearchParams(a)}`);
   document.getElementById('m-reset').addEventListener('click', () => { form.reset(); history.replaceState(null, '', location.pathname); update(); out.innerHTML = WACHT; form.querySelector('input').focus(); });
   document.getElementById('m-share').addEventListener('click', async (e) => { try { await navigator.clipboard.writeText(location.href); e.target.textContent = 'Link gekopieerd'; } catch { e.target.textContent = location.href; } });
+  quizKlaar({ advies: r.type });
   if (scroll && matchMedia('(max-width: 899px)').matches) out.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
 }
 
@@ -69,6 +77,7 @@ if (compleet(start)) toon(start, false);
 form.addEventListener('change', () => { const a = update(); if (compleet(a)) toon(a, false); });
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+  if (e.isTrusted) quizStart();
   const a = update();
   if (!compleet(a)) {
     const open = VRAGEN.find((v) => !a[v.id]);
