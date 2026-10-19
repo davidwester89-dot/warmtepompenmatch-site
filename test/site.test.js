@@ -111,3 +111,9 @@ test('build (test-site): noindex overal, Disallow, BASE-paden, geen CNAME, previ
   assert.ok(!existsSync('dist/CNAME'));
   // Ook met GO_LIVE=1 en een BASE nooit een CNAME (veiligheid).
 });
+
+test('blog: post van 20-10-2026 staat pas vanaf die datum in loadPosts', () => {
+  const slugs = (d) => loadPosts('content/blog', d).map((p) => p.slug);
+  assert.ok(!slugs('2026-10-19').includes('beste-hybride-warmtepomp'), 'niet op 19-10');
+  assert.ok(slugs('2026-10-20').includes('beste-hybride-warmtepomp'), 'wel op 20-10');
+});

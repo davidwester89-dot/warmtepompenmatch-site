@@ -1,7 +1,7 @@
 ---
 title: Beste hybride warmtepomp 2026: zo kies je per situatie
 seo_title: Beste hybride warmtepomp 2026: zo kies je per situatie
-description: Welke hybride warmtepomp past bij jouw huis? Vergelijk rendement, geluid, vermogen en kosten per merk en zie wat je met de ISDE-subsidie terugkrijgt.
+description: Beste hybride warmtepomp 2026? 7 merken op rendement, geluid en vermogen volgens de fabrikant, plus kosten, terugverdientijd en ISDE-subsidie.
 date: 2026-10-20
 updated: 2026-10-20
 checked: 2026-10-19
@@ -22,6 +22,7 @@ sources:
 - Quatt: hoeveel geluid maakt Quatt Hybrid | https://support.quatt.io/nl/articles/6121733-hoeveel-geluid-maakt-quatt-hybrid
 - Quatt: prijs hybride warmtepomp | https://www.quatt.io/waarom-quatt/hybride-warmtepomp/prijs-kopen
 - Remeha: Elga Ace | https://www.remeha.nl/product/elga-ace
+- Remeha: hoeveel geluid maakt een Remeha warmtepomp? | https://kennisbank.remeha.nl/hoeveel-geluid-maakt-een-remeha-warmtepomp/
 - Remeha: hybride warmtepompen | https://www.remeha.nl/producten/warmtepompen/hybride-warmtepompen
 - Remeha: product-prijslijst | https://www.remeha.nl/zakelijk/documentatie/product-prijslijst
 - Vaillant: hybride verwarmingssystemen | https://www.vaillant.nl/advies/technologie-begrijpen/hybride-verwarmingssystemen/
@@ -84,7 +85,7 @@ Een paar fabrikanten noemen zelf prijzen, maar niet op dezelfde manier:
 
 Volgens het rekenvoorbeeld van Milieu Centraal bespaar je met een hybride zo'n **€ 600 per jaar**. Daarmee verdien je hem in **6,8 jaar** terug met subsidie, en in **10,3 jaar** zonder. Wij rekenen met de prijzen uit dat voorbeeld: ongeveer € 1,39 per m³ gas en € 0,21 per kWh stroom. Op VerduurzaamMatch zie je € 1,37 per m³: dat is de gasprijs die Milieu Centraal gemiddeld verwacht tot 2040. Reken je eigen situatie na met de [terugverdientijd-calculator](/terugverdientijd-berekenen/) en lees meer over [warmtepomp kosten](/warmtepomp-kosten/).
 
-Wordt je warmtepomp pas in 2027 geplaatst? RVO is van plan de subsidie dan te verlagen naar € 120 per kW, met € 250 extra bij A+++ en € 200 extra voor een slimme warmtepomp. Voor 4 kW is dat € 1.955. Koop je uiterlijk 31 december 2026, dan krijg je nog € 225 per kW. Bewaar je getekende offerte of opdrachtbevestiging. Alles over de regels lees je bij [ISDE-subsidie warmtepomp 2026](/isde-subsidie-warmtepomp-2026/).
+Wordt je warmtepomp pas in 2027 geplaatst? RVO is van plan de subsidie dan te verlagen naar € 120 per kW, met € 250 extra bij A+++ en € 200 extra voor een slimme warmtepomp. Voor 4 kW met A+++ en slimme aansturing is dat, met het basisbedrag van € 1.025, € 1.955. Koop je uiterlijk 31 december 2026, dan krijg je nog € 225 per kW. Bewaar je getekende offerte of opdrachtbevestiging. Alles over de regels lees je bij [ISDE-subsidie warmtepomp 2026](/isde-subsidie-warmtepomp-2026/).
 
 ## Offertes vergelijken
 
