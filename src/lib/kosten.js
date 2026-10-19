@@ -8,7 +8,9 @@ export const BRON = {
   rvoWp: { naam: 'RVO: ISDE voor een warmtepomp', url: 'https://www.rvo.nl/subsidies-financiering/isde/woningeigenaren/warmtepomp' },
   rvo2027: { naam: 'RVO: ISDE, wat wijzigt er in 2027', url: 'https://www.rvo.nl/subsidies-financiering/isde/isde-wat-wijzigt-er-2027' },
 };
-// Prijzen afgeleid uit de rekenvoorbeelden van Milieu Centraal (hr-ketel tegenover hybride en all-electric).
+// Prijzen afgeleid uit de eurobedragen in de rekenvoorbeelden van Milieu Centraal (hr-ketel tegenover hybride en all-electric).
+// Milieu Centraal noemt elders € 1,37/m³ als verwachting 2026-2040; VerduurzaamMatch gebruikt dat getal met de gepubliceerde besparing (€ 600).
+// De stroomprijs hier (€ 0,21) is ook afgeleid uit die voorbeelden. ThuisaccuMatch rekent met CBS september 2026 (~€ 0,26); beide bronnen zijn geldig.
 export const GASPRIJS = 1.39; // € per m³
 export const STROOMPRIJS = 0.21; // € per kWh
 export const VASTRECHT_GAS = 360; // € per jaar, vervalt als je van het gas af gaat (Milieu Centraal)
