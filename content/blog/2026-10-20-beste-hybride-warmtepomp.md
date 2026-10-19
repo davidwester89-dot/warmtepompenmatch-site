@@ -28,7 +28,7 @@ sources:
 - Vaillant: hybride verwarmingssystemen | https://www.vaillant.nl/advies/technologie-begrijpen/hybride-verwarmingssystemen/
 - Vaillant: aroTHERM plus | https://www.vaillant.nl/producten/arothermplus/
 ---
-Je wilt van een flink deel van je gasrekening af, maar je cv-ketel nog niet helemaal weg doen. Een hybride warmtepomp past daar goed bij. Alleen: welke? Elk merk noemt zichzelf stil en zuinig. Hier zie je waar je echt op let, wat de fabrikanten zelf opgeven en welk type bij jouw huis past.
+Je wilt van een flink deel van je gasrekening af, maar je cv-ketel nog niet helemaal wegdoen. Een hybride warmtepomp past daar goed bij. Alleen: welke? Elk merk noemt zichzelf stil en zuinig. Hier zie je waar je echt op let, wat de fabrikanten zelf opgeven en welk type bij jouw huis past.
 
 > **Kort gezegd:** er is geen hybride warmtepomp die voor iedereen de beste is. Kies eerst het vermogen dat bij je huis past en bepaal of je later all-electric wilt. Vergelijk daarna rendement en geluid, maar alleen als ze op dezelfde manier gemeten zijn. Een hybride van 4 kW kost volgens Milieu Centraal gemiddeld **€ 6.200**, en je krijgt in 2026 **€ 2.125** ISDE-subsidie.
 
@@ -50,7 +50,7 @@ Hieronder de hybride warmtepompen van de merken op onze site, op alfabet. Alle g
 
 | Merk en model | Vermogen | Koudemiddel | Rendement (fabrikant) | Geluid (fabrikant) | Later all-electric |
 |---|---|---|---|---|---|
-| [Daikin](/merken/daikin/) Altherma H Hybride | 4 kW, met eigen cv-ketel | R-32 | SCOP 4,14 tot 4,15 (35 °C) | 37 dB(A) geluidsdruk op 1 m | Apart All Electric Ready-model |
+| [Daikin](/merken/daikin/) Altherma H Hybride | 4 kW, met eigen cv-ketel | R32 | SCOP 4,14 tot 4,15 (35 °C) | 37 dB(A) geluidsdruk op 1 m | Apart All Electric Ready-model |
 | [Itho Daalderop](/merken/itho-daalderop/) Amber | 6,5 / 9,5 / 12 kW | R290 (propaan) | COP 4,4 / 4,4 / 4,0 (A7/W35) | 54 / 54 / 56 dB geluidsvermogen | Ja |
 | [Mitsubishi Electric](/merken/mitsubishi-electric/) Ecodan All-Electric Ready hybride | 7,5 kW (7/35) | R32 | Energielabel A+++ | 40 dB buitendeel op 1 m | Ja |
 | [Nefit Bosch](/merken/nefit-bosch/) Compress 5800i AW hybride | 4 / 5 / 7 kW | R290 (propaan) | – | 26,5 dB(A) op 3 m | Ja |
@@ -83,7 +83,7 @@ Een paar fabrikanten noemen zelf prijzen, maar niet op dezelfde manier:
 - **Itho Daalderop Amber 65:** € 4.750 bruto adviesprijs, exclusief btw en installatie.
 - **Remeha Elga Ace 4 kW:** € 3.154 bruto lijstprijs, exclusief btw en installatie.
 
-Volgens het rekenvoorbeeld van Milieu Centraal bespaar je met een hybride zo'n **€ 600 per jaar**. Daarmee verdien je hem in **6,8 jaar** terug met subsidie, en in **10,3 jaar** zonder. Wij rekenen met de prijzen uit dat voorbeeld: ongeveer € 1,39 per m³ gas en € 0,21 per kWh stroom. Op VerduurzaamMatch zie je € 1,37 per m³: dat is de gasprijs die Milieu Centraal gemiddeld verwacht tot 2040. Reken je eigen situatie na met de [terugverdientijd-calculator](/terugverdientijd-berekenen/) en lees meer over [warmtepomp kosten](/warmtepomp-kosten/).
+Volgens het rekenvoorbeeld van Milieu Centraal bespaar je met een hybride zo'n **€ 600 per jaar**. Milieu Centraal rekent met € 1,37 per m³ gas en 21 cent per kWh. Wij rekenen daarmee uit: (6.200 − 2.125) / 600 = **6,8 jaar**, zonder subsidie **10,3 jaar**. Reken je eigen situatie na met de [terugverdientijd-calculator](/terugverdientijd-berekenen/) en lees meer over [warmtepomp kosten](/warmtepomp-kosten/).
 
 Wordt je warmtepomp pas in 2027 geplaatst? RVO is van plan de subsidie dan te verlagen naar € 120 per kW, met € 250 extra bij A+++ en € 200 extra voor een slimme warmtepomp. Voor 4 kW met A+++ en slimme aansturing is dat, met het basisbedrag van € 1.025, € 1.955. Koop je uiterlijk 31 december 2026, dan krijg je nog € 225 per kW. Bewaar je getekende offerte of opdrachtbevestiging. Alles over de regels lees je bij [ISDE-subsidie warmtepomp 2026](/isde-subsidie-warmtepomp-2026/).
 
