@@ -117,3 +117,9 @@ test('blog: post van 20-10-2026 staat pas vanaf die datum in loadPosts', () => {
   assert.ok(!slugs('2026-10-19').includes('beste-hybride-warmtepomp'), 'niet op 19-10');
   assert.ok(slugs('2026-10-20').includes('beste-hybride-warmtepomp'), 'wel op 20-10');
 });
+
+test('mobiele header: compacte breakpoint t/m 419px (geen overloop op 361-413px, iPhone 375/390)', () => {
+  const css = read('src/assets/css/style.css');
+  assert.match(css, /@media\(max-width:419px\)\{header\.site \.wrap\{gap:8px\}[^]*?details\.menu \.menu-txt\{position:absolute/);
+  assert.ok(!css.includes('@media(max-width:374px)'), 'oude breakpoint 374px weg');
+});
