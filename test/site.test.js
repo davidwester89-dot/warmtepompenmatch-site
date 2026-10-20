@@ -83,6 +83,15 @@ test('build: componenten, vergelijking in vaste volgorde, keuzehulp en rekenhulp
   assert.match(post, /<figure class="post-hero"><img src="\/img\/blog\/warmtepomp-offerte-vergelijken-1200\.webp" srcset="[^"]+600w[^"]+1200w" [^>]*width="1200" height="630" alt="[^"]{20,}"/);
   for (const w of [600, 900, 1200]) assert.ok(existsSync(`dist/img/blog/warmtepomp-offerte-vergelijken-${w}.webp`), `webp ${w}`);
   assert.ok(!existsSync('dist/img/blog/BRONNEN.md'), 'fotobronnen niet in dist');
+  // beste hybride: kopfoto en sectiefoto (zonder bijschrift), bron in BRONNEN.md
+  const hyb = read('dist/blog/beste-hybride-warmtepomp/index.html');
+  assert.match(hyb, /<figure class="post-hero"><img src="\/img\/blog\/beste-hybride-warmtepomp-1200\.webp" [^>]*alt="[^"]{20,}"[^>]*><\/figure>/);
+  assert.match(hyb, /<figure class="post-fig"><img src="\/img\/blog\/hybride-warmtepomp-rijtjeshuizen-1200\.webp" [^>]*alt="[^"]{20,}" loading="lazy"[^>]*><\/figure>/);
+  assert.ok(!/<figcaption/.test(hyb), 'geen bijschriften');
+  for (const n of ['beste-hybride-warmtepomp', 'hybride-warmtepomp-rijtjeshuizen']) {
+    for (const w of [600, 900, 1200]) assert.ok(existsSync(`dist/img/blog/${n}-${w}.webp`), `${n} ${w}`);
+    assert.ok(read('src/assets/img/blog/BRONNEN.md').includes(`## ${n}-{600,900,1200}.webp`), `bron ${n}`);
+  }
   const types = [...post.matchAll(/"@type":"(\w+)"/g)].map((m) => m[1]);
   for (const t of ['BlogPosting', 'HowTo', 'HowToStep', 'FAQPage', 'BreadcrumbList', 'ImageObject']) assert.ok(types.includes(t), `schema ${t}`);
   assert.equal(types.filter((t) => t === 'HowToStep').length, 6);

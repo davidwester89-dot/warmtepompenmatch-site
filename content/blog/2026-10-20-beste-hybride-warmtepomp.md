@@ -4,7 +4,9 @@ seo_title: Beste hybride warmtepomp 2026: zo kies je per situatie
 description: Beste hybride warmtepomp 2026? 7 merken op rendement, geluid en vermogen volgens de fabrikant, plus kosten, terugverdientijd en ISDE-subsidie.
 date: 2026-10-20
 updated: 2026-10-20
-checked: 2026-10-19
+checked: 2026-10-20
+image: beste-hybride-warmtepomp
+image_alt: Witte paneelradiator met thermostaatknop
 tools: /warmtepomp-keuzehulp/, /vergelijken/, /terugverdientijd-berekenen/
 sources:
 - Milieu Centraal: Hybride warmtepomp | https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/hybride-warmtepomp/
@@ -61,6 +63,8 @@ Hieronder de hybride warmtepompen van de merken op onze site, op alfabet. Alle g
 Zie je een lager getal bij geluid? Dat betekent niet meteen een stiller apparaat. Geluidsdruk op 3 meter valt altijd lager uit dan het geluidsvermogen van hetzelfde apparaat. Vraag je installateur om voor jouw situatie het geluid op de erfgrens te berekenen. Alle merken naast elkaar zie je op [merken](/merken/).
 
 ## Welke past bij jouw huis?
+
+![Rij eengezinswoningen met dakkapellen en een pannendak in een Nederlandse straat](hybride-warmtepomp-rijtjeshuizen)
 
 Een winnaar is er niet. Wel past het ene type beter bij jouw situatie dan het andere.
 

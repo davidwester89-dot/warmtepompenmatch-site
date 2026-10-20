@@ -503,6 +503,8 @@ input[aria-invalid=true]{border-color:var(--bad)!important}
 .post-hero{margin:var(--s4) 0 var(--s5)}
 .post-hero img{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:var(--r);background:var(--sand)}
 .post-hero figcaption{margin-top:var(--s2)}
+.post-fig{margin:var(--s4) 0}
+.post-fig img{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:var(--r);background:var(--sand)}
 .postlist a.card{display:block;min-height:0;padding:22px;font-weight:400;font-size:1rem}
 .postlist a.card.has-img{display:grid;grid-template-columns:minmax(0,240px) 1fr;gap:var(--s5);align-items:start}
 .post-thumb{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:var(--r-sm);background:var(--sand)}

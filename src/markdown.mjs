@@ -1,6 +1,7 @@
 // Kleine markdown-omzetter zonder afhankelijkheden, genoeg voor blogartikelen.
 // Ondersteunt: frontmatter, ## en ### koppen, alinea's, - en 1. lijsten, > kaders,
-// eenvoudige tabellen met |, **vet**, *cursief* en [links](https://...).
+// eenvoudige tabellen met |, **vet**, *cursief*, [links](https://...) en sectiefoto's:
+// ![alt](naam) op een eigen regel → src/assets/img/blog/naam-{600,900,1200}.webp (1200×630), zonder bijschrift.
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -35,7 +36,7 @@ export function markdown(src) {
   const lines = src.replace(/\r\n/g, '\n').split('\n');
   const html = [];
   let i = 0;
-  const isBlockStart = (l) => /^(#{2,3}\s|[-*]\s|\d+\.\s|>\s?|\|)/.test(l);
+  const isBlockStart = (l) => /^(#{2,3}\s|[-*]\s|\d+\.\s|>\s?|\||!\[)/.test(l);
   while (i < lines.length) {
     const l = lines[i];
     if (!l.trim()) { i++; continue; }
@@ -44,6 +45,11 @@ export function markdown(src) {
       const lvl = m[1].length;
       const id = m[2].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
       html.push(`<h${lvl} id="${id}">${inline(m[2])}</h${lvl}>`); i++; continue;
+    }
+    if ((m = l.match(/^!\[([^\]]*)\]\(([a-z0-9-]+)\)\s*$/))) {
+      const img = (w) => `/img/blog/${m[2]}-${w}.webp`;
+      html.push(`<figure class="post-fig"><img src="${img(1200)}" srcset="${[600, 900, 1200].map((w) => `${img(w)} ${w}w`).join(', ')}" sizes="(max-width: 760px) calc(100vw - 40px), 700px" width="1200" height="630" alt="${esc(m[1])}" loading="lazy" decoding="async"></figure>`);
+      i++; continue;
     }
     if (/^[-*]\s/.test(l) || /^\d+\.\s/.test(l)) {
       const ordered = /^\d+\.\s/.test(l);
@@ -77,7 +83,7 @@ export function markdown(src) {
 }
 
 export function wordCount(md) {
-  return md.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[#>*|`-]/g, ' ').split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
+  return md.replace(/^!\[[^\]]*\]\([^)]+\)\s*$/gm, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[#>*|`-]/g, ' ').split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
 }
 
 /** Lees een blogbestand (content/blog/JJJJ-MM-DD-slug.md) en geef een post-object terug. */

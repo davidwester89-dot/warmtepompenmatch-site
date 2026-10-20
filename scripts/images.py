@@ -33,7 +33,7 @@ cards={
  'blog-beste-hybride-warmtepomp':('Beste hybride warmtepomp 2026','Zo kies je per situatie'),
 }
 # blogkaarten met kopfoto: kaart -> WebP in src/assets/img/blog
-photo={'blog-warmtepomp-offerte-vergelijken':'warmtepomp-offerte-vergelijken-1200.webp'}
+photo={'blog-warmtepomp-offerte-vergelijken':'warmtepomp-offerte-vergelijken-1200.webp','blog-beste-hybride-warmtepomp':'beste-hybride-warmtepomp-1200.webp'}
 art=f'<svg viewBox="0 0 300 300" width="300" height="300"><path d="M30 140 150 45l120 95v120a10 10 0 0 1-10 10H40a10 10 0 0 1-10-10z" fill="#fff" stroke="{D}" stroke-width="6" stroke-linejoin="round"/><rect x="62" y="170" width="70" height="70" rx="8" fill="{P}"/><rect x="168" y="170" width="70" height="70" rx="8" fill="{G}"/><g fill="none" stroke="{B}" stroke-width="7" stroke-linecap="round"><path d="M84 150c0-14 12-14 12-28s-12-14-12-28"/><path d="M110 150c0-14 12-14 12-28s-12-14-12-28"/></g><circle cx="244" cy="66" r="28" fill="{G}"/><path d="m231 67 9 9 18-18" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 tmp=tempfile.mkdtemp()
 def shot(html,out,w,h):
