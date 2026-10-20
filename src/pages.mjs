@@ -127,7 +127,7 @@ ${prijsBlok}
 <h2>Voor wie?</h2><p>${esc(p.voor)}</p>
 ${leadCta(typeVan(id), 'merk')}
 <div class="out">${knop(id, 'merk_bottom')}</div>
-<h2>Alternatieven</h2><ul class="gidslijst">${alt.map((x) => `<li class="withlogo">${logo(x, 'sm')}<a href="/merken/${M[x].slug}/">${esc(M[x].naam)}</a> · ${esc(STERK_IN[x])} · score ${fmtScore(score(x).totaal)}/10</li>`).join('')}${(RELATED[id] || []).map(([h, tt]) => `<li><a href="${h}">${esc(tt)}</a></li>`).join('')}<li><a href="/vergelijken/">Alle merken naast elkaar</a></li></ul>
+<h2>Alternatieven</h2><ul class="gidslijst">${alt.map((x) => `<li class="withlogo">${logo(x, 'sm')}<a href="/merken/${M[x].slug}/">${esc(M[x].naam)}</a> · ${esc(STERK_IN[x])} · ${fmtScore(score(x).totaal)} van 10 checklistpunten (<a href="/over/#methode">hoe de score werkt</a>)</li>`).join('')}${(RELATED[id] || []).map(([h, tt]) => `<li><a href="${h}">${esc(tt)}</a></li>`).join('')}<li><a href="/vergelijken/">Alle merken naast elkaar</a></li></ul>
 <p class="sub">Alle merken: ${IDS.filter((x) => x !== id).map((x) => `<a href="/merken/${M[x].slug}/">${esc(M[x].naam)}</a>`).join(' · ')}</p>
 <p class="sub">Vergelijkingen: ${VS.map(([h, tt]) => `<a href="${h}">${esc(tt)}</a>`).join(' · ')}</p>
 <h2>Voor je tekent</h2><ul class="gidslijst"><li><a href="/blog/warmtepomp-offerte-vergelijken/">Warmtepompoffertes vergelijken in 6 stappen</a></li><li><a href="/isde-subsidie-warmtepomp-2026/">ISDE-subsidie 2026: bedragen en voorwaarden</a></li><li><a href="/warmtepomp-kosten/">Wat kost een warmtepomp in 2026?</a></li></ul>
