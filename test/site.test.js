@@ -14,7 +14,7 @@ const NEP = [/★/, /aggregateRating/, /reviewCount/, /ratingValue/, /sterren/i,
 test('build (productie): pagina’s, sitemap, robots, IndexNow, CNAME, huisregels', () => {
   buildLive();
   const html = htmlFiles();
-  assert.equal(html.length, 27 + loadPosts().length); // 26 + blogindex + gepubliceerde blogposts (datum <= vandaag)
+  assert.equal(html.length, 28 + loadPosts().length); // 27 (incl. /hybride-warmtepomp-kosten/) + blogindex + gepubliceerde blogposts (datum <= vandaag)
   const sm = read('dist/sitemap.xml');
   assert.equal((sm.match(/<loc>/g) || []).length, html.length - 1);
   assert.match(read('dist/robots.txt'), /Sitemap: https:\/\/warmtepompenmatch.nl\/sitemap.xml/);
@@ -143,4 +143,14 @@ test('interne links naar /blog/beste-hybride-warmtepomp/ vanuit 3 pagina’s, el
     return m[1].trim().toLowerCase();
   });
   assert.equal(new Set(ankers).size, 3, `ankers moeten verschillen: ${ankers.join(' | ')}`);
+});
+
+test('hybride warmtepomp kosten: eigen gids op WM (verhuisd van VM), in sitemap en gelinkt vanuit 3 pagina’s', () => {
+  const s = read('dist/hybride-warmtepomp-kosten/index.html');
+  assert.match(s, /<link rel="canonical" href="https:\/\/warmtepompenmatch.nl\/hybride-warmtepomp-kosten\/">/);
+  assert.match(s, /"@type":"Article"/); assert.match(s, /"@type":"FAQPage"/); assert.match(s, /"@type":"BreadcrumbList"/);
+  assert.match(s, /milieucentraal\.nl\/energie-besparen\/duurzaam-verwarmen-en-koelen\/hybride-warmtepomp\//);
+  assert.match(read('dist/sitemap.xml'), /<loc>https:\/\/warmtepompenmatch.nl\/hybride-warmtepomp-kosten\/<\/loc>/);
+  for (const p of ['hybride-of-all-electric', 'warmtepomp-kosten', 'blog/beste-hybride-warmtepomp']) assert.match(read(`dist/${p}/index.html`), /href="\/hybride-warmtepomp-kosten\/"/, p);
+  assert.ok(!read('dist/warmtepomp-kosten/index.html').includes('verduurzaammatch.nl/hybride-warmtepomp-kosten'));
 });

@@ -509,3 +509,5 @@ input[aria-invalid=true]{border-color:var(--bad)!important}
 .postlist a.card.has-img{display:grid;grid-template-columns:minmax(0,240px) 1fr;gap:var(--s5);align-items:start}
 .post-thumb{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:var(--r-sm);background:var(--sand)}
 @media (max-width:640px){.postlist a.card.has-img{grid-template-columns:1fr;gap:var(--s3)}}
+/* Lange bron-URL's als linktekst mogen afbreken (geen horizontale scroll op 360 px). */
+.src a,a.src{overflow-wrap:anywhere}

@@ -79,7 +79,7 @@ Twijfel je tussen twee merken? Bekijk dan bijvoorbeeld [Quatt vs Remeha](/vergel
 
 ## Kosten en ISDE
 
-Een hybride warmtepomp van 4 kW kost bij je bestaande cv-ketel gemiddeld **€ 6.200**, volgens Milieu Centraal. In 2026 krijg je volgens RVO € 1.025 basisbedrag, plus € 225 per kW, plus € 200 als de warmtepomp energielabel A+++ heeft. Voor 4 kW met A+++ is dat **€ 2.125**. Hoeveel jouw model krijgt, zie je op de meldcodelijst van RVO.
+Een hybride warmtepomp van 4 kW kost bij je bestaande cv-ketel gemiddeld **€ 6.200**, volgens Milieu Centraal. In 2026 krijg je volgens RVO € 1.025 basisbedrag, plus € 225 per kW, plus € 200 als de warmtepomp energielabel A+++ heeft. Voor 4 kW met A+++ is dat **€ 2.125**. Hoeveel jouw model krijgt, zie je op de meldcodelijst van RVO. Prijzen met en zonder nieuwe cv-ketel, per vermogen, staan bij [wat een hybride warmtepomp kost](/hybride-warmtepomp-kosten/).
 
 Een paar fabrikanten noemen zelf prijzen, maar niet op dezelfde manier:
 

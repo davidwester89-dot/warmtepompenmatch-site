@@ -24,6 +24,7 @@ cards={
  'warmtepomp-kosten':('Wat kost een warmtepomp in 2026?','Kosten per type en de subsidie'),
  'warmtepomp-terugverdientijd':('Terugverdientijd van een warmtepomp','Zo reken je het uit'),
  'isde-subsidie-warmtepomp-2026':('ISDE-subsidie warmtepomp 2026','Bedragen, voorwaarden en 2027'),
+ 'hybride-warmtepomp-kosten':('Wat kost een hybride warmtepomp?','Prijs, vermogen en ISDE 2026'),
  'hybride-of-all-electric':('Hybride of all-electric?','Wat past bij jouw huis'),
  'warmtepomp-geluid':('Warmtepomp en geluid','Regels, afstand en afscherming'),
  'is-mijn-huis-geschikt':('Is mijn huis geschikt?','Vijf punten om te checken'),
