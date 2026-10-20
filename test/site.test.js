@@ -132,3 +132,15 @@ test('mobiele header: compacte breakpoint t/m 419px (geen overloop op 361-413px,
   assert.match(css, /@media\(max-width:419px\)\{header\.site \.wrap\{gap:8px\}[^]*?details\.menu \.menu-txt\{position:absolute/);
   assert.ok(!css.includes('@media(max-width:374px)'), 'oude breakpoint 374px weg');
 });
+
+test('interne links naar /blog/beste-hybride-warmtepomp/ vanuit 3 pagina’s, elk met een eigen ankertekst', () => {
+  buildLive();
+  const ankers = ['hybride-of-all-electric', 'vergelijken', 'warmtepomp-kosten'].map((p) => {
+    const s = read(`dist/${p}/index.html`);
+    const m = s.match(/<a href="\/blog\/beste-hybride-warmtepomp\/">([^<]+)<\/a>/);
+    assert.ok(m, `/${p}/ linkt niet naar de blog`);
+    assert.ok(!/^beste hybride warmtepomp$/i.test(m[1].trim()), `/${p}/: geen exacte-match-anker`);
+    return m[1].trim().toLowerCase();
+  });
+  assert.equal(new Set(ankers).size, 3, `ankers moeten verschillen: ${ankers.join(' | ')}`);
+});
