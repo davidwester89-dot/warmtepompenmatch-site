@@ -457,7 +457,7 @@ ${partnerNetwerk(SITE.name, PARTNERLINKS)}
 ${privacyOffertes()}
 ${grondslag()}
 ${doorgifte()}
-${bewaartermijnen(2)}
+${bewaartermijnen(14)}
 <h2>Hosting</h2><p>De site draait op GitHub Pages. GitHub verwerkt technische gegevens zoals je IP-adres om de site te leveren (zie het <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">privacybeleid van GitHub</a>).</p>
 ${rechten(SITE.email)}</article>`,
 };
