@@ -3,7 +3,7 @@
 // - De keuze staat in localStorage (geen cookie), met versie en datum; na 12 maanden of bij een nieuwe versie vragen we opnieuw.
 // - Intrekken: status 'denied', _ga-cookies wissen en Analytics stoppen.
 
-export const CONSENT_KEY = 'sm-consent';
+export const CONSENT_KEY = 'wm-consent';
 export const CONSENT_VERSION = 1;
 export const MAX_AGE_DAYS = 365;
 export const GA_ID_RE = /^G-[A-Z0-9]{4,20}$/;
