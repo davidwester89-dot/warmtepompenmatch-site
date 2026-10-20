@@ -509,3 +509,10 @@ input[aria-invalid=true]{border-color:var(--bad)!important}
 .postlist a.card.has-img{display:grid;grid-template-columns:minmax(0,240px) 1fr;gap:var(--s5);align-items:start}
 .post-thumb{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;border-radius:var(--r-sm);background:var(--sand)}
 @media (max-width:640px){.postlist a.card.has-img{grid-template-columns:1fr;gap:var(--s3)}}
+
+/* Audit 20-10-2026 (snelheid-mobiel-ux): bronlinks breken af, skiplink en consentlink 48 px, partnerlabel en voetnoten >= 15 px */
+.src a,.report a{overflow-wrap:anywhere}
+.skip:focus{min-height:48px}
+.consent a{display:inline-block;padding-block:12px}
+.partner{font-size:.9375rem}
+.fnote{font-size:.9375rem}
