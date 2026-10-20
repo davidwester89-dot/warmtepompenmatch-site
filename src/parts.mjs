@@ -12,7 +12,7 @@ export const bron = (...lists) => {
   const all = lists.flat();
   const seen = new Set();
   const uniq = all.filter(([, u]) => (seen.has(u) ? false : seen.add(u)));
-  return `<p class="src">Bronnen: ${uniq.map(([t, u]) => `<a href="${u}" rel="noopener">${esc(t)}</a>`).join(' · ')}</p>`;
+  return `<p class="src">Bronnen: ${uniq.map(([t, u]) => `<a href="${esc(u)}" rel="noopener">${esc(t)}</a>`).join(' · ')}</p>`;
 };
 /** Bron uit kosten.js als [naam, url]. */
 export const B = (...ids) => ids.map((k) => [BRON[k].naam, BRON[k].url]);

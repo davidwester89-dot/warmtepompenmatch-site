@@ -22,3 +22,11 @@ test('bronlinks: geen kale URL (domein/pad) als linktekst', () => {
   const dk = read('dist/merken/daikin/index.html');
   for (const t of ['Daikin: Het Nieuwe Verwarmen, Daikin-warmtepompen (daikin.nl)', 'Daikin: Onecta-app (daikin.nl)', 'Daikin: Dealer Locator voor consumenten (daikin.nl)']) assert.ok(dk.includes(`>${t}</a>`), t);
 });
+
+test('wetten.overheid.nl-link: & ge-escaped als &amp; in href', () => {
+  buildLive();
+  const h = read('dist/warmtepomp-geluid/index.html');
+  assert.match(h, /href="https:\/\/wetten\.overheid\.nl\/jci1\.3:c:BWBR0041297&amp;hoofdstuk=4&amp;afdeling=4\.2&amp;paragraaf=4\.2\.6&amp;artikel=4\.107"/);
+  const bare = htmlFiles().filter((f) => /href="https?:[^"]*&(?!amp;|#|[a-z]+;)[^"]*"/.test(read(f)));
+  assert.deepEqual(bare, []);
+});
