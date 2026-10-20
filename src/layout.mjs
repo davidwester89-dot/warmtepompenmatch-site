@@ -112,7 +112,7 @@ ${foutGezien(url)}
 <div><p class="fh">Over ons</p><ul><li><a href="/over/">Over WarmtepompenMatch</a></li><li><a href="/over/#methode">Zo vergelijken we</a></li><li><a href="/privacy/">Privacy en cookies</a></li>${GA_ID ? '<li><a href="/privacy/#cookies" data-consent-open>Cookie-instellingen</a></li>' : ''}<li><a href="mailto:${SITE.email}">Contact</a></li></ul></div>
 </div>
 ${networkFooter()}
-<p class="fine">© 2026 ${SITE.name}. Partnerlinks hebben nooit invloed op de score, de volgorde of het advies.</p>
+<p class="fine">© 2026 ${SITE.name}. Partnerlinks hebben nooit invloed op de volgorde of het advies.</p>
 </div></footer>
 ${hasCta ? `<a class="stickycta" href="/warmtepomp-keuzehulp/" data-cta="sticky_match">${ICONS.match}<span>Welke warmtepomp past? Start de keuzehulp</span></a>` : ''}
 ${['/js/menu.js', ...(GA_ID ? ['/js/consent.js'] : []), ...(p.scripts || [])].map((s) => `<script type="module" src="${s}"></script>`).join('\n')}
