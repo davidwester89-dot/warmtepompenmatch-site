@@ -8,3 +8,9 @@ test('footer: geen "score", wel volgorde (partnerlinks)', () => {
   assert.doesNotMatch(fine, /score/i);
   assert.match(fine, /nooit invloed op de volgorde/);
 });
+
+test('privacy: vergoeding is een mogelijkheid ("kunnen ... krijgen"), geen zekerheid', () => {
+  const s = read('src/privacy-avg.mjs');
+  assert.doesNotMatch(s, /dan krijgen wij daardoor een vergoeding/);
+  assert.match(s, /dan kunnen wij daardoor een vergoeding krijgen/);
+});

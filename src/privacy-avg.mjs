@@ -37,7 +37,7 @@ export function partnerNetwerk(siteNaam, partnerlinks) {
   const nw = netwerkenVan(partnerlinks);
   if (!nw.length) return `<p>Op dit moment staan er geen partnerlinks op deze site. Komen die er, dan herken je ze aan het label "partnerlink" en noemen we hier het affiliatenetwerk dat bij een klik een cookie plaatst.</p>`;
   const lijst = nw.map((n) => `<a href="${n.privacy}" rel="noopener">${n.naam}</a>`).join(' en ');
-  return `<p>Een partnerlink herken je aan het label "partnerlink". Klik je erop, dan ga je via een affiliatenetwerk (${nw.map((n) => n.naam).join(', ')}) naar de aanbieder. Dat netwerk plaatst op zijn eigen domein een cookie of klik-ID, om vast te leggen dat je via ${siteNaam} kwam. Sluit je iets af, dan krijgen wij daardoor een vergoeding. Het netwerk is zelf verantwoordelijk voor die gegevens; zie het privacybeleid van ${lijst}.</p>`;
+  return `<p>Een partnerlink herken je aan het label "partnerlink". Klik je erop, dan ga je via een affiliatenetwerk (${nw.map((n) => n.naam).join(', ')}) naar de aanbieder. Dat netwerk plaatst op zijn eigen domein een cookie of klik-ID, om vast te leggen dat je via ${siteNaam} kwam. Sluit je iets af, dan kunnen wij daardoor een vergoeding krijgen. Het netwerk is zelf verantwoordelijk voor die gegevens; zie het privacybeleid van ${lijst}.</p>`;
 }
 
 export function grondslag() {
