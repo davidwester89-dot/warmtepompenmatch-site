@@ -1,0 +1,4 @@
+Contact: mailto:info@warmtepompenmatch.nl
+Expires: 2027-10-19T22:00:00.000Z
+Preferred-Languages: nl
+Canonical: https://warmtepompenmatch.nl/.well-known/security.txt
