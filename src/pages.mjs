@@ -316,7 +316,7 @@ const hkFaq = [
   ['Mag ik een hybride warmtepomp zelf installeren?', 'Niet als je ISDE-subsidie wilt. Een bouwinstallatiebedrijf moet de volledige installatie doen. Daarna vraag je de subsidie aan, binnen 24 maanden (RVO).'],
 ];
 export const hybrideKosten = {
-  ...article({ path: '/hybride-warmtepomp-kosten/', title: 'Hybride warmtepomp kosten 2026: prijs en installatie', h1: 'Wat kost een hybride warmtepomp in 2026?', description: 'Een hybride warmtepomp kost gemiddeld € 6.200 met installatie, € 8.300 met nieuwe cv-ketel. ISDE 2026 bij 4 kW: € 2.125. Plus vermogen en terugverdientijd.', og: 'hybride-warmtepomp-kosten', parents: G, date: '2026-10-20', faq: hkFaq }),
+  ...article({ path: '/hybride-warmtepomp-kosten/', title: 'Hybride warmtepomp kosten 2026: prijs en installatie', h1: 'Wat kost een hybride warmtepomp in 2026?', description: 'Een hybride warmtepomp kost gemiddeld € 6.200 met installatie, € 8.300 met nieuwe cv-ketel. ISDE 2026 bij 4 kW: € 2.125. Plus vermogen en terugverdientijd.', og: 'hybride-of-all-electric', parents: G, date: '2026-10-20', faq: hkFaq }),
   crumb: 'Hybride warmtepomp kosten',
   navPath: '/gidsen/',
   body: `<article class="prose"><h1>Wat kost een hybride warmtepomp in 2026?</h1>${by('2026-10-20')}<p class="lead">Een hybride warmtepomp van 4 kW kost gemiddeld ${eur(TYPES.hybride.kosten)}, inclusief btw en plaatsen. Na ${eur(TYPES.hybride.subsidie)} ISDE-subsidie betaal je zo’n ${eur(TYPES.hybride.kosten - TYPES.hybride.subsidie)}. Hij werkt samen met je cv-ketel en bespaart zo’n 60 à 70% gas voor verwarming (Milieu Centraal).</p>
