@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { advies, VRAGEN, isolatieVan, compleet } from '../src/lib/match.js';
-import { bereken, isde2026, TYPES } from '../src/lib/kosten.js';
+import { bereken, isde2026, TYPES, GASPRIJS, STROOMPRIJS, jaarTekst } from '../src/lib/kosten.js';
 import { IDS, FEATURES, MERKEN, STERK_IN } from '../src/lib/merken.js';
 import { IDS_PUNTEN, MAX, score, ranglijst, punt, metType } from '../src/lib/checklist.js';
 import { uitgaand, knop, PARTNERLINKS } from '../src/lib/partnerlinks.js';
@@ -21,9 +21,14 @@ test('rekenvoorbeelden Milieu Centraal: besparing ~€ 600 (hybride) en ~€ 1.0
   const h = bereken({ type: 'hybride', gas: 1360 });
   assert.equal(h.m3, 680); assert.equal(h.kwh, 1615); assert.ok(Math.abs(h.besparing - 600) <= 30, String(h.besparing));
   assert.equal(h.netto, 4075); assert.ok(h.jaren > 6 && h.jaren < 7.5);
+  // Prijzen van Milieu Centraal (2026-2040): € 1,37/m³ gas, € 0,21/kWh (gecontroleerd 20-10-2026).
+  assert.equal(GASPRIJS, 1.37); assert.equal(STROOMPRIJS, 0.21);
+  assert.equal(h.besparing, 592); assert.equal(h.jaren, 6.9);
   const ae = bereken({ type: 'allelectric', gas: 950 });
   assert.equal(ae.kwh, 3150); assert.ok(Math.abs(ae.besparing - 1000) <= 40, String(ae.besparing));
   assert.ok(ae.jaren > 8 && ae.jaren < 10);
+  assert.equal(ae.besparing, 1000); assert.equal(ae.jaren, 9);
+  assert.equal(jaarTekst(9), '9,0 jaar'); assert.equal(jaarTekst(6.9), '6,9 jaar');
   assert.equal(bereken({ type: 'luchtlucht' }), null);
   assert.equal(bereken({ type: 'hybride', gas: 0 }).jaren, null);
 });

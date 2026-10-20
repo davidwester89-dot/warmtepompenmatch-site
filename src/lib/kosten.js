@@ -8,10 +8,11 @@ export const BRON = {
   rvoWp: { naam: 'RVO: ISDE voor een warmtepomp', url: 'https://www.rvo.nl/subsidies-financiering/isde/woningeigenaren/warmtepomp' },
   rvo2027: { naam: 'RVO: ISDE, wat wijzigt er in 2027', url: 'https://www.rvo.nl/subsidies-financiering/isde/isde-wat-wijzigt-er-2027' },
 };
-// Prijzen afgeleid uit de eurobedragen in de rekenvoorbeelden van Milieu Centraal (hr-ketel tegenover hybride en all-electric).
-// Milieu Centraal noemt elders € 1,37/m³ als verwachting 2026-2040; VerduurzaamMatch gebruikt dat getal met de gepubliceerde besparing (€ 600).
-// De stroomprijs hier (€ 0,21) is ook afgeleid uit die voorbeelden. ThuisaccuMatch rekent met CBS september 2026 (~€ 0,26); beide bronnen zijn geldig.
-export const GASPRIJS = 1.39; // € per m³
+// Gas- en stroomprijs van Milieu Centraal (Kenniscentrum Duurzaam Leven): de verwachte gemiddelden voor 2026-2040,
+// € 1,37 per m³ gas en 21 cent per kWh, uit de toelichting 'Gasprijs en stroomprijs besparingen' op
+// https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/hybride-warmtepomp/ (gecontroleerd 20-10-2026).
+// ThuisaccuMatch rekent voor stroom met CBS september 2026 (~€ 0,26); beide bronnen zijn geldig.
+export const GASPRIJS = 1.37; // € per m³, Milieu Centraal, gecontroleerd 20-10-2026
 export const STROOMPRIJS = 0.21; // € per kWh
 export const VASTRECHT_GAS = 360; // € per jaar, vervalt als je van het gas af gaat (Milieu Centraal)
 
@@ -44,4 +45,4 @@ export function bereken({ type = 'hybride', gas = 1360, kosten, subsidie, gaspri
   return { type, m3: Math.round(m3), kwh: Math.round(kwh), besparing, kosten: inv, subsidie: sub, netto, jaren };
 }
 export const eur = (n) => '€ ' + Math.round(n).toLocaleString('nl-NL');
-export const jaarTekst = (j) => (j == null ? 'niet terug te verdienen met deze cijfers' : `${String(j).replace('.', ',')} jaar`);
+export const jaarTekst = (j) => (j == null ? 'niet terug te verdienen met deze cijfers' : `${j.toFixed(1).replace('.', ',')} jaar`);
