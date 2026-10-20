@@ -96,3 +96,8 @@ test('typen: kosten en subsidie volgens Milieu Centraal', () => {
   assert.equal(TYPES.allelectric.kosten, 12000); assert.equal(TYPES.allelectric.subsidie, 3025);
   assert.equal(TYPES.bodem.kosten, 30000); assert.equal(TYPES.luchtlucht.subsidie, 0);
 });
+
+test('blog beste hybride: genoemde rekenhulp-uitkomst klopt met bereken()', () => {
+  const md = readFileSync('content/blog/2026-10-20-beste-hybride-warmtepomp.md', 'utf8');
+  assert.ok(md.includes(`komt op ${jaarTekst(bereken({ type: 'hybride', gas: 1360 }).jaren)}`));
+});
