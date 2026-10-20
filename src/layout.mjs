@@ -99,17 +99,19 @@ ${PREVIEW ? '<p class="preview">Testversie van WarmtepompenMatch.nl, nog niet li
 <nav class="main" aria-label="Hoofdmenu">${navLinks(navPath)}</nav>
 <details class="menu"><summary><span class="burger" aria-hidden="true"></span><span class="menu-txt">Menu</span></summary><nav aria-label="Hoofdmenu">${navLinks(navPath)}</nav></details>
 </div></header>
-<main id="inhoud"><div class="wrap">
+${p.full ? `<main id="inhoud" class="full">
+${a11yTabellen(p.body)}
+<div class="wrap">${foutGezien(url)}</div>
+</main>` : `<main id="inhoud"><div class="wrap">
 ${crumbs}
 ${a11yTabellen(withStamp(p.body, p.stamp))}
 ${foutGezien(url)}
-</div></main>
+</div></main>`}
 <footer class="site"><div class="wrap">
 <div class="cols">
 <div><a class="logo" href="/">${LOGO}<span>${BRAND}</span></a><p>Onafhankelijke hulp bij het kiezen van een warmtepomp: hybride of all-electric, welk merk en wat het kost.</p></div>
-<div><p class="fh">Kiezen</p><ul><li><a href="/warmtepomp-keuzehulp/">Warmtepomp keuzehulp</a></li><li><a href="/vergelijken/">Alle merken vergelijken</a></li><li><a href="/merken/">Merken</a></li><li><a href="/terugverdientijd-berekenen/">Terugverdientijd berekenen</a></li></ul></div>
+<div class="fcol"><div><p class="fh">Kiezen</p><ul><li><a href="/warmtepomp-keuzehulp/">Warmtepomp keuzehulp</a></li><li><a href="/vergelijken/">Alle merken vergelijken</a></li><li><a href="/merken/">Merken</a></li><li><a href="/terugverdientijd-berekenen/">Terugverdientijd berekenen</a></li></ul></div><div><p class="fh">Over ons</p><ul><li><a href="/over/">Over WarmtepompenMatch</a></li><li><a href="/over/#methode">Zo vergelijken we</a></li><li><a href="/privacy/">Privacy en cookies</a></li>${GA_ID ? '<li><a href="/privacy/#cookies" data-consent-open>Cookie-instellingen</a></li>' : ''}<li><a href="mailto:${SITE.email}">Contact</a></li></ul></div></div>
 <div><p class="fh">Gidsen</p><ul><li><a href="/warmtepomp-kosten/">Wat kost een warmtepomp?</a></li><li><a href="/isde-subsidie-warmtepomp-2026/">ISDE-subsidie 2026</a></li><li><a href="/hybride-of-all-electric/">Hybride of all-electric</a></li><li><a href="/is-mijn-huis-geschikt-voor-een-warmtepomp/">Is mijn huis geschikt?</a></li><li><a href="/warmtepomp-terugverdientijd/">Terugverdientijd</a></li><li><a href="/warmtepomp-geluid/">Geluid en regels</a></li><li><a href="/gidsen/">Alle gidsen</a></li>${NAV_OPT.blog ? '<li><a href="/blog/">Blog</a></li>' : ''}</ul></div>
-<div><p class="fh">Over ons</p><ul><li><a href="/over/">Over WarmtepompenMatch</a></li><li><a href="/over/#methode">Zo vergelijken we</a></li><li><a href="/privacy/">Privacy en cookies</a></li>${GA_ID ? '<li><a href="/privacy/#cookies" data-consent-open>Cookie-instellingen</a></li>' : ''}<li><a href="mailto:${SITE.email}">Contact</a></li></ul></div>
 </div>
 ${networkFooter()}
 <p class="fine">© 2026 ${SITE.name}. Partnerlinks hebben nooit invloed op de volgorde of het advies.</p>

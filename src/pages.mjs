@@ -2,6 +2,7 @@ import { SITE, esc, ORG, GA_ID, ICONS, fmtDate } from './layout.mjs';
 import { PRIVACY_UPDATED, cookieTabel, partnerNetwerk, grondslag, doorgifte, bewaartermijnen, rechten } from './privacy-avg.mjs';
 import { CONSENT_KEY } from './lib/consent.js';
 import { PARTNERLINKS } from './lib/partnerlinks.js';
+import { HERO_ART } from './hero-art.mjs';
 import { IDS, CHECKED, FEATURES, STERK_IN } from './lib/merken.js';
 import { knop } from './lib/partnerlinks.js';
 import { VRAGEN } from './lib/match.js';
@@ -28,50 +29,67 @@ const homeFaq = [
   ['Verdient WarmtepompenMatch aan de merken?', 'Nu niet. Komt er later een partnerlink of offertepartner, dan heeft die altijd het label "partnerlink" en telt die nooit mee in de score, de volgorde of het advies.'],
 ];
 const miniRows = RANG.map((id) => `<tr><th scope="row"><span class="rowlogo">${logo(id, 'sm')}</span><a href="/merken/${M[id].slug}/">${esc(M[id].naam)}</a></th><td data-l="Score">${scoreBadge(id)}</td>${[['hybride', 'Hybride'], ['allelectric', 'All-electric'], ['bodem', 'Bodem'], ['propaan', 'Propaan'], ['prijs', 'Prijs openbaar']].map(([k, l]) => `<td data-l="${l}">${fv(FEATURES[id][k], false)}</td>`).join('')}</tr>`).join('');
-const typeCards = () => `<div class="grid cards">${[['hybride', '/hybride-of-all-electric/'], ['allelectric', '/hybride-of-all-electric/'], ['bodem', '/warmtepomp-kosten/']].map(([k, h]) => { const t = TYPES[k]; return `<a class="card" href="${h}"><h3>${esc(t.naam)}</h3><p>${esc(t.kort)}. Gemiddeld ${eur(t.kosten)}, subsidie ${eur(t.subsidie)}.</p><span class="more">Lees meer →</span></a>`; }).join('')}</div>`;
+// Lijn-iconen voor de kaarten (redesign-v1, Lucide-stijl): hybride = vlam, all-electric = bliksem, bodem = lagen, vergelijking = pijlen.
+const svgI = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const TYPE_ICO = { hybride: svgI('<path d="M12 3c2.5 3 5.5 5.2 5.5 9.5a5.5 5.5 0 0 1-11 0c0-2.2 1-3.6 2.2-4.6.1 2 1 3.2 2.3 3.6-.3-3.3.2-5.8 1-8.5z"/>'), allelectric: svgI('<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>'), bodem: svgI('<path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/><path d="m3 17.5 9 5 9-5"/>') };
+const VS_ICO = svgI('<path d="M7 4 3 8l4 4"/><path d="M3 8h14"/><path d="m17 20 4-4-4-4"/><path d="M21 16H7"/>');
+const typeCards = () => `<div class="grid cards">${[['hybride', '/hybride-of-all-electric/'], ['allelectric', '/hybride-of-all-electric/'], ['bodem', '/warmtepomp-kosten/']].map(([k, h]) => { const t = TYPES[k]; return `<a class="card" href="${h}"><span class="ci" aria-hidden="true">${TYPE_ICO[k]}</span><h3>${esc(t.naam)}</h3><p>${esc(t.kort)}. Gemiddeld ${eur(t.kosten)}, subsidie ${eur(t.subsidie)}.</p><span class="more">Lees meer →</span></a>`; }).join('')}</div>`;
 const VS = [['/vergelijken/quatt-vs-remeha/', 'Quatt of Remeha', 'Twee hybrides met propaan: vaste prijs of via de installateur.'], ['/vergelijken/daikin-vs-mitsubishi-electric/', 'Daikin of Mitsubishi Electric', 'Twee Japanse merken met lucht-water en lucht-lucht.'], ['/vergelijken/vaillant-vs-nefit-bosch/', 'Vaillant of Nefit Bosch', 'Twee grote ketelmerken met propaanwarmtepompen.']];
-const vsCards = () => `<div class="grid cards">${VS.map(([h, t, d]) => `<a class="card" href="${h}"><h3>${esc(t)}</h3><p>${esc(d)}</p><span class="more">Bekijk de vergelijking →</span></a>`).join('')}</div>`;
+const vsCards = () => `<div class="grid cards">${VS.map(([h, t, d]) => `<a class="card" href="${h}"><span class="ci" aria-hidden="true">${VS_ICO}</span><h3>${esc(t)}</h3><p>${esc(d)}</p><span class="more">Bekijk de vergelijking →</span></a>`).join('')}</div>`;
 const GIDSLINKS = [['/warmtepomp-kosten/', 'Wat kost een warmtepomp in 2026?'], ['/warmtepomp-terugverdientijd/', 'Terugverdientijd van een warmtepomp'], ['/isde-subsidie-warmtepomp-2026/', 'ISDE-subsidie voor een warmtepomp in 2026'], ['/hybride-of-all-electric/', 'Hybride of all-electric: wat past bij jouw huis?'], ['/warmtepomp-geluid/', 'Warmtepomp en geluid: regels en afstand'], ['/is-mijn-huis-geschikt-voor-een-warmtepomp/', 'Is mijn huis geschikt voor een warmtepomp?']];
 
 export const home = {
   path: '/', title: 'Warmtepomp kiezen? Vergelijk eerst | WarmtepompenMatch', ogTitle: 'WarmtepompenMatch: welke warmtepomp past bij jouw huis?', h1: 'Warmtepomp kiezen? Vergelijk eerst.', og: 'home',
   description: 'Hybride of all-electric? Doe de keuzehulp, vergelijk 8 merken op een vaste checklist en zie wat een warmtepomp kost met de ISDE-subsidie van 2026.',
   schema: [faqSchema(homeFaq)],
-  body: `<section class="hero"><div>
+  full: true,
+  body: `<section class="hero"><div class="wrap hero-in"><div class="hero-txt">
 <p class="h1-brand">Warmtepompen<b>Match</b>.nl</p>
 <h1 class="tagline">Warmtepomp kiezen? Vergelijk eerst.</h1>
 <p class="lead">Hybride of all-electric, welk merk en wat kost het? Zes vragen over je huis en je krijgt een advies met kosten, subsidie en terugverdientijd. Acht merken naast elkaar op 10 vaste punten.</p>
 <div class="actions"><a class="btn" href="/warmtepomp-keuzehulp/" data-cta="home_hero">Start de keuzehulp</a><a class="btn ghost" href="/vergelijken/">Vergelijk alle 8 merken</a></div>
-</div>
-<div class="hero-q"><p class="hero-q-step">Vraag 1 van ${VRAGEN.length}</p><p class="hero-q-title" id="hq">${esc(VRAGEN[0].vraag)}</p><div class="hero-q-opts" role="group" aria-labelledby="hq">${VRAGEN[0].opties.map(([v, l]) => `<a class="choice" href="/warmtepomp-keuzehulp/?woning=${v}" rel="nofollow">${esc(l)}<span aria-hidden="true">→</span></a>`).join('')}</div><p class="hero-q-foot">Daarna nog ${VRAGEN.length - 1} korte vragen. Gratis, zonder account.</p></div>
-</section>
 <ul class="trustbar">
 <li>${ICONS.kalender}<span>Gegevens gecontroleerd op <time datetime="${CHECKED}">${fmtDate(CHECKED)}</time></span></li>
 <li>${ICONS.bron}<span>Bron bij elk bedrag en elk punt</span></li>
 <li>${ICONS.schild}<span>Volgorde nooit betaald</span></li>
 <li>${ICONS.gratis}<span>Gratis, zonder account</span></li>
 </ul>
-<section class="logobar" aria-labelledby="h-pl"><h2 id="h-pl">Deze 8 merken vergelijken we</h2><div class="logos eight">${[...IDS].sort((a, b) => M[a].naam.localeCompare(M[b].naam, 'nl')).map((id) => `<a class="logo-tile" href="/merken/${M[id].slug}/">${logo(id, 'lg')}</a>`).join('')}</div></section>
+</div>
+<div class="hero-art">${HERO_ART}</div></div></section>
+<div class="wrap qwrap"><div class="hero-q"><p class="hero-q-step">Vraag 1 van ${VRAGEN.length}</p><p class="hero-q-title" id="hq">${esc(VRAGEN[0].vraag)}</p><div class="hero-q-opts" role="group" aria-labelledby="hq">${VRAGEN[0].opties.map(([v, l]) => `<a class="choice" href="/warmtepomp-keuzehulp/?woning=${v}" rel="nofollow">${esc(l)}<span aria-hidden="true">→</span></a>`).join('')}</div><p class="hero-q-foot">Daarna nog ${VRAGEN.length - 1} korte vragen. Gratis, zonder account.</p></div></div>
+<section class="logobar" aria-labelledby="h-pl"><div class="wrap"><h2 id="h-pl">Deze 8 merken vergelijken we</h2><div class="logos eight">${[...IDS].sort((a, b) => M[a].naam.localeCompare(M[b].naam, 'nl')).map((id) => `<a class="logo-tile" href="/merken/${M[id].slug}/">${logo(id, 'lg')}</a>`).join('')}</div></div></section>
+<section class="sec tint"><div class="wrap">
 <h2>Drie soorten warmtepomp</h2>
 <p class="sub">Gemiddelde kosten inclusief installatie en het subsidievoorbeeld van Milieu Centraal.</p>
 ${typeCards()}
+</div></section>
+<section class="sec"><div class="wrap">
 <h2>De merken op een rij</h2>
 <p class="sub">Gesorteerd op checklistscore, bij gelijke stand op naam. De score telt wat het merk zelf op de eigen site noemt.</p>
 <div class="table-wrap"><table class="data stack"><thead><tr><th scope="col">Merk</th><th scope="col">Score</th><th scope="col">Hybride</th><th scope="col">All-electric</th><th scope="col">Bodem</th><th scope="col">Propaan</th><th scope="col">Prijs openbaar</th></tr></thead><tbody>${miniRows}</tbody></table></div>
 <p><a href="/vergelijken/">Alle 10 checklistpunten, met filters →</a></p>
-<section class="band method-band">
-<h2>Zo vergelijken we</h2>
-<ol class="steps">
+</div></section>
+<section class="sec warm method-band"><div class="wrap">
+<div class="sec-head"><p class="eyebrow">Onze werkwijze</p><h2>Zo vergelijken we</h2></div>
+<ol class="steps how">
 <li><strong>Bron bij alles.</strong> Merkgegevens komen van de site van het merk, kosten van Milieu Centraal en subsidie van RVO.</li>
 <li><strong>Een vaste checklist.</strong> Tien punten, van aanbod en propaan tot garantie. De score telt wat het merk zelf noemt.</li>
 <li><strong>Partners veranderen niets.</strong> Partnerlinks en offertepartners tellen nooit mee in de score, de volgorde of het advies.</li>
 </ol>
 <p class="author">Door <a href="/over/">${SITE.owner}</a> · <a href="/over/#methode">Hoe de score werkt</a></p>
-</section>
+</div></section>
+<section class="sec"><div class="wrap">
 <h2>Populaire vergelijkingen</h2>${vsCards()}
+</div></section>
+<section class="sec tint"><div class="wrap split2"><div>
 <h2>Gidsen</h2><ul class="gidslijst">${GIDSLINKS.map(([h, t]) => `<li><a href="${h}">${esc(t)}</a></li>`).join('')}<li><a href="/terugverdientijd-berekenen/">Rekenhulp: terugverdientijd berekenen</a></li></ul>
+</div><div>
 {{latest}}
-${faqHtml(homeFaq)}`,
+</div></div></section>
+<section class="sec"><div class="wrap faq">
+${faqHtml(homeFaq)}
+<div class="cta-band"><div><h2>Welke warmtepomp past bij jouw huis?</h2><p>Zes vragen over je huis en je krijgt een advies met kosten, subsidie en terugverdientijd.</p></div><a class="btn" href="/warmtepomp-keuzehulp/" data-cta="home_band">Start de keuzehulp</a></div>
+</div></section>`,
 };
 
 // ---- Keuzehulp ----
