@@ -145,5 +145,5 @@ export function withStamp(body, stamp) {
 }
 export function foutGezien(url) {
   const q = `subject=${encodeURIComponent(`Fout gezien op ${url.replace(/^https?:\/\//, '')}`)}&body=${encodeURIComponent(`Pagina: ${url}\n\nWat klopt er niet?\n`)}`;
-  return `<p class="report">Fout gezien? <a href="mailto:${SITE.email}?${q}" data-cta="report_error">Laat het ons weten</a>.</p>`;
+  return `<p class="report">Fout gezien? <a href="mailto:${SITE.email}?${esc(q)}" data-cta="report_error">Laat het ons weten</a>.</p>`;
 }

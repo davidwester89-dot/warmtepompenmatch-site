@@ -30,3 +30,11 @@ test('wetten.overheid.nl-link: & ge-escaped als &amp; in href', () => {
   const bare = htmlFiles().filter((f) => /href="https?:[^"]*&(?!amp;|#|[a-z]+;)[^"]*"/.test(read(f)));
   assert.deepEqual(bare, []);
 });
+
+test('fout-melden-mailto: & in href ge-escaped als &amp;', () => {
+  buildLive();
+  const files = htmlFiles();
+  const bad = files.filter((f) => /href="mailto:[^"]*&(?!amp;|#|[a-z]+;)[^"]*"/.test(read(f)));
+  assert.deepEqual(bad, []);
+  assert.match(read('dist/index.html'), /href="mailto:info@warmtepompenmatch\.nl\?subject=[^"&]+&amp;body=[^"&]+" data-cta="report_error"/);
+});
