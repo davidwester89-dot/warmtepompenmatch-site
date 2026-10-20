@@ -3,7 +3,7 @@ title: Warmtepompoffertes vergelijken: waar let je op in 2026?
 seo_title: Warmtepompoffertes vergelijken: checklist 2026
 description: Twee offertes voor een warmtepomp? Vergelijk vermogen, meldcode, wat er in de prijs zit, garantie en certificaten. En teken op tijd voor de ISDE van 2026.
 date: 2026-10-17
-updated: 2026-10-17
+updated: 2026-10-20
 checked: 2026-10-17
 image: warmtepomp-offerte-vergelijken
 image_alt: Buitenunit van een warmtepomp zonder merkopdruk op het balkon van een woning, naast de achterdeur
@@ -25,7 +25,7 @@ Een offerte voor een warmtepomp vergelijk je niet alleen op het bedrag onderaan.
 
 > **Kort gezegd:** vraag meerdere offertes aan en vergelijk alleen offertes met hetzelfde type warmtepomp en een vergelijkbaar vermogen. Kijk of de warmtepomp op de meldcodelijst van RVO staat, wat er wel en niet in de prijs zit en welke garantie je krijgt.
 >
-> Wordt je warmtepomp pas in 2027 geplaatst? Met een getekende offerte of opdrachtbevestiging uit 2026 krijg je nog **€ 225 per kW** ISDE-subsidie, in plaats van de **€ 120 per kW** die RVO voor 2027 aankondigt.
+> Wordt je warmtepomp pas in 2027 geplaatst? Met een getekende offerte of opdrachtbevestiging uit 2026 krijg je nog **€ 225 per kW** ISDE-subsidie, in plaats van de **€ 120 per kW** die RVO voor 2027 van plan is. Die verlaging is voorgenomen en nog niet definitief.
 
 ## Wat een warmtepomp ongeveer kost
 
@@ -65,12 +65,12 @@ De garantie van alle acht merken staat in de [vergelijking](/vergelijken/).
 
 ## Teken je dit jaar? Let op de ISDE van 2027
 
-RVO kondigt voor 2027 een lagere subsidie aan voor lucht-waterwarmtepompen: € 120 per kW in plaats van € 225. Daar staan een hogere bonus voor energielabel A+++ (€ 250) en een nieuwe bonus van € 200 voor slimme sturing tegenover.
+RVO wil de subsidie voor lucht-waterwarmtepompen in 2027 verlagen naar € 120 per kW in plaats van € 225. Daar staan een hogere bonus voor energielabel A+++ (€ 250) en een nieuwe bonus van € 200 voor slimme sturing tegenover. RVO noemt dit voorgenomen wijzigingen; ze zijn nog niet definitief.
 
 | All-electric, 8 kW, label A+++ | ISDE |
 |---|---|
 | Gekocht in 2026: € 1.025 + 8 × € 225 + € 200 | € 3.025 |
-| Gekocht in 2027, met slimme sturing: € 1.025 + 8 × € 120 + € 250 + € 200 | € 2.435 |
+| Gekocht in 2027 (voorgenomen bedragen), met slimme sturing: € 1.025 + 8 × € 120 + € 250 + € 200 | € 2.435 |
 
 Koop je uiterlijk 31 december 2026 en wordt de warmtepomp in 2027 geplaatst? Dan geldt een overgangsregeling en krijg je nog € 225 per kW. Als bewijs stuur je een getekende offerte of de opdrachtbevestiging mee.
 
