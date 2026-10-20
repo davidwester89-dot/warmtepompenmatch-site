@@ -87,7 +87,7 @@ Een paar fabrikanten noemen zelf prijzen, maar niet op dezelfde manier:
 - **Itho Daalderop Amber 65:** € 4.750 bruto adviesprijs, exclusief btw en installatie.
 - **Remeha Elga Ace 4 kW:** € 3.154 bruto lijstprijs, exclusief btw en installatie.
 
-Volgens het rekenvoorbeeld van Milieu Centraal bespaar je met een hybride zo'n **€ 600 per jaar**. Milieu Centraal rekent met € 1,37 per m³ gas en 21 cent per kWh. Wij rekenen daarmee uit: (6.200 − 2.125) / 600 = **6,8 jaar**, zonder subsidie **10,3 jaar**. Reken je eigen situatie na met de [terugverdientijd-calculator](/terugverdientijd-berekenen/) en lees meer over [warmtepomp kosten](/warmtepomp-kosten/).
+Volgens het rekenvoorbeeld van Milieu Centraal bespaar je met een hybride zo'n **€ 600 per jaar**. Milieu Centraal rekent met € 1,37 per m³ gas en 21 cent per kWh. Wij rekenen daarmee uit: (6.200 − 2.125) / 600 = **6,8 jaar** (onze rekensom), zonder subsidie **10,3 jaar** (onze rekensom). Reken je eigen situatie na met de [terugverdientijd-calculator](/terugverdientijd-berekenen/) en lees meer over [warmtepomp kosten](/warmtepomp-kosten/).
 
 Wordt je warmtepomp pas in 2027 geplaatst? RVO is van plan de subsidie dan te verlagen naar € 120 per kW, met € 250 extra bij A+++ en € 200 extra voor een slimme warmtepomp. Voor 4 kW met A+++ en slimme aansturing is dat, met het basisbedrag van € 1.025, € 1.955. Koop je uiterlijk 31 december 2026, dan krijg je nog € 225 per kW. Bewaar je getekende offerte of opdrachtbevestiging. Alles over de regels lees je bij [ISDE-subsidie warmtepomp 2026](/isde-subsidie-warmtepomp-2026/).
 
