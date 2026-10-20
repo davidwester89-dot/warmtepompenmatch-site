@@ -18,8 +18,19 @@ export const bron = (...lists) => {
 export const B = (...ids) => ids.map((k) => [BRON[k].naam, BRON[k].url]);
 /** Bronnen van de checklist van één of meer merken (unieke URL's). */
 export const featureBronnen = (...ids) => ids.flatMap((id) => [...new Set(Object.values(FEATURES[id]).map((f) => f.s).filter(Boolean))].map((u) => [`${M[id].naam}: ${bronTekst(u)}`, u]));
-/** Linktekst van een bron: paginatitel uit de URL als die leesbaar is (3+ woorden), anders domein + pad. */
+/** Leesbare linkteksten voor bron-URL's zonder bruikbare slug (titel van de pagina zelf, gecontroleerd 20-10-2026). */
+const BRONTITEL = {
+  'https://www.daikin.nl/nl_nl/consument/nieuweverwarmen.html': 'Het Nieuwe Verwarmen, Daikin-warmtepompen (daikin.nl)',
+  'https://www.daikin.nl/nl_nl/consument/products-and-advice/product-categories/controllers/onecta.html': 'Onecta-app (daikin.nl)',
+  'https://www.daikin.nl/nl_nl/consument/dealer-locator.html': 'Dealer Locator voor consumenten (daikin.nl)',
+  'https://www.vaillant.nl/advies/technologie-begrijpen/hybride-verwarmingssystemen/': 'Hybride warmtepomp (vaillant.nl)',
+  'https://www.vaillant.nl/advies/verwarming-in-slim-huis/myvaillant-app/': 'Slimme sturing met de myVaillant-app (vaillant.nl)',
+  'https://www.vaillant.nl/producten/airconditioning/': 'Airconditioning (vaillant.nl)',
+  'https://www.nefit-bosch.nl/producten/airconditioning/': 'Airco kopen (nefit-bosch.nl)',
+};
+/** Linktekst van een bron: vaste titel uit BRONTITEL, anders paginatitel uit de URL als die leesbaar is (3+ woorden), anders domein + pad. */
 export function bronTekst(u) {
+  if (BRONTITEL[u]) return BRONTITEL[u];
   const url = new URL(u); const host = url.hostname.replace(/^www\./, '');
   const slug = decodeURIComponent(url.pathname.replace(/\/$/, '').split('/').pop() || '').replace(/\.html?$/, '').replace(/^\d+-/, '');
   if (slug.split('-').length >= 3) return `${slug.charAt(0).toUpperCase()}${slug.slice(1).replace(/-/g, ' ')} (${host})`;
