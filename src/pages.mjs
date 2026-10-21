@@ -113,7 +113,7 @@ ${VRAGEN.map((v, i) => `<fieldset class="q"><legend>${i + 1}. ${esc(v.vraag)}</l
 
 // ---- Merkpagina's ----
 const RELATED = {
-  quatt: [['/vergelijken/quatt-vs-remeha/', 'Quatt of Remeha']], remeha: [['/vergelijken/quatt-vs-remeha/', 'Quatt of Remeha']],
+  quatt: [['/vergelijken/quatt-vs-remeha/', 'Quatt of Remeha'], ['/hybride-warmtepomp-kosten/', 'Wat kost een hybride warmtepomp?']], remeha: [['/vergelijken/quatt-vs-remeha/', 'Quatt of Remeha'], ['/hybride-warmtepomp-kosten/', 'Wat kost een hybride warmtepomp?']],
   daikin: [['/vergelijken/daikin-vs-mitsubishi-electric/', 'Daikin of Mitsubishi Electric']], mitsubishi: [['/vergelijken/daikin-vs-mitsubishi-electric/', 'Daikin of Mitsubishi Electric']],
   vaillant: [['/vergelijken/vaillant-vs-nefit-bosch/', 'Vaillant of Nefit Bosch']], nefitbosch: [['/vergelijken/vaillant-vs-nefit-bosch/', 'Vaillant of Nefit Bosch']],
   itho: [['/warmtepomp-kosten/', 'Wat kost een warmtepomp?']], panasonic: [['/hybride-of-all-electric/', 'Hybride of all-electric']],
@@ -427,9 +427,9 @@ ${faqHtml(geschiktFaq)}${matchCta('Check je huis in 1 minuut')}${bron(B('mcVolle
 const OFFERTEBLOG = ['/blog/warmtepomp-offerte-vergelijken/', 'Warmtepompoffertes vergelijken in 6 stappen'];
 const LEESOOK = {
   '/hybride-warmtepomp-kosten/': [['/warmtepomp-kosten/', 'Wat kost een warmtepomp in 2026?'], ['/isde-subsidie-warmtepomp-2026/', 'ISDE-subsidie 2026'], OFFERTEBLOG],
-  '/warmtepomp-kosten/': [OFFERTEBLOG, ['/isde-subsidie-warmtepomp-2026/', 'ISDE-subsidie 2026 en wat er in 2027 verandert'], ['/warmtepomp-terugverdientijd/', 'Terugverdientijd van een warmtepomp']],
+  '/warmtepomp-kosten/': [OFFERTEBLOG, ['/isde-subsidie-warmtepomp-2026/', 'ISDE-subsidie 2026 en wat er in 2027 verandert'], ['/hybride-of-all-electric/', 'Hybride of all-electric: wat past bij jouw huis?']],
   '/warmtepomp-terugverdientijd/': [['/warmtepomp-kosten/', 'Wat kost een warmtepomp in 2026?'], ['/isde-subsidie-warmtepomp-2026/', 'ISDE-subsidie 2026'], OFFERTEBLOG],
-  '/isde-subsidie-warmtepomp-2026/': [OFFERTEBLOG, ['/warmtepomp-kosten/', 'Wat kost een warmtepomp in 2026?'], ['/vergelijken/', 'Alle 8 merken naast elkaar']],
+  '/isde-subsidie-warmtepomp-2026/': [OFFERTEBLOG, ['/hybride-warmtepomp-kosten/', 'Wat kost een hybride warmtepomp in 2026?'], ['/vergelijken/', 'Alle 8 merken naast elkaar']],
   '/hybride-of-all-electric/': [['/is-mijn-huis-geschikt-voor-een-warmtepomp/', 'Is mijn huis geschikt?'], ['/warmtepomp-kosten/', 'Wat kost een warmtepomp in 2026?'], OFFERTEBLOG],
   '/warmtepomp-geluid/': [['/is-mijn-huis-geschikt-voor-een-warmtepomp/', 'Is mijn huis geschikt?'], OFFERTEBLOG, ['/vergelijken/', 'Alle 8 merken naast elkaar']],
   '/is-mijn-huis-geschikt-voor-een-warmtepomp/': [['/hybride-of-all-electric/', 'Hybride of all-electric?'], ['/warmtepomp-geluid/', 'Warmtepomp en geluid'], OFFERTEBLOG],
