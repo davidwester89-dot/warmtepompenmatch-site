@@ -623,3 +623,6 @@ footer.site a{color:#fff}
 footer.site .net{border-top:1px solid rgba(255,255,255,.14);margin-top:40px;padding-top:22px}
 footer.site .net b{color:var(--foot-b)}
 footer.site .fine{color:var(--foot-c);border-top:1px solid rgba(255,255,255,.14);padding-top:20px;margin-top:24px}
+
+/* Partnerzin per blok met partnerlinks (vervangt het label per knop) */
+.pnoot{font-size:.875rem;color:var(--muted);margin:6px 0 0}

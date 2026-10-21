@@ -1,7 +1,7 @@
 // Aanvullende AVG-blokken voor /privacy/ (audit beveiliging & juridisch 20-10-2026, punt A.6 / F1).
 // Alleen vaststaande feiten: cookielooptijd uit consent.js (cookie_expires), GA4-bewaartermijn uit de property-instelling.
 // "Wie is verantwoordelijk?" staat hier bewust NIET in: dat volgt na het KvK-besluit.
-export const PRIVACY_UPDATED = '2026-10-20';
+export const PRIVACY_UPDATED = '2026-10-21';
 
 const NETWERKEN = [
   { re: /(^|\.)pxf\.io$|impact\.com$/, naam: 'Impact', privacy: 'https://impact.com/privacy-policy/' },
@@ -35,9 +35,9 @@ export function cookieTabel(gaId, storageKey) {
 /** Zin over het netwerkcookie na een klik op een partnerlink. */
 export function partnerNetwerk(siteNaam, partnerlinks) {
   const nw = netwerkenVan(partnerlinks);
-  if (!nw.length) return `<p>Op dit moment staan er geen partnerlinks op deze site. Komen die er, dan herken je ze aan het label "partnerlink" en noemen we hier het affiliatenetwerk dat bij een klik een cookie plaatst.</p>`;
+  if (!nw.length) return `<p>Op dit moment staan er geen partnerlinks op deze site. Komen die er, dan worden ze bij de knoppen vermeld en noemen we hier het affiliatenetwerk dat bij een klik een cookie plaatst.</p>`;
   const lijst = nw.map((n) => `<a href="${n.privacy}" rel="noopener">${n.naam}</a>`).join(' en ');
-  return `<p>Een partnerlink herken je aan het label "partnerlink". Klik je erop, dan ga je via een affiliatenetwerk (${nw.map((n) => n.naam).join(', ')}) naar de aanbieder. Dat netwerk plaatst op zijn eigen domein een cookie of klik-ID, om vast te leggen dat je via ${siteNaam} kwam. Sluit je iets af, dan kunnen wij daardoor een vergoeding krijgen. Het netwerk is zelf verantwoordelijk voor die gegevens; zie het privacybeleid van ${lijst}.</p>`;
+  return `<p>Partnerlinks worden bij de knoppen vermeld. Klik je erop, dan ga je via een affiliatenetwerk (${nw.map((n) => n.naam).join(', ')}) naar de aanbieder. Dat netwerk plaatst op zijn eigen domein een cookie of klik-ID, om vast te leggen dat je via ${siteNaam} kwam. Sluit je iets af, dan kunnen wij daardoor een vergoeding krijgen. Het netwerk is zelf verantwoordelijk voor die gegevens; zie het privacybeleid van ${lijst}.</p>`;
 }
 
 export function grondslag() {
