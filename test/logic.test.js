@@ -80,11 +80,11 @@ test('score = som van de punten; volgorde = score, dan naam', () => {
   }
 });
 
-test('partnerlinks leeg; gevuld = sponsored nofollow + label; nooit in keuzehulp of checklist', () => {
+test('partnerlinks leeg; gevuld = sponsored nofollow, geen zichtbaar label; nooit in keuzehulp of checklist', () => {
   assert.deepEqual(PARTNERLINKS, {});
   for (const id of IDS) { const o = uitgaand(id); assert.equal(o.partner, false); assert.equal(o.href, MERKEN[id].url); assert.ok(!knop(id, 't').includes('partner"')); }
   const k = knop('quatt', 't', 'btn', { quatt: 'https://example.com/aff' });
-  assert.match(k, /rel="sponsored nofollow noopener"/); assert.match(k, /<\/a><span class="partner">partnerlink<\/span>$/);
+  assert.match(k, /rel="sponsored nofollow noopener"/); assert.match(k, /<\/a>$/); assert.ok(!/<span class="partner"|>\s*partnerlink\s*</i.test(k));
   for (const f of ['../src/lib/checklist.js', '../src/lib/match.js', '../src/lib/kosten.js']) {
     const s = readFileSync(new URL(f, import.meta.url), 'utf8');
     assert.ok(!/partnerlinks|leads|LEADPARTNERS|ROUTING/.test(s), f);

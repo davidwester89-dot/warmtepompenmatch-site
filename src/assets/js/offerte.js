@@ -99,7 +99,7 @@ function iframe(a, id, p) {
   }
 }
 function redirect(a, id, p) {
-  vak.innerHTML = `<p><a class="btn" href="${p.url}" rel="sponsored nofollow noopener" target="_blank" data-lead-out="${id}">Naar het formulier van ${p.naam}</a> <span class="partner">partnerlink</span></p><p class="src">Het formulier opent in een nieuw venster op de site van ${p.naam}.</p>`;
+  vak.innerHTML = `<p><a class="btn" href="${p.url}" rel="sponsored nofollow noopener" target="_blank" data-lead-out="${id}">Naar het formulier van ${p.naam}</a></p><p class="src">Het formulier opent in een nieuw venster op de site van ${p.naam}.</p>`;
   vak.querySelector('a').addEventListener('click', () => track('lead_partner_click', analytics(a, id)));
 }
 document.getElementById('l-door').addEventListener('click', () => {

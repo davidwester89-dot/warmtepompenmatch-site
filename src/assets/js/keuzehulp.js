@@ -32,7 +32,7 @@ function antwoorden() {
 function offerte(type) {
   const c = categorieVan(type);
   if (!c || !ROUTING[c]) return '';
-  return `<p class="leadlink"><a class="btn" href="${BASE}/offerte/?m=${c}" data-lead="${c}" data-pos="keuzehulp">Offertes aanvragen</a> <span class="partner">partnerlink</span></p>`;
+  return `<p class="leadlink"><a class="btn" href="${BASE}/offerte/?m=${c}" data-lead="${c}" data-pos="keuzehulp">Offertes aanvragen</a></p>`;
 }
 function alt(k, gas) {
   const t = TYPES[k]; const r = bereken({ type: k, gas });

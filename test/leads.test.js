@@ -36,17 +36,17 @@ test('leads: validatie, prefill zonder contactgegevens, GA zonder postcode', () 
   assert.ok(!JSON.stringify(g).includes('3512'));
   assert.deepEqual(frameOrigins({ x: IF, y: RD }), ['https://x.nl']);
 });
-test('leads preview (LEADS_PREVIEW=1): offertepagina met toestemming en label, overal noindex', () => {
+test('leads preview (LEADS_PREVIEW=1): offertepagina met toestemming, zonder label partnerlink, overal noindex', () => {
   execSync('node build.mjs', { stdio: 'ignore', env: { ...process.env, BASE: '', GO_LIVE: '', LEADS_PREVIEW: '1' } });
   try {
     const o = readFileSync('dist/offerte/index.html', 'utf8');
     assert.match(o, /name="robots" content="noindex"/);
     assert.match(o, /<input type="checkbox" id="l-ok">/);
-    assert.match(o, /class="partner">partnerlink<\/span>/);
+    assert.doesNotMatch(o, /<span class="partner">\s*partner ?link/i);
     for (const k of ['maatregel', 'postcode', 'woning', 'bouwjaar', 'wanneer']) assert.match(o, new RegExp(`data-q="${k}"`));
     assert.doesNotMatch(o, /type="email"|type="tel"/);
     for (const c of Object.keys(CATEGORIEEN)) assert.match(o, new RegExp(`value="${c}"`));
-    assert.match(readFileSync('dist/isde-subsidie-warmtepomp-2026/index.html', 'utf8'), /class="leadcta"[\s\S]*data-lead="hybride"[\s\S]*partnerlink/);
+    assert.match(readFileSync('dist/isde-subsidie-warmtepomp-2026/index.html', 'utf8'), /class="leadcta"[\s\S]*data-lead="hybride"/);
     assert.match(readFileSync('dist/privacy/index.html', 'utf8'), /id="offertes"/);
     assert.equal(readFileSync('dist/robots.txt', 'utf8'), 'User-agent: *\nDisallow: /\n');
     const js = readFileSync('src/assets/js/offerte.js', 'utf8').replace(/^\s*\/\/.*$/gm, '');

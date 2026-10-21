@@ -14,7 +14,7 @@ export function leadCta(type, pos = 'gids') {
   const p = cat && partnerVan(cat);
   if (!p) return '';
   const c = CATEGORIEEN[cat];
-  return `<aside class="leadcta" aria-label="Offertes aanvragen"><div><p class="fh">Offertes vergelijken voor een ${esc(c.naam.toLowerCase())}</p><p>Gratis en vrijblijvend, van maximaal ${p.max} vakbedrijven bij jou in de buurt. Vijf korte vragen.</p></div><a class="btn" href="/offerte/?m=${cat}" data-lead="${cat}" data-pos="${pos}">Offertes aanvragen</a><p class="src"><span class="partner">partnerlink</span> Via ${esc(p.type === 'voorbeeld' ? 'onze offertepartner' : p.naam)}. ${LABEL}</p></aside>`;
+  return `<aside class="leadcta" aria-label="Offertes aanvragen"><div><p class="fh">Offertes vergelijken voor een ${esc(c.naam.toLowerCase())}</p><p>Gratis en vrijblijvend, van maximaal ${p.max} vakbedrijven bij jou in de buurt. Vijf korte vragen.</p></div><a class="btn" href="/offerte/?m=${cat}" data-lead="${cat}" data-pos="${pos}">Offertes aanvragen</a><p class="src">Via ${esc(p.type === 'voorbeeld' ? 'onze offertepartner' : p.naam)}. ${LABEL}</p></aside>`;
 }
 
 const radios = (name, opts, req = true) => `<div class="opts">${Object.entries(opts).map(([k, v]) => `<label><input type="radio" name="${name}" value="${k}"${req ? ' required' : ''}><span>${v}</span></label>`).join('')}</div>`;
@@ -29,7 +29,7 @@ if (LEADS_AAN) {
     scripts: ['/js/offerte.js'],
     body: `${LEADS_PREVIEW ? '<p class="alert"><strong>Preview, niet live.</strong> Het formulier van de offertepartner is hier een voorbeeld dat niets verstuurt of bewaart.</p>' : ''}<h1>Offertes aanvragen</h1>
 <p class="lead">Vergelijk vrijblijvend offertes van vakbedrijven bij jou in de buurt. Vijf korte vragen, daarna vul je je gegevens in bij onze offertepartner.</p>
-<p class="src leadlabel"><span class="partner">partnerlink</span> ${LABEL}</p>
+<p class="src leadlabel">${LABEL}</p>
 <form class="quiz card stap lead" id="lead" novalidate>
 <div class="qprog"><p id="l-prog">Vraag 1 van 5</p><div class="qbar" role="progressbar" aria-label="Voortgang" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><span id="l-bar"></span></div></div>
 <fieldset data-q="maatregel" class="nu"><legend>Welke warmtepomp wil je?</legend>${radios('maatregel', maatOpts)}</fieldset>
