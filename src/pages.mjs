@@ -119,7 +119,7 @@ const RELATED = {
   itho: [['/warmtepomp-kosten/', 'Wat kost een warmtepomp?']], panasonic: [['/hybride-of-all-electric/', 'Hybride of all-electric']],
 };
 const typeVan = (id) => (FEATURES[id].hybride.v === 'ja' ? 'hybride' : 'allelectric');
-export const merkPages = IDS.map((id) => {
+const merkPagesRaw = IDS.map((id) => {
   const p = M[id];
   const path = `/merken/${p.slug}/`;
   const h1 = `${p.naam} warmtepomp: aanbod, checklist en voor wie`;
@@ -131,7 +131,8 @@ export const merkPages = IDS.map((id) => {
     ? `<h2>Prijzen</h2><p class="sub">Zoals ${esc(p.naam)} ze op de eigen site toont.</p><div class="table-wrap"><table class="data stack"><thead><tr><th scope="col">Model</th><th scope="col">Prijs</th><th scope="col">Toelichting</th></tr></thead><tbody>${p.prijzen.map(([n, pr, w]) => `<tr><th scope="row">${esc(n)}</th><td data-l="Prijs"><strong>${esc(pr)}</strong></td><td data-l="Toelichting">${esc(w)}</td></tr>`).join('')}</tbody></table></div>`
     : `<h2>Prijzen (indicatief)</h2><p>${esc(p.naam)} noemt geen consumentenprijzen op de eigen site; je koopt via een installateur en de prijs staat in je offerte.</p>${p.indicatief ? `<p class="sub">${esc(p.indicatief.intro)}</p><div class="table-wrap"><table class="data stack"><caption class="sr-only">Indicatieve prijzen ${esc(p.naam)}</caption><thead><tr><th scope="col">Model</th><th scope="col">Indicatieve prijs</th></tr></thead><tbody>${p.indicatief.rijen.map(([n, pr]) => `<tr><th scope="row">${esc(n)}</th><td data-l="Indicatieve prijs"><strong>${esc(pr)}</strong></td></tr>`).join('')}</tbody></table></div><p class="src">Indicatief. Bron: <a href="${p.indicatief.bron[1]}" rel="noopener">${esc(p.indicatief.bron[0])}</a></p>` : ''}<p>Indicatief voor alle merken: een hybride warmtepomp kost gemiddeld ${eur(TYPES.hybride.kosten)} en een all-electric ${eur(TYPES.allelectric.kosten)}, inclusief installatie en btw, vóór subsidie (Milieu Centraal). De ISDE-subsidie van 2026 is daarvan nog niet afgetrokken. Zie <a href="/warmtepomp-kosten/">wat een warmtepomp kost</a> en <a href="/isde-subsidie-warmtepomp-2026/">de ISDE-subsidie</a>.</p>`;
   return {
-    ...article({ path, title: t, h1, description: d, og: `merk-${id}`, parents: [['/merken/', 'Merken']] }),
+    ...article({ path, title: t, h1, description: d, og: `merk-${id}`, parents: [['/merken/', 'Merken']], faq: p.faq }),
+    ...(p.extraChecked ? { stamp: { checked: p.extraChecked }, lastmod: p.extraChecked } : {}),
     navPath: '/merken/',
     body: `<article><div class="phead"><span class="phead-logo">${logoImg(id, { maat: 'lg', eager: true })}</span><span class="tag best">${esc(STERK_IN[id])}</span></div><h1>${esc(h1)}</h1>${by()}<p class="lead">${esc(p.kort)}</p>
 <div class="pcard first"><div class="pc-head"><span class="sc-lbl">Aanbod</span><p class="pc-price"><strong>${esc(aanbodTekst(id))}</strong></p></div>
@@ -139,11 +140,11 @@ export const merkPages = IDS.map((id) => {
 ${scoreBlock(id)}
 <div class="pc-cta">${knop(id, 'merk_top')}<a href="/warmtepomp-keuzehulp/">Past het bij mijn huis? Start de keuzehulp →</a></div></div>
 <h2>Modellen</h2><div class="table-wrap"><table class="data stack"><thead><tr><th scope="col">Model of lijn</th><th scope="col">Wat</th></tr></thead><tbody>${p.lijnen.map(([n, w]) => `<tr><th scope="row">${esc(n)}</th><td data-l="Wat">${esc(w)}</td></tr>`).join('')}</tbody></table></div>
-${prijsBlok}
+${p.extra || ''}${prijsBlok}
 <h2>Checklist: wat biedt ${esc(p.naam)}?</h2><p class="sub">Tien vaste punten, uit de site van het merk. Niet vermeld telt als 0. <a href="/over/#methode">Zo tellen we</a></p>${checklistTable(id)}
 <h2>Sterk en let op</h2><div class="pm"><div class="card plus"><h3>Sterk</h3><ul>${p.plus.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div><div class="card min"><h3>Let op</h3><ul>${p.min.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div></div>
 <h2>Voor wie?</h2><p>${esc(p.voor)}</p>
-${leadCta(typeVan(id), 'merk')}
+${p.faq ? faqHtml(p.faq) : ''}${leadCta(typeVan(id), 'merk')}
 <div class="out">${knop(id, 'merk_bottom')}</div>
 <h2>Alternatieven</h2><ul class="gidslijst">${alt.map((x) => `<li class="withlogo">${logo(x, 'sm')}<a href="/merken/${M[x].slug}/">${esc(M[x].naam)}</a> · ${esc(STERK_IN[x])} · ${fmtScore(score(x).totaal)} van 10 checklistpunten (<a href="/over/#methode">hoe de score werkt</a>)</li>`).join('')}${(RELATED[id] || []).map(([h, tt]) => `<li><a href="${h}">${esc(tt)}</a></li>`).join('')}<li><a href="/vergelijken/">Alle merken naast elkaar</a></li></ul>
 <p class="sub">Alle merken: ${IDS.filter((x) => x !== id).map((x) => `<a href="/merken/${M[x].slug}/">${esc(M[x].naam)}</a>`).join(' · ')}</p>
@@ -153,6 +154,8 @@ ${matchCta(`Past ${esc(p.naam)} bij jouw huis?`)}${bron(p.bronnen, featureBronne
   };
 });
 
+// Merken met extra uitleg (extraChecked): bijgewerkt-datum in artikel en schema gelijk aan de controledatum. Bij push gelijkzetten aan de pushdatum.
+export const merkPages = merkPagesRaw.map((pg, i) => { const c = M[IDS[i]].extraChecked; if (!c) return pg; return { ...pg, article: { ...pg.article, updated: c }, schema: pg.schema.map((x, j) => (j === 0 ? { ...x, dateModified: c } : x)) }; });
 export const merkHub = {
   path: '/merken/', title: 'Warmtepomp merken 2026: 8 merken op een rij', h1: 'Alle warmtepompmerken op een rij', crumb: 'Merken', og: 'merken', stamp: { checked: CHECKED, updated: CHECKED },
   description: 'Quatt, Daikin, Mitsubishi Electric, Vaillant, Nefit Bosch, Itho Daalderop, Remeha en Panasonic: per merk het aanbod, de score en voor wie het past.',
@@ -383,11 +386,12 @@ const geluidFaq = [
   ['Heb ik een vergunning nodig voor de buitenunit?', 'Meestal niet. Warmtepompen tot 1 meter hoog en 2 m² zijn meestal vergunningvrij (artikel 2.29 Bbl). De geluidsregels gelden wel altijd.'],
   ['Hoe ver moet een warmtepomp van de erfgrens staan?', 'De wet noemt geen minimale afstand in meters. De regel is dat er op de erfgrens van de buren niet meer dan 40 dB mag aankomen. Hoe ver dat is, hangt af van je unit en de plek. Als vuistregel adviseert het Nationaal Programma Lokale Warmtetransitie 3 tot 4 meter als de unit vrij staat (minstens 2 meter van een gevel) en 4 tot 5 meter als hij tegen een gevel of berging staat.'],
   ['Hoe dicht mag een warmtepomp bij de erfgrens staan?', 'Het Bbl legt geen afstand vast, alleen de 40 dB op de erfgrens. Staat je unit dichterbij, dan heb je een stillere unit of afscherming nodig: een volledig gesloten scherm van minstens 10 kg per m² of een omkasting. Op het platte dak van een berging vlak bij de erfgrens is de kans groot dat je de 40 dB niet haalt (Omgevingsdienst Twente).'],
+  ['Welke warmtepomp maakt het minste geluid?', 'Dat kun je alleen vergelijken met dezelfde soort waarde. Op 3 meter noemen de merken zelf: Nefit Bosch Compress 5800i AW 26,5 dB(A), Vaillant aroTHERM plus 27,5 dB(A) en Daikin Altherma 4 H 28 dB.'],
   ['Wat als mijn warmtepomp aan de regel voldoet, maar de buren last hebben?', 'Dat kan. Ook als je aan de 40 dB voldoet, kunnen buren het geluid hinderlijk vinden; de een is gevoeliger dan de ander (Omgevingsdienst Twente). Kies daarom een plek uit het zicht van de buren en zo ver mogelijk van hun slaapkamer.'],
 ];
 export const geluid = {
   ...article({ path: '/warmtepomp-geluid/', title: 'Warmtepomp geluid en erfgrens: regels en afstand', h1: 'Warmtepomp en geluid: regels en afstand tot de erfgrens', description: 'Een warmtepomp mag 40 dB maken op de erfgrens van de buren. Wat de wet zegt over afstand, hoe ver de buitenunit moet staan en wat een scherm doet.', og: 'warmtepomp-geluid', parents: G, faq: geluidFaq }),
-  crumb: 'Warmtepomp en geluid', lastmod: '2026-10-19',
+  crumb: 'Warmtepomp en geluid',
   navPath: '/gidsen/',
   body: `<article class="prose"><h1>Warmtepomp en geluid: regels en afstand tot de erfgrens</h1>${by()}<p class="lead">De buitenunit van een lucht-waterwarmtepomp maakt geluid. Volgens Milieu Centraal heeft 72% van de eigenaren daar nooit last van. Voor de buren gelden vaste regels.</p>
 <h2>De regels</h2><ul><li>Maximaal <strong>40 dB op de erfgrens</strong> van de buren, in de avond en nacht (19:00 tot 07:00 uur).</li><li>Overdag (07:00 tot 19:00 uur) mag <strong>45 dB</strong> als de installatie meerdere standen heeft.</li><li>Een andere woning op hetzelfde terrein, zoals een bovenwoning: de 40 dB geldt bij een <strong>open raam of deur</strong> van die woning.</li><li>Warmtepompen tot 1 meter hoog en 2 m² zijn meestal <strong>vergunningvrij</strong>. Je gemeente kan in het omgevingsplan regels opnemen.</li></ul>
@@ -396,14 +400,21 @@ export const geluid = {
 <p>Je gemeente kan voor een gewone warmtepomp bij een woning geen strengere geluidsregels stellen: die staan volledig in het Bbl.</p>
 <h2>Zo reken je het uit</h2><p>Omgevingsdienst Twente legt het zo uit: noemt de leverancier het geluid op 1 meter, tel er 9 dB bij op voor het bronvermogen. Tel daarna nog 3 dB op als marge. Voorbeeld: 48 dB op 1 meter + 9 + 3 = 60 dB bronvermogen. Om op 40 dB uit te komen moet het geluid dan 20 dB afnemen over de afstand tot de erfgrens.</p>
 <p>Met de tabel van Omgevingsdienst Twente kom je in dat voorbeeld uit op minstens 3,5 meter als er geen hard vlak binnen 3 meter van de unit staat, 5 meter met een muur in de buurt en 7 meter in een hoek.</p>
-<h2>Afscherming en plaatsing</h2><ul><li><strong>Scherm:</strong> volledig gesloten, minstens 1,8 meter hoog en idealiter minstens 10 kg per m². De meeste schuttingen hebben kieren en helpen weinig.</li><li><strong>Omkasting:</strong> ongeveer 5 dB minder geluid.</li><li><strong>Trillingdempers</strong> als de unit aan de gevel of op het dak hangt.</li></ul>
-<h2>Hoe stil zijn de merken?</h2><div class="table-wrap"><table class="data stack"><thead><tr><th scope="col">Model</th><th scope="col">Geluid volgens het merk</th></tr></thead><tbody><tr><th scope="row"><a href="/merken/nefit-bosch/">Nefit Bosch Compress 5800i AW</a></th><td data-l="Geluid">26,5 dB(A) op 3 meter</td></tr><tr><th scope="row"><a href="/merken/vaillant/">Vaillant aroTHERM plus</a></th><td data-l="Geluid">27,5 dB(A) op 3 meter</td></tr><tr><th scope="row"><a href="/merken/itho-daalderop/">Itho Daalderop Amber</a></th><td data-l="Geluid">Geluidsvermogen 54 tot 56 dB</td></tr></tbody></table></div>
-<p>Let op het verschil: geluid op een afstand (dB(A) op 3 meter) is iets anders dan het geluidsvermogen van de bron. Vergelijk dus dezelfde soort waarde. De andere merken noemen geen vergelijkbaar getal op hun consumentensite.</p>
-${faqHtml(geluidFaq)}${matchCta()}${bron([['Besluit bouwwerken leefomgeving, artikel 4.107 en 4.108', 'https://wetten.overheid.nl/jci1.3:c:BWBR0041297&hoofdstuk=4&afdeling=4.2&paragraaf=4.2.6&artikel=4.107'], ['IPLO: geluid van bouwwerkinstallaties', 'https://iplo.nl/regelgeving/regels-voor-activiteiten/technische-bouwactiviteit/nieuwbouw/rijksregels/geluid-bouwwerkinstallaties/'], ['Omgevingsdienst Twente: warmtepomp, airco en geluid', 'https://www.odtwente.nl/kennisbank/warmtepomp-airco-en-geluid/'], ['IPLO: ruimtelijke inpassing warmtepomp', 'https://iplo.nl/thema/toepassing-regels-praktijk/warmtepomp/ruimtelijke-inpassing/'], ['NPLW: omgaan met geluid van warmtepompen', 'https://www.nplw.nl/warmte-en-ruimte/omgaan-met-geluid-warmtepompen']], B('mcVolledig'), [['Nefit Bosch all-electric', 'https://www.nefit-bosch.nl/producten/warmtepompen/all-electric-warmtepompen/'], ['Vaillant aroTHERM plus', 'https://www.vaillant.nl/producten/arothermplus/'], ['Itho Daalderop Amber', 'https://www.ithodaalderop.nl/amber']])}</article>`,
+<h2>Afscherming en plaatsing</h2><ul><li><strong>Scherm:</strong> volledig gesloten, minstens 1,8 meter hoog en idealiter minstens 10 kg per m². De meeste schuttingen hebben kieren en helpen weinig.</li><li><strong>Omkasting:</strong> volgens NPLW ongeveer 5 dB(A) minder, afhankelijk van merk en type. Omgevingsdienst Twente noemt meestal 2 tot 5 dB en hooguit 8 dB.</li><li><strong>Trillingdempers</strong> als de unit aan de gevel of op het dak hangt. NPLW noemt dempers met een statische vering van ongeveer 5 millimeter.</li></ul>
+<h2>Op het dak, in de berging of aan de voorgevel</h2><ul><li><strong>Plat dak van de berging:</strong> vaak dicht bij de erfgrens en bij slaapkamers. Dan is de kans groot dat je de 40 dB niet haalt, en afschermen is lastig (Omgevingsdienst Twente).</li><li><strong>In een berging:</strong> neem extra maatregelen, zoals een geluidsisolerend rooster of geluidsabsorberend materiaal binnen (NPLW).</li><li><strong>Voorgevel in een smalle straat</strong> of een kleine achtertuin: soms past een buitenunit niet. Denk dan aan een bodem- of pvt-warmtepomp (NPLW).</li></ul>
+<h2>Zo lees je de dB(A) op een productblad</h2><ul><li><strong>Op afstand</strong> ("28 dB(A) op 3 meter") is wat je daar hoort. Vergelijk alleen waarden op dezelfde afstand.</li><li><strong>Geluidsvermogen</strong> is het totale geluid van de unit en dus altijd hoger. Staat er alleen een waarde op 1 meter, tel er dan 9 dB bij op, plus 3 dB marge (Omgevingsdienst Twente).</li><li><strong>Brommen of piepen</strong> (tonaal geluid) vinden mensen extra hinderlijk; daarvoor geldt een toeslag van 1 tot 6 dB. NPLW adviseert een laag geluidsvermogen of een stille modus.</li><li><strong>Kloppen of dreunen via muur of dak?</strong> Laat de installateur de bevestiging en de trillingdempers nakijken.</li></ul>
+<h2>Ook binnen bij de buren geldt een grens</h2><p>In een verblijfsruimte van de buren mag een installatie voor warmte- of koudeopwekking ten hoogste 30 dB veroorzaken, bepaald volgens NEN 5077 (artikel 4.107 lid 1 Bbl). Dat telt vooral bij een unit tegen een gemeenschappelijke muur.</p>
+<h2>Praat vooraf met je buren</h2><p>Zien je buren de unit niet, dan is de kans op hinder kleiner (Omgevingsdienst Twente). Vertel vooraf waar de unit komt en welk model het wordt.</p>
+<h2>Hoe stil zijn de merken?</h2><div class="table-wrap"><table class="data stack"><thead><tr><th scope="col">Model</th><th scope="col">Geluid volgens het merk</th></tr></thead><tbody><tr><th scope="row"><a href="/merken/nefit-bosch/">Nefit Bosch Compress 5800i AW</a></th><td data-l="Geluid">26,5 dB(A) op 3 meter</td></tr><tr><th scope="row"><a href="/merken/vaillant/">Vaillant aroTHERM plus</a></th><td data-l="Geluid">27,5 dB(A) op 3 meter</td></tr><tr><th scope="row"><a href="/merken/daikin/">Daikin Altherma 4 H</a></th><td data-l="Geluid">28 dB op 3 meter</td></tr><tr><th scope="row"><a href="/merken/itho-daalderop/">Itho Daalderop Amber</a></th><td data-l="Geluid">Geluidsvermogen 54 tot 56 dB</td></tr></tbody></table></div>
+<p>Let op het verschil: geluid op een afstand (dB(A) op 3 meter) is iets anders dan het geluidsvermogen van de bron. Vergelijk dus dezelfde soort waarde. De andere merken uit onze vergelijking noemen geen vergelijkbaar getal op hun consumentensite.</p>
+${faqHtml(geluidFaq)}${matchCta()}${bron([['Besluit bouwwerken leefomgeving, artikel 4.107 en 4.108', 'https://wetten.overheid.nl/jci1.3:c:BWBR0041297&hoofdstuk=4&afdeling=4.2&paragraaf=4.2.6&artikel=4.107'], ['IPLO: geluid van bouwwerkinstallaties', 'https://iplo.nl/regelgeving/regels-voor-activiteiten/technische-bouwactiviteit/nieuwbouw/rijksregels/geluid-bouwwerkinstallaties/'], ['Omgevingsdienst Twente: warmtepomp, airco en geluid', 'https://www.odtwente.nl/kennisbank/warmtepomp-airco-en-geluid/'], ['IPLO: ruimtelijke inpassing warmtepomp', 'https://iplo.nl/thema/toepassing-regels-praktijk/warmtepomp/ruimtelijke-inpassing/'], ['NPLW: omgaan met geluid van warmtepompen', 'https://www.nplw.nl/warmte-en-ruimte/omgaan-met-geluid-warmtepompen']], B('mcVolledig'), [['Nefit Bosch all-electric', 'https://www.nefit-bosch.nl/producten/warmtepompen/all-electric-warmtepompen/'], ['Vaillant aroTHERM plus', 'https://www.vaillant.nl/producten/arothermplus/'], ['Daikin Altherma 4 H', 'https://www.daikin.nl/nl_nl/consument/products-and-advice/product-categories/heat-pumps/air-to-water-heat-pumps/daikin-altherma-4.html'], ['Itho Daalderop Amber', 'https://www.ithodaalderop.nl/amber']])}</article>`,
 };
 
-geluid.article = { ...geluid.article, updated: '2026-10-19' };
-geluid.schema[0].dateModified = '2026-10-19';
+// Uitgebreid 23-10-2026 (Bbl 4.107, ODT, NPLW, Daikin opnieuw gecontroleerd). Datum bij push gelijkzetten aan de pushdatum.
+geluid.stamp = { checked: '2026-10-23' };
+geluid.lastmod = '2026-10-23';
+geluid.article = { ...geluid.article, updated: '2026-10-23' };
+geluid.schema[0].dateModified = '2026-10-23';
 
 const geschiktFaq = [
   ['Is mijn huis geschikt voor een hybride warmtepomp?', 'Bijna altijd, als je een cv-ketel met radiatoren hebt. Een hybride werkt met water van 30 tot 55 °C en je bestaande radiatoren; de ketel springt bij als het koud is.'],
