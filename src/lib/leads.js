@@ -1,6 +1,6 @@
 // Offertemodule WarmtepompenMatch (overgenomen van VerduurzaamMatch, branch leadtest-offerte, aangepast naar één categorie).
 // Regels:
-// - LEADPARTNERS blijft LEEG tot Dave een partner goedkeurt (beoogd: Quatt, aangevraagd, nog niet goedgekeurd).
+// - LEADPARTNERS blijft LEEG tot er een partner is goedgekeurd (beoogd: Quatt, aangevraagd, nog niet goedgekeurd).
 //   Leeg = geen offertepagina, geen offerteknoppen, geen formulieren.
 // - Elke aanvraag gaat naar precies één partner.
 // - Contactgegevens vult de bezoeker in het formulier van de partner in (iframe of doorverwijzing). Wij ontvangen en bewaren ze niet.
