@@ -24,7 +24,7 @@ sources:
 - Quatt: hoeveel geluid maakt Quatt Hybrid | https://support.quatt.io/nl/articles/6121733-hoeveel-geluid-maakt-quatt-hybrid
 - Quatt: prijs hybride warmtepomp | https://www.quatt.io/waarom-quatt/hybride-warmtepomp/prijs-kopen
 - Remeha: Elga Ace | https://www.remeha.nl/product/elga-ace
-- Remeha: hoeveel geluid maakt een Remeha warmtepomp? | https://kennisbank.remeha.nl/hoeveel-geluid-maakt-een-remeha-warmtepomp/
+- Remeha: technische specificaties Elga Ace (pdf) | https://edge.sitecorecloud.io/bdrthermea1-platform-production-864a/media/Project/RemehaNL/RemehaNL/Documentatie/Consument/02---Hybride-warmtepompen/Elga-Ace/Documentatie-voor-installateurs/Technische-specificaties-Elga-Ace.pdf
 - Remeha: hybride warmtepompen | https://www.remeha.nl/producten/warmtepompen/hybride-warmtepompen
 - Remeha: product-prijslijst | https://www.remeha.nl/zakelijk/documentatie/product-prijslijst
 - Vaillant: hybride verwarmingssystemen | https://www.vaillant.nl/advies/technologie-begrijpen/hybride-verwarmingssystemen/
