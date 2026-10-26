@@ -118,6 +118,14 @@ const RELATED = {
   vaillant: [['/vergelijken/vaillant-vs-nefit-bosch/', 'Vaillant of Nefit Bosch']], nefitbosch: [['/vergelijken/vaillant-vs-nefit-bosch/', 'Vaillant of Nefit Bosch']],
   itho: [['/warmtepomp-kosten/', 'Wat kost een warmtepomp?']], panasonic: [['/hybride-of-all-electric/', 'Hybride of all-electric']],
 };
+// Contextlink naar de vergelijking die dicht bij pagina 1 staat (GSC wk 43: quatt-vs-remeha pos. 5, vaillant-vs-nefit-bosch pos. 10).
+const VS_CONTEXT = {
+  quatt: '<p>Twijfel je tussen Quatt en Remeha? Allebei leveren ze een hybride warmtepomp, maar Quatt noemt een vaste prijs en Remeha verkoopt via de installateur. Zie <a href="/vergelijken/quatt-vs-remeha/">Quatt of Remeha: welke hybride warmtepomp kies je?</a></p>',
+  remeha: '<p>Twijfel je tussen Remeha en Quatt? Allebei leveren ze een hybride warmtepomp, maar Quatt noemt een vaste prijs en Remeha verkoopt via de installateur. Zie <a href="/vergelijken/quatt-vs-remeha/">Quatt of Remeha: welke hybride warmtepomp kies je?</a></p>',
+  vaillant: '<p>Twijfel je tussen Vaillant en Nefit Bosch? Het zijn twee grote ketelmerken met propaanwarmtepompen. Zie <a href="/vergelijken/vaillant-vs-nefit-bosch/">Vaillant of Nefit Bosch: welke warmtepomp kies je?</a></p>',
+  nefitbosch: '<p>Twijfel je tussen Nefit Bosch en Vaillant? Het zijn twee grote ketelmerken met propaanwarmtepompen. Zie <a href="/vergelijken/vaillant-vs-nefit-bosch/">Vaillant of Nefit Bosch: welke warmtepomp kies je?</a></p>',
+};
+const MERK_BIJGEWERKT = { quatt: '2026-10-26', remeha: '2026-10-26', vaillant: '2026-10-26', nefitbosch: '2026-10-26' };
 const typeVan = (id) => (FEATURES[id].hybride.v === 'ja' ? 'hybride' : 'allelectric');
 const merkPagesRaw = IDS.map((id) => {
   const p = M[id];
@@ -134,7 +142,7 @@ const merkPagesRaw = IDS.map((id) => {
     ...article({ path, title: t, h1, description: d, og: `merk-${id}`, parents: [['/merken/', 'Merken']], faq: p.faq }),
     ...(p.extraChecked ? { stamp: { checked: p.extraChecked }, lastmod: p.extraChecked } : {}),
     navPath: '/merken/',
-    body: `<article><div class="phead"><span class="phead-logo">${logoImg(id, { maat: 'lg', eager: true })}</span><span class="tag best">${esc(STERK_IN[id])}</span></div><h1>${esc(h1)}</h1>${by()}<p class="lead">${esc(p.kort)}</p>
+    body: `<article><div class="phead"><span class="phead-logo">${logoImg(id, { maat: 'lg', eager: true })}</span><span class="tag best">${esc(STERK_IN[id])}</span></div><h1>${esc(h1)}</h1>${by()}<p class="lead">${esc(p.kort)}</p>${VS_CONTEXT[id] || ''}
 <div class="pcard first"><div class="pc-head"><span class="sc-lbl">Aanbod</span><p class="pc-price"><strong>${esc(aanbodTekst(id))}</strong></p></div>
 <ul class="pc-facts"><li><span>Propaan (R290)</span><span>${fv(FEATURES[id].propaan, false)}</span></li><li><span>Prijs openbaar</span><span>${fv(FEATURES[id].prijs, false)}</span></li><li><span>Garantie 5 jaar</span><span>${fv(FEATURES[id].garantie, false)}</span></li><li><span>Plek in de vergelijking</span><span>${pos} van ${IDS.length}</span></li></ul>
 ${scoreBlock(id)}
@@ -155,7 +163,7 @@ ${matchCta(`Past ${esc(p.naam)} bij jouw huis?`)}${bron(p.bronnen, featureBronne
 });
 
 // Merken met extra uitleg (extraChecked): bijgewerkt-datum in artikel en schema gelijk aan de controledatum. Bij push gelijkzetten aan de pushdatum.
-export const merkPages = merkPagesRaw.map((pg, i) => { const c = M[IDS[i]].extraChecked; if (!c) return pg; return { ...pg, article: { ...pg.article, updated: c }, schema: pg.schema.map((x, j) => (j === 0 ? { ...x, dateModified: c } : x)) }; });
+export const merkPages = merkPagesRaw.map((pg, i) => { const c = MERK_BIJGEWERKT[IDS[i]] || M[IDS[i]].extraChecked; if (!c) return pg; return { ...pg, lastmod: c, article: { ...pg.article, updated: c }, schema: pg.schema.map((x, j) => (j === 0 ? { ...x, dateModified: c } : x)) }; });
 export const merkHub = {
   path: '/merken/', title: 'Warmtepomp merken 2026: 8 merken op een rij', h1: 'Alle warmtepompmerken op een rij', crumb: 'Merken', og: 'merken', stamp: { checked: CHECKED, updated: CHECKED },
   description: 'Quatt, Daikin, Mitsubishi Electric, Vaillant, Nefit Bosch, Itho Daalderop, Remeha en Panasonic: per merk het aanbod, de score en voor wie het past.',
@@ -363,6 +371,7 @@ export const hybrideKosten = {
 <p>Vraag daarom altijd om een totaalprijs inclusief plaatsen. Dan vergelijk je offertes eerlijk. Hoe je dat aanpakt, lees je in <a href="/blog/warmtepomp-offerte-vergelijken/">warmtepompoffertes vergelijken</a>. Wil je de prijzen van alle typen naast elkaar zien? Kijk dan bij <a href="/warmtepomp-kosten/">wat een warmtepomp kost</a>.</p>
 <h2>Wat wordt er geplaatst?</h2><ul><li><strong>Buiten:</strong> een buitenunit, iets groter dan een airco. Die komt in de tuin of op het dak van je huis of aanbouw. Let op de geluidsregels: zie <a href="/warmtepomp-geluid/">warmtepomp en geluid</a>.</li><li><strong>Binnen:</strong> een binnenunit naast de cv-ketel, ongeveer half zo groot als de ketel.</li><li><strong>De cv-ketel blijft.</strong> Die springt bij op hele koude dagen en levert het warme water.</li><li><strong>Nieuwe ketel tegelijk?</strong> Is je ketel aan vervanging toe, dan laat je hem meteen samen met de warmtepomp plaatsen. Dat is het verschil tussen ${eur(TYPES.hybride.kosten)} en € 8.300.</li></ul>
 <h2>Merken met een vaste prijs</h2><p>De meeste merken verkopen via installateurs, en dan staat de prijs pas in je offerte. Van de <a href="/merken/">acht merken die we vergelijken</a> noemt alleen <a href="/merken/quatt/">Quatt</a> consumentenprijzen op de eigen site. De Hybrid Single (7 kW) kost € 4.449 en de Hybrid Duo (14 kW) € 5.399. Allebei inclusief basisinstallatie en al na aftrek van de subsidie (Quatt, peildatum ${fmtDate(HK_PEIL)}). Welke merken nog meer een hybride leveren: ${typeLijst('hybride')}.</p>
+<p>Welk merk past bij jouw situatie? In <a href="/blog/beste-hybride-warmtepomp/">de beste hybride warmtepomp van 2026</a> zetten we zeven merken naast elkaar op rendement, geluid en vermogen, volgens de fabrikant.</p>
 <h2>Welk vermogen past?</h2><p>Een hybride warmtepomp heeft een vermogen van 2 tot 6 kW. Hoeveel je nodig hebt, hangt af van de grootte van je huis en de isolatie. Milieu Centraal rekent met 4 kW. Dat past meestal bij een tussenwoning, hoekwoning of kleine 2-onder-1-kapwoning.</p>
 <p>Meer vermogen kost meer, maar levert ook meer subsidie op: in 2026 € 225 per kW. Een hybride van 6 kW met A+++ geeft zo ${eur(isde2026(6))} ISDE. Ga je de komende jaren isoleren? Dan raadt Milieu Centraal een hybride met een groter vermogen aan, een zogenaamde all-electric-ready warmtepomp. Die zet je later om naar all-electric, zonder nieuw apparaat. Je hebt dan wel een voorraadvat voor warm water nodig (een boiler). Kies ook een warmtepomp die kan moduleren tot onder 2 kW, anders werkt hij in het voor- en najaar minder zuinig.</p>
 <h2>Subsidie in 2026</h2><p>Voor je eerste lucht-waterwarmtepomp krijg je in 2026 € 1.025 + € 225 per kW + € 200 bij energielabel A+++. Voor een hybride van 4 kW is dat € 2.125. Je krijgt altijd minimaal € 500. Een bouwinstallatiebedrijf moet de volledige installatie doen. En je vraagt de subsidie aan nadat de warmtepomp geplaatst is, binnen 24 maanden (RVO).</p>
@@ -446,7 +455,7 @@ const LEESOOK = {
   '/is-mijn-huis-geschikt-voor-een-warmtepomp/': [['/hybride-of-all-electric/', 'Hybride of all-electric?'], ['/warmtepomp-geluid/', 'Warmtepomp en geluid'], OFFERTEBLOG],
 };
 const leesOok = (path) => (LEESOOK[path] ? `<h2>Lees ook</h2><ul class="gidslijst">${LEESOOK[path].map(([h, t]) => `<li><a href="${h}">${esc(t)}</a></li>`).join('')}</ul>` : '');
-const BIJGEWERKT = { '/warmtepomp-kosten/': '2026-10-20', '/warmtepomp-terugverdientijd/': '2026-10-20', '/isde-subsidie-warmtepomp-2026/': '2026-10-20', '/hybride-of-all-electric/': '2026-10-20', '/is-mijn-huis-geschikt-voor-een-warmtepomp/': '2026-10-19' };
+const BIJGEWERKT = { '/hybride-warmtepomp-kosten/': '2026-10-26', '/warmtepomp-kosten/': '2026-10-20', '/warmtepomp-terugverdientijd/': '2026-10-20', '/isde-subsidie-warmtepomp-2026/': '2026-10-20', '/hybride-of-all-electric/': '2026-10-20', '/is-mijn-huis-geschikt-voor-een-warmtepomp/': '2026-10-19' };
 export const guides = [kosten, hybrideKosten, terugverdientijd, isde, hybrideAe, geluid, geschikt].map((x) => (BIJGEWERKT[x.path] ? { ...x, lastmod: BIJGEWERKT[x.path], article: { ...x.article, updated: BIJGEWERKT[x.path] }, schema: x.schema.map((o) => (o['@type'] === 'Article' ? { ...o, dateModified: BIJGEWERKT[x.path] } : o)) } : x)).map((g) => {
   const i = g.body.lastIndexOf('<p class="src">Bronnen:');
   return i < 0 ? g : { ...g, body: g.body.slice(0, i) + leesOok(g.path) + g.body.slice(i) };

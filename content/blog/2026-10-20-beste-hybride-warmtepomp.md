@@ -3,7 +3,7 @@ title: Beste hybride warmtepomp 2026: zo kies je per situatie
 seo_title: Beste hybride warmtepomp 2026: zo kies je per situatie
 description: Beste hybride warmtepomp 2026? 7 merken op rendement, geluid en vermogen volgens de fabrikant, plus kosten, terugverdientijd en ISDE-subsidie.
 date: 2026-10-20
-updated: 2026-10-20
+updated: 2026-10-26
 checked: 2026-10-20
 image: beste-hybride-warmtepomp
 image_alt: Witte paneelradiator met thermostaatknop
@@ -57,7 +57,7 @@ Hieronder de hybride warmtepompen van de merken op onze site, op alfabet. Alle g
 | [Mitsubishi Electric](/merken/mitsubishi-electric/) Ecodan All-Electric Ready hybride | 7,5 kW (7/35) | R32 | Energielabel A+++ | 40 dB buitendeel op 1 m | Ja |
 | [Nefit Bosch](/merken/nefit-bosch/) Compress 5800i AW hybride | 4 / 5 / 7 kW | R290 (propaan) | – | 26,5 dB(A) op 3 m | Ja |
 | [Quatt](/merken/quatt/) Hybrid | 1,8 tot 6,7 kW (A-7/W35) | R290 (propaan) | SCOP 4,93 | 55 dB(A) geluidsvermogen, stille stand 52 dB(A) | Duo ja, Single in sommige gevallen |
-| [Remeha](/merken/remeha/) Elga Ace | 4 / 6 kW | R32 | SCOP 4,33 / 4,23 | 53 / 57 dB geluidsvermogen | Niet vermeld (Remeha Confida wel) |
+| [Remeha](/merken/remeha/) Elga Ace | 4 / 6 kW | R32 | SCOP 4,33 / 4,23 | 53 / 57 dB(A) geluidsdruk buitendeel (Remeha, 30% deellast A7/W35) | Niet vermeld (Remeha Confida wel) |
 | [Vaillant](/merken/vaillant/) aroTHERM plus met cv-ketel | 3 tot 12 kW | R290 (propaan) | SCOP 4,83 tot 5,13 (35 °C) | 27,5 dB(A) op 3 m | Ja |
 
 Zie je een lager getal bij geluid? Dat betekent niet meteen een stiller apparaat. Geluidsdruk op 3 meter valt altijd lager uit dan het geluidsvermogen van hetzelfde apparaat. Vraag je installateur om voor jouw situatie het geluid op de erfgrens te berekenen. Alle merken naast elkaar zie je op [merken](/merken/).
