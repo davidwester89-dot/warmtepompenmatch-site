@@ -32,6 +32,7 @@ cards={
  'gidsen':('Gidsen over warmtepompen','Kosten, ISDE, geluid en geschiktheid'),
  'blog-warmtepomp-offerte-vergelijken':('Warmtepomp-offertes vergelijken','Checklist in 6 stappen'),
  'blog-beste-hybride-warmtepomp':('Beste hybride warmtepomp 2026','Zo kies je per situatie'),
+ 'blog-lucht-lucht-warmtepomp-kosten':('Lucht-lucht warmtepomp kosten','Single- en multisplit, stroom en subsidie'),
 }
 # blogkaarten met kopfoto: kaart -> WebP in src/assets/img/blog
 photo={'blog-warmtepomp-offerte-vergelijken':'warmtepomp-offerte-vergelijken-1200.webp','blog-beste-hybride-warmtepomp':'beste-hybride-warmtepomp-1200.webp'}
