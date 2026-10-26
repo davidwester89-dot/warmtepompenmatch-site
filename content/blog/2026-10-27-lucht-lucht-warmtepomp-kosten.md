@@ -76,7 +76,7 @@ Koelen kost extra stroom en heeft volgens Milieu Centraal een flink klimaateffec
 
 Voor een lucht-luchtwarmtepomp krijg je geen ISDE-subsidie. RVO legt uit waarom: in de Europese regels valt een lucht-luchtwarmtepomp onder airconditioning, en hij wordt meestal ook gebruikt om te koelen. De ISDE is bedoeld om energie te besparen, en koelen verhoogt juist het verbruik.
 
-Ook als je hem alleen gebruikt om te verwarmen. ISDE krijg je wel voor een (hybride) lucht-water- of bodemwarmtepomp. De bedragen lees je bij [ISDE-subsidie warmtepomp 2026](/isde-subsidie-warmtepomp-2026/).
+ISDE krijg je wel voor een (hybride) lucht-water- of bodemwarmtepomp. De bedragen lees je bij [ISDE-subsidie warmtepomp 2026](/isde-subsidie-warmtepomp-2026/).
 
 ## Kan hij je cv vervangen?
 
@@ -96,7 +96,7 @@ Van de merken op onze site hebben deze vijf airconditioners in hun aanbod, op al
 
 | Merk | Wat het merk zelf noemt |
 |---|---|
-| [Daikin](/merken/daikin/) | Airconditioners (lucht-lucht) |
+| [Daikin](/merken/daikin/) | Airconditioners |
 | [Mitsubishi Electric](/merken/mitsubishi-electric/) | Airconditioners |
 | [Nefit Bosch](/merken/nefit-bosch/) | Airconditioning |
 | [Panasonic](/merken/panasonic/) | Airconditioners |
@@ -113,7 +113,7 @@ Volgens Milieu Centraal ongeveer € 2.500 voor een single-split. Vereniging Eig
 Vereniging Eigen Huis rekent € 1.500 tot € 2.000 per extra binnenunit, bovenop de prijs van de split-airco. Milieu Centraal wijst erop dat multi-split minder efficiënt is dan losse single-splits.
 
 ### Krijg ik subsidie voor een lucht-luchtwarmtepomp?
-Nee. Volgens RVO valt een lucht-luchtwarmtepomp onder airconditioning en geldt de ISDE er niet voor, ook niet als je hem alleen gebruikt om te verwarmen.
+Nee. Volgens RVO valt een lucht-luchtwarmtepomp onder airconditioning en geldt de ISDE er niet voor.
 
 ### Kan een lucht-luchtwarmtepomp mijn cv-ketel vervangen?
 In een kleine woning kan hij een groot deel van de verwarming doen. Warm water maakt hij niet, dus daarvoor blijft een andere installatie nodig.
