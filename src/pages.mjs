@@ -272,9 +272,9 @@ const tvtFaq = [
   ['Hoe snel verdien je een all-electric warmtepomp terug?', `In het voorbeeld van Milieu Centraal (goed geïsoleerde hoekwoning, 950 m³ gas) bespaar je ongeveer € 1.000 per jaar, inclusief het vastrecht voor gas. Met € 8.975 netto is dat ${jr(AE.jaren)} jaar (onze rekensom).`],
 ];
 export const terugverdientijd = {
-  ...article({ path: '/warmtepomp-terugverdientijd/', title: 'Wanneer verdien je een warmtepomp terug? Zo reken je', h1: 'Wanneer verdien je een warmtepomp terug?', description: `Een hybride warmtepomp verdien je in ongeveer ${jr(H.jaren)} jaar terug, all-electric in ${jr(AE.jaren)} jaar. Zo reken je het uit voor je eigen huis.`, og: 'warmtepomp-terugverdientijd', parents: G, faq: tvtFaq }),
+  ...article({ path: '/warmtepomp-terugverdientijd/', title: 'Verdient een warmtepomp zich terug? Hybride vs all-electric', h1: 'Wanneer verdien je een warmtepomp terug?', description: `Een hybride warmtepomp verdien je in ongeveer ${jr(H.jaren)} jaar terug, all-electric in ${jr(AE.jaren)} jaar. Reken het uit met onze rekentool.`, og: 'warmtepomp-terugverdientijd', parents: G, faq: tvtFaq }),
   navPath: '/gidsen/',
-  body: `<article class="prose"><h1>Wanneer verdien je een warmtepomp terug?</h1>${by()}<p class="lead">Terugverdientijd = wat je netto betaalt (na subsidie), gedeeld door wat je per jaar bespaart. Met de voorbeelden van Milieu Centraal komt een hybride uit op ${jr(H.jaren)} jaar en all-electric op ${jr(AE.jaren)} jaar (onze rekensom).</p>
+  body: `<article class="prose"><h1>Wanneer verdien je een warmtepomp terug?</h1>${by()}<p class="lead">Terugverdientijd = wat je netto betaalt (na subsidie), gedeeld door wat je per jaar bespaart. Met de voorbeelden van Milieu Centraal komt een hybride uit op ${jr(H.jaren)} jaar en all-electric op ${jr(AE.jaren)} jaar (onze rekensom). Wil je het voor je eigen huis weten? Gebruik de rekentool: <a href="/terugverdientijd-berekenen/" data-tool="terugverdientijd">terugverdientijd warmtepomp berekenen</a>.</p>
 <h2>Twee voorbeelden</h2><div class="table-wrap"><table class="data stack"><thead><tr><th scope="col"></th><th scope="col">Hybride</th><th scope="col">All-electric</th></tr></thead><tbody>
 <tr><th scope="row">Woning</th><td data-l="Hybride">Matig geïsoleerde hoekwoning</td><td data-l="All-electric">Goed geïsoleerde hoekwoning</td></tr>
 <tr><th scope="row">Gas vóór</th><td data-l="Hybride">1.360 m³ + 310 kWh: € 1.950 per jaar</td><td data-l="All-electric">950 m³ + 250 kWh: € 1.360 per jaar, plus € 360 vastrecht gas</td></tr>
@@ -455,7 +455,7 @@ const LEESOOK = {
   '/is-mijn-huis-geschikt-voor-een-warmtepomp/': [['/hybride-of-all-electric/', 'Hybride of all-electric?'], ['/warmtepomp-geluid/', 'Warmtepomp en geluid'], OFFERTEBLOG],
 };
 const leesOok = (path) => (LEESOOK[path] ? `<h2>Lees ook</h2><ul class="gidslijst">${LEESOOK[path].map(([h, t]) => `<li><a href="${h}">${esc(t)}</a></li>`).join('')}</ul>` : '');
-const BIJGEWERKT = { '/hybride-warmtepomp-kosten/': '2026-10-26', '/warmtepomp-kosten/': '2026-10-20', '/warmtepomp-terugverdientijd/': '2026-10-20', '/isde-subsidie-warmtepomp-2026/': '2026-10-20', '/hybride-of-all-electric/': '2026-10-20', '/is-mijn-huis-geschikt-voor-een-warmtepomp/': '2026-10-19' };
+const BIJGEWERKT = { '/hybride-warmtepomp-kosten/': '2026-10-26', '/warmtepomp-kosten/': '2026-10-20', '/warmtepomp-terugverdientijd/': '2026-10-26', '/isde-subsidie-warmtepomp-2026/': '2026-10-20', '/hybride-of-all-electric/': '2026-10-20', '/is-mijn-huis-geschikt-voor-een-warmtepomp/': '2026-10-19' };
 export const guides = [kosten, hybrideKosten, terugverdientijd, isde, hybrideAe, geluid, geschikt].map((x) => (BIJGEWERKT[x.path] ? { ...x, lastmod: BIJGEWERKT[x.path], article: { ...x.article, updated: BIJGEWERKT[x.path] }, schema: x.schema.map((o) => (o['@type'] === 'Article' ? { ...o, dateModified: BIJGEWERKT[x.path] } : o)) } : x)).map((g) => {
   const i = g.body.lastIndexOf('<p class="src">Bronnen:');
   return i < 0 ? g : { ...g, body: g.body.slice(0, i) + leesOok(g.path) + g.body.slice(i) };
@@ -464,7 +464,7 @@ export const guides = [kosten, hybrideKosten, terugverdientijd, isde, hybrideAe,
 // ---- Rekenhulp ----
 const num = (id, label, val, unit, hint, attrs = '') => `<div class="field"><label for="${id}">${label}</label><div class="inline"><input type="text" inputmode="decimal" id="${id}" name="${id}" value="${val}" ${attrs}><span class="unit">${unit}</span></div>${hint ? `<span class="hint">${hint}</span>` : ''}</div>`;
 export const calc = {
-  path: '/terugverdientijd-berekenen/', title: 'Terugverdientijd warmtepomp berekenen (2026)', h1: 'Terugverdientijd van je warmtepomp berekenen', crumb: 'Rekenhulp', og: 'rekenhulp', noCta: false,
+  path: '/terugverdientijd-berekenen/', title: 'Terugverdientijd warmtepomp berekenen: rekentool 2026', lastmod: '2026-10-26', h1: 'Terugverdientijd van je warmtepomp berekenen', crumb: 'Rekenhulp', og: 'rekenhulp', noCta: false,
   description: 'Bereken hoeveel je bespaart met een hybride of all-electric warmtepomp, hoeveel ISDE-subsidie je krijgt in 2026 en na hoeveel jaar je het terugverdient.',
   scripts: ['/js/rekenhulp.js'],
   schema: [{ '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Terugverdientijd warmtepomp berekenen', applicationCategory: 'UtilitiesApplication', operatingSystem: 'Web', url: SITE.domain + '/terugverdientijd-berekenen/', offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, publisher: ORG }],
