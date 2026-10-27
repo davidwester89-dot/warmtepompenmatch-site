@@ -54,6 +54,22 @@ export function cleanParams(params = {}) {
   return out;
 }
 
+/** De vlag zelf blijft in de browser; alleen traffic_type gaat na toestemming mee naar GA. */
+export const INTERN_KEY = 'bm_intern';
+
+export function syncInternFlag(storage, href) {
+  let v = null;
+  try { v = new URL(href).searchParams.get('intern'); } catch { return; }
+  try {
+    if (v === '1') storage.setItem(INTERN_KEY, '1');
+    else if (v === '0') storage.removeItem(INTERN_KEY);
+  } catch { /* opslag geblokkeerd: geen markering */ }
+}
+
+export function isInternal(storage) {
+  try { return storage.getItem(INTERN_KEY) === '1'; } catch { return false; }
+}
+
 /**
  * Toestemmingsbeheer. Afhankelijkheden worden meegegeven zodat het testbaar is zonder browser.
  * @param {{gaId:string, storage:Storage, doc:Document, win:object, hostname:string, load:(src:string)=>void, now?:()=>Date}} o
@@ -62,6 +78,7 @@ export function createConsent({ gaId, storage, doc, win, hostname, load, now = (
   const enabled = GA_ID_RE.test(gaId || '');
   let loaded = false;
   let active = false;
+  syncInternFlag(storage, win.location && win.location.href);
 
   function gtag() { (win.dataLayer = win.dataLayer || []).push(arguments); }
 
@@ -85,6 +102,7 @@ export function createConsent({ gaId, storage, doc, win, hostname, load, now = (
       allow_ad_personalization_signals: false,
       cookie_expires: MAX_AGE_DAYS * 86400,
       cookie_flags: 'SameSite=Lax;Secure',
+      ...(isInternal(storage) ? { traffic_type: 'internal' } : {}),
     });
     load(`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gaId)}`);
   }
