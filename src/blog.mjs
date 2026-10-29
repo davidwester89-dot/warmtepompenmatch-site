@@ -1,13 +1,12 @@
 // Blog: content/blog/JJJJ-MM-DD-slug.md → /blog/<slug>/. Zelfde opbouw als de BoekhoudMatch-blog.
 // Extra tokens in de markdown: {{knop:<merk-id>}} op een eigen regel = knop naar de aanbieder (partnerlink zodra goedgekeurd,
-// via partnerlinks.js; heeft nooit invloed op score of volgorde) en {{score:<merk-id>}} = checklistscore uit de data.
+// via partnerlinks.js; heeft nooit invloed op de volgorde). Scores tonen we niet meer (29-10-2026); een {{score:...}}-token geeft een buildfout.
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { SITE, esc, fmtDate, ORG, AUTHOR } from './layout.mjs';
 import { parsePost, markdown, inline } from './markdown.mjs';
 import { knop } from './lib/partnerlinks.js';
 import { MERKEN as PLATFORMS } from './lib/merken.js';
-import { score, fmtScore } from './lib/checklist.js';
 import { faqHtml, matchCta } from './parts.mjs';
 
 export const TOOLNAMES = {
@@ -40,7 +39,7 @@ function tokens(html, slug) {
   let n = 0;
   return html
     .replace(/<p>\{\{knop:([a-z]+)\}\}<\/p>/g, (_, id) => { if (!PLATFORMS[id]) throw new Error(`${slug}: onbekend merk ${id}`); return `<div class="out">${knop(id, `blog_${++n}`)}</div>`; })
-    .replace(/\{\{score:([a-z]+)\}\}/g, (_, id) => { if (!PLATFORMS[id]) throw new Error(`${slug}: onbekend merk ${id}`); return `${fmtScore(score(id).totaal)}/10`; });
+    .replace(/\{\{score:([a-z]+)\}\}/g, () => { throw new Error(`${slug}: {{score}}-token wordt niet meer getoond`); });
 }
 
 /** FAQ uit de markdown: een sectie "## Veelgestelde vragen" met ### vraag + alinea antwoord. */

@@ -5,7 +5,7 @@ import { CATEGORIEEN, WANNEER, categorieVan } from './lib/leads.js';
 import { VRAAG } from './lib/match.js';
 import { LEADS, ROUTING, LEADS_AAN, LEADS_PREVIEW } from './leads.config.mjs';
 
-const LABEL = `We krijgen een vergoeding per aanvraag van de offertepartner. Dat staat los van ons advies en verandert niets aan de score of de volgorde in de ${SITE.name}.`;
+const LABEL = `We krijgen een vergoeding per aanvraag van de offertepartner. Dat staat los van ons advies en verandert niets aan de volgorde in de ${SITE.name}.`;
 const partnerVan = (cat) => (ROUTING[cat] ? LEADS[ROUTING[cat]] : null);
 
 /** Offerteblok voor gidsen en merkpagina's (type: hybride | allelectric | bodem). Leeg zonder partner. */
@@ -79,6 +79,6 @@ export function privacyOffertes() {
 <li><strong>Je naam en contactgegevens</strong> vul je in het formulier van de offertepartner in. ${SITE.name} ontvangt en bewaart die gegevens niet.</li>
 <li><strong>De offertepartner is verantwoordelijk</strong> voor je aanvraag. Intrekken, inzien of verwijderen regel je bij de partner.</li>
 <li><strong>Statistieken:</strong> heb je Google Analytics toegestaan, dan meten we alleen dat een aanvraag is gestart of verstuurd, voor welk type, de termijn en via welke partner. Nooit je postcode of contactgegevens.</li>
-<li><strong>Vergoeding:</strong> we krijgen een vergoeding per goedgekeurde aanvraag. Dat heeft geen invloed op het advies, de score of de volgorde.</li></ul>
+<li><strong>Vergoeding:</strong> we krijgen een vergoeding per goedgekeurde aanvraag. Dat heeft geen invloed op het advies of de volgorde.</li></ul>
 <p>Onze offertepartners:</p><ul>${lijst}</ul>`;
 }
