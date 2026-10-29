@@ -71,7 +71,7 @@ ${typeCards()}
 <h2>De merken op een rij</h2>
 <p class="sub">Gesorteerd op het aantal checklistpunten dat het merk zelf op de eigen site noemt, bij gelijke stand op naam.</p>
 <div class="table-wrap"><table class="data stack"><thead><tr><th scope="col">Merk</th><th scope="col">Hybride</th><th scope="col">All-electric</th><th scope="col">Bodem</th><th scope="col">Propaan</th><th scope="col">Prijs openbaar</th></tr></thead><tbody>${miniRows}</tbody></table></div>
-<p><a href="/vergelijken/">Alle 10 checklistpunten, met filters →</a></p>
+<p><a class="vlink" href="/vergelijken/">Alle 10 checklistpunten, met filters →</a></p>
 </div></section>
 <section class="sec warm method-band"><div class="wrap">
 <div class="sec-head"><p class="eyebrow">Onze werkwijze</p><h2>Zo vergelijken we</h2></div>

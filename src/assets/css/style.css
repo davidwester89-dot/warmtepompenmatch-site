@@ -149,7 +149,7 @@ footer.site{border-top:1px solid var(--line);background:var(--sand);font-size:1r
 footer.site .cols{display:grid;gap:22px}
 @media(min-width:700px){footer.site .cols{grid-template-columns:1.4fr 1fr 1fr 1fr}}
 footer.site .fh{font:700 1rem/1.2 var(--head);color:var(--ink);margin:0 0 8px}
-footer.site ul{list-style:none;padding:0;margin:0}footer.site li a{display:inline-block;padding:12px 0;color:#424b45}
+footer.site ul{list-style:none;padding:0;margin:0}footer.site li a{display:inline-block;padding:12px 0;min-width:44px;color:#424b45}
 footer.site .fine{margin-top:22px;font-size:1rem;color:var(--muted)}
 .chart{width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:12px}
 .presets{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px}
@@ -253,7 +253,7 @@ table.ptest-facts td{vertical-align:top}
 .lbl{font-weight:700}
 
 /* klikvlakken min. 48px hoog zonder de regelafstand te veranderen */
-.crumbs a,.vlinks a,a.vlink,.example>a,table.data a,.vcard h3 a,.sit h3 a{display:inline-block;padding:13px 0;margin:-13px 0}
+.crumbs a,.vlinks a,a.vlink,.example>a,table.data a,.vcard h3 a,.sit h3 a,ul.postlist+p>a{display:inline-block;padding:13px 0;margin:-13px 0}
 .skip:focus{padding:14px 16px}
 body.has-consent .mobilebar{display:none}
 
