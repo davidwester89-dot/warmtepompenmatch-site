@@ -53,7 +53,7 @@ export const home = {
 <p class="lead">Hybride of all-electric, welk merk en wat kost het? Zes vragen over je huis en je krijgt een advies met kosten, subsidie en terugverdientijd. Acht merken naast elkaar op 10 vaste punten.</p>
 <div class="actions"><a class="btn" href="/warmtepomp-keuzehulp/" data-cta="home_hero">Start de keuzehulp</a><a class="btn ghost" href="/vergelijken/">Vergelijk alle 8 merken</a></div>
 <ul class="trustbar">
-<li>${ICONS.kalender}<span>Gegevens gecontroleerd op <time datetime="${CHECKED}">${fmtDate(CHECKED)}</time></span></li>
+<li>${ICONS.kalender}<span>Gegevens gecontroleerd op <time datetime="${CHECKED}">${fmtDate(CHECKED)}</time>, bijgewerkt op <time datetime="${SCORE_WEG}">${fmtDate(SCORE_WEG)}</time></span></li>
 <li>${ICONS.bron}<span>Bron bij elk bedrag en elk punt</span></li>
 <li>${ICONS.schild}<span>Volgorde nooit betaald</span></li>
 <li>${ICONS.gratis}<span>Gratis, zonder account</span></li>
@@ -496,7 +496,7 @@ export const gidsHub = {
 
 // ---- Statisch ----
 export const over = {
-  path: '/over/', title: 'Over WarmtepompenMatch: wie we zijn en hoe we werken', h1: 'Over ons', crumb: 'Over ons', og: 'home', lastmod: SCORE_WEG,
+  path: '/over/', title: 'Over WarmtepompenMatch: wie we zijn en hoe we werken', h1: 'Over ons', crumb: 'Over ons', og: 'home', stamp: { updated: SCORE_WEG }, lastmod: SCORE_WEG,
   description: 'WarmtepompenMatch helpt huiseigenaren kiezen tussen hybride en all-electric en tussen merken. Hoe we gegevens controleren en hoe we onafhankelijk blijven.',
   schema: [{ '@context': 'https://schema.org', '@type': 'AboutPage', name: 'Over WarmtepompenMatch', about: ORG }],
   body: `<article class="prose"><h1>Over ons</h1><p class="lead">WarmtepompenMatch komt van het team achter BoekhoudMatch, VerduurzaamMatch en ShopMatch. We horen steeds dezelfde vragen: hybride of all-electric, welk merk, en wat kost het nu echt?</p>
