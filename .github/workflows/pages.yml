@@ -30,7 +30,7 @@ jobs:
           L7_BASE: ${{ github.event.before }} # L7 vergelijkt met wat live stond, niet HEAD met zichzelf
       - run: npm run build
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
   deploy:
