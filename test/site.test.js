@@ -42,9 +42,9 @@ test('build (productie): pagina’s, sitemap, robots, IndexNow, CNAME, huisregel
     assert.ok(!/class="partner"/.test(s), `${f}: partnerlabel zonder goedgekeurde partner`);
     assert.ok(!/rel="[^"]*sponsored/.test(s), `${f}: sponsored link zonder goedgekeurde partner`);
     if (/<article/.test(s) && /class="src">Door/.test(s)) assert.match(s, /Door Redactie WarmtepompenMatch/);
-    // Logo's: lokaal, vaste maat, alt = '<merknaam> logo' (30-10).
+    // Logo's: lokaal, vaste maat, alt = merknaam.
     for (const m of s.matchAll(/<img class="plogo plogo-(sm|md|lg)[^"]*" src="\/logos\/([a-z]+)\.svg" alt="([^"]+)" width="(\d+)" height="(\d+)"/g)) {
-      assert.equal(m[3], MERKEN[m[2]].naam + ' logo');
+      assert.equal(m[3], MERKEN[m[2]].naam);
       assert.deepEqual([m[4], m[5]], { sm: ['100', '30'], md: ['120', '36'], lg: ['160', '48'] }[m[1]]);
     }
     assert.ok(!/<img(?![^>]*\balt=)/.test(s), `${f}: img zonder alt`);

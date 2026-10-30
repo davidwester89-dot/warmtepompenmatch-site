@@ -1,5 +1,6 @@
 // Logo's in tabelcellen (Dave 30-10): staat in een tabelcel precies de naam van een aanbieder, dan komt het
 // logo van die aanbieder erboven, in een vast vak (zelfde maat voor iedereen, partner of niet).
+// Decoratief (alt="", aria-hidden): de naam staat in dezelfde cel. Merken in ZONDER_LOGO geeft de site niet mee.
 // Alleen beeld: tekst, volgorde, links en rel-attributen blijven exact zoals ze waren.
 // Werkt op de gebouwde html, dus ook op tabellen uit markdown (blogs, gidsen).
 
@@ -11,7 +12,7 @@ const tekst = (h) => h.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&
 export function maakLogoCellen(merken, { maat = [80, 24], cls = 'cel-logo', productrijen = false } = {}) {
   const index = new Map();
   for (const m of merken) for (const n of m.namen) index.set(n, m);
-  const img = (m) => `<span class="${cls}"><img src="${ESC(m.src)}" alt="${ESC(m.merk)} logo" width="${maat[0]}" height="${maat[1]}" loading="lazy" decoding="async"></span>`;
+  const img = (m) => `<span class="${cls}"><img src="${ESC(m.src)}" alt="" aria-hidden="true" width="${maat[0]}" height="${maat[1]}" loading="lazy" decoding="async"></span>`;
   return function logoCellen(html) {
     const prefix = (t) => { if (!productrijen || t.length > 60) return null; for (const [n, m] of index) if (t.startsWith(n + ' ')) return m; return null; };
     return html.replace(/<table\b[\s\S]*?<\/table>/g, (tbl) => tbl.replace(/<tr\b[\s\S]*?<\/tr>/g, (rij) => {

@@ -11,3 +11,18 @@ Officiële logo's, gedownload van de eigen site van elk merk op 17-10-2026. Alle
 | itho.svg | https://assets.bettyblocks.com/8d6bac1c72cb450786e8d4254c52be68_assets/files/itho-logo-2021.svg (ithodaalderop.nl) |
 | remeha.svg | https://edge.sitecorecloud.io/bdrthermea1-platform-production-864a/media/Project/RemehaNL/RemehaNL/Images/Logos/logo-black.svg (remeha.nl) |
 | panasonic.svg | https://cdn.aircon.panasonic.eu/theme/aircon2020/img/panasonic-logo.svg |
+
+## Gebruiksrecht (nagekeken 30-10-2026)
+
+Per maker de merkrichtlijn of perskit en de status. GEEN LOGO = de maker vraagt toestemming, een licentie of een partnerovereenkomst: dan geen logo in de tabelcellen (ZONDER_LOGO in src/lib/logo-rechten.js). 'Geen gepubliceerde beperking gevonden' is geen toestemming; MM beslist.
+
+| Merk | Richtlijn | Status |
+|---|---|---|
+| daikin | https://www.daikin.eu/en_us/legal-notice.html | GEEN LOGO: merken en logo's alleen met voorafgaande schriftelijke toestemming |
+| itho | geen merkrichtlijn gevonden (ithodaalderop.nl, 30-10) | logo: geen gepubliceerde beperking gevonden |
+| mitsubishi | https://www.mitsubishielectric.com/en/terms/ | GEEN LOGO: geen gebruik zonder toestemming; commercieel gebruik met schriftelijke toestemming |
+| nefitbosch | https://us.bosch-press.com/pressportal/us/en/imprint/legal-notice.html | GEEN LOGO: Bosch verleent geen licentie op logo's; alleen geautoriseerde dealers |
+| panasonic | https://www.panasonic.com/global/about/terms-of-use.html | GEEN LOGO: logo's en merken alleen met voorafgaande toestemming |
+| quatt | geen merkrichtlijn gevonden (quatt.io, 30-10) | logo: geen gepubliceerde beperking gevonden |
+| remeha | https://tools.remeha.nl/remeha-beeldbank/ | logo: beeldbank met logo's openbaar |
+| vaillant | https://www.vaillant-group.com/news-stories/media-downloads/vaillant-group-logos.html | logo: logo-downloads openbaar (media); geen suggestie van officiële samenwerking |

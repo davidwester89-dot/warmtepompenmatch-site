@@ -3,7 +3,7 @@ title: Lucht-lucht warmtepomp kosten: prijs single- en multisplit
 seo_title: Lucht-lucht warmtepomp kosten: prijs single- en multisplit
 description: Wat kost een lucht-luchtwarmtepomp? Prijs voor single- en multisplit, installatie, stroomkosten en waarom er geen ISDE-subsidie op zit.
 date: 2026-10-27
-updated: 2026-10-27
+updated: 2026-10-30
 checked: 2026-10-27
 tools: /warmtepomp-keuzehulp/, /vergelijken/
 sources:

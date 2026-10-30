@@ -1,4 +1,4 @@
-// Logo's van aanbieders in tabellen (Dave 30-10): lokaal, vaste maat, lazy, alt "<Merk> logo"; alleen beeld.
+// Logo's van aanbieders in tabellen (Dave 30-10): lokaal, vaste maat, lazy, decoratief (alt="", aria-hidden: de naam staat in de cel); alleen beeld.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
@@ -17,7 +17,7 @@ test('logoCellen: alleen een cel met precies de naam krijgt een logo; tekst, lin
   assert.ok(u.includes('<a href="https://x.test/" rel="sponsored nofollow noopener">Acme</a>'));
   assert.equal(u.replace(/<span class="cel-logo"><img [^>]*><\/span>/g, ''), h);
   assert.equal(t(u), u, 'geen dubbel logo');
-  assert.match(u, /<img src="\/logos\/acme.svg" alt="Acme logo" width="80" height="24" loading="lazy" decoding="async">/);
+  assert.match(u, /<img src="\/logos\/acme.svg" alt="" aria-hidden="true" width="80" height="24" loading="lazy" decoding="async">/);
 });
 
 test('logoCellen productrijen: eerste cel "<merk> <product>" krijgt een logo, andere cellen niet', () => {
@@ -27,13 +27,13 @@ test('logoCellen productrijen: eerste cel "<merk> <product>" krijgt een logo, an
   assert.ok(u.includes('<td>Acme Pro</td>') && u.includes('<th scope="col">Acme Pro</th>'));
 });
 
-test('logo\'s in de gebouwde site: alt "<Merk> logo", vaste maat, lazy, bestand bestaat; geen score-icoontjes', () => {
+test('logo\'s in de gebouwde site: alt="" en aria-hidden, vaste maat, lazy, bestand bestaat; geen score-icoontjes', () => {
   let n = 0;
   for (const p of pages(DIST)) {
     const h = readFileSync(p, 'utf8');
     for (const [, tag] of h.matchAll(/<span class="cel-logo">(<img [^>]*>)<\/span>/g)) {
       n++;
-      assert.match(tag, / alt="[^"]+ logo"/, p);
+      assert.match(tag, / alt="" aria-hidden="true"/, p);
       assert.match(tag, / width="\d+" height="\d+"/, p);
       assert.match(tag, / loading="lazy"/, p);
       const src = tag.match(/ src="([^"]+)"/)[1].replace(/^\/[^/]*?(?=\/logos\/|\/brands\/)/, '');

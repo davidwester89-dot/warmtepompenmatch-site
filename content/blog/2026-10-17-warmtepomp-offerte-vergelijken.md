@@ -3,7 +3,7 @@ title: Warmtepompoffertes vergelijken: waar let je op in 2026?
 seo_title: Warmtepompoffertes vergelijken: checklist 2026
 description: Twee offertes voor een warmtepomp? Vergelijk vermogen, meldcode, wat er in de prijs zit, garantie en certificaten. En teken op tijd voor de ISDE van 2026.
 date: 2026-10-17
-updated: 2026-10-20
+updated: 2026-10-30
 checked: 2026-10-17
 image: warmtepomp-offerte-vergelijken
 image_alt: Buitenunit van een warmtepomp zonder merkopdruk op het balkon van een woning, naast de achterdeur

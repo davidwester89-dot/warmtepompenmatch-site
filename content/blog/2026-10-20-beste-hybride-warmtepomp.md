@@ -3,7 +3,7 @@ title: Beste hybride warmtepomp 2026: zo kies je per situatie
 seo_title: Beste hybride warmtepomp 2026: zo kies je per situatie
 description: Beste hybride warmtepomp 2026? 7 merken op rendement, geluid en vermogen volgens de fabrikant, plus kosten, terugverdientijd en ISDE-subsidie.
 date: 2026-10-20
-updated: 2026-10-26
+updated: 2026-10-30
 checked: 2026-10-20
 image: beste-hybride-warmtepomp
 image_alt: Witte paneelradiator met thermostaatknop
