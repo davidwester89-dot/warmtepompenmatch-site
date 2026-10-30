@@ -16,7 +16,7 @@ import { LEADS_AAN } from './leads.config.mjs';
 export const SCORE_WEG = '2026-10-29';
 // Logo's van de merken in de tabellen (30-10-2026): bijgewerkt-datum, lastmod en dateModified van die pagina's (L7). Blogs: updated in de frontmatter.
 export const LOGO_UPD = '2026-10-30';
-export const LOGO_PADEN = new Set(['/merken/quatt/', '/warmtepomp-geluid/']);
+export const LOGO_PADEN = new Set(['/merken/quatt/', '/merken/daikin/', '/warmtepomp-geluid/']);
 export const bijgewerkt = (pg, upd) => ({ ...pg, lastmod: upd, stamp: { ...pg.stamp, updated: upd }, ...(pg.article ? { article: { ...pg.article, updated: upd } } : {}), ...(pg.schema ? { schema: pg.schema.map((x, j) => (j === 0 && 'dateModified' in x ? { ...x, dateModified: upd } : x)) } : {}) });
 
 const RANG = ranglijst();

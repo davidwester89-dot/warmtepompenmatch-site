@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
-const PAGINAS = ['/merken/quatt/', '/warmtepomp-geluid/', '/blog/lucht-lucht-warmtepomp-kosten/', '/blog/beste-hybride-warmtepomp/', '/blog/warmtepomp-offerte-vergelijken/'];
+const PAGINAS = ['/merken/quatt/', '/merken/daikin/', '/warmtepomp-geluid/', '/blog/lucht-lucht-warmtepomp-kosten/', '/blog/beste-hybride-warmtepomp/', '/blog/warmtepomp-offerte-vergelijken/'];
 const ZICHTBAAR = /bijgewerkt <time datetime="2026-10-30">/;
 
 test('L7 30-10: pagina\'s met logo\'s in de tabellen', () => {
