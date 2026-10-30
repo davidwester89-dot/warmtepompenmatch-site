@@ -1,4 +1,4 @@
-// Logo's van aanbieders in tabellen (Dave 30-10): lokaal, vaste maat, lazy, decoratief (alt="", aria-hidden: de naam staat in de cel); alleen beeld.
+// Logo's van aanbieders in tabellen (30-10): lokaal, vaste maat, lazy, decoratief (alt="", aria-hidden: de naam staat in de cel); alleen beeld.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';

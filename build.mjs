@@ -9,7 +9,7 @@ import { MERKEN } from './src/lib/merken.js';
 import { ZONDER_LOGO } from './src/lib/logo-rechten.js';
 const OUT = 'dist';
 rmSync(OUT, { recursive: true, force: true });
-// Logo's in tabelcellen met precies de naam van een aanbieder (Dave 30-10); zelfde vak voor iedereen, alleen beeld.
+// Logo's in tabelcellen met precies de naam van een aanbieder (30-10); zelfde vak voor iedereen, alleen beeld.
 // Niet voor merken in ZONDER_LOGO (merkrichtlijn vraagt toestemming; SC 30-10): daar blijft alleen de naam.
 const logoCellen = maakLogoCellen(Object.entries(MERKEN).filter(([id]) => !ZONDER_LOGO.has(id)).map(([id, m]) => ({ namen: [...new Set([m.naam, m.naam.split(' ')[0]])], src: `${BASE}/logos/${id}.svg`, merk: m.naam })), { productrijen: true });
 const write = (p, s) => { mkdirSync(dirname(p), { recursive: true }); writeFileSync(p, p.endsWith('.html') ? logoCellen(s) : s); };
@@ -22,7 +22,7 @@ const home = { ...P.home, body: P.home.body.replace('{{latest}}', latestHtml(pos
 export const pages = [home, P.quiz, P.calc, P.merkHub, ...P.merkPages, P.vsHub, ...P.vsPages, P.gidsHub, ...P.guides, ...(posts.length ? [blogIndex(posts), ...posts.map((x) => postPage(x, posts))] : []), ...offertePages, P.over, P.privacy, P.notfound].map((p) => (P.LOGO_PADEN.has(p.path) ? P.bijgewerkt(p, P.LOGO_UPD) : p));
 for (const p of pages) write(p.path.endsWith('.html') ? join(OUT, p.path) : join(OUT, p.path, 'index.html'), partnerNoten(layout(p)));
 cpSync('src/assets/js', join(OUT, 'js'), { recursive: true });
-cpSync('src/lib', join(OUT, 'js/lib'), { recursive: true });
+cpSync('src/lib', join(OUT, 'js/lib'), { recursive: true, filter: (p) => !/logo-(rechten|cellen)\.m?js$/.test(p) }); // alleen build-time, niet publiceren
 // Offertepartners voor de browser (leeg = geen offerteknoppen). Alleen velden die de browser nodig heeft.
 const pub = Object.fromEntries(Object.entries(LEADS).map(([id, x]) => [id, { naam: x.naam, type: x.type, url: x.url, origin: x.origin, privacy: x.privacy, max: x.max, prefill: x.prefill, subidParam: x.subidParam, klaar: x.klaar }]));
 write(join(OUT, 'js/lib/leads.config.js'), `// Gegenereerd door build.mjs${LEADS_PREVIEW ? ' (LEADS_PREVIEW)' : ''}. Niet bewerken.\nexport const LEADS = ${JSON.stringify(pub)};\nexport const ROUTING = ${JSON.stringify(ROUTING)};\n`);

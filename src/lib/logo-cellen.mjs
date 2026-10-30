@@ -1,4 +1,4 @@
-// Logo's in tabelcellen (Dave 30-10): staat in een tabelcel precies de naam van een aanbieder, dan komt het
+// Logo's in tabelcellen (30-10): staat in een tabelcel precies de naam van een aanbieder, dan komt het
 // logo van die aanbieder erboven, in een vast vak (zelfde maat voor iedereen, partner of niet).
 // Decoratief (alt="", aria-hidden): de naam staat in dezelfde cel. Merken in ZONDER_LOGO geeft de site niet mee.
 // Alleen beeld: tekst, volgorde, links en rel-attributen blijven exact zoals ze waren.
