@@ -4,9 +4,13 @@ import { layout, SITE, BASE, PREVIEW, NAV_OPT } from './src/layout.mjs';
 import { partnerNoten } from './src/lib/partnerlinks.js';
 import { loadPosts, postPage, blogIndex, latestHtml, feed } from './src/blog.mjs';
 import { LEADS, ROUTING, LEADS_PREVIEW } from './src/leads.config.mjs';
+import { maakLogoCellen } from './src/lib/logo-cellen.mjs';
+import { MERKEN } from './src/lib/merken.js';
 const OUT = 'dist';
 rmSync(OUT, { recursive: true, force: true });
-const write = (p, s) => { mkdirSync(dirname(p), { recursive: true }); writeFileSync(p, s); };
+// Logo's in tabelcellen met precies de naam van een aanbieder (Dave 30-10); zelfde vak voor iedereen, alleen beeld.
+const logoCellen = maakLogoCellen(Object.entries(MERKEN).map(([id, m]) => ({ namen: [...new Set([m.naam, m.naam.split(' ')[0]])], src: `${BASE}/logos/${id}.svg`, merk: m.naam })), { productrijen: true });
+const write = (p, s) => { mkdirSync(dirname(p), { recursive: true }); writeFileSync(p, p.endsWith('.html') ? logoCellen(s) : s); };
 // Blog: content/blog/*.md (nieuwste eerst; posts met een datum in de toekomst worden overgeslagen). Geen posts = geen blog in menu en sitemap.
 const posts = loadPosts();
 NAV_OPT.blog = posts.length > 0;

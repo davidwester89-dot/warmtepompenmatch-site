@@ -11,5 +11,5 @@ export function logoImg(id, { maat = 'md', eager = false, base = '', cls = '' } 
   const p = MERKEN[id];
   if (!p) throw new Error('Onbekend merk ' + id);
   const [w, h] = LOGO_MATEN[maat];
-  return `<img class="plogo plogo-${maat}${cls ? ' ' + cls : ''}" src="${base}/logos/${id}.svg" alt="${p.naam}" width="${w}" height="${h}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+  return `<img class="plogo plogo-${maat}${cls ? ' ' + cls : ''}" src="${base}/logos/${id}.svg" alt="${p.naam} logo" width="${w}" height="${h}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
 }
