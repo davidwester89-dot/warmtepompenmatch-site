@@ -19,7 +19,7 @@ NAV_OPT.blog = posts.length > 0;
 const P = await import('./src/pages.mjs');
 const { offertePages } = await import('./src/offerte.mjs');
 const home = { ...P.home, body: P.home.body.replace('{{latest}}', latestHtml(posts)) };
-export const pages = [home, P.quiz, P.calc, P.merkHub, ...P.merkPages, P.vsHub, ...P.vsPages, P.gidsHub, ...P.guides, ...(posts.length ? [blogIndex(posts), ...posts.map((x) => postPage(x, posts))] : []), ...offertePages, P.over, P.privacy, P.notfound].map((p) => (P.LOGO_PADEN.has(p.path) ? P.bijgewerkt(p, P.LOGO_UPD) : p));
+export const pages = [home, P.quiz, P.calc, P.merkHub, ...P.merkPages, P.vsHub, ...P.vsPages, P.gidsHub, ...P.guides, ...(posts.length ? [blogIndex(posts), ...posts.map((x) => postPage(x, posts))] : []), ...offertePages, P.over, P.privacy, P.notfound].map((p) => (P.LOGO_PADEN.has(p.path) ? P.bijgewerkt(p, P.LOGO_UPD) : p)).map((p) => (P.EF_PADEN.has(p.path) ? P.bijgewerkt(p, P.EF_UPD) : p));
 for (const p of pages) write(p.path.endsWith('.html') ? join(OUT, p.path) : join(OUT, p.path, 'index.html'), partnerNoten(layout(p)));
 // Offertemodule uit (geen offertepagina's): offerte.js, offerte-bedankt.js en partnerlinks.js niet publiceren (SC 30-10, geen slapende scripts).
 const OFFERTE_AAN = offertePages.length > 0;

@@ -2,6 +2,7 @@
 // De volgorde (ranglijst) blijft gelijk; alleen de weergave van de score is weg.
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { EF_PADEN } from '../src/pages.mjs'; // op 3-11 opnieuw bijgewerkt ('Niet vermeld'): test/niet-vermeld-0311.test.js
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { execSync } from 'node:child_process';
@@ -26,9 +27,9 @@ test('geen scores in de gebouwde pagina\'s en scripts', () => {
 test('pagina\'s die een score toonden: lastmod en dateModified 2026-10-29', () => {
   const sm = read('dist/sitemap.xml');
   // /merken/quatt/ en /merken/daikin/ zijn op 30-10 opnieuw bijgewerkt (logo's in de tabellen); die datum test test/logo-l7.test.js.
-  for (const p of ['/', '/warmtepomp-keuzehulp/', '/merken/', '/merken/panasonic/', '/vergelijken/', '/vergelijken/quatt-vs-remeha/', '/over/'])
+  for (const p of ['/', '/warmtepomp-keuzehulp/', '/merken/', '/merken/panasonic/', '/vergelijken/', '/vergelijken/quatt-vs-remeha/', '/over/'].filter((x) => !EF_PADEN.has(x)))
     assert.match(sm, new RegExp(`<loc>https://warmtepompenmatch\\.nl${p}</loc><lastmod>2026-10-29</lastmod>`), p);
-  for (const f of ['vergelijken/quatt-vs-remeha']) {
+  for (const f of ['vergelijken/quatt-vs-remeha'].filter((x) => !EF_PADEN.has(`/${x}/`))) {
     const h = read(`dist/${f}/index.html`);
     assert.match(h, /"dateModified":"2026-10-29"/, f);
     assert.match(h, /Laatst bijgewerkt <time datetime="2026-10-29">/, f);

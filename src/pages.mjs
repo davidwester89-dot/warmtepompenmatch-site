@@ -17,6 +17,9 @@ export const SCORE_WEG = '2026-10-29';
 // Logo's van de merken in de tabellen (30-10-2026): bijgewerkt-datum, lastmod en dateModified van die pagina's (L7). Blogs: updated in de frontmatter.
 export const LOGO_UPD = '2026-10-30';
 export const LOGO_PADEN = new Set(['/merken/quatt/', '/merken/daikin/', '/warmtepomp-geluid/']);
+// 'Niet vermeld' overal dezelfde uitleg (externe feedback nov): /vergelijken/, /over/, de merkpagina's (checklistzin) en hub /merken/ (L7, pushdatum).
+export const EF_UPD = '2026-11-03';
+export const EF_PADEN = new Set(['/vergelijken/', '/over/', '/merken/', '/merken/daikin/', '/merken/itho-daalderop/', '/merken/mitsubishi-electric/', '/merken/nefit-bosch/', '/merken/panasonic/', '/merken/quatt/', '/merken/remeha/', '/merken/vaillant/']);
 export const bijgewerkt = (pg, upd) => ({ ...pg, lastmod: upd, stamp: { ...pg.stamp, updated: upd }, ...(pg.article ? { article: { ...pg.article, updated: upd } } : {}), ...(pg.schema ? { schema: pg.schema.map((x, j) => (j === 0 && 'dateModified' in x ? { ...x, dateModified: upd } : x)) } : {}) });
 
 const RANG = ranglijst();
@@ -154,7 +157,7 @@ const merkPagesRaw = IDS.map((id) => {
 <div class="pc-cta">${knop(id, 'merk_top')}<a href="/warmtepomp-keuzehulp/">Past het bij mijn huis? Start de keuzehulp →</a></div></div>
 <h2>Modellen</h2><div class="table-wrap"><table class="data stack"><thead><tr><th scope="col">Model of lijn</th><th scope="col">Wat</th></tr></thead><tbody>${p.lijnen.map(([n, w]) => `<tr><th scope="row">${esc(n)}</th><td data-l="Wat">${esc(w)}</td></tr>`).join('')}</tbody></table></div>
 ${p.extra || ''}${prijsBlok}
-<h2>Checklist: wat biedt ${esc(p.naam)}?</h2><p class="sub">Tien vaste punten, uit de site van het merk. Niet vermeld telt als 0. <a href="/over/#methode">Zo tellen we</a></p>${checklistTable(id)}
+<h2>Checklist: wat biedt ${esc(p.naam)}?</h2><p class="sub">Tien vaste punten, uit de site van het merk. Niet vermeld levert geen punt op, net als nee. <a href="/over/#methode">Zo tellen we</a></p>${checklistTable(id)}
 <h2>Sterk en let op</h2><div class="pm"><div class="card plus"><h3>Sterk</h3><ul>${p.plus.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div><div class="card min"><h3>Let op</h3><ul>${p.min.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div></div>
 <h2>Voor wie?</h2><p>${esc(p.voor)}</p>
 ${p.faq ? faqHtml(p.faq) : ''}${leadCta(typeVan(id), 'merk')}
@@ -190,7 +193,7 @@ export const vsHub = {
 <div class="actions"><a class="btn" href="/warmtepomp-keuzehulp/">Liever advies op maat? Start de keuzehulp</a></div>
 <form class="filters card" id="filters" aria-labelledby="h-f"><h2 id="h-f">Filter de merken</h2>
 <fieldset class="q"><legend>Moet het merk hebben</legend><div class="fchecks">${FILTERS.map((k) => `<label class="check"><input type="checkbox" name="need" value="${k}"><span>${esc(PUNTEN[k].lang)}</span></label>`).join('')}</div></fieldset>
-<p class="sub">"Deels" telt mee. Niet vermeld telt niet mee.</p>
+<p class="sub">"Deels" telt mee. Niet vermeld levert geen punt op, net als nee.</p>
 <p class="count" id="f-count" aria-live="polite">${IDS.length} van ${IDS.length} merken</p>
 </form>
 <div class="sortbar"><h2 style="margin:0">Alle merken naast elkaar</h2>${sel('f-sort', 'Sorteer op', [['score', 'Meeste checklistpunten'], ['naam', 'Naam']])}</div>
@@ -505,7 +508,7 @@ export const over = {
   body: `<article class="prose"><h1>Over ons</h1><p class="lead">WarmtepompenMatch komt van het team achter BoekhoudMatch, VerduurzaamMatch en ShopMatch. We horen steeds dezelfde vragen: hybride of all-electric, welk merk, en wat kost het nu echt?</p>
 <p>Veel informatie over warmtepompen komt van installateurs en merken die je hun eigen product willen verkopen. Wij zetten de merken naast elkaar met wat ze zelf op hun site zetten, en rekenen met de onafhankelijke cijfers van Milieu Centraal en RVO.</p>
 <h2>Hoe we werken</h2><ul><li><strong>Alleen de bron.</strong> Elk checklistpunt komt van de site van het merk, elk bedrag van Milieu Centraal, RVO of het merk zelf, met link.</li><li><strong>Niets verzonnen.</strong> Staat iets niet op de site van het merk, dan staat er "niet vermeld". We plaatsen geen reviews of beoordelingen.</li><li><strong>Onafhankelijk.</strong> We installeren geen warmtepompen en verkopen niets.</li><li><strong>Partners tellen nooit mee</strong> in de volgorde of het advies. Partnerlinks worden bij de knoppen vermeld met één zin per blok.</li></ul>
-</article>${methodBox()}<article class="prose"><h2>Wat telt de checklist?</h2><ul>${GROEPEN.map((g) => `<li><strong>${esc(g.naam)}:</strong> ${g.punten.map((k) => esc(PUNTEN[k].lang[0].toLowerCase() + PUNTEN[k].lang.slice(1))).join(', ')}.</li>`).join('')}</ul><p>"Standaard minstens 5 jaar garantie" is ja als het merk dat zonder voorwaarden geeft, deels als het alleen met een voorwaarde kan (zoals registratie of inbedrijfname door het merk) en nee als de standaardgarantie korter is. Noemt een merk een punt niet op de eigen site, dan staat er "niet vermeld" en telt het als 0. Mist er iets? Mail ons, dan passen we het aan met bron.</p>
+</article>${methodBox()}<article class="prose"><h2>Wat telt de checklist?</h2><ul>${GROEPEN.map((g) => `<li><strong>${esc(g.naam)}:</strong> ${g.punten.map((k) => esc(PUNTEN[k].lang[0].toLowerCase() + PUNTEN[k].lang.slice(1))).join(', ')}.</li>`).join('')}</ul><p>"Standaard minstens 5 jaar garantie" is ja als het merk dat zonder voorwaarden geeft, deels als het alleen met een voorwaarde kan (zoals registratie of inbedrijfname door het merk) en nee als de standaardgarantie korter is. Noemt een merk een punt niet op de eigen site, dan staat er "niet vermeld". Dat levert geen punt op, net als nee. Zo kan een merk in de volgorde lager uitkomen omdat het minder openbaar maakt. In de keuzehulp tonen we alleen merken die het geadviseerde type zelf noemen (ja of deels), in dezelfde volgorde. Mist er iets? Mail ons, dan passen we het aan met bron.</p>
 <p>Fout gezien? Mail naar <a href="mailto:${SITE.email}">${SITE.email}</a>.</p>${LEADS_AAN ? `<p>Offertes vraag je aan via een offertepartner. ${SITE.name} is geen partij bij de offerte of de opdracht en ontvangt een vergoeding per aanvraag.</p>` : ''}</article>`,
 };
 
