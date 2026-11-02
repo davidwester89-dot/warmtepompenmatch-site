@@ -1,7 +1,7 @@
 ---
 title: Warmtepompboiler kosten: prijs per inhoud en installatie
-seo_title: Warmtepompboiler kosten: prijs per liter en installatie
-description: Wat kost een warmtepompboiler? Prijs per inhoud van 80 tot 300 liter, de installatie, de ISDE-subsidie en wat hij bespaart ten opzichte van je cv-ketel.
+seo_title: Warmtepompboiler kosten: prijs per inhoud en installatie
+description: Wat kost een warmtepompboiler? Prijzen van 80 tot 251 liter uit de prijslijsten van fabrikanten, de installatie, ISDE-subsidie en het stroomverbruik.
 date: 2026-11-03
 updated: 2026-11-03
 checked: 2026-11-03

@@ -9,6 +9,8 @@ export const CFG = {
     '/warmtepomp-keuzehulp/': ['zichtbaar'], // keuzehulp zonder enige zichtbare datum: lastmod + dateModified verplicht (SC 30-10, besluit 3)
   },
   requireDateModified: ['/warmtepomp-keuzehulp/'], // WebApplication-JSON-LD moet dateModified (= lastmod) krijgen
+  // Automatisch gegenereerde teaser 'Meer op de blog' onder elke post (src/blog.mjs) telt niet als bodywijziging van die post (L7: geen datum bij alleen een nieuwe teaser). Vraagt SC-OK.
+  stripBlocks: [/<h2>Meer op de blog<\/h2><div class="grid cards two">[\s\S]*?<\/div>/],
 };
 export const ALLOW_NAME = [];
 export const BEKEND_ORPHAN = []; // SC 30-10 besluit 2: geserveerd = publiek, geen allowlist; build-only modules uit de output (zie build.mjs)
