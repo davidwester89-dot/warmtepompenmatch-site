@@ -17,7 +17,9 @@ test('Niet vermeld: één uitleg die klopt met de code', () => {
   execSync('node build.mjs', { env: { ...process.env, BASE: '', PREVIEW: '' }, stdio: 'ignore' });
   assert.equal(punt(null), 0, 'checklist: niet vermeld = 0 punten (anders klopt de uitleg niet meer)');
   for (const f of files('dist')) assert.doesNotMatch(zichtbaar(read(f)), /[Nn]iet vermeld telt (als 0|niet mee)|telt het als 0/, f);
-  for (const p of ['/vergelijken/', '/over/']) assert.match(zichtbaar(read(`dist${p}index.html`)), /levert (het )?geen punt op, net als nee/, p);
+  for (const p of ['/over/']) assert.match(zichtbaar(read(`dist${p}index.html`)), /levert (het )?geen punt op, net als nee/, p);
+  // SC-review 2cfdc56: onder de filters gaat het om meetellen, niet om punten (vergelijk.js: alleen ja of deels komt door een filter).
+  assert.ok(read('dist/vergelijken/index.html').includes('<p class="sub">"Deels" telt mee. Niet vermeld telt, net als nee, niet mee.</p>'));
 });
 
 test('L7 3-11: lastmod, zichtbare bijgewerkt-regel en dateModified', () => {
@@ -28,4 +30,10 @@ test('L7 3-11: lastmod, zichtbare bijgewerkt-regel en dateModified', () => {
     assert.match(h, new RegExp(`bijgewerkt (op )?<time datetime="${EF_UPD}">`, 'i'), p);
     assert.doesNotMatch(h, new RegExp(`"dateModified": ?"(?!${EF_UPD})`), p);
   }
+});
+
+test('L7-hubregel 3-11: /gidsen/ met zichtbare bijgewerkt-regel en lastmod op de pushdatum', () => {
+  const h = read('dist/gidsen/index.html');
+  assert.match(h, new RegExp(`Laatst bijgewerkt <time datetime="${EF_UPD}">`));
+  assert.ok(read('dist/sitemap.xml').includes(`<loc>https://warmtepompenmatch.nl/gidsen/</loc><lastmod>${EF_UPD}</lastmod>`));
 });

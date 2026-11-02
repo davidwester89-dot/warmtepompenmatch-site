@@ -193,7 +193,7 @@ export const vsHub = {
 <div class="actions"><a class="btn" href="/warmtepomp-keuzehulp/">Liever advies op maat? Start de keuzehulp</a></div>
 <form class="filters card" id="filters" aria-labelledby="h-f"><h2 id="h-f">Filter de merken</h2>
 <fieldset class="q"><legend>Moet het merk hebben</legend><div class="fchecks">${FILTERS.map((k) => `<label class="check"><input type="checkbox" name="need" value="${k}"><span>${esc(PUNTEN[k].lang)}</span></label>`).join('')}</div></fieldset>
-<p class="sub">"Deels" telt mee. Niet vermeld levert geen punt op, net als nee.</p>
+<p class="sub">"Deels" telt mee. Niet vermeld telt, net als nee, niet mee.</p>
 <p class="count" id="f-count" aria-live="polite">${IDS.length} van ${IDS.length} merken</p>
 </form>
 <div class="sortbar"><h2 style="margin:0">Alle merken naast elkaar</h2>${sel('f-sort', 'Sorteer op', [['score', 'Meeste checklistpunten'], ['naam', 'Naam']])}</div>
@@ -496,6 +496,8 @@ ${num('kw', 'Vermogen', TYPES.hybride.kw, 'kW', 'Voor de ISDE: € 1.025 + € 2
 
 export const gidsHub = {
   path: '/gidsen/', title: 'Gidsen over warmtepompen | WarmtepompenMatch', h1: 'Warmtepomp kiezen: alle gidsen', crumb: 'Gidsen', og: 'gidsen',
+  // L7-hubregel 03-11: zichtbare bijgewerkt-regel erbij; hubdatum = max(eigen bodywijziging 2026-11-03, nieuwste kind 2026-10-30). BEKEND_HUB /gidsen/ kan weg.
+  stamp: { updated: EF_UPD }, lastmod: EF_UPD,
   description: 'Gidsen over de kosten van een warmtepomp, de terugverdientijd, de ISDE-subsidie van 2026, hybride of all-electric, geluid en of je huis geschikt is.',
   body: `<h1>Warmtepomp kiezen: alle gidsen</h1><div class="grid cards two">${guides.map((g) => `<a class="card" href="${g.path}"><h2 class="h3">${esc(g.h1)}</h2><p>${esc(g.description)}</p><span class="more">Lees de gids →</span></a>`).join('')}<a class="card" href="/terugverdientijd-berekenen/"><h2 class="h3">Rekenhulp: terugverdientijd berekenen</h2><p>${esc(calc.description)}</p><span class="more">Naar de rekenhulp →</span></a></div>${matchCta()}`,
 };
