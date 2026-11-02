@@ -19,6 +19,8 @@ export const LOGO_UPD = '2026-10-30';
 export const LOGO_PADEN = new Set(['/merken/quatt/', '/merken/daikin/', '/warmtepomp-geluid/']);
 // 'Niet vermeld' overal dezelfde uitleg (externe feedback nov): /vergelijken/, /over/, de merkpagina's (checklistzin) en hub /merken/ (L7, pushdatum).
 export const EF_UPD = '2026-11-03';
+// Hub /gidsen/ (L7-hubregel D, SC 02-11): max(deploy eigen laatste bodywijziging, deploy nieuwste kind) = 2026-10-30 (kinderen live 30-10 12:51 CET).
+export const GIDSEN_UPD = '2026-10-30';
 export const EF_PADEN = new Set(['/vergelijken/', '/over/', '/merken/', '/merken/daikin/', '/merken/itho-daalderop/', '/merken/mitsubishi-electric/', '/merken/nefit-bosch/', '/merken/panasonic/', '/merken/quatt/', '/merken/remeha/', '/merken/vaillant/']);
 export const bijgewerkt = (pg, upd) => ({ ...pg, lastmod: upd, stamp: { ...pg.stamp, updated: upd }, ...(pg.article ? { article: { ...pg.article, updated: upd } } : {}), ...(pg.schema ? { schema: pg.schema.map((x, j) => (j === 0 && 'dateModified' in x ? { ...x, dateModified: upd } : x)) } : {}) });
 
@@ -496,8 +498,8 @@ ${num('kw', 'Vermogen', TYPES.hybride.kw, 'kW', 'Voor de ISDE: € 1.025 + € 2
 
 export const gidsHub = {
   path: '/gidsen/', title: 'Gidsen over warmtepompen | WarmtepompenMatch', h1: 'Warmtepomp kiezen: alle gidsen', crumb: 'Gidsen', og: 'gidsen',
-  // L7-hubregel 03-11: zichtbare bijgewerkt-regel erbij; hubdatum = max(eigen bodywijziging 2026-11-03, nieuwste kind 2026-10-30). BEKEND_HUB /gidsen/ kan weg.
-  stamp: { updated: EF_UPD }, lastmod: EF_UPD,
+  // L7-hubregel D: zichtbare bijgewerkt-regel + lastmod = deploydatum nieuwste kind (2026-10-30), niet de pushdatum: de hub zelf verandert niet.
+  stamp: { updated: GIDSEN_UPD }, lastmod: GIDSEN_UPD,
   description: 'Gidsen over de kosten van een warmtepomp, de terugverdientijd, de ISDE-subsidie van 2026, hybride of all-electric, geluid en of je huis geschikt is.',
   body: `<h1>Warmtepomp kiezen: alle gidsen</h1><div class="grid cards two">${guides.map((g) => `<a class="card" href="${g.path}"><h2 class="h3">${esc(g.h1)}</h2><p>${esc(g.description)}</p><span class="more">Lees de gids →</span></a>`).join('')}<a class="card" href="/terugverdientijd-berekenen/"><h2 class="h3">Rekenhulp: terugverdientijd berekenen</h2><p>${esc(calc.description)}</p><span class="more">Naar de rekenhulp →</span></a></div>${matchCta()}`,
 };

@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { execSync } from 'node:child_process';
-import { EF_UPD, EF_PADEN } from '../src/pages.mjs';
+import { EF_UPD, EF_PADEN, GIDSEN_UPD } from '../src/pages.mjs';
 import { punt } from '../src/lib/checklist.js';
 
 const read = (p) => readFileSync(p, 'utf8');
@@ -32,8 +32,8 @@ test('L7 3-11: lastmod, zichtbare bijgewerkt-regel en dateModified', () => {
   }
 });
 
-test('L7-hubregel 3-11: /gidsen/ met zichtbare bijgewerkt-regel en lastmod op de pushdatum', () => {
+test('L7-hubregel D: /gidsen/ met zichtbare bijgewerkt-regel en lastmod op 2026-10-30 (deploy nieuwste kind)', () => {
   const h = read('dist/gidsen/index.html');
-  assert.match(h, new RegExp(`Laatst bijgewerkt <time datetime="${EF_UPD}">`));
-  assert.ok(read('dist/sitemap.xml').includes(`<loc>https://warmtepompenmatch.nl/gidsen/</loc><lastmod>${EF_UPD}</lastmod>`));
+  assert.match(h, new RegExp(`Laatst bijgewerkt <time datetime="${GIDSEN_UPD}">`));
+  assert.ok(read('dist/sitemap.xml').includes(`<loc>https://warmtepompenmatch.nl/gidsen/</loc><lastmod>${GIDSEN_UPD}</lastmod>`));
 });
