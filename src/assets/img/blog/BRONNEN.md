@@ -32,3 +32,13 @@ Regel: geen foto's met een zichtbaar merk of logo (een vergelijkingssite mag gee
 - Licentie: CC0 1.0 Universal (Public Domain Dedication), https://creativecommons.org/publicdomain/zero/1.0/deed.nl
 - Aanpassingen: bijgesneden tot 2272 × 1193 (x = 0, y = 380), verkleind naar 1200, 900 en 600 breed, omgezet naar WebP (kwaliteit 72).
 - Merkcontrole 20-10-2026: rij woningen, bomen en verkeersborden; geen merknaam, logo of personen.
+
+## warmtepompboiler-kosten-{600,900,1200}.webp
+
+- Gebruikt in: /blog/warmtepompboiler-kosten/ (kopfoto) en og-kaart `src/assets/og/blog-warmtepompboiler-kosten.png`
+- Origineel: "Toplotna crpalka-postavitev" (2736 × 3648, geüpload 23-03-2012)
+- Maker: FinkJ (Slovenische Wikipedia)
+- Bron: Wikimedia Commons, https://commons.wikimedia.org/wiki/File:Toplotna_crpalka-postavitev.JPG
+- Licentie: Public domain (door de maker vrijgegeven), zoals vermeld op de Commons-bestandspagina
+- Aanpassingen: merkplaatje op de bovenkap weggeretoucheerd (02-11-2026), bijgesneden tot 2400 × 1260 (x = 168, y = 40), verkleind naar 1200, 900 en 600 breed, omgezet naar WebP (kwaliteit 72).
+- Merkcontrole 02-11-2026: na retouche geen merknaam of logo zichtbaar op de boiler; de circulatiepomp (linksonder in het origineel) valt buiten de uitsnede; geen personen.
