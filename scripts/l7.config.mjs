@@ -16,8 +16,4 @@ export const ALLOW_NAME = [];
 export const BEKEND_ORPHAN = []; // SC 30-10 besluit 2: geserveerd = publiek, geen allowlist; build-only modules uit de output (zie build.mjs)
 // Hub-audit: bestaande bevindingen op origin/main (30-10). Haal een regel weg zodra de hub is gefixt; dan bewaakt de test hem.
 export const BEKEND_HUB = []; // /gidsen/ gefixt 03-11 (zichtbare bijgewerkt-regel + lastmod), hub-audit bewaakt hem weer
-// L7-hubregel D (SC 02-11): /gidsen/ krijgt 2026-10-30 = deploy nieuwste kind (30-10 12:51 CET), eigen bodywijziging laatst 26-10;
-// de nieuwe zichtbare regel telt voor l7check als bodywijziging, maar de inhoud verandert niet. Smal en met vervaldatum; weg na de push van 3-11.
-export const BEKEND_L7 = [
-  { pad: '/gidsen/', alleen: /^\/gidsen\/ \(bodywijziging; verwacht \d{4}-\d{2}-\d{2}\): zichtbaar 2026-10-30, lastmod 2026-10-30$/, tot: '2026-11-08', reden: 'hubdatum D = 2026-10-30 (deploy nieuwste kind), geen inhoudswijziging; geen D-regel in deze l7check' },
-];
+export const BEKEND_L7 = [];
