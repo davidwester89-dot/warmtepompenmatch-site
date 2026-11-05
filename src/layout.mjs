@@ -76,6 +76,7 @@ export function layout(p) {
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'${G.script}; style-src 'self' 'unsafe-inline'; img-src 'self' data:${G.img}; font-src 'self'; connect-src 'self'${G.connect}; base-uri 'self'; form-action 'self'; object-src 'none'${FRAMES.length ? `; frame-src ${FRAMES.join(' ')}` : ''}">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+${p.path === '/' ? '<meta name="e08923fead07e26" content="c805cc3c2262098e1a99fce841da04b0" />' : ''}
 <title>${esc(p.title)}</title>
 <meta name="description" content="${esc(p.description)}">
 ${robots}${p.noindex ? '' : `<link rel="canonical" href="${url}">`}
