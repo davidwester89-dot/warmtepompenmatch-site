@@ -128,7 +128,7 @@ export function feed(posts) {
 <description>Warmtepomp kiezen, met bronnen.</description>
 <language>nl-nl</language>
 <atom:link href="${SITE.domain}/blog/feed.xml" rel="self" type="application/rss+xml"/>
-${posts[0] ? `<lastBuildDate>${rfc822(posts[0].updated)}</lastBuildDate>` : ''}
+${posts.length ? `<lastBuildDate>${rfc822(posts.map((p) => p.updated).sort().at(-1))}</lastBuildDate>` : ''}
 ${posts.map((p) => `<item><title>${esc(p.title)}</title><link>${SITE.domain}${p.path}</link><guid isPermaLink="true">${SITE.domain}${p.path}</guid><pubDate>${rfc822(p.date)}</pubDate><description>${esc(p.description)}</description></item>`).join('\n')}
 </channel>
 </rss>
