@@ -3,7 +3,7 @@ title: Lucht-lucht warmtepomp kosten: prijs single- en multisplit
 seo_title: Wat kost een lucht-luchtwarmtepomp? Prijs 2026
 description: Wat kost een lucht-luchtwarmtepomp? Milieu Centraal noemt € 2.500 voor een single-split. Geen ISDE. Prijzen voor multi-split en stroomkosten bij koelen.
 date: 2026-10-27
-updated: 2026-11-07
+updated: 2026-11-08
 checked: 2026-11-07
 tools: /warmtepomp-keuzehulp/, /vergelijken/
 sources:
