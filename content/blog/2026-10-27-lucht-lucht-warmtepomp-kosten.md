@@ -4,7 +4,7 @@ seo_title: Wat kost een lucht-luchtwarmtepomp? Prijs per bron
 description: Lucht-luchtwarmtepomp: Milieu Centraal noemt € 2.500 voor single-split, btw niet vermeld. Bekijk bronprijzen, installatie en stroom. Geen ISDE.
 date: 2026-10-27
 updated: 2026-11-08
-checked: 2026-11-07
+checked: 2026-11-08
 tools: /warmtepomp-keuzehulp/, /vergelijken/
 sources:
 - Milieu Centraal: Welke warmtepompen zijn er? | https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/welke-warmtepompen-zijn-er/
