@@ -137,6 +137,13 @@ const VS_CONTEXT = {
   vaillant: '<p>Twijfel je tussen Vaillant en Nefit Bosch? Het zijn twee grote ketelmerken met propaanwarmtepompen. Zie <a href="/vergelijken/vaillant-vs-nefit-bosch/">Vaillant of Nefit Bosch: welke warmtepomp kies je?</a></p>',
   nefitbosch: '<p>Twijfel je tussen Nefit Bosch en Vaillant? Het zijn twee grote ketelmerken met propaanwarmtepompen. Zie <a href="/vergelijken/vaillant-vs-nefit-bosch/">Vaillant of Nefit Bosch: welke warmtepomp kies je?</a></p>',
 };
+// Contextlink lucht-lucht (SEO wk46, 12-11-2026): "daikin warmtepomp lucht lucht prijs" landt op /merken/daikin/; link naar de prijsblog. Bodywijziging: LL_UPD (L7).
+export const LL_UPD = '2026-11-12';
+// L7: /merken/daikin/ (contextlink) en hub /merken/. Home (leestijd van deze blog in 'Nieuw op de blog') krijgt LL_UPD via homeUpd in build.mjs.
+export const LL_PADEN = new Set(['/merken/', '/merken/daikin/']);
+const LL_CONTEXT = {
+  daikin: '<p>Daikin verkoopt ook airconditioners die verwarmen: lucht-luchtwarmtepompen. Wat zo\'n systeem volgens Milieu Centraal en Vereniging Eigen Huis kost, lees je bij <a href="/blog/lucht-lucht-warmtepomp-kosten/">lucht-lucht warmtepomp prijs: single- en multi-split</a>.</p>',
+};
 const typeVan = (id) => (FEATURES[id].hybride.v === 'ja' ? 'hybride' : 'allelectric');
 const merkPagesRaw = IDS.map((id) => {
   const p = M[id];
@@ -158,7 +165,7 @@ const merkPagesRaw = IDS.map((id) => {
 <ul class="pc-facts"><li><span>Propaan (R290)</span><span>${fv(FEATURES[id].propaan, false)}</span></li><li><span>Prijs openbaar</span><span>${fv(FEATURES[id].prijs, false)}</span></li><li><span>Garantie 5 jaar</span><span>${fv(FEATURES[id].garantie, false)}</span></li><li><span>Plek in de vergelijking</span><span>${pos} van ${IDS.length}</span></li></ul>
 <div class="pc-cta">${knop(id, 'merk_top')}<a href="/warmtepomp-keuzehulp/">Past het bij mijn huis? Start de keuzehulp →</a></div></div>
 <h2>Modellen</h2><div class="table-wrap"><table class="data stack"><thead><tr><th scope="col">Model of lijn</th><th scope="col">Wat</th></tr></thead><tbody>${p.lijnen.map(([n, w]) => `<tr><th scope="row">${esc(n)}</th><td data-l="Wat">${esc(w)}</td></tr>`).join('')}</tbody></table></div>
-${p.extra || ''}${prijsBlok}
+${LL_CONTEXT[id] || ''}${p.extra || ''}${prijsBlok}
 <h2>Checklist: wat biedt ${esc(p.naam)}?</h2><p class="sub">Tien vaste punten, uit de site van het merk. Niet vermeld levert geen punt op, net als nee. <a href="/over/#methode">Zo tellen we</a></p>${checklistTable(id)}
 <h2>Sterk en let op</h2><div class="pm"><div class="card plus"><h3>Sterk</h3><ul>${p.plus.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div><div class="card min"><h3>Let op</h3><ul>${p.min.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div></div>
 <h2>Voor wie?</h2><p>${esc(p.voor)}</p>

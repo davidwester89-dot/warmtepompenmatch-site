@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { execSync } from 'node:child_process';
-import { EF_UPD, EF_PADEN, GIDSEN_UPD } from '../src/pages.mjs';
+import { EF_UPD, EF_PADEN, GIDSEN_UPD, LL_PADEN } from '../src/pages.mjs';
 import { punt } from '../src/lib/checklist.js';
 
 const read = (p) => readFileSync(p, 'utf8');
@@ -24,7 +24,7 @@ test('Niet vermeld: één uitleg die klopt met de code', () => {
 
 test('L7 3-11: lastmod, zichtbare bijgewerkt-regel en dateModified', () => {
   const sm = read('dist/sitemap.xml');
-  for (const p of EF_PADEN) {
+  for (const p of [...EF_PADEN].filter((x) => !LL_PADEN.has(x))) { // /merken/ en /merken/daikin/: 12-11, test/lucht-lucht-1211.test.js
     assert.ok(sm.includes(`<loc>https://warmtepompenmatch.nl${p}</loc><lastmod>${EF_UPD}</lastmod>`), p);
     const h = read(`dist${p}index.html`);
     assert.match(h, new RegExp(`bijgewerkt (op )?<time datetime="${EF_UPD}">`, 'i'), p);
