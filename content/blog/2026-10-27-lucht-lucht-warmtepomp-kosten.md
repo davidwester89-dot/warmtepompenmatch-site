@@ -3,8 +3,8 @@ title: Lucht-lucht warmtepomp kosten: prijs single- en multisplit
 seo_title: Wat kost een lucht-luchtwarmtepomp? Prijs per bron
 description: Lucht-luchtwarmtepomp: Milieu Centraal noemt € 2.500 voor single-split, btw niet vermeld. Bekijk bronprijzen, installatie en stroom. Geen ISDE.
 date: 2026-10-27
-updated: 2026-11-08
-checked: 2026-11-08
+updated: 2026-11-09
+checked: 2026-11-09
 tools: /warmtepomp-keuzehulp/, /vergelijken/
 sources:
 - Milieu Centraal: Welke warmtepompen zijn er? | https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/welke-warmtepompen-zijn-er/
@@ -40,22 +40,22 @@ Milieu Centraal en de twee Eigen Huis-pagina's in de tabel zeggen niet of instal
 
 ## Prijs single-split en multi-split
 
-| Wat de bron noemt | Bedrag | Bron |
-|---|---|---|
-| Single-split lucht-luchtwarmtepomp | € 2.500 | Milieu Centraal |
-| Single split lucht-lucht (airco) | € 1.500 tot € 3.500 | Vereniging Eigen Huis, kostenpagina |
-| Multisplit lucht-lucht (airco) | € 3.000 tot € 6.000 | Vereniging Eigen Huis, kostenpagina |
-| Split-airco met één binnenunit | zo'n € 1.800 tot € 3.500 | Vereniging Eigen Huis, verwarmen met airco |
-| Extra binnenunit | zo'n € 1.500 tot € 2.000 | Vereniging Eigen Huis, verwarmen met airco |
-| ISDE-subsidie | geen | RVO |
+| Wat de bron noemt | Bedrag | Bron | Gecontroleerd |
+|---|---|---|---|
+| Single-split lucht-luchtwarmtepomp | € 2.500 | Milieu Centraal | 9-11-2026 |
+| Single split lucht-lucht (airco) | € 1.500 tot € 3.500 | Vereniging Eigen Huis, kostenpagina | 9-11-2026 |
+| Multisplit lucht-lucht (airco) | € 3.000 tot € 6.000 | Vereniging Eigen Huis, kostenpagina | 9-11-2026 |
+| Split-airco met één binnenunit | zo'n € 1.800 tot € 3.500 | Vereniging Eigen Huis, verwarmen met airco | 9-11-2026 |
+| Extra binnenunit | zo'n € 1.500 tot € 2.000 | Vereniging Eigen Huis, verwarmen met airco | 9-11-2026 |
+| Monoblock-airco | zo'n € 1.500 tot € 3.000 | Vereniging Eigen Huis, verwarmen met airco | 9-11-2026 |
+| Ingebouwde monoblock | € 1.000 tot € 1.500, exclusief montage | Vereniging Eigen Huis, airco kopen | 9-11-2026 |
+| ISDE-subsidie | geen | RVO | 9-11-2026 |
 
-Tel deze regels niet bij elkaar op. Dit zijn aanschaframingen, geen offertes. Btw-basis niet vermeld. Milieu Centraal en deze twee Eigen Huis-pagina's zeggen niet of installatie erbij zit. De prijs hangt onder andere af van het vermogen. Een airco met één of twee binnenunits is volgens Vereniging Eigen Huis meestal goedkoper dan andere warmtepompen; met meer binnenunits al snel duurder. Prijzen van lucht-waterwarmtepompen staan bij [warmtepomp kosten](/warmtepomp-kosten/). Dat is een ander systeem.
+Tel deze regels niet bij elkaar op. Dit zijn aanschaframingen, geen offertes. Btw-basis niet vermeld. De prijs hangt onder andere af van het vermogen. Eén of twee binnenunits zijn volgens Vereniging Eigen Huis meestal goedkoper; meer binnenunits al snel duurder. Lucht-water is een ander systeem: [warmtepomp kosten](/warmtepomp-kosten/).
 
 Los daarvan, op [Airco kopen, waar op letten](https://www.eigenhuis.nl/kennisbank/ik-overweeg-om-een-airco-aan-te-schaffen-waar-moet-ik-op-letten-1656), noemt Vereniging Eigen Huis kosten van € 1.500 tot € 3.500, en bij vaste airco's komen er ook nog installatiekosten bij. Die installatie-opmerking staat op de aparte aanschafpagina; bij de rij op de kostenpagina is niet vermeld of installatie inbegrepen is.
 
-Voor meer kamers: losse single-splits, of een multi-split op één buitenunit. Multi-split is volgens Milieu Centraal minder efficiënt.
-
-Bij kamers aan verschillende kanten lopen multi-splitleidingen door het huis, waarschuwt Vereniging Eigen Huis.
+Multi-split is volgens Milieu Centraal minder efficiënt dan losse single-splits.
 
 Laat een split-airco plaatsen door een monteur met een F-gassendiploma. Het bedrijf moet volgens Milieu Centraal het BRL 100-certificaat hebben. Het STEK-logo is een extra kwaliteitskenmerk.
 

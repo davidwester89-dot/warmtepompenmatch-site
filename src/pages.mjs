@@ -20,7 +20,7 @@ export const LOGO_PADEN = new Set(['/merken/quatt/', '/merken/daikin/', '/warmte
 // 'Niet vermeld' overal dezelfde uitleg (externe feedback nov): /vergelijken/, /over/, de merkpagina's (checklistzin) en hub /merken/ (L7, pushdatum).
 export const EF_UPD = '2026-11-03';
 // Hub /gidsen/ (L7-hubregel D, SC 02-11): max(deploy eigen laatste bodywijziging, deploy nieuwste kind) = 2026-10-30 (kinderen live 30-10 12:51 CET).
-export const GIDSEN_UPD = '2026-10-30';
+export const GIDSEN_UPD = '2026-11-09';
 export const EF_PADEN = new Set(['/vergelijken/', '/over/', '/merken/', '/merken/daikin/', '/merken/itho-daalderop/', '/merken/mitsubishi-electric/', '/merken/nefit-bosch/', '/merken/panasonic/', '/merken/quatt/', '/merken/remeha/', '/merken/vaillant/']);
 export const bijgewerkt = (pg, upd) => ({ ...pg, lastmod: upd, stamp: { ...pg.stamp, updated: upd }, ...(pg.article ? { article: { ...pg.article, updated: upd } } : {}), ...(pg.schema ? { schema: pg.schema.map((x, j) => (j === 0 && 'dateModified' in x ? { ...x, dateModified: upd } : x)) } : {}) });
 
@@ -450,7 +450,7 @@ export const geschikt = {
 <h2>3. Ruimte binnen</h2><p>All-electric verwarmt ook je tapwater, met een boilervat: ongeveer 80 liter voor 2 personen, 150 liter voor 4 en 220 liter voor 6. Je hebt binnen dus ruimte nodig voor dat vat.</p>
 <h2>4. Plek voor de buitenunit</h2><p>De buitenunit mag op de erfgrens van de buren maximaal 40 dB maken. Vrijstaand houd je 3 tot 4 meter afstand, tegen een gevel 4 tot 5 meter. Zie <a href="/warmtepomp-geluid/">warmtepomp en geluid</a>.</p>
 <h2>5. Toekomst van je wijk</h2><p>Komt er binnen 5 jaar een warmtenet, dan is een hybride volgens Milieu Centraal niet logisch. Vraag het je gemeente.</p>
-<h2>Andere opties</h2><ul><li><strong>Ventilatiewarmtepomp:</strong> haalt warmte uit ventilatielucht, gemiddeld € 6.500 met € 1.675 subsidie.</li><li><strong>Lucht-luchtwarmtepomp:</strong> een airco die ook verwarmt, vanaf ongeveer € 2.500 voor een single-split. Geen ISDE en minder comfort als enige verwarming.</li><li><strong>Hogetemperatuurwarmtepomp:</strong> alleen voor uitzonderingen, zoals monumenten.</li></ul>
+<h2>Andere opties</h2><ul><li><strong>Ventilatiewarmtepomp:</strong> haalt warmte uit ventilatielucht, gemiddeld € 6.500 met € 1.675 subsidie.</li><li><strong>Lucht-luchtwarmtepomp:</strong> een airco die ook verwarmt, vanaf ongeveer € 2.500 voor een single-split. Geen ISDE en minder comfort als enige verwarming. De bedragen per bron staan bij <a href="/blog/lucht-lucht-warmtepomp-kosten/">lucht-lucht warmtepomp kosten</a>.</li><li><strong>Hogetemperatuurwarmtepomp:</strong> alleen voor uitzonderingen, zoals monumenten.</li></ul>
 ${faqHtml(geschiktFaq)}${matchCta('Check je huis in 1 minuut')}${bron(B('mcVolledig', 'mcHybride', 'mcTypes', 'rvoWp'), [['Omgevingsdienst Twente: warmtepomp, airco en geluid', 'https://www.odtwente.nl/kennisbank/warmtepomp-airco-en-geluid/'], ['NPLW: omgaan met geluid van warmtepompen', 'https://www.nplw.nl/warmte-en-ruimte/omgaan-met-geluid-warmtepompen']])}</article>`,
 };
 // Lees ook: per gids drie verwante pagina's (incl. de blog), net boven de bronnen.
@@ -465,8 +465,8 @@ const LEESOOK = {
   '/is-mijn-huis-geschikt-voor-een-warmtepomp/': [['/hybride-of-all-electric/', 'Hybride of all-electric?'], ['/warmtepomp-geluid/', 'Warmtepomp en geluid'], OFFERTEBLOG],
 };
 const leesOok = (path) => (LEESOOK[path] ? `<h2>Lees ook</h2><ul class="gidslijst">${LEESOOK[path].map(([h, t]) => `<li><a href="${h}">${esc(t)}</a></li>`).join('')}</ul>` : '');
-const BIJGEWERKT = { '/hybride-warmtepomp-kosten/': '2026-10-26', '/warmtepomp-kosten/': '2026-10-20', '/warmtepomp-terugverdientijd/': '2026-10-26', '/isde-subsidie-warmtepomp-2026/': '2026-10-20', '/hybride-of-all-electric/': '2026-10-20', '/is-mijn-huis-geschikt-voor-een-warmtepomp/': '2026-10-19' };
-export const guides = [kosten, hybrideKosten, terugverdientijd, isde, hybrideAe, geluid, geschikt].map((x) => (BIJGEWERKT[x.path] ? { ...x, lastmod: BIJGEWERKT[x.path], article: { ...x.article, updated: BIJGEWERKT[x.path] }, schema: x.schema.map((o) => (o['@type'] === 'Article' ? { ...o, dateModified: BIJGEWERKT[x.path] } : o)) } : x)).map((g) => {
+const BIJGEWERKT = { '/hybride-warmtepomp-kosten/': '2026-10-26', '/warmtepomp-kosten/': '2026-10-20', '/warmtepomp-terugverdientijd/': '2026-10-26', '/isde-subsidie-warmtepomp-2026/': '2026-10-20', '/hybride-of-all-electric/': '2026-10-20', '/is-mijn-huis-geschikt-voor-een-warmtepomp/': '2026-11-09' };
+export const guides = [kosten, hybrideKosten, terugverdientijd, isde, hybrideAe, geluid, geschikt].map((x) => (BIJGEWERKT[x.path] ? { ...x, lastmod: BIJGEWERKT[x.path], ...(x.path === '/is-mijn-huis-geschikt-voor-een-warmtepomp/' ? { stamp: { checked: BIJGEWERKT[x.path], updated: BIJGEWERKT[x.path] } } : {}), article: { ...x.article, updated: BIJGEWERKT[x.path] }, schema: x.schema.map((o) => (o['@type'] === 'Article' ? { ...o, dateModified: BIJGEWERKT[x.path] } : o)) } : x)).map((g) => {
   const i = g.body.lastIndexOf('<p class="src">Bronnen:');
   return i < 0 ? g : { ...g, body: g.body.slice(0, i) + leesOok(g.path) + g.body.slice(i) };
 });

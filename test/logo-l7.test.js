@@ -17,12 +17,12 @@ test('L7 30-10: pagina\'s met logo\'s in de tabellen', () => {
   }
 });
 
-// Bodywijziging 8-11-2026 (prijstabel). L7: dateModified, zichtbare bijgewerkt-regel en lastmod = pushdatum.
-test('L7 8-11: blog lucht-lucht warmtepomp kosten', () => {
+// Bodywijziging 9-11-2026 (prijstabel). L7: dateModified, zichtbare bijgewerkt-regel en lastmod = pushdatum.
+test('L7 9-11: blog lucht-lucht warmtepomp kosten', () => {
   const p = '/blog/lucht-lucht-warmtepomp-kosten/';
   const h = readFileSync(`dist${p}index.html`, 'utf8');
   const sm = readFileSync('dist/sitemap.xml', 'utf8');
-  assert.match(h, /"dateModified": ?"2026-11-08"/, p);
-  assert.match(h, /bijgewerkt <time datetime="2026-11-08">/, p);
-  assert.match(sm, /blog\/lucht-lucht-warmtepomp-kosten\/<\/loc><lastmod>2026-11-08<\/lastmod>/);
+  assert.match(h, /"dateModified": ?"2026-11-09"/, p);
+  assert.match(h, /bijgewerkt <time datetime="2026-11-09">/, p);
+  assert.match(sm, /blog\/lucht-lucht-warmtepomp-kosten\/<\/loc><lastmod>2026-11-09<\/lastmod>/);
 });
