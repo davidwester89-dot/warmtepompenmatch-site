@@ -36,7 +36,7 @@ Het rendement is volgens Milieu Centraal ongeveer gelijk aan dat van een lucht-w
 
 ## Wat kost een lucht-luchtwarmtepomp?
 
-Milieu Centraal en de twee Eigen Huis-pagina's in de tabel zeggen niet of installatie erbij zit.
+Milieu Centraal, de Eigen Huis-kostenpagina en Verwarmen met airco zeggen niet of installatie erbij zit. Alleen bij de ingebouwde monoblock (Airco kopen) staat: exclusief montage.
 
 ## Prijs single-split en multi-split
 
@@ -48,14 +48,16 @@ Milieu Centraal en de twee Eigen Huis-pagina's in de tabel zeggen niet of instal
 | Split-airco met één binnenunit | zo'n € 1.800 tot € 3.500 | Vereniging Eigen Huis, verwarmen met airco | 9-11-2026 |
 | Extra binnenunit | zo'n € 1.500 tot € 2.000 | Vereniging Eigen Huis, verwarmen met airco | 9-11-2026 |
 | Monoblock-airco | zo'n € 1.500 tot € 3.000 | Vereniging Eigen Huis, verwarmen met airco | 9-11-2026 |
-| Ingebouwde monoblock | € 1.000 tot € 1.500, exclusief montage | Vereniging Eigen Huis, airco kopen | 9-11-2026 |
+| Ingebouwde monoblock (airco) | € 1.000 tot € 1.500, exclusief montage | Vereniging Eigen Huis, airco kopen | 9-11-2026 |
 | ISDE-subsidie | geen | RVO | 9-11-2026 |
 
 Tel deze regels niet bij elkaar op. Dit zijn aanschaframingen, geen offertes. Btw-basis niet vermeld. De prijs hangt onder andere af van het vermogen. Eén of twee binnenunits zijn volgens Vereniging Eigen Huis meestal goedkoper; meer binnenunits al snel duurder. Lucht-water is een ander systeem: [warmtepomp kosten](/warmtepomp-kosten/).
 
-Los daarvan, op [Airco kopen, waar op letten](https://www.eigenhuis.nl/kennisbank/ik-overweeg-om-een-airco-aan-te-schaffen-waar-moet-ik-op-letten-1656), noemt Vereniging Eigen Huis kosten van € 1.500 tot € 3.500, en bij vaste airco's komen er ook nog installatiekosten bij. Die installatie-opmerking staat op de aparte aanschafpagina; bij de rij op de kostenpagina is niet vermeld of installatie inbegrepen is.
+Op [Airco kopen, waar op letten](https://www.eigenhuis.nl/kennisbank/ik-overweeg-om-een-airco-aan-te-schaffen-waar-moet-ik-op-letten-1656) noemt Vereniging Eigen Huis € 1.500 tot € 3.500, en bij vaste airco's komen er installatiekosten bij. Die installatie-opmerking staat op de aparte aanschafpagina; bij de rij op de kostenpagina is niet vermeld of installatie inbegrepen is.
 
 Multi-split is volgens Milieu Centraal minder efficiënt dan losse single-splits.
+
+Bij kamers aan verschillende kanten lopen multi-splitleidingen door het huis, waarschuwt Vereniging Eigen Huis.
 
 Laat een split-airco plaatsen door een monteur met een F-gassendiploma. Het bedrijf moet volgens Milieu Centraal het BRL 100-certificaat hebben. Het STEK-logo is een extra kwaliteitskenmerk.
 
@@ -110,7 +112,7 @@ Daikin en Mitsubishi Electric verkopen via installateurs. Zie [Daikin vs Mitsubi
 Milieu Centraal noemt € 2.500 voor een single-split. Op de kostenpagina noemt Vereniging Eigen Huis € 1.500 tot € 3.500 en € 3.000 tot € 6.000. Op Verwarmen met airco is dat zo'n € 1.800 tot € 3.500 en zo'n € 1.500 tot € 2.000 per extra binnenunit. Btw-basis niet vermeld.
 
 ### Zit de installatie bij die prijs?
-Op de aparte pagina Airco kopen noemt Vereniging Eigen Huis € 1.500 tot € 3.500, en bij vaste airco's komen daar installatiekosten bij. Die installatie-opmerking staat op de aparte aanschafpagina; bij de rij op de kostenpagina is niet vermeld of installatie inbegrepen is.
+Milieu Centraal, de Eigen Huis-kostenpagina en Verwarmen met airco zeggen niet of installatie erbij zit. Alleen bij de ingebouwde monoblock (Airco kopen) staat: exclusief montage.
 
 ### Wat kost een multi-split airco?
 Op de kostenpagina noemt Vereniging Eigen Huis € 3.000 tot € 6.000. Op Verwarmen met airco kost een extra binnenunit zo'n € 1.500 tot € 2.000. Tel die uitspraken niet bij elkaar op. Btw-basis niet vermeld.
