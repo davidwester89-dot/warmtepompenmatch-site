@@ -23,11 +23,13 @@ test('L7 12-11: blog lucht-lucht en /merken/daikin/ dragen de pushdatum', () => 
   }
 });
 
-test('lucht-lucht 12-11: title, meta, nieuwe H2\'s en contextlink', () => {
+test('lucht-lucht 12-11: title/meta 41d6eaa, nieuwe H2\'s en contextlink', () => {
   const h = lees('/blog/lucht-lucht-warmtepomp-kosten/');
   const t = h.match(/<title>([^<]+)<\/title>/)[1].replace(/&amp;/g, '&');
   const d = h.match(/<meta name="description" content="([^"]+)"/)[1];
-  assert.ok(t.startsWith('Lucht-lucht warmtepomp prijs: single- en multi-split'), t);
+  // SEO-B1 df9584c: title en meta blijven exact de versie van 41d6eaa (7-11; nog geen hercrawl + 7 dagen).
+  assert.ok(t.startsWith('Wat kost een lucht-luchtwarmtepomp? Prijs per bron'), t);
+  assert.equal(d, 'Lucht-luchtwarmtepomp: Milieu Centraal noemt € 2.500 voor single-split, btw niet vermeld. Bekijk bronprijzen, installatie en stroom. Geen ISDE.');
   assert.ok(d.length >= 120 && d.length <= 155, String(d.length));
   assert.match(h, /<h2[^>]*>Als hoofdverwarming: wat kost dat\?<\/h2>/);
   assert.match(h, /<h2[^>]*>Onderhoud: wat kost het\?<\/h2>/);

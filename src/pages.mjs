@@ -142,7 +142,7 @@ export const LL_UPD = '2026-11-12';
 // L7: /merken/daikin/ (contextlink) en hub /merken/. Home (leestijd van deze blog in 'Nieuw op de blog') krijgt LL_UPD via homeUpd in build.mjs.
 export const LL_PADEN = new Set(['/merken/', '/merken/daikin/']);
 const LL_CONTEXT = {
-  daikin: '<p>Daikin verkoopt ook airconditioners die verwarmen: lucht-luchtwarmtepompen. Wat zo\'n systeem volgens Milieu Centraal en Vereniging Eigen Huis kost, lees je bij <a href="/blog/lucht-lucht-warmtepomp-kosten/">lucht-lucht warmtepomp prijs: single- en multi-split</a>.</p>',
+  daikin: '<p>Daikin verkoopt ook airconditioners die verwarmen: lucht-luchtwarmtepompen. Wat zo\'n systeem volgens Milieu Centraal en Vereniging Eigen Huis kost, lees je bij <a href="/blog/lucht-lucht-warmtepomp-kosten/">wat een lucht-luchtwarmtepomp kost</a>.</p>',
 };
 const typeVan = (id) => (FEATURES[id].hybride.v === 'ja' ? 'hybride' : 'allelectric');
 const merkPagesRaw = IDS.map((id) => {
