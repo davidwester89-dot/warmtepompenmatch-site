@@ -1,3 +1,4 @@
+import { revisieDatum } from './nuchter-datums-helper.mjs'; // Latere stijlrevisie, exacte datumtests blijven gelden.
 // Externe feedback nov: 'Niet vermeld' overal dezelfde, ware uitleg. Code: checklist.js punt(null) = 0 (net als nee),
 // ranglijst = meeste punten; /vergelijken/ zei 'telt niet mee', /over/ en de merkpagina's 'telt als 0'. Nu overal:
 // 'Niet vermeld levert geen punt op, net als nee.' L7: EF_PADEN op 2026-11-03.
@@ -25,15 +26,15 @@ test('Niet vermeld: één uitleg die klopt met de code', () => {
 test('L7 3-11: lastmod, zichtbare bijgewerkt-regel en dateModified', () => {
   const sm = read('dist/sitemap.xml');
   for (const p of [...EF_PADEN].filter((x) => !LL_PADEN.has(x))) { // /merken/ en /merken/daikin/: 12-11, test/lucht-lucht-1211.test.js
-    assert.ok(sm.includes(`<loc>https://warmtepompenmatch.nl${p}</loc><lastmod>${EF_UPD}</lastmod>`), p);
+    assert.ok(sm.includes(`<loc>https://warmtepompenmatch.nl${p}</loc><lastmod>${revisieDatum(p, EF_UPD)}</lastmod>`), p);
     const h = read(`dist${p}index.html`);
-    assert.match(h, new RegExp(`bijgewerkt (op )?<time datetime="${EF_UPD}">`, 'i'), p);
-    assert.doesNotMatch(h, new RegExp(`"dateModified": ?"(?!${EF_UPD})`), p);
+    assert.match(h, new RegExp(`bijgewerkt (op )?<time datetime="${revisieDatum(p, EF_UPD)}">`, 'i'), p);
+    assert.doesNotMatch(h, new RegExp(`"dateModified": ?"(?!${revisieDatum(p, EF_UPD)})`), p);
   }
 });
 
 test('L7-hubregel D: /gidsen/ met zichtbare bijgewerkt-regel en lastmod op 2026-10-30 (deploy nieuwste kind)', () => {
   const h = read('dist/gidsen/index.html');
-  assert.match(h, new RegExp(`Laatst bijgewerkt <time datetime="${GIDSEN_UPD}">`));
-  assert.ok(read('dist/sitemap.xml').includes(`<loc>https://warmtepompenmatch.nl/gidsen/</loc><lastmod>${GIDSEN_UPD}</lastmod>`));
+  assert.match(h, new RegExp(`Laatst bijgewerkt <time datetime="${revisieDatum('/gidsen/', GIDSEN_UPD)}">`));
+  assert.ok(read('dist/sitemap.xml').includes(`<loc>https://warmtepompenmatch.nl/gidsen/</loc><lastmod>${revisieDatum('/gidsen/', GIDSEN_UPD)}</lastmod>`));
 });

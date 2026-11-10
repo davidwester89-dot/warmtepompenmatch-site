@@ -3,7 +3,7 @@ title: Lucht-lucht warmtepomp kosten: prijs single- en multisplit
 seo_title: Wat kost een lucht-luchtwarmtepomp? Prijs per bron
 description: Lucht-luchtwarmtepomp: Milieu Centraal noemt € 2.500 voor single-split, btw niet vermeld. Bekijk bronprijzen, installatie en stroom. Geen ISDE.
 date: 2026-10-27
-updated: 2026-11-12
+updated: 2026-11-13
 checked: 2026-11-09
 tools: /warmtepomp-keuzehulp/, /vergelijken/
 sources:
@@ -26,14 +26,14 @@ Een airco die ook kan verwarmen: dat is een lucht-luchtwarmtepomp. Hier staan de
 
 ## Wat is een lucht-luchtwarmtepomp?
 
-Een lucht-luchtwarmtepomp is een airco met een buitenunit die je ook omgekeerd kunt laten werken. Hij haalt warmte uit de buitenlucht en blaast die als warme lucht de kamer in. Volgens Milieu Centraal verwarmt hij alleen de ruimte waar een binnenunit hangt, aan de muur of op de vloer.
+Een lucht-luchtwarmtepomp is een airco met een buitenunit die je ook omgekeerd kunt laten werken. Hij haalt warmte uit de buitenlucht en blaast die als warme lucht de kamer in. Milieu Centraal beschrijft dat hij alleen de ruimte verwarmt waar een binnenunit hangt, aan de muur of op de vloer.
 
 Het verschil met een lucht-waterwarmtepomp:
 
 - **Lucht-water** verwarmt het water in je cv-systeem. Je radiatoren of vloerverwarming geven de warmte af, en vaak maakt hij ook warm water.
 - **Lucht-lucht** verwarmt de lucht in één ruimte per binnenunit. Voor warm water heb je een aparte installatie nodig, zoals je cv-ketel.
 
-Het rendement is volgens Milieu Centraal ongeveer gelijk aan dat van een lucht-waterwarmtepomp, maar alleen bij een moderne airco met energielabel A++ of hoger. Lees [hybride of all-electric](/hybride-of-all-electric/).
+Milieu Centraal vergelijkt het rendement met dat van een lucht-waterwarmtepomp: ongeveer gelijk, maar alleen bij een moderne airco met energielabel A++ of hoger. Lees [hybride of all-electric](/hybride-of-all-electric/).
 
 ## Wat kost een lucht-luchtwarmtepomp?
 
@@ -52,26 +52,26 @@ Milieu Centraal, de Eigen Huis-kostenpagina en Verwarmen met airco zeggen niet o
 | Ingebouwde monoblock (airco) | € 1.000 tot € 1.500, exclusief montage | Vereniging Eigen Huis, airco kopen | 9-11-2026 |
 | ISDE-subsidie | geen | RVO | 9-11-2026 |
 
-Tel deze regels niet bij elkaar op. Dit zijn aanschaframingen, geen offertes. Btw-basis niet vermeld. De prijs hangt onder andere af van het vermogen. Eén of twee binnenunits zijn volgens Vereniging Eigen Huis meestal goedkoper; meer binnenunits al snel duurder. Lucht-water is een ander systeem: [warmtepomp kosten](/warmtepomp-kosten/).
+Tel deze regels niet bij elkaar op. Dit zijn aanschaframingen, geen offertes. Btw-basis niet vermeld. De prijs hangt onder andere af van het vermogen. Vereniging Eigen Huis noemt één of twee binnenunits meestal goedkoper; meer binnenunits al snel duurder. Lucht-water is een ander systeem: [warmtepomp kosten](/warmtepomp-kosten/).
 
-Multi-split is volgens Milieu Centraal minder efficiënt dan losse single-splits.
+Milieu Centraal noemt multi-split minder efficiënt dan losse single-splits.
 
 Bij kamers aan verschillende kanten lopen multi-splitleidingen door het huis, waarschuwt Vereniging Eigen Huis.
 
-Laat een split-airco plaatsen door een monteur met een F-gassendiploma. Het bedrijf moet volgens Milieu Centraal het BRL 100-certificaat hebben. Het STEK-logo is een extra kwaliteitskenmerk.
+Laat een split-airco plaatsen door een monteur met een F-gassendiploma. Milieu Centraal vraagt dat het bedrijf het BRL 100-certificaat heeft. Het STEK-logo is een extra kwaliteitskenmerk.
 
 ## Wat kost hij aan stroom?
 
-**Bij verwarmen.** Bij energielabel A++ of hoger is het rendement volgens Milieu Centraal ongeveer gelijk aan een lucht-waterwarmtepomp. Op [Welke warmtepompen zijn er?](https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/welke-warmtepompen-zijn-er/) geeft Milieu Centraal geen eurobedrag voor verwarmingsbesparing met een airco. Of je goedkoper uit bent, hangt volgens Vereniging Eigen Huis af van je tarieven, hoe vaak je thuis bent en hoeveel ruimtes de airco verwarmt.
+**Bij verwarmen.** Bij energielabel A++ of hoger is het rendement ongeveer gelijk aan een lucht-waterwarmtepomp. Op [Welke warmtepompen zijn er?](https://www.milieucentraal.nl/energie-besparen/duurzaam-verwarmen-en-koelen/welke-warmtepompen-zijn-er/) geeft Milieu Centraal geen eurobedrag voor verwarmingsbesparing met een airco. Of je goedkoper uit bent, hangt af van je tarieven, hoe vaak je thuis bent en hoeveel ruimtes de airco verwarmt.
 
 **Bij koelen.** Milieu Centraal rekent met 110 uur per jaar: gemiddeld zetten mensen hun airco 20 dagen ruim 5 uur aan. Verbruik en bedragen hieronder zijn overgenomen uit de tabel van Milieu Centraal, die rekent met 21 cent per kWh; het zijn bronbedragen, niet onze herberekening.
 
-| Apparaat | Stroom per 110 uur | Energiekosten volgens Milieu Centraal (110 uur) |
+| Apparaat | Stroom per 110 uur | Energiekosten (110 uur) |
 |---|---|---|
 | Single split (1 kamer) | 80 kWh | € 17 |
 | Multi split (2 of meer kamers) | 180 kWh | € 37 |
 
-Koelen kost extra stroom en heeft volgens Milieu Centraal een flink klimaateffect.
+Milieu Centraal waarschuwt dat koelen extra stroom kost en een flink klimaateffect heeft.
 
 ## Subsidie: geen ISDE
 
@@ -81,11 +81,11 @@ ISDE krijg je wel voor een (hybride) lucht-water- of bodemwarmtepomp. De bedrage
 
 ## Als hoofdverwarming: wat kost dat?
 
-Wil je je hele huis met lucht-lucht verwarmen, dan heb je volgens Vereniging Eigen Huis in elke ruimte een binnenunit nodig. Op Verwarmen met airco kost een split-airco met één binnenunit zo'n € 1.800 tot € 3.500, en elke extra binnenunit zo'n € 1.500 tot € 2.000. Met meerdere binnenunits zijn de aanschafkosten al snel hoger dan die van andere warmtepompen; met één of twee binnenunits is een airco meestal goedkoper. Een totaalbedrag voor een hele woning noemt geen van de bronnen. Btw-basis niet vermeld.
+Vereniging Eigen Huis rekent voor je hele huis verwarmen met lucht-lucht op een binnenunit in elke ruimte. Een split-airco met één binnenunit kost zo'n € 1.800 tot € 3.500, en elke extra binnenunit zo'n € 1.500 tot € 2.000. Met meerdere binnenunits zijn de aanschafkosten al snel hoger dan die van andere warmtepompen; met één of twee binnenunits is een airco meestal goedkoper. Een totaalbedrag voor een hele woning noemt geen van de bronnen. Btw-basis niet vermeld.
 
-Warm water maakt een lucht-luchtwarmtepomp niet, dus je cv-ketel of een andere installatie blijft nodig. Vereniging Eigen Huis noemt ook een tussenweg: de cv-ketel verwarmt het hele huis tot een basistemperatuur, bijvoorbeeld 18 graden, en de airco verwarmt de huiskamer bij als je daar bent.
+Warm water maakt een lucht-luchtwarmtepomp niet, dus je cv-ketel of een andere installatie blijft nodig. Er is ook een tussenweg: de cv-ketel verwarmt het hele huis tot een basistemperatuur, bijvoorbeeld 18 graden, en de airco verwarmt de huiskamer bij als je daar bent.
 
-Kan hij je cv dan vervangen? Soms, maar meestal niet helemaal. Volgens Milieu Centraal:
+Kan hij je cv dan vervangen? Milieu Centraal geeft aan: soms, maar meestal niet helemaal. Dit geldt:
 
 - **In een kleine woning** kan een lucht-luchtwarmtepomp een groot deel van de verwarming doen.
 - **In een grotere woning** werkt hij goed als bijverwarming, bijvoorbeeld in een werkkamer of naast je cv-ketel in de woonkamer. Kan de cv daardoor lager staan, dan verwarm je efficiënt.

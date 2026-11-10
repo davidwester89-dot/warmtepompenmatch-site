@@ -2,6 +2,8 @@
 import { execSync, execFileSync } from 'node:child_process';
 import { join } from 'node:path';
 export const CFG = {
+  // Geen datumlift door alleen een gewijzigd kind; bij eigen body geldt de gewone L7-plicht.
+  bodyOnlyHubs: ["/blog/", "/gidsen/", "/merken/"],
   build: (dir, env) => { execSync('node build.mjs', { cwd: dir, env, stdio: 'ignore' }); return join(dir, 'dist'); },
   hubs: [{ hub: '/gidsen/', children: /^\/[^/]+\/$/ }],
   // Alleen ONTBREKENDE velden die de template van deze pagina niet heeft. Een aanwezig veld moet altijd kloppen.
