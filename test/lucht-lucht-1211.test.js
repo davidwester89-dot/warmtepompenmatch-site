@@ -1,3 +1,4 @@
+import { revisieDatum } from './nuchter-datums-helper.mjs';
 // Bodywijziging 12-11-2026: lucht-lucht deep-dive (hoofdverwarming, onderhoud) en contextlink vanaf /merken/daikin/.
 // L7: dateModified, zichtbare bijgewerkt-regel en lastmod = pushdatum op de blog, /merken/daikin/, hub /merken/ en home (leestijd).
 import test from 'node:test';
@@ -13,13 +14,13 @@ test('L7 12-11: blog lucht-lucht en /merken/daikin/ dragen de pushdatum', () => 
   assert.equal(LL_UPD, '2026-11-12');
   for (const p of ['/blog/lucht-lucht-warmtepomp-kosten/', '/merken/daikin/']) {
     const h = lees(p);
-    assert.match(h, /"dateModified": ?"2026-11-12"/, p);
-    assert.match(h, /bijgewerkt <time datetime="2026-11-12">/, p);
-    assert.match(sm(), new RegExp(`${esc(p)}</loc><lastmod>2026-11-12</lastmod>`), p);
+    assert.match(h, new RegExp(`"dateModified": ?"${revisieDatum(p, LL_UPD)}"`), p);
+    assert.match(h, new RegExp(`bijgewerkt <time datetime="${revisieDatum(p, LL_UPD)}">`), p);
+    assert.match(sm(), new RegExp(`${esc(p)}</loc><lastmod>${revisieDatum(p, LL_UPD)}</lastmod>`), p);
   }
   for (const p of ['/merken/', '/']) {
-    assert.match(lees(p), /bijgewerkt (op )?<time datetime="2026-11-12">/i, p);
-    assert.match(sm(), new RegExp(`${esc(p)}</loc><lastmod>2026-11-12</lastmod>`), p);
+    assert.match(lees(p), new RegExp(`bijgewerkt (op )?<time datetime="${revisieDatum(p, LL_UPD)}">`, 'i'), p);
+    assert.match(sm(), new RegExp(`${esc(p)}</loc><lastmod>${revisieDatum(p, LL_UPD)}</lastmod>`), p);
   }
 });
 

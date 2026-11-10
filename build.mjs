@@ -1,3 +1,4 @@
+import { nuchterDatum } from './src/nuchter-datums.mjs';
 import { mkdirSync, writeFileSync, cpSync, rmSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { layout, SITE, BASE, PREVIEW, NAV_OPT, fmtDate } from './src/layout.mjs';
@@ -22,7 +23,7 @@ const { offertePages } = await import('./src/offerte.mjs');
 const homeUpd = [P.SCORE_WEG, P.LL_UPD, ...posts.slice(0, 3).map((x) => x.date)].sort().at(-1);
 const homeBody = P.home.body.replace('{{latest}}', latestHtml(posts)).replace(`bijgewerkt op <time datetime="${P.SCORE_WEG}">${fmtDate(P.SCORE_WEG)}</time>`, `bijgewerkt op <time datetime="${homeUpd}">${fmtDate(homeUpd)}</time>`);
 const home = { ...P.home, body: homeBody, lastmod: homeUpd };
-export const pages = [home, P.quiz, P.calc, P.merkHub, ...P.merkPages, P.vsHub, ...P.vsPages, P.gidsHub, ...P.guides, ...(posts.length ? [blogIndex(posts), ...posts.map((x) => postPage(x, posts))] : []), ...offertePages, P.over, P.privacy, P.notfound].map((p) => (P.LOGO_PADEN.has(p.path) ? P.bijgewerkt(p, P.LOGO_UPD) : p)).map((p) => (P.EF_PADEN.has(p.path) ? P.bijgewerkt(p, P.EF_UPD) : p)).map((p) => (P.LL_PADEN.has(p.path) ? P.bijgewerkt(p, P.LL_UPD) : p));
+export const pages = [home, P.quiz, P.calc, P.merkHub, ...P.merkPages, P.vsHub, ...P.vsPages, P.gidsHub, ...P.guides, ...(posts.length ? [blogIndex(posts), ...posts.map((x) => postPage(x, posts))] : []), ...offertePages, P.over, P.privacy, P.notfound].map((p) => (P.LOGO_PADEN.has(p.path) ? P.bijgewerkt(p, P.LOGO_UPD) : p)).map((p) => (P.EF_PADEN.has(p.path) ? P.bijgewerkt(p, P.EF_UPD) : p)).map((p) => (P.LL_PADEN.has(p.path) ? P.bijgewerkt(p, P.LL_UPD) : p)).map(nuchterDatum);
 for (const p of pages) write(p.path.endsWith('.html') ? join(OUT, p.path) : join(OUT, p.path, 'index.html'), partnerNoten(layout(p)));
 // Offertemodule uit (geen offertepagina's): offerte.js, offerte-bedankt.js en partnerlinks.js niet publiceren (SC 30-10, geen slapende scripts).
 const OFFERTE_AAN = offertePages.length > 0;

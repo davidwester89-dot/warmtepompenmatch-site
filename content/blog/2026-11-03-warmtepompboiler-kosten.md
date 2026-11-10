@@ -3,7 +3,7 @@ title: Warmtepompboiler kosten: prijs per inhoud en installatie
 seo_title: Warmtepompboiler kosten: prijs per inhoud en installatie
 description: Wat kost een warmtepompboiler? Prijzen van 80 tot 251 liter uit de prijslijsten van fabrikanten, de installatie, ISDE-subsidie en het stroomverbruik.
 date: 2026-11-03
-updated: 2026-11-03
+updated: 2026-11-13
 checked: 2026-11-03
 image: warmtepompboiler-kosten
 image_alt: Bovenkant van een warmtepompboiler zonder merkopdruk in een nis, met display en ventilatierooster
@@ -20,7 +20,7 @@ sources:
 - Daikin: Daikin Altherma M HW | https://www.daikin.nl/nl_nl/consument/products-and-advice/product-categories/heat-pumps/domestic-hot-water-heat-pumps/daikin-altherma-m-hw.html
 - Panasonic: Aquarea DHW | https://www.aircon.panasonic.eu/NL_nl/ranges/dhw-heat-pump/dhw/
 ---
-Een warmtepompboiler maakt warm water met warmte uit de lucht. Volgens Nefit Bosch neemt hij minder ruimte in dan een warmtepomp voor je verwarming en is de installatie minder complex. Maar wat kost hij? Hier lees je de prijzen van de fabrikanten per inhoud, wat de installatie kost, hoeveel ISDE-subsidie je krijgt en wanneer hij slim is.
+Een warmtepompboiler maakt warm water met warmte uit de lucht. Hij neemt minder ruimte in dan een warmtepomp voor je verwarming en is de installatie minder complex. Maar wat kost hij? Hier lees je de prijzen van de fabrikanten per inhoud, wat de installatie kost, hoeveel ISDE-subsidie je krijgt en wanneer hij slim is.
 
 > **Kort gezegd:** in de prijslijsten van Nefit Bosch en Remeha kost een warmtepompboiler van 80 liter **€ 1.700** en een van 251 liter **€ 2.663**. Dat is de prijs van het toestel zelf. Nefit Bosch noemt **gemiddeld € 2.000** voor het plaatsen. Voor een Remeha Azorra Ace 250H geeft RVO **€ 725** ISDE. Milieu Centraal noemt hem alleen slim als je verwarming zelf geen warm water maakt.
 
@@ -28,7 +28,7 @@ Wil je weten welke warmtepomp bij jouw huis past? Doe de [warmtepomp-keuzehulp](
 
 ## Wat is een warmtepompboiler?
 
-Volgens Milieu Centraal is een warmtepompboiler een warmtepomp voor warm water. Hij verwarmt je huis niet, maar levert warm kraanwater voor keuken en badkamer. Het water zit in een boilervat. Een elektrische naverwarmer warmt het vat af en toe op tot boven de 60 graden, tegen legionella.
+Een warmtepompboiler is een warmtepomp voor warm water. Hij verwarmt je huis niet, maar levert warm kraanwater voor keuken en badkamer. Het water zit in een boilervat. Een elektrische naverwarmer warmt het vat af en toe op tot boven de 60 graden, tegen legionella.
 
 De warmte komt uit ventilatielucht, buitenlucht of pvt-panelen. Nefit Bosch legt het verschil met een [hybride warmtepomp](/hybride-warmtepomp-kosten/) zo uit: bij een warmtepompboiler zorgt de boiler voor warm water en de cv-ketel voor de verwarming. Bij een hybride is het andersom.
 
@@ -59,15 +59,15 @@ Nefit Bosch en Remeha publiceren prijslijsten voor installateurs. Dit zijn de pr
 | Remeha Azorra Ace 250 Hybride | 243 liter | € 2.726 |
 | Remeha Azorra Ace 250 | 251 liter | € 2.663 |
 
-Remeha zet erbij dat de prijzen exclusief btw zijn. De Hybride-uitvoering heeft volgens Remeha de mogelijkheid tot hydraulische bijverwarming. Vaillant (aroSTOR plus, 200 of 260 liter), Daikin (Altherma M HW) en Panasonic (Aquarea DHW-warmtepomp) maken ook een warmtepompboiler; hun prijzen staan niet in deze tabel.
+Remeha zet erbij dat de prijzen exclusief btw zijn. De Hybride-uitvoering heeft de mogelijkheid tot hydraulische bijverwarming. Vaillant (aroSTOR plus, 200 of 260 liter), Daikin (Altherma M HW) en Panasonic (Aquarea DHW-warmtepomp) maken ook een warmtepompboiler; hun prijzen staan niet in deze tabel.
 
-Welke maat heb je nodig? Nefit Bosch noemt 80 tot 100 liter voor 2 tot 3 personen en 150 tot 200 liter voor 4 tot 5 personen. Volgens Remeha is de Azorra Ace 250 genoeg voor gezinnen tot circa 6 personen, en Vaillant noemt de aroSTOR plus geschikt voor drie tot zes personen.
+Welke maat heb je nodig? Nefit Bosch noemt 80 tot 100 liter voor 2 tot 3 personen en 150 tot 200 liter voor 4 tot 5 personen. De Remeha Azorra Ace 250 is genoeg voor gezinnen tot circa 6 personen, en Vaillant noemt de aroSTOR plus geschikt voor drie tot zes personen.
 
 ## Installatiekosten
 
 Nefit Bosch noemt gemiddeld € 2.000 voor het plaatsen, en zegt dat dit sterk afhangt van hoe ingewikkeld de installatie is. Waar je op let:
 
-- **De plek.** Zet hem volgens Nefit Bosch niet in een leefruimte, want hij koelt de ruimte af. Een berging, stookruimte of schuur is ideaal.
+- **De plek.** Zet hem niet in een leefruimte, want hij koelt de ruimte af. Een berging, stookruimte of schuur is ideaal.
 - **Onderhoud.** Nefit Bosch raadt jaarlijks of tweejaarlijks onderhoud aan.
 - **Een installatiebedrijf.** Zonder installatiebedrijf krijg je geen subsidie, zie hieronder.
 
@@ -98,7 +98,7 @@ Nefit Bosch noemt tot 70% energiebesparing ten opzichte van een gewone elektrisc
 
 ## Naast een hybride of all-electric warmtepomp
 
-Milieu Centraal is duidelijk: een warmtepompboiler is alleen slim als je verwarming zelf geen warm water maakt, zoals een biomassaketel of een airco als verwarming. Bij een all-electric warmtepomp of een warmtenet is hij niet slim. Een all-electric warmtepomp maakt volgens Milieu Centraal zelf ook warm water, met een voorraadvat in de binnenunit.
+Milieu Centraal is duidelijk: een warmtepompboiler is alleen slim als je verwarming zelf geen warm water maakt, zoals een biomassaketel of een airco als verwarming. Bij een all-electric warmtepomp of een warmtenet is hij niet slim. Een all-electric warmtepomp maakt zelf ook warm water, met een voorraadvat in de binnenunit.
 
 Nefit Bosch noemt de combinatie met je cv-ketel wel: de boiler maakt dan warm water en de ketel verwarmt je huis. Twijfel je tussen de typen? Lees [hybride of all-electric](/hybride-of-all-electric/) en doe de [warmtepomp-keuzehulp](/warmtepomp-keuzehulp/).
 

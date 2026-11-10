@@ -3,7 +3,7 @@ title: Beste hybride warmtepomp 2026: zo kies je per situatie
 seo_title: Beste hybride warmtepomp 2026: zo kies je per situatie
 description: Beste hybride warmtepomp 2026? 7 merken op rendement, geluid en vermogen volgens de fabrikant, plus kosten, terugverdientijd en ISDE-subsidie.
 date: 2026-10-20
-updated: 2026-10-30
+updated: 2026-11-13
 checked: 2026-10-20
 image: beste-hybride-warmtepomp
 image_alt: Witte paneelradiator met thermostaatknop
@@ -32,17 +32,17 @@ sources:
 ---
 Je wilt van een flink deel van je gasrekening af, maar je cv-ketel nog niet helemaal wegdoen. Een hybride warmtepomp past daar goed bij. Alleen: welke? Elk merk noemt zichzelf stil en zuinig. Hier zie je waar je echt op let, wat de fabrikanten zelf opgeven en welk type bij jouw huis past.
 
-> **Kort gezegd:** er is geen hybride warmtepomp die voor iedereen de beste is. Kies eerst het vermogen dat bij je huis past en bepaal of je later all-electric wilt. Vergelijk daarna rendement en geluid, maar alleen als ze op dezelfde manier gemeten zijn. Een hybride van 4 kW kost volgens Milieu Centraal gemiddeld **€ 6.200**, en je krijgt in 2026 **€ 2.125** ISDE-subsidie.
+> **Kort gezegd:** er is geen hybride warmtepomp die voor iedereen de beste is. Kies eerst het vermogen dat bij je huis past en bepaal of je later all-electric wilt. Vergelijk daarna rendement en geluid, maar alleen als ze op dezelfde manier gemeten zijn. Een hybride van 4 kW kost gemiddeld **€ 6.200**, en je krijgt in 2026 **€ 2.125** ISDE-subsidie.
 
 Wil je meteen weten welk type bij je huis past? Doe de [warmtepomp-keuzehulp](/warmtepomp-keuzehulp/).
 
 ## Waar beoordeel je een hybride warmtepomp op?
 
-Een hybride warmtepomp verwarmt je huis grotendeels met stroom. Je cv-ketel springt bij als het hard vriest en zorgt meestal voor warm water. Volgens Milieu Centraal gebruik je zo 60 à 70 procent minder gas voor verwarming. Let op deze vijf punten:
+Een hybride warmtepomp verwarmt je huis grotendeels met stroom. Je cv-ketel springt bij als het hard vriest en zorgt meestal voor warm water. Je gebruikt zo 60 à 70 procent minder gas voor verwarming. Let op deze vijf punten:
 
 - **Rendement (SCOP of COP).** Hoeveel warmte je krijgt per kWh stroom. De SCOP is een gemiddelde over het stookseizoen, de COP een meting op één moment. Vergelijk dus SCOP met SCOP.
 - **Geluid in dB(A).** Fabrikanten geven óf het geluidsvermogen van het apparaat óf de geluidsdruk op een bepaalde afstand. Die getallen kun je niet naast elkaar leggen. Meer daarover lees je bij [warmtepomp en geluid](/warmtepomp-geluid/).
-- **Vermogen.** Volgens Milieu Centraal is 2 tot 6 kW gebruikelijk; 4 kW past vaak bij een tussenwoning, hoekwoning of kleine 2-onder-1-kapwoning.
+- **Vermogen.** 2 tot 6 kW is gebruikelijk; 4 kW past vaak bij een tussenwoning, hoekwoning of kleine 2-onder-1-kapwoning.
 - **Koppeling met je cv-ketel.** Werkt de warmtepomp met je huidige ketel, of hoort er een eigen ketel bij?
 - **Later all-electric.** Wil je ooit helemaal van het gas af? Milieu Centraal raadt dan aan meteen het vermogen te kiezen dat je all-electric nodig hebt, een warmtepomp die terugmoduleert tot onder 2 kW en een buffervat.
 
@@ -73,13 +73,13 @@ Een winnaar is er niet. Wel past het ene type beter bij jouw situatie dan het an
 - **Je wilt later all-electric.** Kies een model dat de fabrikant all-electric ready noemt en het vermogen dat je dan nodig hebt. Lees eerst [hybride of all-electric](/hybride-of-all-electric/).
 - **Je buitenunit komt dicht bij de buren.** Vergelijk geluid alleen als de meetmethode gelijk is, en let op de plek van de unit.
 - **Je wilt een natuurlijk koudemiddel.** Itho Daalderop, Nefit Bosch, Quatt en Vaillant gebruiken propaan (R290). Daikin, Mitsubishi Electric en de Remeha Elga Ace gebruiken R32.
-- **Er komt binnen 5 jaar een warmtenet.** Volgens Milieu Centraal is een hybride warmtepomp dan niet logisch.
+- **Er komt binnen 5 jaar een warmtenet.** Een hybride warmtepomp is dan niet logisch.
 
 Twijfel je tussen twee merken? Bekijk dan bijvoorbeeld [Quatt vs Remeha](/vergelijken/quatt-vs-remeha/) of de andere [vergelijkingen](/vergelijken/).
 
 ## Kosten en ISDE
 
-Een hybride warmtepomp van 4 kW kost bij je bestaande cv-ketel gemiddeld **€ 6.200**, volgens Milieu Centraal. In 2026 krijg je volgens RVO € 1.025 basisbedrag, plus € 225 per kW, plus € 200 als de warmtepomp energielabel A+++ heeft. Voor 4 kW met A+++ is dat **€ 2.125**. Hoeveel jouw model krijgt, zie je op de meldcodelijst van RVO. Prijzen met en zonder nieuwe cv-ketel, per vermogen, staan bij [wat een hybride warmtepomp kost](/hybride-warmtepomp-kosten/).
+Een hybride warmtepomp van 4 kW kost bij je bestaande cv-ketel gemiddeld **€ 6.200**. In 2026 krijg je € 1.025 basisbedrag, plus € 225 per kW, plus € 200 als de warmtepomp energielabel A+++ heeft. Voor 4 kW met A+++ is dat **€ 2.125**. Hoeveel jouw model krijgt, zie je op de meldcodelijst van RVO. Prijzen met en zonder nieuwe cv-ketel, per vermogen, staan bij [wat een hybride warmtepomp kost](/hybride-warmtepomp-kosten/).
 
 Een paar fabrikanten noemen zelf prijzen, maar niet op dezelfde manier:
 
@@ -87,7 +87,7 @@ Een paar fabrikanten noemen zelf prijzen, maar niet op dezelfde manier:
 - **Itho Daalderop Amber 65:** € 4.750 bruto adviesprijs, exclusief btw en installatie.
 - **Remeha Elga Ace 4 kW:** € 3.154 bruto lijstprijs, exclusief btw en installatie.
 
-Volgens het rekenvoorbeeld van Milieu Centraal bespaar je met een hybride zo'n **€ 600 per jaar**. Milieu Centraal rekent met € 1,37 per m³ gas en 21 cent per kWh. Wij rekenen daarmee uit: (6.200 − 2.125) / 600 = **6,8 jaar** (onze rekensom), zonder subsidie **10,3 jaar** (onze rekensom). De rekenhulp rekent zonder afronding en komt op 6,9 jaar. Reken je eigen situatie na met de [terugverdientijd-calculator](/terugverdientijd-berekenen/) en lees meer over [warmtepomp kosten](/warmtepomp-kosten/).
+In het rekenvoorbeeld bespaar je met een hybride zo'n **€ 600 per jaar**. Milieu Centraal rekent met € 1,37 per m³ gas en 21 cent per kWh. Wij rekenen daarmee uit: (6.200 − 2.125) / 600 = **6,8 jaar** (onze rekensom), zonder subsidie **10,3 jaar** (onze rekensom). De rekenhulp rekent zonder afronding en komt op 6,9 jaar. Reken je eigen situatie na met de [terugverdientijd-calculator](/terugverdientijd-berekenen/) en lees meer over [warmtepomp kosten](/warmtepomp-kosten/).
 
 Wordt je warmtepomp pas in 2027 geplaatst? RVO is van plan de subsidie dan te verlagen naar € 120 per kW, met € 250 extra bij A+++ en € 200 extra voor een slimme warmtepomp. Voor 4 kW met A+++ en slimme aansturing is dat, met het basisbedrag van € 1.025, € 1.955. Koop je uiterlijk 31 december 2026, dan krijg je nog € 225 per kW. Bewaar je getekende offerte of opdrachtbevestiging. Alles over de regels lees je bij [ISDE-subsidie warmtepomp 2026](/isde-subsidie-warmtepomp-2026/).
 
