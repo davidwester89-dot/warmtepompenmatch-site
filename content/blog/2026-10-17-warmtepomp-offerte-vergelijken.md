@@ -3,7 +3,7 @@ title: Warmtepompoffertes vergelijken: waar let je op in 2026?
 seo_title: Warmtepompoffertes vergelijken: checklist 2026
 description: Twee offertes voor een warmtepomp? Vergelijk vermogen, meldcode, wat er in de prijs zit, garantie en certificaten. En teken op tijd voor de ISDE van 2026.
 date: 2026-10-17
-updated: 2026-10-30
+updated: 2026-11-13
 checked: 2026-10-17
 image: warmtepomp-offerte-vergelijken
 image_alt: Buitenunit van een warmtepomp zonder merkopdruk op het balkon van een woning, naast de achterdeur
@@ -37,7 +37,7 @@ Een offerte zegt pas iets als je weet wat normaal is. Milieu Centraal noemt deze
 | Hybride warmtepomp, 4 kW, met nieuwe cv-ketel | € 8.300 | € 2.125 |
 | All-electric warmtepomp met buitenunit, 8 kW | € 12.000 | € 3.025 |
 
-Ligt een offerte er duidelijk onder? Vraag dan waarom. Milieu Centraal waarschuwt: laat goedkoop geen duurkoop zijn. Meer over de prijzen per type lees je in [wat een warmtepomp kost](/warmtepomp-kosten/).
+Ligt een offerte er duidelijk onder? Vraag dan waarom. Laat goedkoop geen duurkoop zijn. Meer over de prijzen per type lees je in [wat een warmtepomp kost](/warmtepomp-kosten/).
 
 ## Zo vergelijk je warmtepompoffertes in 6 stappen
 
