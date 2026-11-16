@@ -34,6 +34,7 @@ cards={
  'blog-beste-hybride-warmtepomp':('Beste hybride warmtepomp 2026','Zo kies je per situatie'),
  'blog-lucht-lucht-warmtepomp-kosten':('Lucht-lucht warmtepomp kosten','Single- en multisplit, stroom en subsidie'),
  'blog-warmtepompboiler-kosten':('Warmtepompboiler kosten','Prijs per inhoud, installatie en ISDE'),
+ 'blog-warmtepomp-huren-of-kopen':('Warmtepomp huren of kopen','Koopprijs, ISDE en zo reken je huur na'),
 }
 # blogkaarten met kopfoto: kaart -> WebP in src/assets/img/blog
 photo={'blog-warmtepomp-offerte-vergelijken':'warmtepomp-offerte-vergelijken-1200.webp','blog-beste-hybride-warmtepomp':'beste-hybride-warmtepomp-1200.webp','blog-warmtepompboiler-kosten':'warmtepompboiler-kosten-1200.webp'}

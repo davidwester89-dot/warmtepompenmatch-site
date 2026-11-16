@@ -5,6 +5,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { LL_UPD } from '../src/pages.mjs';
+import { loadPosts } from '../src/blog.mjs';
 
 const lees = (p) => readFileSync(`dist${p}index.html`, 'utf8');
 const sm = () => readFileSync('dist/sitemap.xml', 'utf8');
@@ -18,9 +19,11 @@ test('L7 12-11: blog lucht-lucht en /merken/daikin/ dragen de pushdatum', () => 
     assert.match(h, new RegExp(`bijgewerkt <time datetime="${revisieDatum(p, LL_UPD)}">`), p);
     assert.match(sm(), new RegExp(`${esc(p)}</loc><lastmod>${revisieDatum(p, LL_UPD)}</lastmod>`), p);
   }
+  // Home toont 'Nieuw op de blog' (3 nieuwste posts): hubregel D, datum = nieuwste van eigen datum en die posts (zie score-weg-2910). Vanaf de post van 18-11 dus 2026-11-18.
+  const verwacht = (p) => (p === '/' ? [revisieDatum(p, LL_UPD), ...loadPosts().slice(0, 3).map((x) => x.date)].sort().at(-1) : revisieDatum(p, LL_UPD));
   for (const p of ['/merken/', '/']) {
-    assert.match(lees(p), new RegExp(`bijgewerkt (op )?<time datetime="${revisieDatum(p, LL_UPD)}">`, 'i'), p);
-    assert.match(sm(), new RegExp(`${esc(p)}</loc><lastmod>${revisieDatum(p, LL_UPD)}</lastmod>`), p);
+    assert.match(lees(p), new RegExp(`bijgewerkt (op )?<time datetime="${verwacht(p)}">`, 'i'), p);
+    assert.match(sm(), new RegExp(`${esc(p)}</loc><lastmod>${verwacht(p)}</lastmod>`), p);
   }
 });
 
