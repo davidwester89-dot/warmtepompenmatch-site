@@ -1,3 +1,4 @@
+import { revisieDatum } from './nuchter-datums-helper.mjs'; // Latere stijlrevisie, exacte datumtests blijven gelden.
 // Scores weg (29-10-2026): geen score-badge, scorebalkjes, "Score"-kolom of "x/10" meer bij de merken, op geen enkele pagina.
 // De volgorde (ranglijst) blijft gelijk; alleen de weergave van de score is weg.
 import test from 'node:test';
@@ -36,7 +37,7 @@ test('pagina\'s die een score toonden: lastmod en dateModified 2026-10-29', () =
   assert.match(home, new RegExp(`bijgewerkt op <time datetime="${homeUpd}">`), 'home: zichtbare datum');
   if (/"dateModified"/.test(home)) assert.match(home, new RegExp(`"dateModified":"${homeUpd}"`), 'home: dateModified');
   for (const p of ['/warmtepomp-keuzehulp/', '/merken/', '/merken/panasonic/', '/vergelijken/', '/vergelijken/quatt-vs-remeha/', '/over/'].filter((x) => !EF_PADEN.has(x)))
-    assert.match(sm, new RegExp(`<loc>https://warmtepompenmatch\\.nl${p}</loc><lastmod>2026-10-29</lastmod>`), p);
+    assert.match(sm, new RegExp(`<loc>https://warmtepompenmatch\\.nl${p}</loc><lastmod>${revisieDatum(p, '2026-10-29')}</lastmod>`), p);
   for (const f of ['vergelijken/quatt-vs-remeha'].filter((x) => !EF_PADEN.has(`/${x}/`))) {
     const h = read(`dist/${f}/index.html`);
     assert.match(h, /"dateModified":"2026-10-29"/, f);

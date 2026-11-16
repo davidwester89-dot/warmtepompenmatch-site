@@ -1,3 +1,4 @@
+import { revisieDatum } from './nuchter-datums-helper.mjs'; // Latere stijlrevisie, exacte datumtests blijven gelden.
 // L7 30-10: pagina's waar logo's in de tabellen bijkwamen hebben dateModified, sitemap-lastmod en de zichtbare bijwerkdatum 30-10-2026.
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -11,9 +12,10 @@ test('L7 30-10: pagina\'s met logo\'s in de tabellen', () => {
   const sm = readFileSync('dist/sitemap.xml', 'utf8');
   for (const p of PAGINAS.filter((x) => !EF_PADEN.has(x))) {
     const h = readFileSync(`dist${p}index.html`, 'utf8');
-    assert.match(h, /"dateModified": ?"2026-10-30"/, p);
-    assert.match(h, ZICHTBAAR, p);
-    assert.match(sm, new RegExp(`${p.replace(/[/.]/g, '\\$&')}</loc><lastmod>2026-10-30</lastmod>`), p);
+    const d = revisieDatum(p, '2026-10-30');
+    assert.match(h, new RegExp(`"dateModified": ?"${d}"`), p);
+    assert.match(h, new RegExp(`bijgewerkt <time datetime="${d}">`), p);
+    assert.match(sm, new RegExp(`${p.replace(/[/.]/g, '\\$&')}</loc><lastmod>${d}</lastmod>`), p);
   }
 });
 

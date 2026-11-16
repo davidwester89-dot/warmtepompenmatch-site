@@ -240,6 +240,14 @@ export const DEFAULT_JS_IGNORE = /(^|\/)(consent|gtag|ga|ga4|analytics|cookie|in
 // cfg: { build(dir, env) -> outDir (absolute), sitemap?, hubs?: [{hub, children: RegExp}], notHub?: [pad], exempt?: {path: [velden]},
 //        jsIgnore?: RegExp, ignorePages?: RegExp, env?: {}, stripBlocks?: [RegExp], requireDateModified?: [pad] }
 // requireDateModified: pagina's zonder datePublished waar dateModified tóch verplicht is (keuzehulp zonder zichtbare datum, SC 30-10).
+// Hubdatums volgen alleen eigen bodywijzigingen (stijlbesluit 10-11-2026).
+// Dit is geen datumvrijstelling: eigen body/clientdata blijven onder de gewone pushdatumcheck vallen.
+export function unchangedHubDateErrors(path, old, html, beforeLastmod, afterLastmod, cfg = {}) {
+  if (!(cfg.bodyOnlyHubs || []).includes(path) || bodyFingerprint(old, cfg) !== bodyFingerprint(html, cfg)) return [];
+  const own = (h, lastmod) => { const d = dateFields(h); return JSON.stringify({ ld: d.ld, og: d.og, visible: d.visible, lastmod }); };
+  return own(old, beforeLastmod) === own(html, afterLastmod) ? [] : [`${path}: hubdatum gewijzigd zonder eigen bodywijziging`];
+}
+
 export function runL7(root, cfg) {
   const pushDate = process.env.PUSH_DATE || amsterdamToday();
   const strict = process.env.L7_STRICT === '1'; // alles verplicht, geen uitzonderingen: toont alle templategaten (voor SC)
@@ -297,6 +305,7 @@ export function runL7(root, cfg) {
     const hubs = new Map(); // hub -> [kinderen]
     const linksOf = (html) => new Set([...mainHtml(html).matchAll(/<a\b[^>]*?\shref="([^"#?]+)/gi)].map((m) => { try { return new URL(m[1], 'https://x.nl/').pathname; } catch { return m[1]; } }));
     for (const [path, { html }] of info) {
+      if ((cfg.bodyOnlyHubs || []).includes(path)) continue;
       const cfgHub = (cfg.hubs || []).find((h) => h.hub === path);
       const links = linksOf(html);
       if (!cfgHub && (cfg.notHub || []).includes(path)) continue; // bv. taalhome /en/: geen hub, maar de homepage
@@ -332,6 +341,7 @@ export function runL7(root, cfg) {
       if (toekomst.length) failures.push(`${path}: datum na de pushdatum ${pushDate}: ${[...new Set(toekomst)].join(', ')}`);
       const old = bPages.get(f);
       if (old !== undefined) {
+        if (!String(changed.get(path) || '').startsWith('client-side')) failures.push(...unchangedHubDateErrors(path, old, html, bMap.get(path), tMap.get(path), cfg));
         const pub = (h) => ownPublished(h).join(',');
         if (pub(old) && pub(html) && pub(html) > pub(old)) failures.push(`${path}: datePublished naar later verschoven ${pub(old)} → ${pub(html)}`); // terugzetten naar de echte publicatiedag mag
       }
@@ -366,7 +376,8 @@ export function hubAudit(outDir, cfg = {}) {
   const datum = (p) => [map.get(p), dateFields(info.get(p)).visible].filter(Boolean).sort().at(-1);
   const out = [];
   for (const [path, html] of info) {
-    const cfgHub = (cfg.hubs || []).find((h) => h.hub === path);
+    if ((cfg.bodyOnlyHubs || []).includes(path)) continue;
+      const cfgHub = (cfg.hubs || []).find((h) => h.hub === path);
     const links = new Set([...mainHtml(html).matchAll(/<a\b[^>]*?\shref="([^"#?]+)/gi)].map((m) => { try { return new URL(m[1], 'https://x.nl/').pathname; } catch { return m[1]; } }));
     if (!cfgHub && (cfg.notHub || []).includes(path)) continue;
     const kids = [...links].filter((l) => l !== path && info.has(l) && (cfgHub ? cfgHub.children.test(l) : (path !== '/' && l.startsWith(path))));
