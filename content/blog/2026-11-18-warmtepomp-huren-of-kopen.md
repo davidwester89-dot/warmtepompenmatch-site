@@ -1,7 +1,7 @@
 ---
 title: Warmtepomp huren of kopen: wat is voordeliger?
 seo_title: Warmtepomp huren of kopen: wat is voordeliger?
-description: Warmtepomp huren of kopen? Wat je per maand betaalt bij huur of lease, wat kopen kost na ISDE-subsidie, en wanneer welke keuze voordeliger uitpakt.
+description: Warmtepomp huren of kopen? Wat kopen na ISDE over 15 jaar per maand kost, hoe je een huurprijs daarmee vergelijkt, en wanneer welke keuze voordeliger is.
 date: 2026-11-18
 updated: 2026-11-18
 checked: 2026-11-18
