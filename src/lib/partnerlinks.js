@@ -13,9 +13,12 @@ export function uitgaand(id, partnerlinks = PARTNERLINKS) {
   return pl ? { href: pl, rel: 'sponsored nofollow noopener', partner: true, naam: p.naam } : { href: p.url, rel: 'noopener', partner: false, naam: p.naam };
 }
 
-/** Knop naar het merk. Partnerlink: rel sponsored nofollow noopener, geen zichtbaar label (uitleg in de FAQ). */
+/** Knop naar het merk. Partnerlink: rel sponsored nofollow noopener, geen zichtbaar label (uitleg in de FAQ).
+ *  Zonder goedgekeurde partnerlink (besluit Moneymaker 17-11, zoals TM dee721c): géén knop maar een neutrale bronlink
+ *  <a href="officiële site" rel="noopener">Bron: Merk</a>, zonder class, target, data-cta, data-vendor of sponsored. */
 export function knop(id, pos, cls = 'btn', partnerlinks = PARTNERLINKS) {
   const o = uitgaand(id, partnerlinks);
+  if (!o.partner) return `<a href="${o.href}" rel="noopener">Bron: ${o.naam}</a>`;
   return `<a class="${cls}" href="${o.href}" rel="${o.rel}" target="_blank" data-vendor="${id}" data-pos="${pos}" data-cta="outbound" data-partner-slot="${id}">Naar de site van ${o.naam}</a>`;
 }
 

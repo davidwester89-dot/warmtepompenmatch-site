@@ -40,7 +40,8 @@ test('pagina\'s die een score toonden: lastmod en dateModified 2026-10-29', () =
     assert.match(sm, new RegExp(`<loc>https://warmtepompenmatch\\.nl${p}</loc><lastmod>${revisieDatum(p, '2026-10-29')}</lastmod>`), p);
   for (const f of ['vergelijken/quatt-vs-remeha'].filter((x) => !EF_PADEN.has(`/${x}/`))) {
     const h = read(`dist/${f}/index.html`);
-    assert.match(h, /"dateModified":"2026-10-29"/, f);
-    assert.match(h, /Laatst bijgewerkt <time datetime="2026-10-29">/, f);
+    const d = revisieDatum(`/${f}/`, '2026-10-29'); // latere revisie (neutrale merkknoppen 25-11) mag hoger
+    assert.match(h, new RegExp(`"dateModified":"${d}"`), f);
+    assert.match(h, new RegExp(`Laatst bijgewerkt <time datetime="${d}">`), f);
   }
 });

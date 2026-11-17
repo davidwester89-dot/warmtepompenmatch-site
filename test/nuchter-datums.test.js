@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { dateFields, readSitemap } from '../scripts/l7check.mjs';
-import { STIJL_PADEN, revisieDatum } from './nuchter-datums-helper.mjs';
+import { STIJL_PADEN, revisieDatum } from './nuchter-datums-helper.mjs'; // revisieDatum: latere inhoudelijke revisie (neutrale merkknoppen 25-11) mag hoger
 test('stijlrelease 13-11: exacte bijgewerkt-/lastmod-/dateModified-datums, uitsluitend op de vastgelegde pagina’s', () => {
   const out = 'dist';
   const sitemap = readSitemap(out);
