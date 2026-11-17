@@ -6,7 +6,8 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { execSync } from 'node:child_process';
-import { applyEcta, resolve, placeholders, metSubid, LABEL, REL, MAX_A, POS } from '../src/e-cta.mjs';
+import { applyEcta, resolve, placeholders, metSubid, LABEL, REL, MAX_A, POS, INTERN_VENDORS } from '../src/e-cta.mjs';
+import { MERKEN } from '../src/lib/merken.js';
 import { ECTA } from '../src/e-cta-1.config.mjs';
 import { PARTNERLINKS } from '../src/lib/partnerlinks.js';
 import * as P from '../src/pages.mjs';
@@ -112,7 +113,9 @@ test('E-CTA-1: fallback bij < 2 betaalde partners: A en C alleen naar keuzehulp/
     assert.equal(b.length, 2);
     for (const x of b) {
       assert.equal(extern(x.html).length, 0, 'geen externe link');
-      assert.doesNotMatch(x.html, /sponsored|data-vendor|ecta-label/);
+      assert.doesNotMatch(x.html, /sponsored|ecta-label/);
+      // Sinds SEO-review c120387: alleen de interne waarden keuzehulp/vergelijker als data-vendor, nooit een merk.
+      assert.deepEqual([...new Set([...x.html.matchAll(/data-vendor="([^"]+)"/g)].map((m) => m[1]))].sort(), ['keuzehulp', 'vergelijker']);
       assert.match(x.html, new RegExp(`href="${ECTA.keuzehulp.href}"`));
       assert.match(x.html, new RegExp(`href="${ECTA.vergelijker.href}"`));
     }
@@ -163,4 +166,35 @@ test('E-CTA-1 WPM: geen goedgekeurde partner → overal alleen keuzehulp; een re
   const cfg = { ...ECTA, partners: { ...ECTA.partners, quatt: { ...ECTA.partners.quatt, reflink: 'https://example.test/q' } }, pages: { '/t/': { partners: ['quatt', 'adlar'] } } };
   const r = resolve(cfg, '/t/');
   assert.equal(r.partners.length, 1); assert.equal(r.fallback, true, 'één gevulde reflink = nog steeds fallback');
+});
+
+test('E-CTA-1 meting (SEO-review c120387): elke fallbacklink heeft data-vendor keuzehulp|vergelijker en data-pos top|eind', () => {
+  // consent.js vuurt vendor_click alleen op a[data-vendor]; zonder data-vendor telt de KPI deze kliks niet.
+  const consent = readFileSync('src/assets/js/consent.js', 'utf8');
+  assert.match(consent, /a\[data-vendor\]/);
+  assert.match(consent, /track\('vendor_click', \{ vendor: t\.dataset\.vendor, page: location\.pathname, position: t\.dataset\.pos, cta_type: t\.dataset\.cta \}\)/);
+  // Onderscheidbaar van echte affiliates: geen merk-id en geen partner-id.
+  assert.deepEqual(INTERN_VENDORS, ['keuzehulp', 'vergelijker']);
+  for (const v of INTERN_VENDORS) {
+    assert.ok(!(v in MERKEN) && !(v in PARTNERLINKS) && !(v in ECTA.partners), v);
+    assert.ok(!Object.values(ECTA.partners).some((x) => x.vendor === v), v);
+  }
+  let n = 0;
+  for (const p of paden) for (const b of blokken(lees(p))) {
+    if (!/ecta-fallback/.test(b.html)) continue;
+    const links = [...b.html.matchAll(/<a\b[^>]*>/g)].map((m) => m[0]);
+    assert.equal(links.length, 2, p);
+    for (const a of links) {
+      const href = a.match(/href="([^"]+)"/)[1];
+      const want = href === ECTA.keuzehulp.href ? 'keuzehulp' : href === ECTA.vergelijker.href ? 'vergelijker' : null;
+      assert.ok(want, `${p}: onverwachte link ${a}`);
+      assert.match(a, new RegExp(`data-vendor="${want}"`), p);
+      assert.match(a, new RegExp(`data-pos="${POS[b.pos]}"`), p);
+      assert.match(a, new RegExp(`data-cta="ecta-${b.pos.toLowerCase()}"`), p);
+      assert.doesNotMatch(a, /rel=|target=/, p);
+      n++;
+    }
+  }
+  assert.equal(n, SITE.aantal * 4, 'A en C, elk keuzehulp + vergelijker');
+  console.log(`# E-CTA-1 meting: ${n} fallbacklinks met data-vendor + data-pos`);
 });
