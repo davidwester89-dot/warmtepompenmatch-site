@@ -3,7 +3,8 @@ import { execSync, execFileSync } from 'node:child_process';
 import { join } from 'node:path';
 export const CFG = {
   // Geen datumlift door alleen een gewijzigd kind; bij eigen body geldt de gewone L7-plicht.
-  bodyOnlyHubs: ["/blog/", "/gidsen/", "/merken/"],
+  // /vergelijken/ erbij (17-11, neutrale merkknoppen op de vs-pagina's): hub zonder eigen bodywijziging, niet liften (stijlbesluit 10-11, zoals TM). Vraagt SC-OK.
+  bodyOnlyHubs: ["/blog/", "/gidsen/", "/merken/", "/vergelijken/"],
   build: (dir, env) => { execSync('node build.mjs', { cwd: dir, env, stdio: 'ignore' }); return join(dir, 'dist'); },
   hubs: [{ hub: '/gidsen/', children: /^\/[^/]+\/$/ }],
   // E-CTA-1 (plan MM 17-11, Dave via GB2): de CTA-blokken A/C (src/e-cta.mjs) tellen niet als bodywijziging; geen datum-lift. Vraagt SC-OK.

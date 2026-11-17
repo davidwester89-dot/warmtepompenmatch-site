@@ -14,4 +14,11 @@ export const STIJL_PADEN = new Set([
 // Transparantie 24-11: home-FAQ en /privacy/ (partnerlinks, alleen Daisycon/Huisassist).
 export const TRANSPARANTIE_PADEN = new Set(["/", "/privacy/"]);
 export const HUISASSIST_PADEN = new Set(["/warmtepomp-keuzehulp/"]);
-export const revisieDatum = (pad, vorige) => (TRANSPARANTIE_PADEN.has(pad) || HUISASSIST_PADEN.has(pad)) ? '2026-11-24' : STIJL_PADEN.has(pad) ? '2026-11-17' : vorige;
+// Onafhankelijke verwachting voor de neutrale merkknoppen (besluit Moneymaker 17-11, pushdatum 25-11): latere bodywijziging,
+// dus deze pagina's dragen 2026-11-25. Hub /vergelijken/ heeft geen eigen bodywijziging en staat hier bewust niet in.
+export const NEUTRAAL_PADEN = new Set([
+  "/merken/", "/merken/daikin/", "/merken/itho-daalderop/", "/merken/mitsubishi-electric/", "/merken/nefit-bosch/",
+  "/merken/panasonic/", "/merken/quatt/", "/merken/remeha/", "/merken/vaillant/",
+  "/vergelijken/daikin-vs-mitsubishi-electric/", "/vergelijken/quatt-vs-remeha/", "/vergelijken/vaillant-vs-nefit-bosch/"
+]);
+export const revisieDatum = (pad, vorige) => NEUTRAAL_PADEN.has(pad) ? '2026-11-25' : (TRANSPARANTIE_PADEN.has(pad) || HUISASSIST_PADEN.has(pad)) ? '2026-11-24' : STIJL_PADEN.has(pad) ? '2026-11-17' : vorige;

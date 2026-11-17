@@ -147,6 +147,11 @@ const VS_CONTEXT = {
 export const LL_UPD = '2026-11-12';
 // L7: /merken/daikin/ (contextlink) en hub /merken/. Home (leestijd van deze blog in 'Nieuw op de blog') krijgt LL_UPD via homeUpd in build.mjs.
 export const LL_PADEN = new Set(['/merken/', '/merken/daikin/']);
+// Onbetaalde merkknoppen neutraal (besluit Moneymaker 17-11, zoals TM dee721c): knop wordt bronlink "Bron: Merk" (src/lib/partnerlinks.js).
+// Zichtbare bodywijziging alleen op deze 12 pagina's: L7 naar de pushdatum. Hub /vergelijken/ heeft geen eigen bodywijziging en
+// blijft staan (bodyOnlyHubs in scripts/l7.config.mjs); /merken/ wijzigt zelf (merkkaarten) en gaat dus wel mee.
+export const NEUTRAAL_UPD = '2026-11-25';
+export const NEUTRAAL_PADEN = new Set(['/merken/', '/merken/daikin/', '/merken/itho-daalderop/', '/merken/mitsubishi-electric/', '/merken/nefit-bosch/', '/merken/panasonic/', '/merken/quatt/', '/merken/remeha/', '/merken/vaillant/', '/vergelijken/daikin-vs-mitsubishi-electric/', '/vergelijken/quatt-vs-remeha/', '/vergelijken/vaillant-vs-nefit-bosch/']);
 const LL_CONTEXT = {
   daikin: '<p>Daikin verkoopt ook airconditioners die verwarmen: lucht-luchtwarmtepompen. De bedragen van Milieu Centraal en Vereniging Eigen Huis staan bij <a href="/blog/lucht-lucht-warmtepomp-kosten/">wat een lucht-luchtwarmtepomp kost</a>.</p>',
 };
