@@ -130,7 +130,8 @@ export function stripPageDates(s) {
 }
 // cfg.stripBlocks: [RegExp] op de ruwe html van <main>, voor automatisch gegenereerde teaserlijsten (alleen met SC-OK).
 export function bodyFingerprint(html, cfg = {}) {
-  let b = (cfg.stripBlocks || []).reduce((t, re) => t.replace(re, ' ‹teaser› '), mainHtml(html))
+  // cfg.stripCta: [RegExp] voor vaste CTA-blokken (E-CTA-1, 17-11): spoorloos weg, telt niet als bodywijziging (alleen met SC-OK).
+  let b = (cfg.stripBlocks || []).reduce((t, re) => t.replace(re, ' ‹teaser› '), (cfg.stripCta || []).reduce((t, re) => t.replace(re, ' '), mainHtml(html)))
     .replace(/<!--[\s\S]*?-->/g, ' ')
     .replace(/<(script|style|noscript|template)\b[\s\S]*?<\/\1>/gi, ' ')
     .replace(/<time\b[^>]*>[\s\S]*?<\/time>/gi, ' ‹datum› ')
@@ -238,7 +239,7 @@ const pageMeta = (html) => ({
 export const DEFAULT_JS_IGNORE = /(^|\/)(consent|gtag|ga|ga4|analytics|cookie|intern[-_]?traffic|video|menu|nav|logos?)[^/]*\.m?js$/i;
 
 // cfg: { build(dir, env) -> outDir (absolute), sitemap?, hubs?: [{hub, children: RegExp}], notHub?: [pad], exempt?: {path: [velden]},
-//        jsIgnore?: RegExp, ignorePages?: RegExp, env?: {}, stripBlocks?: [RegExp], requireDateModified?: [pad] }
+//        jsIgnore?: RegExp, ignorePages?: RegExp, env?: {}, stripBlocks?: [RegExp], stripCta?: [RegExp], requireDateModified?: [pad] }
 // requireDateModified: pagina's zonder datePublished waar dateModified tóch verplicht is (keuzehulp zonder zichtbare datum, SC 30-10).
 // Hubdatums volgen alleen eigen bodywijzigingen (stijlbesluit 10-11-2026).
 // Dit is geen datumvrijstelling: eigen body/clientdata blijven onder de gewone pushdatumcheck vallen.

@@ -6,6 +6,8 @@ export const CFG = {
   bodyOnlyHubs: ["/blog/", "/gidsen/", "/merken/"],
   build: (dir, env) => { execSync('node build.mjs', { cwd: dir, env, stdio: 'ignore' }); return join(dir, 'dist'); },
   hubs: [{ hub: '/gidsen/', children: /^\/[^/]+\/$/ }],
+  // E-CTA-1 (plan MM 17-11, Dave via GB2): de CTA-blokken A/C (src/e-cta.mjs) tellen niet als bodywijziging; geen datum-lift. Vraagt SC-OK.
+  stripCta: [/<aside class="ecta[^"]*"[^>]*data-ecta="[AC]"[^>]*>[\s\S]*?<\/aside>/g],
   // Alleen ONTBREKENDE velden die de template van deze pagina niet heeft. Een aanwezig veld moet altijd kloppen.
   exempt: {
     '/warmtepomp-keuzehulp/': ['zichtbaar'], // keuzehulp zonder enige zichtbare datum: lastmod + dateModified verplicht (SC 30-10, besluit 3)
