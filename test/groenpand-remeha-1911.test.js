@@ -1,5 +1,6 @@
 // Remeha-CTA → Groenpand (MM-OK 19-11), Itho blijft neutraal. Alleen bestaande knop()-plekken, geen extra plek,
-// bronregels ongewijzigd, geen datumlift, ranglijst ongewijzigd. Label "Partnerlink" (WPM E-CTA-1).
+// bronregels ongewijzigd, ranglijst ongewijzigd. Label "Partnerlink" (WPM E-CTA-1).
+// Datumlift 26-11 op /merken/, /vergelijken/quatt-vs-remeha/ en /merken/remeha/ (SEO-review 484cf28; geen stripCta).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
@@ -70,13 +71,13 @@ test('Groenpand-Remeha: exact 4 CTA’s op 3 pagina’s; Itho neutraal; bronrege
   }
 });
 
-test('Groenpand-Remeha: ranglijst en lastmods ongewijzigd t.o.v. ad2659a', () => {
+test('Groenpand-Remeha: ranglijst ongewijzigd; datumlift 26-11 op de drie CTA-pagina\'s', () => {
   assert.deepEqual(ranglijst(), ['daikin', 'nefitbosch', 'vaillant', 'mitsubishi', 'itho', 'panasonic', 'quatt', 'remeha']);
   const sm = readFileSync('dist/sitemap.xml', 'utf8');
-  assert.match(sm, /<loc>https:\/\/warmtepompenmatch\.nl\/merken\/<\/loc><lastmod>2026-11-25<\/lastmod>/);
+  assert.match(sm, /<loc>https:\/\/warmtepompenmatch\.nl\/merken\/<\/loc><lastmod>2026-11-26<\/lastmod>/);
   assert.match(sm, /<loc>https:\/\/warmtepompenmatch\.nl\/merken\/remeha\/<\/loc><lastmod>2026-11-26<\/lastmod>/);
   assert.match(sm, /<loc>https:\/\/warmtepompenmatch\.nl\/merken\/itho-daalderop\/<\/loc><lastmod>2026-11-26<\/lastmod>/);
-  assert.match(sm, /<loc>https:\/\/warmtepompenmatch\.nl\/vergelijken\/quatt-vs-remeha\/<\/loc><lastmod>2026-11-25<\/lastmod>/);
+  assert.match(sm, /<loc>https:\/\/warmtepompenmatch\.nl\/vergelijken\/quatt-vs-remeha\/<\/loc><lastmod>2026-11-26<\/lastmod>/);
   assert.match(sm, /<loc>https:\/\/warmtepompenmatch\.nl\/privacy\/<\/loc><lastmod>2026-10-21<\/lastmod>/);
   assert.match(lees('/privacy/'), /Op dit moment staan er geen partnerlinks op deze site/);
 });

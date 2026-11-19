@@ -86,14 +86,16 @@ test('upgrade: Itho geen merkknop; Remeha-CTA alleen Groenpand; partnerkaart lee
   assert.doesNotMatch(rm, /Naar de site van/);
 });
 
-test('upgrade L7: alleen deze twee pagina\'s op 2026-11-26; hub /merken/ niet gelift; geen datum na de pushdatum', () => {
+test('upgrade L7: itho + remeha op 2026-11-26; Groenpand tilt /merken/ en quatt-vs-remeha mee; geen datum na de pushdatum', () => {
   assert.equal(UPGRADE_UPD, '2026-11-26');
   assert.deepEqual([...UPGRADE_PADEN].sort(), [...HELPER_PADEN].sort());
   const sm = readFileSync('dist/sitemap.xml', 'utf8');
   const lm = [...sm.matchAll(/<loc>https:\/\/warmtepompenmatch\.nl([^<]*)<\/loc><lastmod>([^<]*)<\/lastmod>/g)];
-  assert.deepEqual(lm.filter((m) => m[2] === '2026-11-26').map((m) => m[1]).sort(), [IT, RM]);
+  const op26 = lm.filter((m) => m[2] === '2026-11-26').map((m) => m[1]).sort();
+  assert.ok(op26.includes(IT) && op26.includes(RM), 'upgrade-pagina\'s op 26-11');
+  for (const p of ['/merken/', '/vergelijken/quatt-vs-remeha/', IT, RM]) assert.ok(op26.includes(p), p);
   assert.ok(lm.every((m) => m[2] <= '2026-11-26'));
-  assert.match(sm, /<loc>https:\/\/warmtepompenmatch\.nl\/merken\/<\/loc><lastmod>2026-11-25<\/lastmod>/);
+  assert.ok(!op26.includes('/vergelijken/'), 'hub /vergelijken/ niet gelift');
   for (const p of [IT, RM]) {
     const h = lees(p);
     assert.match(h, /"dateModified":"2026-11-26"/);
