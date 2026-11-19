@@ -3,6 +3,8 @@
 import { MERKEN } from './merken.js';
 export const PARTNERLINKS = {};
 
+// Huisassist: bron in huisassist-cta.js (gaat ook naar de client / keuzehulp). Niet in PARTNERLINKS (geen merkenplek).
+export { HUISASSIST_URL, HUISASSIST_TEKST, huisassistKnop } from './huisassist-cta.js';
 /** Uitgaande link: partnerlink (rel sponsored nofollow, zonder zichtbaar label) als die er is, anders de officiële site. */
 export function uitgaand(id, partnerlinks = PARTNERLINKS) {
   const p = MERKEN[id];

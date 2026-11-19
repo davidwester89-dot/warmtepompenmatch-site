@@ -144,6 +144,9 @@ export const LL_PADEN = new Set(['/merken/', '/merken/daikin/']);
 const LL_CONTEXT = {
   daikin: '<p>Daikin verkoopt ook airconditioners die verwarmen: lucht-luchtwarmtepompen. De bedragen van Milieu Centraal en Vereniging Eigen Huis staan bij <a href="/blog/lucht-lucht-warmtepomp-kosten/">wat een lucht-luchtwarmtepomp kost</a>.</p>',
 };
+// Huisassist in het bestaande offerteblok van de keuzehulp-uitslag (JS): L7 telt client-side uitslag, datumlift 24-11.
+export const HUISASSIST_UPD = '2026-11-24';
+export const HUISASSIST_PADEN = new Set(['/warmtepomp-keuzehulp/']);
 const typeVan = (id) => (FEATURES[id].hybride.v === 'ja' ? 'hybride' : 'allelectric');
 const merkPagesRaw = IDS.map((id) => {
   const p = M[id];

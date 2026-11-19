@@ -11,4 +11,5 @@ export const STIJL_PADEN = new Set([
   "/warmtepomp-keuzehulp/",
   "/warmtepomp-terugverdientijd/"
 ]);
-export const revisieDatum = (pad, vorige) => STIJL_PADEN.has(pad) ? '2026-11-17' : vorige;
+export const HUISASSIST_PADEN = new Set(["/warmtepomp-keuzehulp/"]);
+export const revisieDatum = (pad, vorige) => HUISASSIST_PADEN.has(pad) ? '2026-11-24' : STIJL_PADEN.has(pad) ? '2026-11-17' : vorige;

@@ -5,6 +5,7 @@ import { TYPES, bereken, eur, jaarTekst } from './lib/kosten.js';
 import { logoImg } from './lib/logos.js';
 import { LEADS, ROUTING } from './lib/leads.config.js';
 import { categorieVan } from './lib/leads.js';
+import { huisassistKnop } from './lib/huisassist-cta.js';
 import { track } from './consent.js';
 
 const BASE = document.body.dataset.base || '';
@@ -27,11 +28,13 @@ function antwoorden() {
   for (const v of VRAGEN) if (fd.get(v.id)) a[v.id] = fd.get(v.id);
   return a;
 }
-// Offerteknop: alleen met een goedgekeurde offertepartner (nu leeg). Verandert niets aan het advies of de volgorde.
+// Offerteknop in de uitslag: bestaande plek. Huisassist (MM-OK 19-11) als partnerlink.
+// Interne offertemodule blijft uit (LEADPARTNERS leeg, geen /offerte/-pagina's). Verandert niets aan advies of volgorde.
 function offerte(type) {
   const c = categorieVan(type);
-  if (!c || !ROUTING[c]) return '';
-  return `<p class="leadlink"><a class="btn" href="${BASE}/offerte/?m=${c}" data-lead="${c}" data-pos="keuzehulp">Offertes aanvragen</a></p>`;
+  if (!c) return '';
+  if (ROUTING[c]) return `<p class="leadlink"><a class="btn" href="${BASE}/offerte/?m=${c}" data-lead="${c}" data-pos="keuzehulp">Offertes aanvragen</a></p>`;
+  return `<p class="leadlink">${huisassistKnop('keuzehulp')}</p>`;
 }
 function alt(k, gas) {
   const t = TYPES[k]; const r = bereken({ type: k, gas });
@@ -41,11 +44,12 @@ function alt(k, gas) {
 function toon(a, scroll) {
   const r = advies(a); const c = r.reken;
   const merken = r.merken.slice(0, 4);
+  let off;
   out.innerHTML = `<h2>Jouw advies</h2><p class="big">${esc(r.naam)}</p><p class="pc-price">${esc(TYPES[r.type].kort)}</p>`
     + `<table class="kv"><tbody><tr><td>Gemiddelde kosten</td><td>${eur(c.kosten)}</td></tr><tr><td>ISDE-subsidie 2026</td><td>${c.subsidie ? eur(c.subsidie) : 'Geen (huis van 2019 of later)'}</td></tr><tr><td>Besparing per jaar</td><td>${eur(c.besparing)}</td></tr><tr class="total"><td>Terugverdientijd</td><td>${jaarTekst(c.jaren)}</td></tr></tbody></table>`
     + `<p class="src">Met jouw gasverbruik (${esc(label('gas', a.gas))}) en de gemiddelden van Milieu Centraal. <a href="${BASE}/terugverdientijd-berekenen/">Reken na met je offerte</a></p>`
     + `<ul class="why">${r.notes.map((n) => `<li>${esc(n)}</li>`).join('')}</ul>`
-    + offerte(r.type)
+    + (off = offerte(r.type))
     + (r.alternatieven.length ? `<h3>Ook het overwegen waard</h3><ul class="why">${r.alternatieven.map((k) => alt(k, Number(a.gas))).join('')}</ul>` : '')
     + `<h3>Merken met een ${esc(r.naam.toLowerCase())}</h3><ol class="mtop">${merken.map((id, i) => {
       const p = MERKEN[id];
@@ -53,7 +57,7 @@ function toon(a, scroll) {
     }).join('')}</ol>`
     + (r.merken.length > merken.length ? `<p><a href="${BASE}/vergelijken/">Alle ${r.merken.length} merken met dit type vergelijken</a></p>` : '')
     + `<p class="mlinks"><button type="button" class="linkbtn" id="m-reset">Opnieuw beginnen</button><button type="button" class="linkbtn" id="m-share">Deel of bewaar: kopieer de link</button></p>`
-    + `<p class="sub">Merken op het aantal checklistpunten, bij gelijke stand op naam. Partnerlinks tellen niet mee.${Object.keys(LEADS).length ? ' Offertes lopen via een offertepartner (partnerlink); die vergoeding heeft geen invloed op dit advies.' : ''}</p>`;
+    + `<p class="sub">Merken op het aantal checklistpunten, bij gelijke stand op naam. Partnerlinks tellen niet mee.${off ? ' Offertes lopen via een offertepartner (partnerlink); die vergoeding heeft geen invloed op dit advies.' : ''}</p>`;
   history.replaceState(null, '', `${location.pathname}?${new URLSearchParams(a)}`);
   document.getElementById('m-reset').addEventListener('click', () => { form.reset(); history.replaceState(null, '', location.pathname); update(); out.innerHTML = WACHT; form.querySelector('input').focus(); });
   document.getElementById('m-share').addEventListener('click', async (e) => { try { await navigator.clipboard.writeText(location.href); e.target.textContent = 'Link gekopieerd'; } catch { e.target.textContent = location.href; } });
