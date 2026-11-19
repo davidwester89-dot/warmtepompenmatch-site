@@ -10,7 +10,7 @@ import { execSync } from 'node:child_process';
 import { MERKEN } from '../src/lib/merken.js';
 import { ranglijst } from '../src/lib/checklist.js';
 import { PARTNERLINKS, knop } from '../src/lib/partnerlinks.js';
-import { NEUTRAAL_PADEN as HELPER_PADEN } from './nuchter-datums-helper.mjs';
+import { NEUTRAAL_PADEN as HELPER_PADEN, revisieDatum } from './nuchter-datums-helper.mjs';
 import { NEUTRAAL_PADEN, NEUTRAAL_UPD } from '../src/pages.mjs';
 
 execSync('node build.mjs', { env: { ...process.env, BASE: '', PREVIEW: '' }, stdio: 'ignore' });
@@ -56,8 +56,8 @@ test('L7 neutraal: precies de 12 gewijzigde pagina\'s op 2026-11-25; hub /vergel
   assert.deepEqual([...NEUTRAAL_PADEN].sort(), [...HELPER_PADEN].sort());
   const sm = readFileSync('dist/sitemap.xml', 'utf8');
   for (const p of NEUTRAAL_PADEN) {
-    assert.match(sm, new RegExp(`<loc>https://warmtepompenmatch\\.nl${p.replace(/[/.]/g, '\\$&')}</loc><lastmod>2026-11-25</lastmod>`), p);
-    assert.match(lees(p), /bijgewerkt (op )?<time datetime="2026-11-25">/i, p);
+    assert.match(sm, new RegExp(`<loc>https://warmtepompenmatch\\.nl${p.replace(/[/.]/g, '\\$&')}</loc><lastmod>${revisieDatum(p)}</lastmod>`), p); // latere upgrade (26-11) mag hoger
+    assert.match(lees(p), new RegExp(`bijgewerkt (op )?<time datetime="${revisieDatum(p)}">`, 'i'), p);
   }
   assert.match(sm, /<loc>https:\/\/warmtepompenmatch\.nl\/vergelijken\/<\/loc><lastmod>2026-11-03<\/lastmod>/);
   assert.match(readFileSync('scripts/l7.config.mjs', 'utf8'), /bodyOnlyHubs: \["\/blog\/", "\/gidsen\/", "\/merken\/", "\/vergelijken\/"\]/);
