@@ -8,7 +8,7 @@ import { readFileSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 import { MERKEN, FEATURES } from '../src/lib/merken.js';
 import { ranglijst } from '../src/lib/checklist.js';
-import { PARTNERLINKS } from '../src/lib/partnerlinks.js';
+import { PARTNERLINKS, GROENPAND_TT_URL, groenpandRemehaKnop } from '../src/lib/partnerlinks.js';
 import { UPGRADE_UPD, UPGRADE_PADEN } from '../src/pages.mjs';
 import { UPGRADE_PADEN as HELPER_PADEN } from './nuchter-datums-helper.mjs';
 
@@ -60,16 +60,30 @@ test('upgrade: interne links Itho naar quatt-vs-remeha en hybride-warmtepomp-kos
   assert.match(alt, /href="\/vergelijken\/quatt-vs-remeha\/"/);
 });
 
-test('upgrade: geen merkknop; alleen keuzehulp/vergelijker als CTA; partnerkaart leeg', () => {
+test('upgrade: Itho geen merkknop; Remeha-CTA alleen Groenpand; partnerkaart leeg', () => {
   assert.equal(Object.keys(PARTNERLINKS).length, 0);
-  for (const p of [IT, RM]) {
-    const h = lees(p);
-    for (const [tag] of h.matchAll(/<a\b[^>]*>/g)) {
-      const href = (tag.match(/href="([^"]*)"/) || [])[1] || '';
-      if (/class="[^"]*\bbtn\b|data-cta=|data-vendor=|rel="[^"]*\bsponsored\b/.test(tag)) assert.ok(href.startsWith('/') || href.startsWith('mailto:'), `${p}: externe CTA ${tag}`);
-    }
-    assert.doesNotMatch(h, /Naar de site van/);
+  const gpHref = GROENPAND_TT_URL.replace(/&/g, '&amp;');
+  const it = lees(IT);
+  for (const [tag] of it.matchAll(/<a\b[^>]*>/g)) {
+    const href = (tag.match(/href="([^"]*)"/) || [])[1] || '';
+    if (/class="[^"]*\bbtn\b|data-cta=|data-vendor=|rel="[^"]*\bsponsored\b/.test(tag)) assert.ok(href.startsWith('/') || href.startsWith('mailto:'), `${IT}: externe CTA ${tag}`);
   }
+  assert.doesNotMatch(it, /Naar de site van|Groenpand/);
+  const rm = lees(RM);
+  const extern = [];
+  for (const [tag] of rm.matchAll(/<a\b[^>]*>/g)) {
+    const href = (tag.match(/href="([^"]*)"/) || [])[1] || '';
+    if (/class="[^"]*\bbtn\b|data-cta=|data-vendor=|rel="[^"]*\bsponsored\b/.test(tag) && !href.startsWith('/') && !href.startsWith('mailto:')) extern.push({ href, tag });
+  }
+  assert.equal(extern.length, 2, 'twee Groenpand-CTA\'s (merk_top + merk_bottom)');
+  for (const x of extern) {
+    assert.equal(x.href, gpHref);
+    assert.match(x.tag, /data-vendor="groenpand"/);
+    assert.match(x.tag, /rel="sponsored nofollow noopener"/);
+  }
+  assert.ok(rm.includes(groenpandRemehaKnop('merk_top')));
+  assert.ok(rm.includes(groenpandRemehaKnop('merk_bottom')));
+  assert.doesNotMatch(rm, /Naar de site van/);
 });
 
 test('upgrade L7: alleen deze twee pagina\'s op 2026-11-26; hub /merken/ niet gelift; geen datum na de pushdatum', () => {

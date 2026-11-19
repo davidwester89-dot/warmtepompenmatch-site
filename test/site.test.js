@@ -4,7 +4,7 @@ import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { buildLive, buildPreview, htmlFiles, read, DOMAIN } from './helpers.js';
 import { IDS, MERKEN } from '../src/lib/merken.js';
-import { PARTNERLINKS } from '../src/lib/partnerlinks.js';
+import { PARTNERLINKS, GROENPAND_TT_URL } from '../src/lib/partnerlinks.js';
 import { ranglijst, score } from '../src/lib/checklist.js';
 import { loadPosts } from '../src/blog.mjs';
 
@@ -43,8 +43,14 @@ test('build (productie): pagina’s, sitemap, robots, IndexNow, CNAME, huisregel
       assert.equal(href, MERKEN[m[1]].url, `${f}: ${m[1]}`); assert.match(m[0], /rel="noopener"/);
     }
     assert.ok(!/class="partner"/.test(s), `${f}: partnerlabel zonder goedgekeurde partner`);
-    // Alleen echte <a rel="sponsored">-tags; /privacy/ noemt het attribuut in lopende tekst.
-    assert.ok(!/<a\b[^>]*rel="[^"]*sponsored/.test(s), `${f}: sponsored link zonder goedgekeurde partner`);
+    const gpHref = GROENPAND_TT_URL.replace(/&/g, '&amp;');
+    for (const [tag] of s.matchAll(/<a\b[^>]*>/g)) {
+      if (!/rel="[^"]*sponsored/.test(tag)) continue;
+      const href = (tag.match(/href="([^"]*)"/) || [])[1] || '';
+      assert.equal(href, gpHref, `${f}: onverwachte sponsored link ${tag}`);
+      assert.match(tag, /rel="sponsored nofollow noopener"/);
+      assert.match(tag, /data-vendor="groenpand"/);
+    }
     if (/<article/.test(s) && /class="src">Door/.test(s)) assert.match(s, /Door Redactie WarmtepompenMatch/);
     // Logo's: lokaal, vaste maat, alt = merknaam.
     for (const m of s.matchAll(/<img class="plogo plogo-(sm|md|lg)[^"]*" src="\/logos\/([a-z]+)\.svg" alt="([^"]+)" width="(\d+)" height="(\d+)"/g)) {
