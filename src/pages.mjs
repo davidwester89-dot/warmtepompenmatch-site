@@ -161,6 +161,10 @@ const LL_CONTEXT = {
 // Geen betaalde partner op WPM: geen merkknop, de bronlink en de keuzehulp-CTA blijven zoals ze zijn. Bodywijziging: UPGRADE_UPD (L7).
 export const UPGRADE_UPD = '2026-11-26';
 export const UPGRADE_PADEN = new Set(['/merken/itho-daalderop/', '/merken/remeha/']);
+// Groenpand-Remeha (SEO-review 484cf28): zichtbare knoptekst + partnerzin op deze pagina's, echte datumlift 26-11.
+// /merken/remeha/ had al 26-11 via UPGRADE; /vergelijken/ (hub) heeft geen eigen bodywijziging en blijft staan (bodyOnlyHubs).
+export const GROENPAND_UPD = '2026-11-26';
+export const GROENPAND_PADEN = new Set(['/merken/', '/vergelijken/quatt-vs-remeha/', '/merken/remeha/']);
 const UPGRADE = {
   itho: {
     description: 'Itho Daalderop warmtepomp prijs 2026: Amber 65, 95 en 120 volgens de prijslijst per 1-1-2026 (bruto, excl. btw), plus checklist van 10 punten met bron.',

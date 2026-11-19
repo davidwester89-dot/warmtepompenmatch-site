@@ -22,6 +22,9 @@ export const NEUTRAAL_PADEN = new Set([
   "/vergelijken/daikin-vs-mitsubishi-electric/", "/vergelijken/quatt-vs-remeha/", "/vergelijken/vaillant-vs-nefit-bosch/"
 ]);
 // Onafhankelijke verwachting voor de upgrade positie 8–20, batch 1 (bouw 19-11, push 26-11): zichtbare bodywijziging op deze twee
-// merkpagina's, dus 2026-11-26. Hub /merken/ heeft geen eigen bodywijziging (bodyOnlyHubs) en blijft 2026-11-25.
+// merkpagina's, dus 2026-11-26.
 export const UPGRADE_PADEN = new Set(["/merken/itho-daalderop/", "/merken/remeha/"]);
-export const revisieDatum = (pad, vorige) => UPGRADE_PADEN.has(pad) ? '2026-11-26' : NEUTRAAL_PADEN.has(pad) ? '2026-11-25' : (TRANSPARANTIE_PADEN.has(pad) || HUISASSIST_PADEN.has(pad)) ? '2026-11-24' : STIJL_PADEN.has(pad) ? '2026-11-17' : vorige;
+// Groenpand-Remeha (SEO-review 484cf28): zichtbare knoptekst + partnerzin, echte datumlift 26-11.
+// Hub /merken/ heeft wél eigen bodywijziging (Remeha-kaart). Hub /vergelijken/ niet, en staat hier bewust niet in.
+export const GROENPAND_PADEN = new Set(["/merken/", "/vergelijken/quatt-vs-remeha/", "/merken/remeha/"]);
+export const revisieDatum = (pad, vorige) => (UPGRADE_PADEN.has(pad) || GROENPAND_PADEN.has(pad)) ? '2026-11-26' : NEUTRAAL_PADEN.has(pad) ? '2026-11-25' : (TRANSPARANTIE_PADEN.has(pad) || HUISASSIST_PADEN.has(pad)) ? '2026-11-24' : STIJL_PADEN.has(pad) ? '2026-11-17' : vorige;
