@@ -9,7 +9,7 @@ import { join } from 'node:path';
 import { execSync } from 'node:child_process';
 import { MERKEN } from '../src/lib/merken.js';
 import { ranglijst } from '../src/lib/checklist.js';
-import { PARTNERLINKS, knop } from '../src/lib/partnerlinks.js';
+import { PARTNERLINKS, knop, groenpandRemehaKnop, GROENPAND_TT_URL } from '../src/lib/partnerlinks.js';
 import { NEUTRAAL_PADEN as HELPER_PADEN, revisieDatum } from './nuchter-datums-helper.mjs';
 import { NEUTRAAL_PADEN, NEUTRAAL_UPD } from '../src/pages.mjs';
 
@@ -20,7 +20,7 @@ const bron = (id) => `<a href="${MERKEN[id].url}" rel="noopener">Bron: ${MERKEN[
 const CTA = /class="[^"]*\bbtn\b|data-cta=|data-vendor=|rel="[^"]*\bsponsored\b/;
 
 test('statisch: geen enkele knop/data-cta/data-vendor/sponsored-link naar een merk zonder goedgekeurde partnerlink', () => {
-  const betaald = new Set(Object.values(PARTNERLINKS));
+  const betaald = new Set([...Object.values(PARTNERLINKS), GROENPAND_TT_URL, GROENPAND_TT_URL.replace(/&/g, '&amp;')]);
   const fout = [];
   for (const f of files('dist')) for (const [tag] of readFileSync(f, 'utf8').matchAll(/<a\b[^>]*>/g)) {
     const href = (tag.match(/href="([^"]*)"/) || [])[1] || '';
@@ -30,18 +30,32 @@ test('statisch: geen enkele knop/data-cta/data-vendor/sponsored-link naar een me
   assert.equal(readFileSync('dist/merken/daikin/index.html', 'utf8').includes('data-partner-slot'), false);
 });
 
-test('bronlink in plaats van knop op /merken/*, /merken/ en de 3 vs-pagina\'s; volgorde gelijk aan de ranglijst', () => {
+test('bronlink in plaats van knop op /merken/*, /merken/ en de 3 vs-pagina\'s; Remeha = Groenpand-CTA; volgorde gelijk aan de ranglijst', () => {
   const RANG = ranglijst();
   const hub = lees('/merken/');
+  const gpLijst = groenpandRemehaKnop('lijst', 'btn ghost sm');
+  const gpTop = groenpandRemehaKnop('merk_top');
+  const gpBottom = groenpandRemehaKnop('merk_bottom');
+  const gpVsB = groenpandRemehaKnop('vs_b', 'btn ghost');
   assert.deepEqual([...hub.matchAll(/<li class="pcard" data-id="([a-z-]+)"/g)].map((m) => m[1]), RANG);
-  for (const id of RANG) assert.equal(hub.split(bron(id)).length - 1, 1, '/merken/ ' + id);
+  for (const id of RANG) {
+    if (id === 'remeha') { assert.equal(hub.split(gpLijst).length - 1, 1, '/merken/ remeha groenpand'); assert.equal(hub.split(bron(id)).length - 1, 0, '/merken/ remeha geen bronknop'); }
+    else assert.equal(hub.split(bron(id)).length - 1, 1, '/merken/ ' + id);
+  }
   for (const id of Object.keys(MERKEN)) {
     const h = lees(`/merken/${MERKEN[id].slug}/`);
-    assert.equal(h.split(bron(id)).length - 1, 2, id + ': top (pc-cta) en onder (out)');
-    assert.ok(h.includes(`<div class="pc-cta">${bron(id)}<a href="/warmtepomp-keuzehulp/">`), id + ': keuzehulplink blijft naast de bronlink');
-    assert.ok(h.includes(`<div class="out">${bron(id)}</div>`), id);
+    if (id === 'remeha') {
+      assert.equal(h.split(bron(id)).length - 1, 0, 'remeha: geen bronknop op CTA-plek');
+      assert.ok(h.includes(`<div class="pc-cta">${gpTop}<a href="/warmtepomp-keuzehulp/">`), 'remeha: keuzehulplink blijft naast Groenpand');
+      assert.ok(h.includes(`<div class="out">${gpBottom}</div>`), 'remeha out');
+    } else {
+      assert.equal(h.split(bron(id)).length - 1, 2, id + ': top (pc-cta) en onder (out)');
+      assert.ok(h.includes(`<div class="pc-cta">${bron(id)}<a href="/warmtepomp-keuzehulp/">`), id + ': keuzehulplink blijft naast de bronlink');
+      assert.ok(h.includes(`<div class="out">${bron(id)}</div>`), id);
+    }
   }
-  for (const [p, a, b] of [['/vergelijken/quatt-vs-remeha/', 'quatt', 'remeha'], ['/vergelijken/daikin-vs-mitsubishi-electric/', 'daikin', 'mitsubishi'], ['/vergelijken/vaillant-vs-nefit-bosch/', 'vaillant', 'nefitbosch']])
+  assert.ok(lees('/vergelijken/quatt-vs-remeha/').includes(`<div class="out">${bron('quatt')}${gpVsB}</div>`), 'quatt-vs-remeha');
+  for (const [p, a, b] of [['/vergelijken/daikin-vs-mitsubishi-electric/', 'daikin', 'mitsubishi'], ['/vergelijken/vaillant-vs-nefit-bosch/', 'vaillant', 'nefitbosch']])
     assert.ok(lees(p).includes(`<div class="out">${bron(a)}${bron(b)}</div>`), p);
 });
 

@@ -8,7 +8,13 @@ export const CFG = {
   build: (dir, env) => { execSync('node build.mjs', { cwd: dir, env, stdio: 'ignore' }); return join(dir, 'dist'); },
   hubs: [{ hub: '/gidsen/', children: /^\/[^/]+\/$/ }],
   // E-CTA-1 (plan MM 17-11, Dave via GB2): de CTA-blokken A/C (src/e-cta.mjs) tellen niet als bodywijziging; geen datum-lift. Vraagt SC-OK.
-  stripCta: [/<aside class="ecta[^"]*"[^>]*data-ecta="[AC]"[^>]*>[\s\S]*?<\/aside>/g],
+  // Remeha → Groenpand (MM-OK 19-11): wissel van bronlink-op-knopplek naar partnerknop+label telt niet als bodywijziging; geen datumlift. Vraagt SC-OK.
+  stripCta: [
+    /<aside class="ecta[^"]*"[^>]*data-ecta="[AC]"[^>]*>[\s\S]*?<\/aside>/g,
+    /<a href="https:\/\/www\.remeha\.nl\/" rel="noopener">Bron: Remeha<\/a>/g,
+    /<a class="[^"]*" href="https:\/\/analytics\.groenpand\.nl\/c\?c=40779&amp;m=12&amp;a=519643&amp;r=&amp;u=%2F" rel="sponsored nofollow noopener" target="_blank" data-vendor="groenpand" data-pos="[^"]*" data-cta="outbound">Offerte bij Groenpand \(Remeha-installateur\)<\/a> <span class="ecta-label">Partnerlink<\/span>/g,
+    /<p class="pnoot">Sommige links zijn partnerlinks; dat verandert de volgorde nooit\.<\/p>/g,
+  ],
   // Alleen ONTBREKENDE velden die de template van deze pagina niet heeft. Een aanwezig veld moet altijd kloppen.
   exempt: {
     '/warmtepomp-keuzehulp/': ['zichtbaar'], // keuzehulp zonder enige zichtbare datum: lastmod + dateModified verplicht (SC 30-10, besluit 3)

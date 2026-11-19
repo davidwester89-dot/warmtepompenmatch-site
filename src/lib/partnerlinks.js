@@ -5,6 +5,19 @@ export const PARTNERLINKS = {};
 
 // Huisassist: bron in huisassist-cta.js (gaat ook naar de client / keuzehulp). Niet in PARTNERLINKS (geen merkenplek).
 export { HUISASSIST_URL, HUISASSIST_TEKST, huisassistKnop } from './huisassist-cta.js';
+
+// Remeha-CTA's (MM-OK 19-11): bestaande knop()-plekken gaan naar Groenpand (TradeTracker 40779).
+// Trackinglink van Partnermanager, exact. Niet in PARTNERLINKS: dat zou /privacy/ wijzigen (lastmod) en mag
+// de E-CTA-1-reflink niet vullen (geen extra plekken). Itho en overige merken blijven bronlink.
+import { LABEL as ECTA_LABEL, REL as ECTA_REL } from '../e-cta.mjs';
+export const GROENPAND_TT_URL = 'https://analytics.groenpand.nl/c?c=40779&m=12&a=519643&r=&u=%2F';
+export const GROENPAND_REMEHA_TEKST = 'Offerte bij Groenpand (Remeha-installateur)';
+const escAttr = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+/** Partnerknop Remeha → Groenpand. Label "Partnerlink" volgens WPM E-CTA-1 (src/e-cta.mjs), niet "(partnerlink)". */
+export function groenpandRemehaKnop(pos, cls = 'btn') {
+  return `<a class="${cls}" href="${escAttr(GROENPAND_TT_URL)}" rel="${ECTA_REL}" target="_blank" data-vendor="groenpand" data-pos="${escAttr(pos)}" data-cta="outbound">${escAttr(GROENPAND_REMEHA_TEKST)}</a> <span class="ecta-label">${ECTA_LABEL}</span>`;
+}
+
 /** Uitgaande link: partnerlink (rel sponsored nofollow, zonder zichtbaar label) als die er is, anders de officiële site. */
 export function uitgaand(id, partnerlinks = PARTNERLINKS) {
   const p = MERKEN[id];
@@ -15,8 +28,10 @@ export function uitgaand(id, partnerlinks = PARTNERLINKS) {
 
 /** Knop naar het merk. Partnerlink: rel sponsored nofollow noopener, geen zichtbaar label (uitleg in de FAQ).
  *  Zonder goedgekeurde partnerlink (besluit Moneymaker 17-11, zoals TM dee721c): géén knop maar een neutrale bronlink
- *  <a href="officiële site" rel="noopener">Bron: Merk</a>, zonder class, target, data-cta, data-vendor of sponsored. */
+ *  <a href="officiële site" rel="noopener">Bron: Merk</a>, zonder class, target, data-cta, data-vendor of sponsored.
+ *  Uitzondering Remeha (MM-OK 19-11): groenpandRemehaKnop, met E-CTA-1-label "Partnerlink". */
 export function knop(id, pos, cls = 'btn', partnerlinks = PARTNERLINKS) {
+  if (id === 'remeha') return groenpandRemehaKnop(pos, cls);
   const o = uitgaand(id, partnerlinks);
   if (!o.partner) return `<a href="${o.href}" rel="noopener">Bron: ${o.naam}</a>`;
   return `<a class="${cls}" href="${o.href}" rel="${o.rel}" target="_blank" data-vendor="${id}" data-pos="${pos}" data-cta="outbound" data-partner-slot="${id}">Naar de site van ${o.naam}</a>`;
