@@ -134,7 +134,7 @@ const RELATED = {
   quatt: [['/vergelijken/quatt-vs-remeha/', 'Quatt of Remeha'], ['/hybride-warmtepomp-kosten/', 'Wat kost een hybride warmtepomp?']], remeha: [['/vergelijken/quatt-vs-remeha/', 'Quatt of Remeha'], ['/hybride-warmtepomp-kosten/', 'Wat kost een hybride warmtepomp?']],
   daikin: [['/vergelijken/daikin-vs-mitsubishi-electric/', 'Daikin of Mitsubishi Electric']], mitsubishi: [['/vergelijken/daikin-vs-mitsubishi-electric/', 'Daikin of Mitsubishi Electric']],
   vaillant: [['/vergelijken/vaillant-vs-nefit-bosch/', 'Vaillant of Nefit Bosch']], nefitbosch: [['/vergelijken/vaillant-vs-nefit-bosch/', 'Vaillant of Nefit Bosch']],
-  itho: [['/warmtepomp-kosten/', 'Wat kost een warmtepomp?']], panasonic: [['/hybride-of-all-electric/', 'Hybride of all-electric']],
+  itho: [['/warmtepomp-kosten/', 'Wat kost een warmtepomp?'], ['/hybride-warmtepomp-kosten/', 'Wat kost een hybride warmtepomp?'], ['/vergelijken/quatt-vs-remeha/', 'Quatt of Remeha']], panasonic: [['/hybride-of-all-electric/', 'Hybride of all-electric']],
 };
 // Contextlink naar de vergelijking die dicht bij pagina 1 staat (GSC wk 43: quatt-vs-remeha pos. 5, vaillant-vs-nefit-bosch pos. 10).
 const VS_CONTEXT = {
@@ -155,35 +155,68 @@ export const NEUTRAAL_PADEN = new Set(['/merken/', '/merken/daikin/', '/merken/i
 const LL_CONTEXT = {
   daikin: '<p>Daikin verkoopt ook airconditioners die verwarmen: lucht-luchtwarmtepompen. De bedragen van Milieu Centraal en Vereniging Eigen Huis staan bij <a href="/blog/lucht-lucht-warmtepomp-kosten/">wat een lucht-luchtwarmtepomp kost</a>.</p>',
 };
+// Upgrade positie 8–20, batch 1 (upgradelijst E-CTA-1 17-11, bouw 19-11, push 26-11): /merken/itho-daalderop/ en /merken/remeha/.
+// Bewust hier en niet in src/lib/merken.js: die module gaat ook naar de client (keuzehulp/vergelijker) en blijft daardoor ongewijzigd.
+// Checklist, FEATURES en ranglijst ongewijzigd. Alleen bedragen uit de eigen prijslijst van het merk (gecontroleerd 19-11-2026).
+// Geen betaalde partner op WPM: geen merkknop, de bronlink en de keuzehulp-CTA blijven zoals ze zijn. Bodywijziging: UPGRADE_UPD (L7).
+export const UPGRADE_UPD = '2026-11-26';
+export const UPGRADE_PADEN = new Set(['/merken/itho-daalderop/', '/merken/remeha/']);
+const UPGRADE = {
+  itho: {
+    description: 'Itho Daalderop warmtepomp prijs 2026: Amber 65, 95 en 120 volgens de prijslijst per 1-1-2026 (bruto, excl. btw), plus checklist van 10 punten met bron.',
+    prijsH2: 'Itho Daalderop warmtepomp prijs 2026',
+    lijnen: [['Amber 120', 'Grootste Amber-monoblock: maximaal 11,9 kW verwarmingsvermogen (bij A7/W35), modulerend 4,2 tot 11,6 kW, geluidsvermogen 56 dB, buitendeel 949 × 1255 × 460 mm en 138 kg']],
+    prijsNoot: 'Bedragen gecontroleerd op 19 november 2026 in de prijslijst per 1-1-2026. Itho Daalderop schrijft dat prijzen in de loop van het jaar kunnen veranderen.',
+    faq: [
+      ['Wat kost een Itho Daalderop warmtepomp?', 'Volgens de prijslijst van Itho Daalderop per 1 januari 2026 kost de Amber-monoblock bruto € 4.750 (Amber 65, 6,5 kW), € 5.450 (Amber 95, 9,5 kW) of € 6.450 (Amber 120, 12 kW), exclusief btw. Dat is de warmtepomp zelf. Toebehoren, zoals een voorraadvat voor warm tapwater bij all-electric, en de installatie komen erbij. Wat je echt betaalt, staat in de offerte van je installateur. Zie ook <a href="/hybride-warmtepomp-kosten/">wat een hybride warmtepomp kost</a>.'],
+      ['Wat is de Itho Daalderop Amber 120?', 'De grootste van de drie Amber-monoblocks: 12 kW in de prijslijst, maximaal 11,9 kW verwarmingsvermogen bij A7/W35 volgens de productpagina. Net als de Amber 65 en 95 werkt hij met propaan (R290) en kan hij ook koelen. De bruto adviesprijs is € 6.450 exclusief btw (prijslijst per 1-1-2026).'],
+      ['Kan een Itho Daalderop Amber hybride?', 'Ja. Itho Daalderop noemt Amber geschikt voor een hybride opstelling naast de cv-ketel en voor all-electric zonder cv-ketel. Wat bij jouw huis past, lees je in <a href="/hybride-of-all-electric/">hybride of all-electric</a>.'],
+    ],
+  },
+  remeha: {
+    title: 'Remeha warmtepomp 2026: prijslijst en checklist',
+    description: 'Remeha prijslijst 2026: lijstprijzen van Elga Ace, Mercuria Ace en Confida met propaan (excl. btw), plus checklist van 10 punten met bron.',
+    prijsH2: 'Remeha prijslijst 2026',
+    rijen: [['Confida 10 met buitendeel Confida MB 400-4 (propaan), 4 kW', '€ 4.010']],
+    prijsNoot: 'Bedragen gecontroleerd op 19 november 2026 in hoofdstuk 5 (Warmtepompen voor de woningbouw) van de product-prijslijst; Remeha meldt op die pagina «laatst geüpdatet: 2 oktober 2026». Remeha noemt de prijzen geldig van 1 januari tot en met 31 december 2026.',
+    extra: '<h2>Remeha warmtepomp met propaan</h2><p>Remeha heeft twee propaan-monoblocks: de Confida 10 en de Confida 40, leverbaar van 4 tot en met 14 kW, in enkel- en driefase. De Confida 10 kan als hybride naast je cv-ketel, als All-electric Ready en als all-electric. De Confida 40 noemt Remeha geschikt voor meerdere circuits; in de prijslijst heet de hybride versie Confida 40H en de all-electric versie Confida 40E. Propaan (R290) zit in het buitendeel Confida MB 400. De Elga Ace, de Elga Ace All-in-one en de Mercuria Ace in split-uitvoering werken volgens de prijslijst met R32, niet met propaan.</p><p class="src">Bron: <a href="https://www.remeha.nl/producten/warmtepompen/hybride-warmtepompen" rel="noopener">Remeha hybride warmtepompen</a> · <a href="https://www.remeha.nl/zakelijk/documentatie/product-prijslijst" rel="noopener">Remeha product-prijslijst 2026, hoofdstuk 5</a></p>',
+    faq: [
+      ['Wat kost een Remeha warmtepomp volgens de prijslijst 2026?', 'In de product-prijslijst 2026 (hoofdstuk 5) kost een Elga Ace hybride set van 4 kW € 3.154 en van 6 kW € 4.038. Een Mercuria Ace E all-electric set kost € 4.364 (4,5 kW) of € 5.424 (8 kW). Dat zijn bruto lijstprijzen voor binnen- en buitendeel samen, exclusief btw en installatie. Wat je bij een installateur betaalt, staat in je offerte.'],
+      ['Heeft Remeha een warmtepomp met propaan?', 'Ja. De Confida 10 en de Confida 40 met het buitendeel Confida MB 400 werken met propaan (R290), van 4 tot en met 14 kW. Een Confida 10-set met het buitendeel van 4 kW staat in de prijslijst 2026 voor € 4.010 exclusief btw. De Elga Ace werkt met R32.'],
+      ['Waar vind ik de Remeha prijslijst 2026?', 'Remeha zet de <a href="https://www.remeha.nl/zakelijk/documentatie/product-prijslijst" rel="noopener">product-prijslijst</a> op de eigen site, in z’n geheel of per hoofdstuk. De warmtepompen voor woningen staan in hoofdstuk 5. De prijzen zijn exclusief btw en bedoeld voor installateurs.'],
+    ],
+  },
+};
 // Huisassist in het bestaande offerteblok van de keuzehulp-uitslag (JS): L7 telt client-side uitslag, datumlift 24-11.
 export const HUISASSIST_UPD = '2026-11-24';
 export const HUISASSIST_PADEN = new Set(['/warmtepomp-keuzehulp/']);
 const typeVan = (id) => (FEATURES[id].hybride.v === 'ja' ? 'hybride' : 'allelectric');
 const merkPagesRaw = IDS.map((id) => {
   const p = M[id];
+  const u = UPGRADE[id] || {};
   const path = `/merken/${p.slug}/`;
   const h1 = `${p.naam} warmtepomp: aanbod, checklist en voor wie`;
   const pos = RANG.indexOf(id) + 1;
   const alt = RANG.filter((x) => x !== id).slice(0, 3);
-  const t = [`${p.naam} warmtepomp 2026: aanbod en checklist`, `${p.naam} warmtepomp 2026`].find((x) => x.length <= 60);
-  const d = [`${p.naam} warmtepomp: ${aanbodTekst(id).toLowerCase()}. De checklist van 10 punten met bron, sterke punten, aandachtspunten en voor wie het past.`, `${p.naam} warmtepomp: ${aanbodTekst(id).toLowerCase()}. Checklist van 10 punten met bron, sterke punten en voor wie het past.`, `${p.naam} warmtepomp: ${aanbodTekst(id).toLowerCase()}. Checklist van 10 punten met bron en voor wie het past.`, `${p.naam} warmtepomp: aanbod, checklist van 10 punten met bron en voor wie het past.`].find((x) => x.length <= 155);
+  const t = u.title || [`${p.naam} warmtepomp 2026: aanbod en checklist`, `${p.naam} warmtepomp 2026`].find((x) => x.length <= 60);
+  const d = u.description || [`${p.naam} warmtepomp: ${aanbodTekst(id).toLowerCase()}. De checklist van 10 punten met bron, sterke punten, aandachtspunten en voor wie het past.`, `${p.naam} warmtepomp: ${aanbodTekst(id).toLowerCase()}. Checklist van 10 punten met bron, sterke punten en voor wie het past.`, `${p.naam} warmtepomp: ${aanbodTekst(id).toLowerCase()}. Checklist van 10 punten met bron en voor wie het past.`, `${p.naam} warmtepomp: aanbod, checklist van 10 punten met bron en voor wie het past.`].find((x) => x.length <= 155);
   const prijsBlok = p.prijzen
     ? `<h2>Prijzen</h2><p class="sub">Zoals ${esc(p.naam)} ze op de eigen site toont.</p><div class="table-wrap"><table class="data stack"><thead><tr><th scope="col">Model</th><th scope="col">Prijs</th><th scope="col">Toelichting</th></tr></thead><tbody>${p.prijzen.map(([n, pr, w]) => `<tr><th scope="row">${esc(n)}</th><td data-l="Prijs"><strong>${esc(pr)}</strong></td><td data-l="Toelichting">${esc(w)}</td></tr>`).join('')}</tbody></table></div>`
-    : `<h2>Prijzen (indicatief)</h2><p>${esc(p.naam)} noemt geen consumentenprijzen op de eigen site; je koopt via een installateur en de prijs staat in je offerte.</p>${p.indicatief ? `<p class="sub">${esc(p.indicatief.intro)}</p><div class="table-wrap"><table class="data stack"><caption class="sr-only">Indicatieve prijzen ${esc(p.naam)}</caption><thead><tr><th scope="col">Model</th><th scope="col">Indicatieve prijs</th></tr></thead><tbody>${p.indicatief.rijen.map(([n, pr]) => `<tr><th scope="row">${esc(n)}</th><td data-l="Indicatieve prijs"><strong>${esc(pr)}</strong></td></tr>`).join('')}</tbody></table></div><p class="src">Indicatief. Bron: <a href="${p.indicatief.bron[1]}" rel="noopener">${esc(p.indicatief.bron[0])}</a></p>` : ''}<p>Indicatief voor alle merken: een hybride warmtepomp kost gemiddeld ${eur(TYPES.hybride.kosten)} en een all-electric ${eur(TYPES.allelectric.kosten)}, inclusief installatie en btw, vóór subsidie (Milieu Centraal). De ISDE-subsidie van 2026 is daarvan nog niet afgetrokken. Zie <a href="/warmtepomp-kosten/">wat een warmtepomp kost</a> en <a href="/isde-subsidie-warmtepomp-2026/">de ISDE-subsidie</a>.</p>`;
+    : `<h2>${esc(u.prijsH2 || 'Prijzen (indicatief)')}</h2><p>${esc(p.naam)} noemt geen consumentenprijzen op de eigen site; je koopt via een installateur en de prijs staat in je offerte.</p>${p.indicatief ? `<p class="sub">${esc(p.indicatief.intro)}</p><div class="table-wrap"><table class="data stack"><caption class="sr-only">Indicatieve prijzen ${esc(p.naam)}</caption><thead><tr><th scope="col">Model</th><th scope="col">Indicatieve prijs</th></tr></thead><tbody>${[...p.indicatief.rijen, ...(u.rijen || [])].map(([n, pr]) => `<tr><th scope="row">${esc(n)}</th><td data-l="Indicatieve prijs"><strong>${esc(pr)}</strong></td></tr>`).join('')}</tbody></table></div><p class="src">Indicatief. Bron: <a href="${p.indicatief.bron[1]}" rel="noopener">${esc(p.indicatief.bron[0])}</a>${u.prijsNoot ? `. ${esc(u.prijsNoot)}` : ''}</p>` : ''}<p>Indicatief voor alle merken: een hybride warmtepomp kost gemiddeld ${eur(TYPES.hybride.kosten)} en een all-electric ${eur(TYPES.allelectric.kosten)}, inclusief installatie en btw, vóór subsidie (Milieu Centraal). De ISDE-subsidie van 2026 is daarvan nog niet afgetrokken. Zie <a href="/warmtepomp-kosten/">wat een warmtepomp kost</a> en <a href="/isde-subsidie-warmtepomp-2026/">de ISDE-subsidie</a>.</p>`;
   return {
-    ...article({ path, title: t, h1, description: d, og: `merk-${id}`, parents: [['/merken/', 'Merken']], faq: p.faq }),
+    ...article({ path, title: t, h1, description: d, og: `merk-${id}`, parents: [['/merken/', 'Merken']], faq: p.faq || u.faq }),
     ...(p.extraChecked ? { stamp: { checked: p.extraChecked }, lastmod: p.extraChecked } : {}),
     navPath: '/merken/',
     body: `<article><div class="phead"><span class="phead-logo">${logoImg(id, { maat: 'lg', eager: true })}</span><span class="tag best">${esc(STERK_IN[id])}</span></div><h1>${esc(h1)}</h1>${by()}<p class="lead">${esc(p.kort)}</p>${VS_CONTEXT[id] || ''}
 <div class="pcard first"><div class="pc-head"><span class="sc-lbl">Aanbod</span><p class="pc-price"><strong>${esc(aanbodTekst(id))}</strong></p></div>
 <ul class="pc-facts"><li><span>Propaan (R290)</span><span>${fv(FEATURES[id].propaan, false)}</span></li><li><span>Prijs openbaar</span><span>${fv(FEATURES[id].prijs, false)}</span></li><li><span>Garantie 5 jaar</span><span>${fv(FEATURES[id].garantie, false)}</span></li><li><span>Plek in de vergelijking</span><span>${pos} van ${IDS.length}</span></li></ul>
 <div class="pc-cta">${knop(id, 'merk_top')}<a href="/warmtepomp-keuzehulp/">Past het bij mijn huis? Start de keuzehulp →</a></div></div>
-<h2>Modellen</h2><div class="table-wrap"><table class="data stack"><thead><tr><th scope="col">Model of lijn</th><th scope="col">Wat</th></tr></thead><tbody>${p.lijnen.map(([n, w]) => `<tr><th scope="row">${esc(n)}</th><td data-l="Wat">${esc(w)}</td></tr>`).join('')}</tbody></table></div>
-${LL_CONTEXT[id] || ''}${p.extra || ''}${prijsBlok}
+<h2>Modellen</h2><div class="table-wrap"><table class="data stack"><thead><tr><th scope="col">Model of lijn</th><th scope="col">Wat</th></tr></thead><tbody>${[...p.lijnen, ...(u.lijnen || [])].map(([n, w]) => `<tr><th scope="row">${esc(n)}</th><td data-l="Wat">${esc(w)}</td></tr>`).join('')}</tbody></table></div>
+${LL_CONTEXT[id] || ''}${p.extra || ''}${prijsBlok}${u.extra || ''}
 <h2>Checklist: wat biedt ${esc(p.naam)}?</h2><p class="sub">Tien vaste punten, uit de site van het merk. Niet vermeld levert geen punt op, net als nee. <a href="/over/#methode">Zo tellen we</a></p>${checklistTable(id)}
 <h2>Sterk en let op</h2><div class="pm"><div class="card plus"><h3>Sterk</h3><ul>${p.plus.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div><div class="card min"><h3>Let op</h3><ul>${p.min.map((x) => `<li>${esc(x)}</li>`).join('')}</ul></div></div>
 <h2>Voor wie?</h2><p>${esc(p.voor)}</p>
-${p.faq ? faqHtml(p.faq) : ''}${leadCta(typeVan(id), 'merk')}
+${(p.faq || u.faq) ? faqHtml(p.faq || u.faq) : ''}${leadCta(typeVan(id), 'merk')}
 <div class="out">${knop(id, 'merk_bottom')}</div>
 <h2>Alternatieven</h2><ul class="gidslijst">${alt.map((x) => `<li class="withlogo">${logo(x, 'sm')}<a href="/merken/${M[x].slug}/">${esc(M[x].naam)}</a> · ${esc(STERK_IN[x])}</li>`).join('')}${(RELATED[id] || []).map(([h, tt]) => `<li><a href="${h}">${esc(tt)}</a></li>`).join('')}<li><a href="/vergelijken/">Alle merken naast elkaar</a></li></ul>
 <p class="sub">Alle merken: ${IDS.filter((x) => x !== id).map((x) => `<a href="/merken/${M[x].slug}/">${esc(M[x].naam)}</a>`).join(' · ')}</p>

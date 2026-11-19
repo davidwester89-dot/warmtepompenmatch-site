@@ -103,7 +103,7 @@ test('build: componenten, vergelijking in vaste volgorde, keuzehulp en rekenhulp
   assert.match(read('dist/warmtepomp-kosten/index.html'), /<h2>Lees ook<\/h2>[\s\S]*href="\/blog\/warmtepomp-offerte-vergelijken\/"/);
   assert.match(read('dist/merken/remeha/index.html'), /<h2>Voor je tekent<\/h2>/);
   // indicatieve prijzen met bron
-  assert.match(read('dist/merken/remeha/index.html'), /Prijzen \(indicatief\)[\s\S]*€ 3\.154/);
+  assert.match(read('dist/merken/remeha/index.html'), /<h2>Remeha prijslijst 2026<\/h2>[\s\S]*€ 3\.154/); // H2 sinds upgrade 26-11
   assert.ok(existsSync('dist/site.webmanifest') && existsSync('dist/icon-512.png'), 'manifest');
   assert.match(h, /<link rel="manifest" href="\/site\.webmanifest">/);
   assert.equal(Object.keys(PARTNERLINKS).length, 0);
