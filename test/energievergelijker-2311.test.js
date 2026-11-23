@@ -59,6 +59,9 @@ test('energievergelijker: pagina heeft label, exacte embedconfig, geen script in
   assert.match(h, /data-energy-accept/);
   assert.match(h, /Toon de energievergelijker/);
   assert.match(h, /class="dc-tool dc-energy-tool"/);
+  assert.match(h, /class="dc-tool dc-energy-tool"[^>]*style="min-height:28rem"/);
+  assert.match(h, /<noscript><p>De energievergelijker werkt alleen met JavaScript\./);
+  assert.doesNotMatch(h, /<noscript>[\s\S]*energie\.whitelabeled\.nl[\s\S]*<\/noscript>/);
   assert.match(h, /data-config='\{"mediaId":445224,"buttonText":"Bekijk"\}'/);
   assert.match(h, /data-vendor="daisycon-energievergelijker"/);
   assert.match(h, /href="\/privacy\/#energievergelijker"/);

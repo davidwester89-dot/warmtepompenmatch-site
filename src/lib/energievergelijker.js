@@ -64,6 +64,7 @@ export function widgetBlok() {
 <p>De vergelijker laadt een script van energie.whitelabeled.nl. Dat script kan cookies plaatsen en gegevens uitwisselen met de aanbieder van de tool. Het wordt daarom pas geladen als je daarvoor kiest. Meer uitleg staat bij <a href="/privacy/#energievergelijker">privacy: energievergelijker</a>.</p>
 <p><button type="button" class="btn" data-energy-accept data-vendor="${VENDOR}" data-pos="${POS}">Toon de energievergelijker</button></p>
 </div>
-<div class="dc-tool dc-energy-tool" hidden data-config='${CONFIG_JSON}'></div>
+<div class="dc-tool dc-energy-tool" hidden style="min-height:28rem" data-config='${CONFIG_JSON}'></div>
+<noscript><p>De energievergelijker werkt alleen met JavaScript. De uitleg in deze gids blijft zonder JavaScript leesbaar.</p></noscript>
 </aside>`;
 }
