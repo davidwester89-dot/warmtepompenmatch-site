@@ -22,6 +22,8 @@ test('privacy-partners: lastmod 2026-11-26, TradeTracker en Daisycon, geen verzo
   assert.match(h, /rel="sponsored nofollow noopener"/);
   assert.match(h, /dan kunnen wij daardoor een vergoeding krijgen/);
   assert.match(h, /Dat kost jou niets extra/);
+  assert.match(h, /via de affiliatenetwerken TradeTracker en Daisycon/);
+  assert.doesNotMatch(h, /via het affiliatenetwerk TradeTracker en Daisycon/);
   assert.match(h, /TradeTracker/);
   assert.match(h, /Daisycon/);
   assert.match(h, /href="https:\/\/tradetracker.com\/nl\/privacy-policy\/"/);
