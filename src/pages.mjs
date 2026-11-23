@@ -198,7 +198,11 @@ export const merkPages = merkPagesRaw.map((pg) => bijgewerkt(pg, SCORE_WEG));
 export const merkHub = {
   path: '/merken/', title: 'Warmtepomp merken 2026: 8 merken op een rij', h1: 'Alle warmtepompmerken op een rij', crumb: 'Merken', og: 'merken', stamp: { checked: CHECKED, updated: SCORE_WEG }, lastmod: SCORE_WEG,
   description: 'Quatt, Daikin, Mitsubishi Electric, Vaillant, Nefit Bosch, Itho Daalderop, Remeha en Panasonic: per merk het aanbod, de checklist en voor wie het past.',
-  schema: [{ '@context': 'https://schema.org', '@type': 'ItemList', itemListElement: RANG.map((id, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE.domain}/merken/${M[id].slug}/`, name: M[id].naam })) }],
+  // CollectionPage met dateModified: elke lastmod-lift vereist dateModified (les 19-11 / SEO-review inhaal L2).
+  schema: [
+    { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Alle warmtepompmerken op een rij', url: SITE.domain + '/merken/', description: 'Quatt, Daikin, Mitsubishi Electric, Vaillant, Nefit Bosch, Itho Daalderop, Remeha en Panasonic: per merk het aanbod, de checklist en voor wie het past.', inLanguage: 'nl-NL', dateModified: SCORE_WEG },
+    { '@context': 'https://schema.org', '@type': 'ItemList', itemListElement: RANG.map((id, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE.domain}/merken/${M[id].slug}/`, name: M[id].naam })) },
+  ],
   body: `<h1>Alle warmtepompmerken op een rij</h1><p class="lead">Acht merken die in Nederland warmtepompen leveren. Gesorteerd op het aantal checklistpunten, bij gelijke stand op naam.</p>
 <div class="actions"><a class="btn" href="/warmtepomp-keuzehulp/">Liever advies op maat? Start de keuzehulp</a><a class="btn ghost" href="/vergelijken/">Filter en vergelijk</a></div>
 <ol class="plist">${RANG.map((id, i) => pcard(id, { rank: i + 1, pos: 'lijst' })).join('')}</ol>
