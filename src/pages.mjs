@@ -1,7 +1,7 @@
 import { SITE, esc, ORG, GA_ID, ICONS, fmtDate } from './layout.mjs';
 import { PRIVACY_UPDATED, cookieTabel, partnerNetwerk, grondslag, doorgifte, bewaartermijnen, rechten } from './privacy-avg.mjs';
 import { CONSENT_KEY } from './lib/consent.js';
-import { PARTNERLINKS } from './lib/partnerlinks.js';
+import { PARTNERLINKS, HUISASSIST_URL } from './lib/partnerlinks.js';
 import { HERO_ART } from './hero-art.mjs';
 import { IDS, CHECKED, FEATURES, STERK_IN } from './lib/merken.js';
 import { knop } from './lib/partnerlinks.js';
@@ -14,6 +14,8 @@ import { LEADS_AAN } from './leads.config.mjs';
 // Checklistscores weggehaald (29-10-2026): bijgewerkt-datum, lastmod en dateModified van alle pagina's die een score toonden.
 // (Daarvoor: quatt, remeha, vaillant en nefitbosch 2026-10-26, de rest 2026-10-17.)
 export const SCORE_WEG = '2026-10-29';
+// Home-FAQ over verdienen via partnerlinks (24-11, Huisassist via Daisycon): eigen bodywijziging, datumlift 24-11.
+export const HOME_UPD = '2026-11-24';
 // Logo's van de merken in de tabellen (30-10-2026): bijgewerkt-datum, lastmod en dateModified van die pagina's (L7). Blogs: updated in de frontmatter.
 export const LOGO_UPD = '2026-10-30';
 export const LOGO_PADEN = new Set(['/merken/quatt/', '/merken/daikin/', '/warmtepomp-geluid/']);
@@ -38,7 +40,7 @@ const homeFaq = [
   ['Hybride of all-electric: wat past bij mijn huis?', 'Is je huis matig of slecht geïsoleerd, dan past een hybride warmtepomp naast je cv-ketel. Een all-electric warmtepomp vraagt minstens redelijke isolatie: Rc 2,5 in dak en vloer, een geïsoleerde spouwmuur en hr++-glas. Zie <a href="/hybride-of-all-electric/">hybride of all-electric</a>.'],
   ['Hoeveel subsidie krijg ik in 2026?', 'Voor je eerste lucht-waterwarmtepomp € 1.025 plus € 225 per kW, en € 200 extra bij energielabel A+++. Een hybride van 4 kW met A+++ geeft € 2.125. Zie <a href="/isde-subsidie-warmtepomp-2026/">ISDE-subsidie 2026</a>.'],
   ['Hoe komt de volgorde tot stand?', 'We kijken naar 10 vaste punten, zoals het aanbod (hybride, all-electric, bodem, lucht-lucht), propaan, garantie en of de prijs openbaar is. Merken die meer van die punten zelf noemen, staan hoger. Zie <a href="/over/#methode">zo vergelijken we</a>.'],
-  ['Verdient WarmtepompenMatch aan de merken?', 'Nu niet. Komt er later een partnerlink of offertepartner, dan wordt die bij de knoppen vermeld en telt die nooit mee in de volgorde of het advies.'],
+  ['Verdient WarmtepompenMatch aan de merken?', 'Ja, via partnerlinks. Die herken je aan het label Partnerlink bij de knop. Sluit je via zo\'n link bijvoorbeeld een offerte af, dan kunnen wij daardoor een vergoeding krijgen. Dat kost jou niets extra en telt nooit mee in de volgorde of het advies.'],
 ];
 const miniRows = RANG.map((id) => `<tr><th scope="row"><span class="rowlogo">${logo(id, 'sm')}</span><a href="/merken/${M[id].slug}/">${esc(M[id].naam)}</a></th>${[['hybride', 'Hybride'], ['allelectric', 'All-electric'], ['bodem', 'Bodem'], ['propaan', 'Propaan'], ['prijs', 'Prijs openbaar']].map(([k, l]) => `<td data-l="${l}">${fv(FEATURES[id][k], false)}</td>`).join('')}</tr>`).join('');
 // Lijn-iconen voor de kaarten (redesign-v1, Lucide-stijl): hybride = vlam, all-electric = bliksem, bodem = lagen, vergelijking = pijlen.
@@ -538,7 +540,7 @@ ${GA_ID ? `<h2 id="cookies">Cookies en statistieken</h2><p>We gebruiken geen adv
 <p>Je keuze bewaren we 12 maanden in je browser (localStorage). Je kunt je toestemming altijd intrekken via <a href="/privacy/#cookies" data-consent-open>Cookie-instellingen</a> (ook onderaan elke pagina). Dan stoppen we Google Analytics en wissen we de <code>_ga</code>-cookies.</p>
 <h3>Welke cookies en opslag?</h3>${cookieTabel(GA_ID, CONSENT_KEY)}` : '<h2 id="cookies">Cookies en statistieken</h2><p>We plaatsen geen cookies: geen advertentiecookies en geen statistiekcookies. Zetten we later statistieken aan, dan vragen we eerst je toestemming in een cookiemelding en passen we deze pagina aan.</p>'}
 <h2>Links naar merken</h2><p>Klik je door naar een merk, dan geldt de privacyverklaring van dat merk.</p>
-${partnerNetwerk(SITE.name, PARTNERLINKS)}
+${partnerNetwerk(SITE.name, { ...PARTNERLINKS, huisassist: HUISASSIST_URL })}
 ${privacyOffertes()}
 ${grondslag()}
 ${doorgifte()}

@@ -1,11 +1,12 @@
 // Aanvullende AVG-blokken voor /privacy/ (audit beveiliging & juridisch 20-10-2026, punt A.6 / F1).
 // Alleen vaststaande feiten: cookielooptijd uit consent.js (cookie_expires), GA4-bewaartermijn uit de property-instelling.
 // "Wie is verantwoordelijk?" staat hier bewust NIET in: dat volgt na het KvK-besluit.
-export const PRIVACY_UPDATED = '2026-10-21';
+export const PRIVACY_UPDATED = '2026-11-24';
 
 const NETWERKEN = [
   { re: /(^|\.)pxf\.io$|impact\.com$/, naam: 'Impact', privacy: 'https://impact.com/privacy-policy/' },
-  { re: /(^|\.)jf79\.net$|ds1\.nl$|daisycon\./, naam: 'Daisycon', privacy: 'https://daisycon.com/en/legal-information/privacy-policy/' },
+  // Daisycon-tracking (Huisassist WPM: glp8.net, campagne 22344, media 445224) plus oudere Daisycon-hosts.
+  { re: /(^|\.)glp8\.net$|(^|\.)jf79\.net$|ds1\.nl$|daisycon\./, naam: 'Daisycon', privacy: 'https://daisycon.com/en/legal-information/privacy-policy/' },
 ];
 
 /** Privacybeleid van de netwerken (geen affiliate-links; tests laten deze URL's toe). */
@@ -32,12 +33,19 @@ export function cookieTabel(gaId, storageKey) {
 </tbody></table></div>`;
 }
 
-/** Zin over het netwerkcookie na een klik op een partnerlink. */
+/** Uitleg bij partnerlinks. Alleen netwerken waarvan een URL in partnerlinks staat. Geen verzonnen cookies. */
 export function partnerNetwerk(siteNaam, partnerlinks) {
   const nw = netwerkenVan(partnerlinks);
-  if (!nw.length) return `<p>Op dit moment staan er geen partnerlinks op deze site. Komen die er, dan worden ze bij de knoppen vermeld en noemen we hier het affiliatenetwerk dat bij een klik een cookie plaatst.</p>`;
+  if (!nw.length) return `<p>Op dit moment staan er geen partnerlinks op deze site. Komen die er, dan worden ze bij de knoppen vermeld en noemen we hier het affiliatenetwerk.</p>`;
   const lijst = nw.map((n) => `<a href="${n.privacy}" rel="noopener">${n.naam}</a>`).join(' en ');
-  return `<p>Partnerlinks worden bij de knoppen vermeld. Klik je erop, dan ga je via een affiliatenetwerk (${nw.map((n) => n.naam).join(', ')}) naar de aanbieder. Dat netwerk plaatst op zijn eigen domein een cookie of klik-ID, om vast te leggen dat je via ${siteNaam} kwam. Sluit je iets af, dan kunnen wij daardoor een vergoeding krijgen. Het netwerk is zelf verantwoordelijk voor die gegevens; zie het privacybeleid van ${lijst}.</p>`;
+  const namen = nw.map((n) => n.naam).join(' en ');
+  // Alleen Daisycon op deze tak: enkelvoud 'via het affiliatenetwerk Daisycon'. Geen TradeTracker/Groenpand.
+  let html = `<p>Sommige knoppen zijn partnerlinks. Die herken je aan het label <span class="ecta-label">Partnerlink</span> bij de knop; de link heeft rel="sponsored nofollow noopener". Klik je daarop en sluit je bijvoorbeeld een offerte of een overeenkomst af, dan kunnen wij daardoor een vergoeding krijgen. Dat kost jou niets extra en verandert de volgorde op deze site niet. De klik loopt via het affiliatenetwerk ${namen}; zie het privacybeleid van ${lijst}.</p>`;
+  const urls = Object.values(partnerlinks || {});
+  if (urls.some((u) => /glp8\.net/i.test(u))) {
+    html += `<p>Die partnerlink gaat naar Huisassist via Daisycon (trackingdomein glp8.net). ${siteNaam} zet zelf geen cookies bij die klik. Over cookies van Daisycon of Huisassist zijn ons geen looptijden bekend.</p>`;
+  }
+  return html;
 }
 
 export function grondslag() {
