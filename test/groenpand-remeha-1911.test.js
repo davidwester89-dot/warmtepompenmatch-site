@@ -66,7 +66,7 @@ test('Groenpand-Remeha: exact 4 CTA’s op 3 pagina’s; Itho neutraal; bronrege
   // Geen Groenpand op andere pagina's (blogs, geluid, privacy, home, Itho).
   for (const f of files('dist')) {
     const url = padVan(f);
-    if (['/merken/', '/merken/remeha/', '/vergelijken/quatt-vs-remeha/'].includes(url)) continue;
+    if (['/merken/', '/merken/remeha/', '/vergelijken/quatt-vs-remeha/', '/privacy/'].includes(url)) continue;
     assert.doesNotMatch(readFileSync(f, 'utf8'), /analytics\.groenpand\.nl/, url);
   }
 });
@@ -78,8 +78,10 @@ test('Groenpand-Remeha: ranglijst ongewijzigd; datumlift 26-11 op de drie CTA-pa
   assert.match(sm, /<loc>https:\/\/warmtepompenmatch\.nl\/merken\/remeha\/<\/loc><lastmod>2026-11-26<\/lastmod>/);
   assert.match(sm, /<loc>https:\/\/warmtepompenmatch\.nl\/merken\/itho-daalderop\/<\/loc><lastmod>2026-11-26<\/lastmod>/);
   assert.match(sm, /<loc>https:\/\/warmtepompenmatch\.nl\/vergelijken\/quatt-vs-remeha\/<\/loc><lastmod>2026-11-26<\/lastmod>/);
-  assert.match(sm, /<loc>https:\/\/warmtepompenmatch\.nl\/privacy\/<\/loc><lastmod>2026-10-21<\/lastmod>/);
-  assert.match(lees('/privacy/'), /Op dit moment staan er geen partnerlinks op deze site/);
+  assert.match(sm, /<loc>https:\/\/warmtepompenmatch\.nl\/privacy\/<\/loc><lastmod>2026-11-26<\/lastmod>/);
+  assert.match(lees('/privacy/'), /Sommige knoppen zijn partnerlinks/);
+  assert.match(lees('/privacy/'), /TradeTracker/);
+  assert.doesNotMatch(lees('/privacy/'), /Op dit moment staan er geen partnerlinks/);
 });
 
 function CTA_ATTR(tag) {

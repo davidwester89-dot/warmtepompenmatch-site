@@ -1,12 +1,14 @@
 // Aanvullende AVG-blokken voor /privacy/ (audit beveiliging & juridisch 20-10-2026, punt A.6 / F1).
 // Alleen vaststaande feiten: cookielooptijd uit consent.js (cookie_expires), GA4-bewaartermijn uit de property-instelling.
 // "Wie is verantwoordelijk?" staat hier bewust NIET in: dat volgt na het KvK-besluit.
-export const PRIVACY_UPDATED = '2026-11-24';
+export const PRIVACY_UPDATED = '2026-11-26';
 
 const NETWERKEN = [
   { re: /(^|\.)pxf\.io$|impact\.com$/, naam: 'Impact', privacy: 'https://impact.com/privacy-policy/' },
   // Daisycon-tracking (Huisassist WPM: glp8.net, campagne 22344, media 445224) plus oudere Daisycon-hosts.
   { re: /(^|\.)glp8\.net$|(^|\.)jf79\.net$|ds1\.nl$|daisycon\./, naam: 'Daisycon', privacy: 'https://daisycon.com/en/legal-information/privacy-policy/' },
+  // Groenpand-trackinglink (analytics.groenpand.nl, TT-campagne 40779) en standaard TradeTracker-hosts.
+  { re: /(^|\.)analytics\.groenpand\.nl$|(^|\.)tradetracker\.net$|(^|\.)tradetracker\.com$/, naam: 'TradeTracker', privacy: 'https://tradetracker.com/nl/privacy-policy/' },
 ];
 
 /** Privacybeleid van de netwerken (geen affiliate-links; tests laten deze URL's toe). */
@@ -39,11 +41,13 @@ export function partnerNetwerk(siteNaam, partnerlinks) {
   if (!nw.length) return `<p>Op dit moment staan er geen partnerlinks op deze site. Komen die er, dan worden ze bij de knoppen vermeld en noemen we hier het affiliatenetwerk.</p>`;
   const lijst = nw.map((n) => `<a href="${n.privacy}" rel="noopener">${n.naam}</a>`).join(' en ');
   const namen = nw.map((n) => n.naam).join(' en ');
-  // Alleen Daisycon op deze tak: enkelvoud 'via het affiliatenetwerk Daisycon'. Geen TradeTracker/Groenpand.
   let html = `<p>Sommige knoppen zijn partnerlinks. Die herken je aan het label <span class="ecta-label">Partnerlink</span> bij de knop; de link heeft rel="sponsored nofollow noopener". Klik je daarop en sluit je bijvoorbeeld een offerte of een overeenkomst af, dan kunnen wij daardoor een vergoeding krijgen. Dat kost jou niets extra en verandert de volgorde op deze site niet. De klik loopt via het affiliatenetwerk ${namen}; zie het privacybeleid van ${lijst}.</p>`;
   const urls = Object.values(partnerlinks || {});
+  if (urls.some((u) => /analytics\.groenpand\.nl/i.test(u))) {
+    html += `<p>Een deel van die partnerlinks gaat naar Groenpand (installateur van Remeha) via TradeTracker. Een klik gaat eerst naar analytics.groenpand.nl en komt daarna terecht op groenpand.nl (met utm_campaign=tradetracker). ${siteNaam} zet zelf geen cookies bij die klik.</p>`;
+  }
   if (urls.some((u) => /glp8\.net/i.test(u))) {
-    html += `<p>Die partnerlink gaat naar Huisassist via Daisycon (trackingdomein glp8.net). ${siteNaam} zet zelf geen cookies bij die klik. Over cookies van Daisycon of Huisassist zijn ons geen looptijden bekend.</p>`;
+    html += `<p>Een deel van die partnerlinks gaat naar Huisassist via Daisycon (trackingdomein glp8.net). ${siteNaam} zet zelf geen cookies bij die klik. Over cookies van Daisycon of Huisassist zijn ons geen looptijden bekend.</p>`;
   }
   return html;
 }
