@@ -1,4 +1,4 @@
-// Elke lastmod-lift vereist dateModified (les 19-11, SEO-les 23-11, elke lastmod-lift).
+// Elke lastmod-lift vereist dateModified (les 19-11, SEO-les 23-11).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
