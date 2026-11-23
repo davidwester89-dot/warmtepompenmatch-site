@@ -7,8 +7,9 @@ export const PARTNERLINKS = {};
 export { HUISASSIST_URL, HUISASSIST_TEKST, huisassistKnop } from './huisassist-cta.js';
 
 // Remeha-CTA's (MM-OK 19-11): bestaande knop()-plekken gaan naar Groenpand (TradeTracker 40779).
-// Trackinglink van Partnermanager, exact. Niet in PARTNERLINKS: dat zou /privacy/ wijzigen (lastmod) en mag
-// de E-CTA-1-reflink niet vullen (geen extra plekken). Itho en overige merken blijven bronlink.
+// Trackinglink van Partnermanager, exact. Niet in PARTNERLINKS (dat zou merkenknoppen vullen);
+// de E-CTA-1-reflink blijft leeg (geen extra plekken). Itho en overige merken blijven bronlink.
+// Privacy krijgt de URL via een expliciete aanroep in pages.mjs.
 import { LABEL as ECTA_LABEL, REL as ECTA_REL } from '../e-cta.mjs';
 export const GROENPAND_TT_URL = 'https://analytics.groenpand.nl/c?c=40779&m=12&a=519643&r=&u=%2F';
 export const GROENPAND_REMEHA_TEKST = 'Offerte bij Groenpand (Remeha-installateur)';

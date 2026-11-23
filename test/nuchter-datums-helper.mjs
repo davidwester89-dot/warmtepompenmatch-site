@@ -27,4 +27,5 @@ export const UPGRADE_PADEN = new Set(["/merken/itho-daalderop/", "/merken/remeha
 // Groenpand-Remeha (SEO-review 484cf28): zichtbare knoptekst + partnerzin, echte datumlift 26-11.
 // Hub /merken/ heeft wél eigen bodywijziging (Remeha-kaart). Hub /vergelijken/ niet, en staat hier bewust niet in.
 export const GROENPAND_PADEN = new Set(["/merken/", "/vergelijken/quatt-vs-remeha/", "/merken/remeha/"]);
-export const revisieDatum = (pad, vorige) => (UPGRADE_PADEN.has(pad) || GROENPAND_PADEN.has(pad)) ? '2026-11-26' : NEUTRAAL_PADEN.has(pad) ? '2026-11-25' : (TRANSPARANTIE_PADEN.has(pad) || HUISASSIST_PADEN.has(pad)) ? '2026-11-24' : STIJL_PADEN.has(pad) ? '2026-11-17' : vorige;
+// /privacy/ krijgt TradeTracker (Groenpand) erbij: datumlift 26-11. Home-FAQ was al 24-11 en wijzigt niet mee.
+export const revisieDatum = (pad, vorige) => (UPGRADE_PADEN.has(pad) || GROENPAND_PADEN.has(pad) || pad === '/privacy/') ? '2026-11-26' : NEUTRAAL_PADEN.has(pad) ? '2026-11-25' : (TRANSPARANTIE_PADEN.has(pad) || HUISASSIST_PADEN.has(pad)) ? '2026-11-24' : STIJL_PADEN.has(pad) ? '2026-11-17' : vorige;
