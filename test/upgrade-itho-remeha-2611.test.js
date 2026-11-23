@@ -94,7 +94,7 @@ test('upgrade L7: itho + remeha op 2026-11-26; Groenpand tilt /merken/ en quatt-
   const op26 = lm.filter((m) => m[2] === '2026-11-26').map((m) => m[1]).sort();
   assert.ok(op26.includes(IT) && op26.includes(RM), 'upgrade-pagina\'s op 26-11');
   for (const p of ['/merken/', '/vergelijken/quatt-vs-remeha/', IT, RM]) assert.ok(op26.includes(p), p);
-  assert.ok(lm.every((m) => m[2] <= '2026-11-26'));
+  assert.ok(lm.every((m) => m[2] <= (process.env.PUSH_DATE || '2026-11-30'))); // 30-11: latere laag (grondwarmtepomp); grens = pushdatum
   assert.ok(!op26.includes('/vergelijken/'), 'hub /vergelijken/ niet gelift');
   for (const p of [IT, RM]) {
     const h = lees(p);

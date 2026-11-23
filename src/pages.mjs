@@ -196,6 +196,9 @@ const UPGRADE = {
 // Huisassist in het bestaande offerteblok van de keuzehulp-uitslag (JS): L7 telt client-side uitslag, datumlift 24-11.
 export const HUISASSIST_UPD = '2026-11-24';
 export const HUISASSIST_PADEN = new Set(['/warmtepomp-keuzehulp/']);
+// 30-11 (grondwarmtepomp kosten): FAQ-antwoord 'Waarom is een bodemwarmtepomp zo duur?' linkt naar de nieuwe post; eigen bodywijziging.
+export const GRONDWP_UPD = '2026-11-30';
+export const GRONDWP_PADEN = new Set(['/warmtepomp-kosten/']);
 const typeVan = (id) => (FEATURES[id].hybride.v === 'ja' ? 'hybride' : 'allelectric');
 const merkPagesRaw = IDS.map((id) => {
   const p = M[id];
@@ -324,7 +327,7 @@ const G = [['/gidsen/', 'Gidsen']];
 const kostenFaq = [
   ['Wat kost een hybride warmtepomp?', 'Gemiddeld € 6.200 inclusief installatie voor 4 kW, of € 8.300 met een nieuwe cv-ketel erbij. Met € 2.125 ISDE-subsidie betaal je netto ongeveer € 4.075 (Milieu Centraal).'],
   ['Wat kost een all-electric warmtepomp?', 'Gemiddeld € 12.000 voor een lucht-waterwarmtepomp van 8 kW met buitenunit. De ISDE-subsidie is dan € 3.025 (Milieu Centraal).'],
-  ['Waarom is een bodemwarmtepomp zo duur?', 'Er moet een bron in de grond worden geboord. Milieu Centraal noemt gemiddeld € 30.000 voor 8 kW, met € 4.425 subsidie in het voorbeeld.'],
+  ['Waarom is een bodemwarmtepomp zo duur?', 'Er moet een bron in de grond worden geboord. Milieu Centraal noemt gemiddeld € 30.000 voor 8 kW, met € 4.425 subsidie in het voorbeeld. Meer in <a href="/blog/grondwarmtepomp-kosten/">wat een grondwarmtepomp kost</a>.'],
 ];
 export const kosten = {
   ...article({ path: '/warmtepomp-kosten/', title: 'Wat kost een warmtepomp in 2026? Alle prijzen', h1: 'Wat kost een warmtepomp in 2026?', description: 'Hybride gemiddeld € 6.200, all-electric € 12.000, bodem € 30.000. De kosten per type, de ISDE-subsidie van 2026 en wat je netto betaalt.', og: 'warmtepomp-kosten', parents: G, faq: kostenFaq }),

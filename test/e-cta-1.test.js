@@ -16,7 +16,7 @@ import { loadPosts } from '../src/blog.mjs';
 // Site-adapter WarmtepompenMatch: 26 kaartpagina's + post 18-11 + gids energiecontract 23-11 = 28, allemaal alleen keuzehulp.
 const SITE = {
   root: 'dist',
-  aantal: 28,
+  aantal: 29, // + /blog/grondwarmtepomp-kosten/ (30-11), alleen keuzehulp
   build: () => execSync('node build.mjs', { stdio: 'ignore', env: { ...process.env, BASE: '', PREVIEW: '' } }),
   file: (p) => join('dist', p, 'index.html'),
   gidsBlog: () => [...P.guides.map((g) => g.path), ...loadPosts().map((x) => x.path), '/gidsen/', '/blog/'],

@@ -108,7 +108,8 @@ ${matchCta()}`;
     path: '/blog/', title: 'Blog: warmtepomp kiezen | WarmtepompenMatch', h1: 'Blog', ogTitle: 'Blog: warmtepomp kiezen',
     description: 'Artikelen over het kiezen van een warmtepomp: kosten, subsidie, merken en wat past bij jouw huis. Met bronnen.',
     crumb: 'Blog', og: 'blog', body, lastmod: upd, stamp: { updated: upd },
-    schema: [{ '@context': 'https://schema.org', '@type': 'Blog', name: 'WarmtepompenMatch blog', url: SITE.domain + '/blog/', inLanguage: 'nl-NL', publisher: ORG,
+    schema: [{ '@context': 'https://schema.org', '@type': 'Blog', name: 'WarmtepompenMatch blog', url: SITE.domain + '/blog/', inLanguage: 'nl-NL', publisher: ORG, dateModified: upd, // 30-11: hub-JSON-LD draagt dateModified bij lastmod-lift (SEO-les 19-11/23-11)
+     
       blogPost: posts.map((x) => ({ '@type': 'BlogPosting', headline: x.title, url: SITE.domain + x.path, datePublished: x.date, dateModified: x.updated })) }],
   };
 }

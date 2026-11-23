@@ -102,15 +102,15 @@ test('energievergelijker: datums 2026-11-26 alleen op gewijzigde pagina\'s; site
   const paden = ['/energiecontract-warmtepomp/', '/warmtepomp-kosten/', '/warmtepomp-terugverdientijd/', '/hybride-warmtepomp-kosten/', '/gidsen/'];
   for (const p of paden) {
     const d = revisieDatum(p, ENERGIE_UPD);
-    assert.equal(d, '2026-11-26', p);
-    assert.match(xml, new RegExp(`<loc>https://warmtepompenmatch\\.nl${p.replaceAll('/', '\\/')}<\\/loc><lastmod>2026-11-26<\\/lastmod>`), p);
+    assert.ok(d >= '2026-11-26', p); // 30-11: /warmtepomp-kosten/ tilt verder (FAQ-inlink grondwarmtepomp), via revisieDatum
+    assert.match(xml, new RegExp(`<loc>https://warmtepompenmatch\\.nl${p.replaceAll('/', '\\/')}<\\/loc><lastmod>${d}<\\/lastmod>`), p);
     const h = lees(p);
-    assert.match(h, /Laatst bijgewerkt <time datetime="2026-11-26">/, p);
+    assert.match(h, new RegExp(`Laatst bijgewerkt <time datetime="${d}">`), p);
     if (p === '/energiecontract-warmtepomp/') {
       assert.match(h, /"datePublished":"2026-11-26"/);
       assert.match(h, /"dateModified":"2026-11-26"/);
     } else if (p !== '/gidsen/') {
-      assert.match(h, /"dateModified":"2026-11-26"/);
+      assert.match(h, new RegExp(`"dateModified":"${d}"`));
       assert.doesNotMatch(h, /"datePublished":"2026-11-26"/, p);
     }
   }

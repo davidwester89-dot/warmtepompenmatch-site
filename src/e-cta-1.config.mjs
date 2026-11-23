@@ -50,5 +50,6 @@ export const ECTA = {
     '/blog/beste-hybride-warmtepomp/': KEUZEHULP,
     '/blog/warmtepomp-offerte-vergelijken/': KEUZEHULP,
     '/blog/warmtepomp-huren-of-kopen/': KEUZEHULP, // niet op de kaart (post 18-11): ook alleen keuzehulp
+    '/blog/grondwarmtepomp-kosten/': KEUZEHULP, // nieuwe post 30-11: Huisassist-reflink in deze config leeg → fallback keuzehulp (Huisassist-knop zit in de keuzehulp-uitslag, live 24-11)
   },
 };

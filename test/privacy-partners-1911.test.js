@@ -6,6 +6,7 @@ import { readFileSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 import { PRIVACY_UPDATED, netwerkenVan } from '../src/privacy-avg.mjs';
 import { GROENPAND_TT_URL, HUISASSIST_URL, PARTNERLINKS } from '../src/lib/partnerlinks.js';
+import { revisieDatum } from './nuchter-datums-helper.mjs';
 
 execSync('node build.mjs', { env: { ...process.env, BASE: '', PREVIEW: '' }, stdio: 'ignore' });
 const lees = (p) => readFileSync(`dist${p === '/' ? '/index.html' : p + 'index.html'}`, 'utf8');
@@ -36,7 +37,8 @@ test('privacy-partners: lastmod 2026-11-26, TradeTracker en Daisycon, geen verzo
   assert.doesNotMatch(h, /Impact/);
   const sm = readFileSync('dist/sitemap.xml', 'utf8');
   assert.match(sm, /<loc>https:\/\/warmtepompenmatch\.nl\/privacy\/<\/loc><lastmod>2026-11-26<\/lastmod>/);
-  assert.match(sm, /<loc>https:\/\/warmtepompenmatch\.nl\/<\/loc><lastmod>2026-11-24<\/lastmod>/);
+  // Home: 30-11 lift via 'Nieuw op de blog' (hubregel D, nieuwe post grondwarmtepomp kosten); FAQ zelf ongewijzigd.
+  assert.match(sm, new RegExp(`<loc>https://warmtepompenmatch\\.nl/</loc><lastmod>${revisieDatum('/', '2026-11-24')}</lastmod>`));
 });
 
 test('home-FAQ: verdienen via partnerlinks, datum blijft 24-11 (geen nieuwe bodywijziging)', () => {
@@ -44,7 +46,7 @@ test('home-FAQ: verdienen via partnerlinks, datum blijft 24-11 (geen nieuwe body
   assert.match(h, /Verdient WarmtepompenMatch aan de merken\?/);
   assert.match(h, /Ja, via partnerlinks/);
   assert.doesNotMatch(h, /Nu niet\. Komt er later een partnerlink/);
-  assert.match(h, /bijgewerkt op <time datetime="2026-11-24">/);
+  assert.match(h, new RegExp(`bijgewerkt op <time datetime="${revisieDatum('/', '2026-11-24')}">`)); // 30-11: hubregel D (nieuwe post), FAQ-tekst ongewijzigd
   assert.match(h, /"name":"Verdient WarmtepompenMatch aan de merken\?"/);
   assert.match(h, /Ja, via partnerlinks/);
 });

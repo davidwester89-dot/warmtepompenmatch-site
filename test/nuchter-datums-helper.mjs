@@ -36,4 +36,7 @@ export const ENERGIE_PADEN = new Set([
   "/hybride-warmtepomp-kosten/",
   "/gidsen/",
 ]);
-export const revisieDatum = (pad, vorige) => (ENERGIE_PADEN.has(pad) || UPGRADE_PADEN.has(pad) || GROENPAND_PADEN.has(pad) || pad === '/privacy/') ? '2026-11-26' : NEUTRAAL_PADEN.has(pad) ? '2026-11-25' : (TRANSPARANTIE_PADEN.has(pad) || HUISASSIST_PADEN.has(pad)) ? '2026-11-24' : STIJL_PADEN.has(pad) ? '2026-11-17' : vorige;
+// 30-11 (blog grondwarmtepomp kosten): /warmtepomp-kosten/ (FAQ-inlink, eigen body), /blog/ (nieuwe post in de lijst) en home
+// ('Nieuw op de blog', hubregel D) tillen naar 2026-11-30.
+export const GRONDWP_PADEN = new Set(['/warmtepomp-kosten/', '/blog/', '/']);
+export const revisieDatum = (pad, vorige) => GRONDWP_PADEN.has(pad) ? '2026-11-30' : (ENERGIE_PADEN.has(pad) || UPGRADE_PADEN.has(pad) || GROENPAND_PADEN.has(pad) || pad === '/privacy/') ? '2026-11-26' : NEUTRAAL_PADEN.has(pad) ? '2026-11-25' : (TRANSPARANTIE_PADEN.has(pad) || HUISASSIST_PADEN.has(pad)) ? '2026-11-24' : STIJL_PADEN.has(pad) ? '2026-11-17' : vorige;
