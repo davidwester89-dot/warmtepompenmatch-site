@@ -43,7 +43,8 @@ test('build (productie): pagina’s, sitemap, robots, IndexNow, CNAME, huisregel
       assert.equal(href, MERKEN[m[1]].url, `${f}: ${m[1]}`); assert.match(m[0], /rel="noopener"/);
     }
     assert.ok(!/class="partner"/.test(s), `${f}: partnerlabel zonder goedgekeurde partner`);
-    assert.ok(!/rel="[^"]*sponsored/.test(s), `${f}: sponsored link zonder goedgekeurde partner`);
+    // Alleen echte <a rel="sponsored">-tags; /privacy/ noemt het attribuut in lopende tekst.
+    assert.ok(!/<a\b[^>]*rel="[^"]*sponsored/.test(s), `${f}: sponsored link zonder goedgekeurde partner`);
     if (/<article/.test(s) && /class="src">Door/.test(s)) assert.match(s, /Door Redactie WarmtepompenMatch/);
     // Logo's: lokaal, vaste maat, alt = merknaam.
     for (const m of s.matchAll(/<img class="plogo plogo-(sm|md|lg)[^"]*" src="\/logos\/([a-z]+)\.svg" alt="([^"]+)" width="(\d+)" height="(\d+)"/g)) {
