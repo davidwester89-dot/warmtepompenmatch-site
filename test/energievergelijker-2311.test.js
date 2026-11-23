@@ -127,3 +127,20 @@ test('energievergelijker: ranglijst en top-3 onbetaalde merken ongewijzigd', () 
   assert.doesNotMatch(hub, /energie\.whitelabeled\.nl|dc-energy-tool|data-energy-tool/);
   assert.doesNotMatch(lees('/warmtepomp-keuzehulp/'), /dc-energy-tool|data-energy-tool/);
 });
+
+test('energievergelijker: /privacy/ noemt derde-partijscript, consent-gating en Daisycon; lastmod blijft 26-11', () => {
+  const h = lees('/privacy/');
+  assert.match(h, /<h2 id="energievergelijker">Energievergelijker \(Daisycon\)<\/h2>/);
+  assert.match(h, /energie\.whitelabeled\.nl/);
+  assert.match(h, /cdn\.amplitude\.com/);
+  assert.match(h, /api-energie\.whitelabeled\.nl/);
+  assert.match(h, /pas nadat je op die pagina kiest/);
+  assert.match(h, /toestemming voor statistieken[\s\S]*zet de vergelijker niet aan/);
+  assert.match(h, /<code>wm-energy-tool<\/code>/);
+  assert.match(h, /href="https:\/\/daisycon.com\/en\/legal-information\/privacy-policy\/"/);
+  assert.match(h, /Over de namen en looptijden van die cookies zijn ons geen bevestigde termijnen bekend/);
+  assert.doesNotMatch(h, /__tdat|amp_cookie|_lb-node/); // geen onbevestigde cookienaam
+  assert.match(h, /Laatst bijgewerkt <time datetime="2026-11-26">/);
+  assert.match(sm(), /<loc>https:\/\/warmtepompenmatch\.nl\/privacy\/<\/loc><lastmod>2026-11-26<\/lastmod>/);
+  assert.match(h, /Energievergelijker \(Daisycon\):<\/strong> alleen met je toestemming op die pagina/);
+});

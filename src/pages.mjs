@@ -1,5 +1,5 @@
 import { SITE, esc, ORG, GA_ID, ICONS, fmtDate } from './layout.mjs';
-import { PRIVACY_UPDATED, cookieTabel, partnerNetwerk, grondslag, doorgifte, bewaartermijnen, rechten } from './privacy-avg.mjs';
+import { PRIVACY_UPDATED, cookieTabel, partnerNetwerk, energievergelijkerPrivacy, grondslag, doorgifte, bewaartermijnen, rechten } from './privacy-avg.mjs';
 import { CONSENT_KEY } from './lib/consent.js';
 import { PARTNERLINKS, GROENPAND_TT_URL, HUISASSIST_URL } from './lib/partnerlinks.js';
 import { widgetBlok, CSP as ENERGY_CSP } from './lib/energievergelijker.js';
@@ -636,6 +636,7 @@ ${GA_ID ? `<h2 id="cookies">Cookies en statistieken</h2><p>We gebruiken geen adv
 <h3>Welke cookies en opslag?</h3>${cookieTabel(GA_ID, CONSENT_KEY)}` : '<h2 id="cookies">Cookies en statistieken</h2><p>We plaatsen geen cookies: geen advertentiecookies en geen statistiekcookies. Zetten we later statistieken aan, dan vragen we eerst je toestemming in een cookiemelding en passen we deze pagina aan.</p>'}
 <h2>Links naar merken</h2><p>Klik je door naar een merk, dan geldt de privacyverklaring van dat merk.</p>
 ${partnerNetwerk(SITE.name, { ...PARTNERLINKS, groenpand: GROENPAND_TT_URL, huisassist: HUISASSIST_URL })}
+${energievergelijkerPrivacy(SITE.name)}
 ${privacyOffertes()}
 ${grondslag()}
 ${doorgifte()}

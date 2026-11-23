@@ -1,7 +1,9 @@
 // Aanvullende AVG-blokken voor /privacy/ (audit beveiliging & juridisch 20-10-2026, punt A.6 / F1).
 // Alleen vaststaande feiten: cookielooptijd uit consent.js (cookie_expires), GA4-bewaartermijn uit de property-instelling.
 // "Wie is verantwoordelijk?" staat hier bewust NIET in: dat volgt na het KvK-besluit.
+import { ENERGY_CONSENT_KEY } from './lib/energievergelijker.js';
 export const PRIVACY_UPDATED = '2026-11-26';
+export { ENERGY_CONSENT_KEY };
 
 const NETWERKEN = [
   { re: /(^|\.)pxf\.io$|impact\.com$/, naam: 'Impact', privacy: 'https://impact.com/privacy-policy/' },
@@ -32,6 +34,7 @@ export function cookieTabel(gaId, storageKey) {
 <tr><td><code>_ga</code></td><td>Google Analytics, alleen na toestemming</td><td>Herkent je browser met een willekeurig nummer, zodat we bezoekers kunnen tellen</td><td>365 dagen, verlengd bij elk bezoek</td></tr>
 <tr><td><code>_ga_${gaId.replace(/^G-/, '')}</code></td><td>Google Analytics, alleen na toestemming</td><td>Houdt je bezoek (sessie) bij</td><td>365 dagen, verlengd bij elk bezoek</td></tr>
 <tr><td><code>${storageKey}</code> (lokale opslag, geen cookie)</td><td>Deze site</td><td>Onthoudt of je statistieken hebt geaccepteerd of geweigerd</td><td>12 maanden</td></tr>
+<tr><td><code>${ENERGY_CONSENT_KEY}</code> (lokale opslag, geen cookie)</td><td>Deze site</td><td>Onthoudt of je de energievergelijker op de gids wilt laden</td><td>12 maanden</td></tr>
 </tbody></table></div>`;
 }
 
@@ -53,9 +56,18 @@ export function partnerNetwerk(siteNaam, partnerlinks) {
   return html;
 }
 
+
+/** Derde-partijscript Daisycon Energievergelijker NL. Alleen bekende herkomst; geen verzonnen cookienamen of looptijden. */
+export function energievergelijkerPrivacy(siteNaam) {
+  return `<h2 id="energievergelijker">Energievergelijker (Daisycon)</h2>
+<p>Op de pagina <a href="/energiecontract-warmtepomp/">energiecontract bij een warmtepomp</a> staat een vergelijkingstool van een derde partij: de Daisycon Energievergelijker NL (programma 13017). Die herken je aan het label <span class="ecta-label">Partnerlink</span>. De tool telt nooit mee in de merkenvolgorde of het advies. ${siteNaam} laadt het script van energie.whitelabeled.nl pas nadat je op die pagina kiest om de vergelijker te tonen. Zonder die keuze gaat er vanaf onze pagina geen verzoek naar die tool. De toestemming voor statistieken (Google Analytics) is een andere keuze en zet de vergelijker niet aan.</p>
+<p>Laad je de vergelijker, dan kunnen Daisycon en de aanbieder van de tool cookies en vergelijkbare technieken plaatsen. Het officiële script kan ook een script van Amplitude laden (cdn.amplitude.com) en gegevens uitwisselen met api-energie.whitelabeled.nl. Over de namen en looptijden van die cookies zijn ons geen bevestigde termijnen bekend. Zie het <a href="https://daisycon.com/en/legal-information/privacy-policy/" rel="noopener">privacybeleid van Daisycon</a>. ${siteNaam} zet zelf geen cookies voor deze tool. Je keuze bewaren we 12 maanden in je browser (lokale opslag, <code>${ENERGY_CONSENT_KEY}</code>).</p>`;
+}
+
 export function grondslag() {
   return `<h2>Op welke grond?</h2><ul>
 <li><strong>Statistieken (Google Analytics):</strong> alleen met je toestemming (artikel 6 lid 1 sub a AVG). Ook voor het plaatsen van de cookies vragen we toestemming (artikel 11.7a Telecommunicatiewet).</li>
+<li><strong>Energievergelijker (Daisycon):</strong> alleen met je toestemming op die pagina (artikel 6 lid 1 sub a AVG), omdat het script cookies kan zetten.</li>
 <li><strong>E-mail aan ons:</strong> we gebruiken je bericht en e-mailadres om je vraag te beantwoorden. Dat is ons gerechtvaardigd belang (artikel 6 lid 1 sub f AVG).</li>
 <li><strong>Hosting:</strong> technische gegevens zoals je IP-adres zijn nodig om de site veilig te leveren. Ook dat is gerechtvaardigd belang (artikel 6 lid 1 sub f AVG).</li></ul>`;
 }
