@@ -23,6 +23,7 @@ cards={
  'vs-vaillant-vs-nefit-bosch':('Vaillant of Nefit Bosch?','Verschillen op een rij'),
  'warmtepomp-kosten':('Wat kost een warmtepomp in 2026?','Kosten per type en de subsidie'),
  'warmtepomp-terugverdientijd':('Terugverdientijd van een warmtepomp','Zo reken je het uit'),
+ 'energiecontract-warmtepomp':('Energiecontract bij een warmtepomp','Vast, variabel of dynamisch'),
  'isde-subsidie-warmtepomp-2026':('ISDE-subsidie warmtepomp 2026','Bedragen, voorwaarden en 2027'),
  'hybride-of-all-electric':('Hybride of all-electric?','Wat past bij jouw huis'),
  'hybride-warmtepomp-kosten':('Wat kost een hybride warmtepomp?','Prijs, ISDE 2026 en terugverdientijd'),

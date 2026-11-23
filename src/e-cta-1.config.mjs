@@ -39,6 +39,7 @@ export const ECTA = {
     '/warmtepomp-kosten/': KEUZEHULP,
     '/hybride-warmtepomp-kosten/': KEUZEHULP,
     '/warmtepomp-terugverdientijd/': KEUZEHULP,
+    '/energiecontract-warmtepomp/': KEUZEHULP, // nieuwe gids 23-11: alleen keuzehulp, geen betaalde E-CTA
     '/isde-subsidie-warmtepomp-2026/': KEUZEHULP,
     '/hybride-of-all-electric/': KEUZEHULP,
     '/warmtepomp-geluid/': KEUZEHULP,

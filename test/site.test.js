@@ -14,7 +14,7 @@ const NEP = [/★/, /aggregateRating/, /reviewCount/, /ratingValue/, /sterren/i,
 test('build (productie): pagina’s, sitemap, robots, IndexNow, CNAME, huisregels', () => {
   buildLive();
   const html = htmlFiles();
-  assert.equal(html.length, 28 + loadPosts().length); // 27 (incl. /hybride-warmtepomp-kosten/) + blogindex + gepubliceerde blogposts (datum <= vandaag)
+  assert.equal(html.length, 29 + loadPosts().length); // 28 (incl. /energiecontract-warmtepomp/) + blogindex + gepubliceerde blogposts (datum <= vandaag)
   const sm = read('dist/sitemap.xml');
   assert.equal((sm.match(/<loc>/g) || []).length, html.length - 1);
   assert.match(read('dist/robots.txt'), /Sitemap: https:\/\/warmtepompenmatch.nl\/sitemap.xml/);

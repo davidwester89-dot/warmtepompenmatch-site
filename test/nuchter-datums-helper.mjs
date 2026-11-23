@@ -28,4 +28,12 @@ export const UPGRADE_PADEN = new Set(["/merken/itho-daalderop/", "/merken/remeha
 // Hub /merken/ heeft wél eigen bodywijziging (Remeha-kaart). Hub /vergelijken/ niet, en staat hier bewust niet in.
 export const GROENPAND_PADEN = new Set(["/merken/", "/vergelijken/quatt-vs-remeha/", "/merken/remeha/"]);
 // /privacy/ krijgt TradeTracker (Groenpand) erbij: datumlift 26-11. Home-FAQ was al 24-11 en wijzigt niet mee.
-export const revisieDatum = (pad, vorige) => (UPGRADE_PADEN.has(pad) || GROENPAND_PADEN.has(pad) || pad === '/privacy/') ? '2026-11-26' : NEUTRAAL_PADEN.has(pad) ? '2026-11-25' : (TRANSPARANTIE_PADEN.has(pad) || HUISASSIST_PADEN.has(pad)) ? '2026-11-24' : STIJL_PADEN.has(pad) ? '2026-11-17' : vorige;
+// Daisycon Energievergelijker-gids + contextlinks (bouw 23-11, voorlopige pushdatum 26-11). Hub /gidsen/ heeft een eigen kaart.
+export const ENERGIE_PADEN = new Set([
+  "/energiecontract-warmtepomp/",
+  "/warmtepomp-kosten/",
+  "/warmtepomp-terugverdientijd/",
+  "/hybride-warmtepomp-kosten/",
+  "/gidsen/",
+]);
+export const revisieDatum = (pad, vorige) => (ENERGIE_PADEN.has(pad) || UPGRADE_PADEN.has(pad) || GROENPAND_PADEN.has(pad) || pad === '/privacy/') ? '2026-11-26' : NEUTRAAL_PADEN.has(pad) ? '2026-11-25' : (TRANSPARANTIE_PADEN.has(pad) || HUISASSIST_PADEN.has(pad)) ? '2026-11-24' : STIJL_PADEN.has(pad) ? '2026-11-17' : vorige;

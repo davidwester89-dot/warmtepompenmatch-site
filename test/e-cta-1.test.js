@@ -13,10 +13,10 @@ import { PARTNERLINKS } from '../src/lib/partnerlinks.js';
 import * as P from '../src/pages.mjs';
 import { loadPosts } from '../src/blog.mjs';
 
-// Site-adapter WarmtepompenMatch: 26 kaartpagina's + 1 nieuwe post (18-11) = 27, allemaal alleen keuzehulp.
+// Site-adapter WarmtepompenMatch: 26 kaartpagina's + post 18-11 + gids energiecontract 23-11 = 28, allemaal alleen keuzehulp.
 const SITE = {
   root: 'dist',
-  aantal: 27,
+  aantal: 28,
   build: () => execSync('node build.mjs', { stdio: 'ignore', env: { ...process.env, BASE: '', PREVIEW: '' } }),
   file: (p) => join('dist', p, 'index.html'),
   gidsBlog: () => [...P.guides.map((g) => g.path), ...loadPosts().map((x) => x.path), '/gidsen/', '/blog/'],
