@@ -41,7 +41,8 @@ export function partnerNetwerk(siteNaam, partnerlinks) {
   if (!nw.length) return `<p>Op dit moment staan er geen partnerlinks op deze site. Komen die er, dan worden ze bij de knoppen vermeld en noemen we hier het affiliatenetwerk.</p>`;
   const lijst = nw.map((n) => `<a href="${n.privacy}" rel="noopener">${n.naam}</a>`).join(' en ');
   const namen = nw.map((n) => n.naam).join(' en ');
-  let html = `<p>Sommige knoppen zijn partnerlinks. Die herken je aan het label <span class="ecta-label">Partnerlink</span> bij de knop; de link heeft rel="sponsored nofollow noopener". Klik je daarop en sluit je bijvoorbeeld een offerte of een overeenkomst af, dan kunnen wij daardoor een vergoeding krijgen. Dat kost jou niets extra en verandert de volgorde op deze site niet. De klik loopt via het affiliatenetwerk ${namen}; zie het privacybeleid van ${lijst}.</p>`;
+  const viaNet = nw.length === 1 ? `het affiliatenetwerk ${namen}` : `de affiliatenetwerken ${namen}`;
+  let html = `<p>Sommige knoppen zijn partnerlinks. Die herken je aan het label <span class="ecta-label">Partnerlink</span> bij de knop; de link heeft rel="sponsored nofollow noopener". Klik je daarop en sluit je bijvoorbeeld een offerte of een overeenkomst af, dan kunnen wij daardoor een vergoeding krijgen. Dat kost jou niets extra en verandert de volgorde op deze site niet. De klik loopt via ${viaNet}; zie het privacybeleid van ${lijst}.</p>`;
   const urls = Object.values(partnerlinks || {});
   if (urls.some((u) => /analytics\.groenpand\.nl/i.test(u))) {
     html += `<p>Een deel van die partnerlinks gaat naar Groenpand (installateur van Remeha) via TradeTracker. Een klik gaat eerst naar analytics.groenpand.nl en komt daarna terecht op groenpand.nl (met utm_campaign=tradetracker). ${siteNaam} zet zelf geen cookies bij die klik.</p>`;
