@@ -606,6 +606,8 @@ export const gidsHub = {
   // Eigen bodywijziging (nieuwe gids-kaart): lastmod = ENERGIE_UPD (2026-11-26).
   stamp: { updated: GIDSEN_UPD }, lastmod: GIDSEN_UPD,
   description: 'Gidsen over kosten, terugverdientijd, energiecontract, ISDE 2026, hybride of all-electric, geluid en of je huis geschikt is.',
+  // CollectionPage met dateModified: elke lastmod-lift vereist dateModified (les 19-11).
+  schema: [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Warmtepomp kiezen: alle gidsen', url: SITE.domain + '/gidsen/', description: 'Gidsen over kosten, terugverdientijd, energiecontract, ISDE 2026, hybride of all-electric, geluid en of je huis geschikt is.', inLanguage: 'nl-NL', dateModified: GIDSEN_UPD }],
   body: `<h1>Warmtepomp kiezen: alle gidsen</h1><div class="grid cards two">${guides.map((g) => `<a class="card" href="${g.path}"><h2 class="h3">${esc(g.h1)}</h2><p>${esc(g.description)}</p><span class="more">Lees de gids →</span></a>`).join('')}<a class="card" href="/terugverdientijd-berekenen/"><h2 class="h3">Rekenhulp: terugverdientijd berekenen</h2><p>${esc(calc.description)}</p><span class="more">Naar de rekenhulp →</span></a></div>${matchCta()}`,
 };
 
