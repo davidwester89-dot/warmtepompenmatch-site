@@ -55,7 +55,11 @@ const GIDSLINKS = [['/warmtepomp-kosten/', 'Wat kost een warmtepomp in 2026?'], 
 export const home = {
   path: '/', title: 'Warmtepomp kiezen? Vergelijk eerst | WarmtepompenMatch', ogTitle: 'WarmtepompenMatch: welke warmtepomp past bij jouw huis?', h1: 'Warmtepomp kiezen? Vergelijk eerst.', og: 'home', lastmod: SCORE_WEG,
   description: 'Hybride of all-electric? Doe de keuzehulp, vergelijk 8 merken op een vaste checklist en zie wat een warmtepomp kost met de ISDE-subsidie van 2026.',
-  schema: [faqSchema(homeFaq)],
+  // WebPage met dateModified: elke lastmod-lift vereist dateModified (les 19-11 / SEO 23-11). FAQPage blijft erna.
+  schema: [
+    { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Warmtepomp kiezen? Vergelijk eerst.', url: SITE.domain + '/', description: 'Hybride of all-electric? Doe de keuzehulp, vergelijk 8 merken op een vaste checklist en zie wat een warmtepomp kost met de ISDE-subsidie van 2026.', inLanguage: 'nl-NL', dateModified: HOME_UPD },
+    faqSchema(homeFaq),
+  ],
   full: true,
   body: `<section class="hero"><div class="wrap hero-in"><div class="hero-txt">
 <p class="h1-brand">Warmtepompen<b>Match</b>.nl</p>
@@ -531,6 +535,8 @@ export const over = {
 export const privacy = {
   path: '/privacy/', title: 'Privacy en cookies | WarmtepompenMatch', h1: 'Privacy en cookies', crumb: 'Privacy', og: 'home', lastmod: PRIVACY_UPDATED, stamp: { updated: PRIVACY_UPDATED },
   description: 'Hoe WarmtepompenMatch met je gegevens omgaat: geen account, je antwoorden blijven in je browser en statistieken alleen na jouw toestemming.',
+  // WebPage met dateModified: elke lastmod-lift vereist dateModified (les 19-11 / SEO 23-11).
+  schema: [{ '@context': 'https://schema.org', '@type': 'WebPage', name: 'Privacy en cookies', url: SITE.domain + '/privacy/', description: 'Hoe WarmtepompenMatch met je gegevens omgaat: geen account, je antwoorden blijven in je browser en statistieken alleen na jouw toestemming.', inLanguage: 'nl-NL', dateModified: PRIVACY_UPDATED }],
   body: `<article class="prose"><h1>Privacy en cookies</h1>
 <p>Vragen? Mail naar <a href="mailto:${SITE.email}">${SITE.email}</a>.</p>
 <h2>Wie is verantwoordelijk?</h2><p>Verantwoordelijk voor de verwerking van persoonsgegevens op deze site: ${SITE.name}, <a href="mailto:${SITE.email}">${SITE.email}</a>.</p>
